@@ -1,0 +1,145 @@
+import i18n from "../../../i18n";
+import { MENU } from "../../constants/route";
+
+export const MenuItems =() =>[
+  {
+    name: i18n.t("SideMenu.MenuItems.OnBoarding"),
+    exact: true,
+    to: MENU.ONBOARDING,
+    iconClassName: "TRANSACTION_ICON",
+    accessKey: "REGISTRATION_URL",
+  },
+  {
+    name: i18n.t("SideMenu.MenuItems.Dashboard"),
+    exact: true,
+    to: MENU.DASHBOARD,
+    iconClassName: "DASHBOARD_ICON",
+    accessKey: "INTERNAL",
+  },
+  {
+    name: i18n.t("SideMenu.MenuItems.Transactions"),
+    exact: true,
+    to: MENU.TRANSACTIONS,
+    iconClassName: "TRANSACTION_ICON",
+    accessKey: "TRANSACTION_URL",
+  },
+  // {
+  //   name: i18n.t("SideMenu.MenuItems.LegacyTransactions"),
+  //   exact: true,
+  //   to: MENU.LEGACY_TRANSACTIONS,
+  //   iconClassName: "bi-cash-stack v2-icons",
+  //   accessKey: isV2 ?"ALL_USER_ACCESS":"INTERNAL",
+  // },
+  {
+    name: i18n.t("SideMenu.MenuItems.Merchants"),
+    exact: true,
+    to: MENU.MERCHANTS,
+    iconClassName: "MERCHANT_ICON",
+    accessKey: "MERCHANT_URL",
+  },
+  {
+    name: i18n.t("Rules"),
+    exact: true,
+    to: MENU.RULES,
+    iconClassName: "RISK_ICON",
+    accessKey: "ENTITY_URL",
+  },
+  {
+    name: i18n.t("SideMenu.MenuItems.Entity"),
+    exact: true,
+    to: MENU.RISK,
+    iconClassName: "RISK_ICON",
+    accessKey: "ENTITY_URL",
+  },
+  {
+    name: i18n.t("SideMenu.MenuItems.Acquirers"),
+    exact: true,
+    to: MENU.ACQUIRERS,
+    iconClassName: "ACQUIRER_ICON",
+    accessKey: "ACQUIRERS_URL",
+  },
+  {
+    name: i18n.t("SideMenu.MenuItems.Statements"),
+    exact: true,
+    to: MENU.STATEMENTS,
+    iconClassName: "STATEMENTS_ICON",
+    accessKey: "STATEMENTS_URL",
+  },
+  // {
+  //   name: i18n.t("SideMenu.MenuItems.LegacyStatement"),
+  //   exact: true,
+  //   to: MENU.LEGACY_STATEMENTS,
+  //   iconClassName: "bi-card-list v2-icons",
+  //   accessKey: isV2 ?"ALL_USER_ACCESS":"INTERNAL",
+  // },
+  {
+    name: i18n.t("SideMenu.MenuItems.Disputemanagement"),
+    exact: true,
+    to: MENU.DISPUTE,
+    iconClassName: "DISPUTE_ICON",
+    accessKey: "DISPUTE_MANAGEMENT_URL",
+  },
+  // {
+  //   name: i18n.t("SideMenu.MenuItems.LegacyDisputemanagement"),
+  //   exact: true,
+  //   to: MENU.LEGACY_DISPUTE,
+  //   iconClassName: "bi-hammer v2-icons",
+  //   accessKey: isV2 ?"ALL_USER_ACCESS":"INTERNAL",
+  // },
+  {
+    name: i18n.t("SideMenu.MenuItems.SalesLead"),
+    exact: true,
+    to: MENU.SALES_LEAD,
+    iconClassName: "SALESLEAD_ICON",
+    accessKey: "SALES_LEAD_ACCESS",
+  },
+  {
+    name: i18n.t("SideMenu.MenuItems.Partner"),
+    exact: true,
+    to: MENU.PARTNER,
+    iconClassName: "PARTNER_ICON",
+    accessKey: "SALES_GUESTTHIRDPARTY_ACCESS_ROLE",
+  },
+  {
+    name: i18n.t("SideMenu.MenuItems.Partner"),
+    exact: true,
+    to: MENU.RESELLER,
+    iconClassName: "PARTNER_ICON",
+    accessKey: "THIRDPARTY",
+  },
+  {
+    name: i18n.t("SideMenu.MenuItems.Hash Card"),
+    exact: true,
+    to: MENU.HASH_CARD,
+    iconClassName: "HASHCARD_ICON",
+    accessKey: "DISPUTE_TRANSACTION_ACCESS",
+  },
+];
+
+
+export const FooterMenuItems =() =>[
+  {
+    name: i18n.t("SideMenu.MenuItems.Contact"),
+    exact: true,
+    to: MENU.CONTACT_US,
+    iconClassName: "CONTACT_ICON",
+    // accessKey: "CONTACT_US_URL",
+    accessKey: "DISPUTE_TRANSACTION_ACCESS",
+  },
+  {
+    name: i18n.t("Footer.button.PRIVACY_BUTTON"),
+    exact: true,
+    to: MENU.PRIVACY_POLICY,
+    iconClassName: "PRIVACY_ICON",
+    // accessKey: "CONTACT_US_URL",
+    accessKey: "DISPUTE_TRANSACTION_ACCESS",
+  },
+  {
+    name: i18n.t("Footer.button.TERMS_BUTTON"),
+    exact: true,
+    to: MENU.TERMS_CONDITIONS,
+    iconClassName: "CONTACT_ICON",
+    // accessKey: "CONTACT_US_URL",
+    accessKey: "DISPUTE_TRANSACTION_ACCESS",
+  },
+];

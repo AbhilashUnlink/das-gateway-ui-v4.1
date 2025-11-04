@@ -1,0 +1,106 @@
+.modal-header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 16px;
+  gap: 8px;
+  height: 66px;
+  background: linear-gradient(
+      180deg,
+      rgba(253, 164, 44, 0.7) -26.39%,
+      rgba(255, 191, 105, 0.4) 100%
+    ),
+    #ffffff;
+  border-width: 1px 1px 0px 1px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-radius: 16px 16px 0px 0px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: -20px -18px 10px -18px;
+}
+
+.modal-header h2#modal-modal-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+
+input.h-49 {
+  height: 49px;
+  border-color: #e5e5e5;
+  border-radius: 4px;
+  color: #808080;
+}
+
+button.footer-modal-button {
+  border: 1px solid;
+  cursor: pointer;
+  letter-spacing: 0.03rem;
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  height: 48px;
+  box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  text-transform: uppercase;
+}
+
+button.footer-modal-button.submit {
+  color: #fff;
+  border-color: #f7941d !important;
+  background-color: #f7941d !important;
+}
+
+button.footer-modal-button.submit:hover {
+  color: #fff;
+  border-color: #e56300 !important;
+  background-color: #e56300 !important;
+}
+
+button.footer-modal-button.submit:disabled {
+  color: #fff;
+  border-color: #f7941d !important;
+  background-color: #f7941d !important;
+  cursor: not-allowed;
+}
+
+button.footer-modal-button.cancel {
+  background-color: #ffffff !important;
+  color: #000;
+  border-color: #fff9f9;
+}
+
+.profile-button {
+  display: inline-block;
+
+  position: relative;
+
+  margin: 0px 0em 0px 0;
+
+  top: 9px;
+}
+
+.profile-button button {
+  border: 0px solid #ff9800;
+  background: transparent;
+  padding: 4px 12px;
+  height: auto;
+  display: flex;
+  border-radius: 0px !important;
+  position: relative;
+  margin: 0px 0 0px 0;
+  cursor: pointer;
+  border-left: 1px solid rgba(229, 229, 229, 1) !important;
+}
+
+.profile-button button:hover {
+  background: transparent;
+  color: #ff9800;
+}

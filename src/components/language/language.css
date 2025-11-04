@@ -1,0 +1,73 @@
+button.language-button {
+    background: transparent;
+    color: #000;
+    /* padding: 6px 20px; */
+    border: 0;
+    box-shadow: 0 0 0;
+    font-size: 0.65rem;
+    border-right: 1px solid #ccc !important;
+}
+
+button.dropdown-select-button {
+    background: transparent;
+    color: #000;
+    padding: 6px 4px;
+    border: 0;
+    box-shadow: 0 0 0;
+    font-size: 0.75rem;
+    min-width: 32px;
+}
+
+button.language-button:hover,
+button.dropdown-select-button:hover {
+    background: transparent;
+}
+
+.language-wrap {
+    box-shadow: none !important;
+    border: 0 !important;
+    border-right: 1px solid rgba(229, 229, 229, 1) !important;
+    margin: 0 12px 0 0;
+    position: relative;
+    top: 7px;
+    border-radius: 0 !important;
+}
+
+.language-popper {
+    z-index: 9;
+}
+
+.MuiButtonGroup-contained.language-wrap.top-lang-wrap {
+    top: 0;
+}
+
+.flag-img {
+    width: 25px;
+}
+
+.language-wrap.top-lang-wrap button.MuiButtonBase-root.language-button.MuiButtonGroup-firstButton {
+    border: 0 !important;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.timeWrap button.language-button {
+    border-right: unset !important;
+    padding-right: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.layout-switcher {
+    display: flex;
+    padding: 4px 15px 4px 4px;
+    border-right: 1px solid rgba(219, 219, 219, 1);
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 7px;
+}
+
+svg.svg-icon.active rect {
+    fill: #f6941c;
+}

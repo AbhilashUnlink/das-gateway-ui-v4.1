@@ -1,0 +1,103 @@
+.timeWrap{
+    width: auto;
+    max-width: 250px;
+}
+.timeWrap .timeButton{
+    white-space: nowrap;
+}
+.timeWrap .verticalDivision{
+    border-left: 1px solid #c9c9c9;
+    height: 36px;
+    margin: -10px 14px;
+}
+.timeWrap button.language-button {
+    border-right: unset !important;
+    padding-right: 0;
+}
+.timeWrap .timeHeading{
+    font-size: .82rem;
+    font-weight: 400;
+    color: #000;
+    line-height: unset;
+}
+.timeWrap .selectedTime{
+    width: 100%;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+}
+ .timeWrap .selectedTimeContainer{
+    position: relative;
+  }
+ .timeWrap .selectedTime .tooltiptext {
+    visibility: hidden;
+    width: fit-content;
+    background-color: #ffffff;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 31px;
+    right: 0%;
+    font-size: 10px;
+    color: #000000;
+  }
+  
+ .timeWrap .selectedTime .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: -36%;
+    right: 5%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff transparent;
+
+  }
+  
+ .timeWrap .selectedTime:hover .tooltiptext {
+    visibility: visible;
+  }
+/*  */
+button.language-button {
+    background: transparent;
+    color: #000;
+    padding: 6px 20px;
+    border: 0;
+    box-shadow: 0 0 0;
+    font-size: .75rem;
+    border-right: 1px solid #ccc !important ;
+}
+button.dropdown-select-button {
+    background: transparent;
+    color: #000;
+    padding: 6px 4px;
+    border: 0;
+    box-shadow: 0 0 0;
+    font-size: .75rem;
+    min-width: 32px;
+}
+button.language-button:hover, button.dropdown-select-button:hover{
+    background: transparent;
+}
+.language-wrap {
+    box-shadow: none !important;
+    border: 1px solid #ccc;
+    margin: 0 12px 0 0;
+    position: relative;
+    top: 7px;
+}
+.language-popper {
+    z-index: 9;
+}
+.timeGrow{
+    height: 100%;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+
+

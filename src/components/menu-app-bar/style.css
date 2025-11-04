@@ -1,0 +1,387 @@
+.appbar-header {
+  box-shadow: 0px 1px 2px -3px rgb(0 0 0 / 20%),
+    0px 2px 3px 0px rgb(0 0 0 / 14%), 0px 1px 2px 0px rgb(0 0 0 / 12%) !important;
+  background-color: #ffffff !important;
+  color: #282828 !important;
+  border-radius: 5px;
+  margin: 0 0 20px 0;
+}
+
+.toolbar-header {
+  min-height: 48px !important;
+  width: 100%;
+}
+
+.dropdown_menu .MuiPaper-root.MuiPaper-rounded ul li.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root {
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(219, 219, 219, 1);
+  padding: 20px 16px;
+}
+
+.dropdown_menu .MuiPaper-root.MuiPaper-rounded ul li.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root:first-child {
+  padding-top: 0;
+}
+
+.dropdown_menu .MuiPaper-root.MuiPaper-rounded ul li.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root:last-child {
+  border: 0px;
+}
+
+.dropdown_menu .MuiPaper-root.MuiPaper-rounded ul li.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root:hover {
+  background-color: #FFF6E6;
+}
+
+.dropdown-icons {
+  margin: 0 8px 0 0;
+}
+
+.breadcrumbs {
+  display: inline-block;
+  width: 45%;
+  padding-left: 0rem;
+}
+
+.breadcrumbs nav,
+.breadcrumbs nav p {
+  font-size: 0.85rem;
+  color: #808080;
+}
+
+li.MuiBreadcrumbs-li a {
+  color: #e56523;
+}
+
+/*============= user name access ===============*/
+.menu-buttons button {
+  border-radius: 0px;
+}
+
+.user-name {
+  font-size: .82rem;
+  margin: 0 0 0 7px;
+  font-weight: 600;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  top: 2.5px;
+}
+
+.user-name span {
+  vertical-align: middle;
+  font-size: 0.3rem;
+  display: inline-block;
+  margin: 0 0 0 7px;
+}
+
+.user-name span svg {
+  font-size: 1.2rem;
+}
+
+.user-profile-head {
+  position: relative;
+  margin: -15px -16px 10px -16px;
+  border-bottom: 1px solid #e4e4e4;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 12px;
+  gap: 12px;
+  height: 66px;
+  background: linear-gradient(180deg, rgba(253, 164, 44, 0.7) -26.39%, rgba(255, 191, 105, 0.4) 100%), #FFFFFF;
+  border-width: 1px 1px 0px 1px;
+  border-style: solid;
+  border-color: #FFFFFF;
+  border-radius: 8px 8px 0px 0px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+
+}
+
+.user-profile-head strong {
+  /* text-transform: uppercase; */
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  position: relative;
+  top: 0px;
+  color: #1a1a1a;
+  font-size: 16px;
+
+}
+
+.user-profile-head h5 {
+  display: flex;
+  font-size: 14px;
+  font-weight: 400;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.user-profile-head h5 span {
+  font-size: 14px;
+  color: #1a1a1a;
+  display: block;
+  position: relative;
+  margin: 0px 0 0 0px;
+}
+
+.user-merchant-id>strong {
+  color: #3a3838;
+  font-size: 0.7rem;
+}
+
+img.user-image {
+  width: 42px;
+  margin: 0 15px 0 0;
+  vertical-align: middle;
+  float: left;
+}
+
+.appbar-header .language-wrap button.language-button img.flag-img {
+  position: relative;
+  left: -10px;
+}
+
+.user-profile-body {
+  position: relative;
+}
+
+.user-profile-body h5 {
+  display: block;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+
+.user-profile-body .user-listings {
+  display: block;
+  position: relative;
+  margin: 0 0 5px 0;
+  white-space: normal;
+
+}
+
+.user-profile-body .user-listings h6 {
+  word-break: break-all;
+  display: block;
+  margin: 0 0 10px 0;
+  width: 100%;
+  position: relative;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #E56523;
+  text-transform: uppercase;
+}
+
+.user-profile-body .user-listings h6 span.user-info-group {
+  font-weight: 500;
+  margin: 0 0 0 5px;
+  word-break: break-word;
+  color: #616161;
+  text-transform: none;
+}
+
+.user-profile-body .user-listings {
+  display: block;
+  position: relative;
+  margin: 0 -16px 5px -16px;
+  border-bottom: 1px solid #e8e8e8;
+  white-space: normal;
+  padding: 7px 15px 0px;
+}
+
+.user-profile-body .user-listings:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.user-profile-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown_menu .MuiPaper-root.MuiPaper-rounded {
+  top: 6% !important;
+  overflow: visible;
+  max-width: 420px;
+  width: 420px;
+  min-width: 420px;
+}
+
+.dropdown_menu .MuiPaper-root.MuiPaper-rounded::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 14px;
+  width: 16px;
+  height: 16px;
+  background-color: #ffffff;
+  -webkit-transform: translateY(-50%) rotate(45deg);
+  -moz-transform: translateY(-50%) rotate(45deg);
+  -ms-transform: translateY(-50%) rotate(45deg);
+  transform: translateY(-50%) rotate(-45deg);
+  border: 1px solid rgb(228, 224, 224);
+  z-index: -1;
+}
+
+.dropdown_menu .MuiPaper-root.MuiPaper-rounded ul {
+  padding-bottom: 0;
+}
+
+span.user-infos {
+  position: relative;
+  margin: 0 7px 0 0;
+  display: inline-block;
+  color: #1a1a1a;
+}
+
+span.user-infos::after {
+  content: ",";
+  position: absolute;
+}
+
+span.user-infos:last-child::after {
+  display: none;
+}
+
+.user-profile-body h5 span {
+  text-transform: capitalize;
+  font-weight: 400;
+  color: #515151;
+  word-break: break-all;
+  white-space: break-spaces;
+}
+
+.risk-management-table {
+  height: 76vh !important;
+}
+
+input#generatedLink {
+  padding-right: 100px;
+  padding-right: 100px;
+}
+
+img.flag-img {
+  width: 24px;
+}
+
+.breadcrumbs nav li span {
+  font-size: .85rem;
+}
+
+.photo {
+  width: 50px;
+  height: 50px;
+}
+
+select.timeframe_select {
+  border: 0;
+}
+
+select.timeframe_select:focus-visible,
+select.timeframe_select:focus {
+  border: 0;
+  outline: 0;
+}
+
+ul.gateway-error {
+  position: relative;
+}
+
+ul.gateway-error li {
+  position: relative;
+  padding: 0 0 3px 21px;
+}
+
+ul.gateway-error li::before {
+  position: absolute;
+  left: 0;
+  color: #000;
+  font-size: 16px;
+  content: "\27A2";
+  border-radius: 100px;
+  top: -1px;
+}
+
+/* ================= removed the label required from checkbox in drawers last child ======================*/
+form.detail-form.refund-form .MuiGrid-root:last-child p.MuiFormHelperText-root {
+  display: none;
+}
+
+.drawer-body.add-entity-risk-rule.edit-merchant-statement form.detail-form.refund-form .MuiGrid-root:last-child p.MuiFormHelperText-root {
+  display: block;
+}
+
+.drawer-body.transaction-detail-drawer .detail-left-co::-webkit-scrollbar-thumb {
+  display: block;
+  background: #607d8b;
+}
+
+.drawer-body.transaction-detail-drawer .detail-left-co::-webkit-scrollbar {
+  width: 4px;
+}
+
+.drawer-body {
+  padding: 25px 25px;
+  width: 100%;
+}
+
+.drawer-body,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+.menu-buttons-new {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+MuiPopper-root.language-popper li.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root:hover,
+.MuiPopper-root.language-popper li.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root.Mui-selected:hover {
+  background-color: #FFF6E6;
+}
+
+.MuiPopper-root.language-popper li.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root.Mui-selected {
+  background-color: #FFF6E6;
+}
+
+.MuiPopper-root.language-popper ul#split-button-menu {
+  padding: 0;
+}
+
+.MuiPopper-root.language-popper li.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root:hover {
+  background-color: #FFF6E6;
+}
+
+button.ant-btn.notification-popover span.badge {
+  display: inline-block !important;
+  right: 10px !important;
+  position: absolute;
+  left: auto;
+  background: #e77236;
+  font-weight: 400;
+  color: #ffffff;
+  top: 2px;
+  line-height: 13px;
+  border-radius: 50%;
+  width: 14px;
+}
+
+button.ant-btn.notification-popover {
+  border: 0;
+  position: relative;
+  top: 7px;
+  box-shadow: 0 0 0;
+  max-width: 52px;
+  padding: 0 14px 0 3px;
+}

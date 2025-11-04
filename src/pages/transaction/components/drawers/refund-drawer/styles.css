@@ -1,0 +1,106 @@
+.drawer-body {
+  padding: 25px 25px;
+  width: 100%;
+}
+
+.drawer-body.refund-drawer .risk-statement .MuiGrid-item,
+.drawer-body.capture-drawer .risk-statement .MuiGrid-item {
+  flex-basis: 100%;
+  max-width: 100%;
+  margin-bottom: 12px;
+}
+
+.drawer-body .risk-statement span.confirm_capture_checkbox {
+  top: -20px;
+  margin: 10px 5px -18px -12px;
+}
+
+.drawer-body.refund-drawer span.confirm_refund_checkbox {
+  top: -20px !important;
+  margin: 10px 5px -18px -12px;
+}
+
+.drawer-body h3 {
+  margin: 0 0 15px 0;
+  position: absolute;
+  top: 18px;
+  left: 64px;
+  font-weight: 600;
+  letter-spacing: 0.03rem;
+}
+
+.drawer-body form.detail-form.refund-form fieldset label {
+  font-size: 0.75rem;
+  line-height: 10px;
+  background: transparent;
+  padding: 0 0;
+}
+
+.drawer-body
+  form.detail-form.refund-form
+  fieldset
+  label
+  span.MuiFormControlLabel-label {
+  line-height: 19px;
+  text-align: left;
+  padding: 0 0px;
+}
+
+.drawer-body.refund-drawer h3 {
+  color: #03a9f4;
+}
+
+.drawer-body.capture-drawer h3 {
+  color: #019a4c;
+}
+
+/*============= refund modal =============*/
+.modal-refund .modal-dialog {
+  max-width: 70%;
+}
+
+.modal-capture .modal-dialog {
+  max-width: 70%;
+}
+
+form.detail-form.refund-form {
+  margin: 0 auto;
+  padding: 10px 0px 0;
+}
+
+form.detail-form.refund-form .popup-list span .box-listing.edit-box {
+  width: 32.3333%;
+  margin: 0 1% 1% 0 !important;
+}
+
+form
+  form.detail-form.refund-form
+  .popup-list
+  span:nth-child(n + 2)
+  .box-listing.edit-box {
+  margin: 0 0% 1% 0 !important;
+}
+
+.detail-form.refund-form .popup-list span:last-child .box-listing.edit-box {
+  width: 99%;
+}
+
+form.detail-form.refund-form .risk-statement .threshold_amount_value,
+form.detail-form.refund-form .risk-statement .field_threshold_attempts {
+  top: 0;
+  margin: 0px 0 0 0;
+}
+
+form.detail-form.refund-form .action-buttons {
+  margin-top: 50px !important;
+  display: flex;
+  justify-content: center;
+}
+.cancel-button {
+  background: #969ca3!important;
+}
+
+/* form.detail-form.refund-form fieldset label {
+  pointer-events: none !important;
+} */
+

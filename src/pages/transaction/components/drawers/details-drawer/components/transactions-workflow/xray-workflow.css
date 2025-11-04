@@ -1,0 +1,129 @@
+.xray-wrap-list {
+    position: relative;
+    display: flex;
+    border: 1px solid #e7e7e7;
+    background: #fff;
+    padding: 2em 0 2rem 2rem;
+    border-radius: 8px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: calc(100vh - 240px);
+}
+ul.xray-ul {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    justify-content: flex-start;
+    padding: 0 20px 0 0;
+}
+ul.xray-ul li:first-child{
+    margin-top: 0;
+}
+ul.xray-ul li {
+    position: relative;
+    border: 1px dashed #ccc;
+    margin: 10px 0 20px 0;
+    width: max-content;
+    padding: 0;
+}
+ul.xray-ul li::after {
+    position: absolute;
+    border: .02rem dashed #ccc;
+    height: 30px;
+    content: "";
+    bottom: -31px;
+    left: 50%;
+}
+ul.xray-ul li:last-child:after{
+    display: none;
+}
+ul.xray-ul li button {
+    text-decoration: none;
+    color: #e77236;
+    font-size: .85rem;
+    font-weight: 500;
+    display: block;
+    padding: 6px 24px;
+    border:0;
+    background: transparent;
+    cursor: pointer;
+}
+.transaction-xray-div {
+    height: calc(100vh - 179px);
+    position: relative;
+    border-left: 1px solid #ededed;
+    padding: 0;
+    margin: -29px 0 -30px 0;
+    overflow: hidden;
+    width: 100%;
+    /* overflow-y: auto; */
+}
+.request-response-wrap {
+    display: flex;
+    gap: 2rem;
+    flex-direction: row;
+}
+/* .request-wrapper {
+    width: 50%;
+    white-space: nowrap;
+    OVERFLOW: auto;
+    height: calc(100vh - 245px);
+    padding: 2rem;
+} */
+.request-wrapper {
+    width: 100%;
+    /* white-space: nowrap; */
+    OVERFLOW: auto;
+    height: calc(100vh - 245px);
+    padding: 2rem;
+}
+.response-wrapper {
+    width: 50%;
+    /* white-space: nowrap; */
+    OVERFLOW: auto;
+    height: calc(100vh - 245px);
+    padding: 2rem;
+    background: #453b3b;
+    color: #fff;
+}
+.response-wrapper pre, .request-wrapper pre {
+    white-space: pre;
+
+}
+.response-wrapper::-webkit-scrollbar-track, .response-wrapper::-webkit-scrollbar-thumb, .request-wrapper::-webkit-scrollbar-track, .request-wrapper::-webkit-scrollbar-thumb{
+    display: block;
+}
+.workflow-wrap{
+    position: relative;
+}
+.workflow-wrap h4.h-time-heading{
+    margin-top: 0;
+}
+.no-data-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    background: #fcfcff;
+}
+img.api-image {
+    display: block;
+    width: 25rem;
+}
+ul.xray-ul li button.transaction-services-name.is-selected {
+    background: #e77236;
+    color: #ffffff;
+}
+.node-key-theme {
+    position: relative;
+    border: 1px solid #d3d3d3;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 10px 0 0 0;
+}
+.node-key-theme ul {
+    padding: 10px 10px !important;
+}

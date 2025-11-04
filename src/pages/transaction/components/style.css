@@ -1,0 +1,1490 @@
+img.table-icon-img {
+  width: 21px;
+  margin: 0 5px 0 0;
+  vertical-align: middle;
+  position: absolute;
+  left: 20px;
+}
+
+/*  ==============  drawer transaction detail ===========  */
+.drawer-body.transaction-detail-drawer {
+  width: 100%;
+  height: calc(100vh - 115px);
+  overflow: hidden;
+  overflow-y: auto;
+  padding-bottom: 25px !important;
+}
+
+.drawer-body.transaction-detail-drawer .detail-form.info-container.transaction-detail-container {
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+  margin: -38px 0 0 0 !important;
+}
+
+.drawer-body.transaction-detail-drawer .detail-form.info-container.transaction-detail-container .inner-details {
+  padding: 0 0 10px;
+  background: transparent;
+  margin-top: 20px;
+}
+
+.drawer-body.transaction-detail-drawer .detail-form.info-container.transaction-detail-container .detail-list:last-child .inner-details {
+  border: 0 !important;
+}
+
+.drawer-body.transaction-detail-drawer .detail-form.info-container.transaction-detail-container .detail-list .timeline-date-section {
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+}
+
+.redirect-history-timeline {
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  background: #e77236;
+  padding: 7px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #ffffff;
+  border: 0;
+  cursor: pointer;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns {
+  top: 0;
+  bottom: auto;
+  position: absolute;
+  padding: 0px 0 0px;
+  background: transparent;
+  z-index: 99;
+  left: 26%;
+  width: calc(100% - 26.5%);
+  border-left: 1.5px solid #6a6a6a;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns {
+  text-align: right;
+  width: 47%;
+  position: relative;
+  float: right;
+  margin: 3px 11px;
+  display: flex;
+  flex-direction: row;
+  /* grid-gap: 1rem;
+  gap: 1rem; */
+  justify-content: flex-end;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .transaction-status-box {
+  width: 46%;
+  padding: 0px 0px 0px 15px;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .transaction-status-box h4.trans-status {
+  color: #e77236;
+  font-size: 1rem;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .transaction-status-box h4.trans-status span {
+  color: black;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 0 5px 0 0;
+  font-size: 0.9rem;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns .capture a.transaction-buttons {
+  color: #019a4c;
+  border-color: #019a4c;
+  padding: 4px 6px;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns .capture a.transaction-buttons:hover {
+  background: #019a4c;
+  color: #ffffff;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns .refund a.transaction-buttons {
+  color: #06b1ef;
+  border-color: #06b1ef;
+  padding: 4px 6px;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns .refund a.transaction-buttons:hover {
+  background: #06b1ef;
+  color: #ffffff;
+}
+
+/* ================Details================== */
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns .voidauth a.transaction-buttons {
+  color: #e77236;
+  border-color: #e77236;
+  padding: 4px 6px;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns .voidauth a.transaction-buttons:hover {
+  background: #e77236;
+  color: #ffffff;
+}
+
+.drawer-body.transaction-detail-drawer h3 {
+  font-size: 1em;
+  top: 20px;
+}
+
+.box-listing {
+  width: 23.3333%;
+  margin: 0 1.5% 0.5em 0;
+  position: relative;
+  padding: 0rem 0rem;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  flex-direction: row !important;
+  margin-top: 10px;
+}
+
+.filter-chips>div>span {
+  text-transform: capitalize;
+}
+
+.box-listing.acquier-box-listing:nth-child(n+13) h4 {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.box-listing label {
+  text-transform: uppercase;
+  font-weight: 600 !important;
+  font-size: 0.78rem !important;
+  color: #001124;
+  padding: 0 0rem;
+}
+
+.box-listing h4 {
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: #333;
+  margin: 3px 0 0 0;
+  padding: 0px 0rem;
+}
+
+/* ============= */
+form.detail-form.info-container.transaction-detail-container .detail-list:first-child .inner-details h4.transaction-title {
+  margin-top: -16px;
+}
+
+form.detail-form.info-container.transaction-detail-container .detail-list .inner-details h4.transaction-title {
+  padding-top: 20px;
+}
+
+/* =========== */
+
+.drawer-body h3 {
+  margin: 0 0 15px 0;
+  position: absolute;
+  top: 18px;
+  left: 64px;
+  font-weight: 600;
+  letter-spacing: 0.03rem;
+}
+
+.drawer-body form.detail-form.refund-form fieldset label {
+  font-size: 0.75rem;
+  line-height: 10px;
+  background: transparent;
+  padding: 0 0;
+}
+
+.drawer-body form.detail-form.refund-form fieldset label span.MuiFormControlLabel-label {
+  line-height: 19px;
+  text-align: left;
+  padding: 0 0px;
+}
+
+.drawer-body.refund-drawer h3 {
+  color: #03a9f4;
+}
+
+.drawer-body.capture-drawer h3 {
+  color: #019a4c;
+}
+
+.drawer-body.nested-table-drawer h3 {
+  color: #ffffff;
+}
+
+.drawer-body.product-drawer h3 {
+  color: #3081b9;
+}
+
+/*  ==============  drawer transaction detail ===========  */
+
+.drawer-body.transaction-detail-drawer .detail-form.info-container.transaction-detail-container {
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+  margin: -38px 0 0 0 !important;
+}
+
+.drawer-body.transaction-detail-drawer .detail-form.info-container.transaction-detail-container .inner-details {
+  padding: 0 0 10px;
+  background: transparent;
+}
+
+
+.drawer-body.transaction-detail-drawer .detail-form.info-container.transaction-detail-container .detail-list .timeline-date-section {
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+}
+
+.redirect-history-timeline {
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  background: #e77236;
+  padding: 7px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #ffffff;
+  border: 0;
+  cursor: pointer;
+}
+
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns {
+  text-align: right;
+  width: 47%;
+  position: relative;
+  float: right;
+  margin: 0 11px;
+  display: flex;
+  flex-direction: row;
+  /* grid-gap: 1rem;
+  gap: 1rem; */
+  justify-content: flex-end;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .transaction-status-box {
+  width: 46%;
+  padding: 11px 0px 11px 15px;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .transaction-status-box h4.trans-status {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .transaction-status-box h4.trans-status span {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 0 5px 0 0;
+  font-size: 0.9rem;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns .capture a.transaction-buttons {
+  color: #019a4c;
+  border-color: #019a4c;
+  padding: 4px 6px;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns .capture a.transaction-buttons:hover {
+  background: #019a4c;
+  color: #ffffff;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns .refund a.transaction-buttons {
+  color: #06b1ef;
+  border-color: #06b1ef;
+  padding: 4px 6px;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns .refund a.transaction-buttons:hover {
+  background: #06b1ef;
+  color: #ffffff;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns .voidauth a.transaction-buttons {
+  color: #e77236;
+  border-color: #e77236;
+  padding: 4px 6px;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns .voidauth a.transaction-buttons:hover {
+  background: #e77236;
+  color: #ffffff;
+}
+
+.drawer-body.transaction-detail-drawer h3 {
+  font-size: 1em;
+  top: 20px;
+}
+
+.css-k008qs {
+  height: 0;
+}
+
+/*========== product view drawer css ======*/
+.drawer-body.product-view-drawer {
+  width: 100%;
+  padding: 25px 20px;
+  height: 90vh;
+  overflow: hidden;
+  overflow-y: auto;
+  display: flex;
+}
+
+.drawer-body.product-view-drawer .inner-details {
+  padding: 0 0 0 0;
+  border-bottom: 0px;
+}
+
+.drawer-body.product-view-drawer .inner-details .box-listing.product-box {
+  width: 50%;
+}
+
+.drawer-body.product-view-drawer .inner-details span.two-column .box-listing.product-box {
+  width: 48.333% !important;
+}
+
+.drawer-body.product-view-drawer .inner-details .box-listing.product-box span.box-listing-value {
+  top: -7px;
+}
+
+.drawer-body.product-view-drawer h3 {
+  border: 0;
+  font-size: 1.17em;
+  text-transform: none;
+  padding: 0;
+}
+
+.drawer-body.product-view-drawer .inner-details {
+  border-bottom: 0 !important;
+}
+
+.drawer-body.product-view-drawer .inner-details .qr-div-wrap {
+  position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  width: 100%;
+  margin: 15px auto 0;
+  padding: 12px 0px;
+  text-align: center;
+  display: block;
+  right: auto;
+  border-radius: 0;
+  top: auto;
+  height: auto;
+}
+
+.drawer-body.product-view-drawer .inner-details .qr-div-wrap a {
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+}
+
+.drawer-body.product-view-drawer .inner-details .qr-div-wrap a img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.drawer-body.product-view-drawer .inner-details .qr-div-wrap::before {
+  display: none;
+}
+
+/*=================== risk rule drawer ==============*/
+.drawer-body.product-view-drawer.risk-rule-drawer {
+  width: 100%;
+}
+
+.drawer-body.product-view-drawer.risk-rule-drawer .note-condition {
+  margin: 0;
+}
+
+.drawer-body.product-view-drawer.risk-rule-drawer .note-condition button.setup-risk-btn {
+  top: 14px;
+}
+
+.drawer-body.product-view-drawer.risk-rule-drawer .detail-form.info-container.risk-profile-div {
+  margin: 0 0 0 0;
+}
+
+.drawer-body.product-view-drawer.risk-rule-drawer .detail-form.info-container.risk-profile-div h4.transaction-title {
+  padding-top: 0;
+}
+
+.drawer-body.product-view-drawer.risk-rule-drawer .detail-container {
+  padding: 15px 0 0 0;
+  border-radius: 0;
+}
+
+/* =========== */
+
+/* ======== detail drawer transaction new css ============*/
+.drawer-body.transaction-detail-drawer .detail-left-co {
+  float: left;
+  width: 70%;
+  height: 92.5vh;
+  overflow: hidden;
+  overflow-y: auto;
+  border-right: 1px solid #e0e0e0;
+}
+
+.drawer-body.transaction-detail-drawer .bg-history-container {
+  float: right;
+  width: 28%;
+  position: relative;
+  margin: 35px 0 0 0;
+}
+
+.drawer-body.transaction-detail-drawer .detail-left-co .box-listing {
+  width: 32%;
+  margin: 0 7px 10px 0;
+}
+
+/* ========== */
+
+.accordian-div .inner-details {
+  margin: 0;
+  background: #fff;
+  padding: 0 10px 10px 20px;
+  border-radius: 0;
+  border-bottom: 1px solid #ccc;
+  margin: 0 !important;
+}
+
+/* timeline */
+
+.drawer-body.transaction-detail-drawer .bg-history-container {
+  float: right;
+  width: 28%;
+  position: relative;
+  margin: 35px 0 0 0;
+}
+
+.drawer-body.transaction-detail-drawer .detail-left-co .box-listing {
+  width: 32%;
+  margin: 0 7px 10px 0;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.drawer-body.transaction-detail-drawer .bg-history-container h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  margin: 0 0 10px 0;
+  padding: 0px 0 0 0;
+  color: #333;
+}
+
+.drawer-body.transaction-detail-drawer .bg-history-container .timeline-section {
+  max-height: 75vh;
+}
+
+.drawer-body.transaction-detail-drawer .bg-history-container .timeline-section ul li.timeline-transactionlist {
+  min-height: auto;
+}
+
+.drawer-body.transaction-detail-drawer .bg-history-container img.timeline-icons {
+  margin: -5px 0 0 0;
+  width: 30px;
+}
+
+.drawer-body.transaction-detail-drawer .bg-history-container .timeline-seprator {
+  margin-right: 10px;
+  margin-left: 0;
+}
+
+.drawer-body.transaction-detail-drawer .bg-history-container p.transaction-history-amonut {
+  font-size: 0.8rem;
+  bottom: auto;
+  top: 11px;
+}
+
+.drawer-body.transaction-detail-drawer .bg-history-container .timeline-date-section span {
+  color: #888888 !important;
+  font-weight: 400 !important;
+  font-size: 0.75rem;
+}
+
+.drawer-body.transaction-detail-drawer .bg-history-container p.transaction-history-type {
+  font-size: 0.75rem;
+  color: #000;
+}
+
+/* history timeline */
+
+/*================ Transaction Timeline history =================*/
+.timeline-section {
+  padding: 20px 0;
+  position: relative;
+  margin: 0;
+  max-height: 450px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.timeline-section::-webkit-scrollbar {
+  width: 3px;
+}
+
+.timeline-section::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  display: block;
+}
+
+.timeline-section::-webkit-scrollbar-thumb {
+  background-color: #e77236;
+  outline: 1px solid rgb(192, 192, 192);
+  display: block;
+}
+
+.timeline-section ul {
+  align-items: start;
+  padding-left: 0 !important;
+}
+
+.timeline-section ul li.timeline-transactionlist {
+  width: 100%;
+}
+
+.timeline-section ul .transaction-history-content {
+  min-width: 67%;
+}
+
+.timeline-date-section {
+  /* max-width: 175px; */
+  padding-left: 0 !important;
+  text-align: left !important;
+}
+
+.timeline-transactionlist {
+  margin: 0 0 0px;
+  position: relative;
+  width: 100%;
+}
+
+img.timeline-icons {
+  width: 36px;
+}
+
+.timeline-seprator {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.timeline-seprator span {
+  width: 1px;
+  background-color: #436388;
+}
+
+p.transaction-history-type {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+  font-family: "Poppins", sans-serif;
+}
+
+p.transaction-history-refid {
+  font-size: 0.72rem;
+  color: #555;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+}
+
+.timeline-section ul li div span {
+  font-size: 0.78rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  color: #232323;
+}
+
+/*  */
+
+p.transaction-history-amonut {
+  color: #e77236;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  position: absolute;
+  right: 15px;
+  bottom: 12px;
+}
+
+p.transaction-history-status {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  position: absolute;
+  font-family: "Poppins", sans-serif;
+  right: 15px;
+  top: 13px;
+}
+
+.transaction-type-successful {
+  color: #4caf50;
+}
+
+.transaction-type-not-successful {
+  color: #c7503f;
+}
+
+.transaction-history-content {
+  position: relative;
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
+  left: 0px;
+  border-radius: 6px;
+  margin-bottom: 12px !important;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+button.transaction-history-details {
+  position: relative;
+  margin: 1px -8px -10px -5px;
+  border-radius: 64px;
+  min-width: auto;
+  display: none;
+}
+
+p.transaction-history-refid button {
+  padding: 0 10px;
+  background: #e1eaf1;
+  text-transform: none;
+  font-size: 0.73rem;
+}
+
+.timeline-section ul .transaction-history-content.is-selected {
+  border-color: #e77236;
+}
+
+.timeline-section button {
+  display: block;
+  width: 100%;
+  margin: 0 0 0 0;
+  padding: 0;
+  background: transparent;
+  text-transform: none;
+}
+
+.timeline-section button:hover {
+  background-color: transparent;
+}
+
+.timeline-section button a {
+  text-decoration: none;
+}
+
+/* ========================== */
+
+.table-btn {
+  padding: 2px 6px !important;
+  min-width: auto !important;
+  margin: 0 5px 0 !important;
+  border: none;
+  background: transparent;
+  /* color: #e77236; */
+  cursor: pointer;
+}
+
+.table-btn svg {
+  font-size: 1.5em;
+}
+
+.table-btn.view-settings {
+  color: #e77236;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.table-btn.view-details {
+  color: #0c4fa6;
+  height: 2rem;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+/* ======================= */
+.table-btn.list-btn svg {
+  width: 21px;
+  margin: 0 5px 0 0;
+  vertical-align: middle;
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+
+.table-btn.list-btn.view-details {
+  border: 1px solid #e77236;
+}
+
+.table-btn.list-btn.view-details strong {
+  color: #e77236
+}
+
+.table-btn.list-btn.view-details svg path {
+  color: #e77236
+}
+
+/* .table-btn.list-btn.view-details-btn {
+  color: #0c4fa6 !important;
+  border-color: #0c4fa6 !important;
+} */
+.detail-container.adding-pbl-form button.table-btn.view-details {
+  position: relative;
+  color: #887e7e;
+  left: -7px;
+  margin: 0px 0 5px 0 !important;
+  top: -9px;
+  border-radius: 100px;
+}
+
+.table-btn.list-btn svg.table-icon-img {
+  height: 22px;
+}
+
+/* ================ */
+.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.table-btn.list-btn.view-details {
+  width: 10rem;
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.table-btn.list-btn.list-capture-btn.css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+  width: 10rem;
+  height: 2rem;
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.table-btn.list-btn.list-void-btn.css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+  width: 10rem;
+}
+
+
+/* ------- confirm dialog ------------*/
+.confirm-popup-body {
+  min-height: 50px;
+}
+
+h2.confirm-heading {
+  margin-bottom: -2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  background: #f6921e;
+  color: #fff;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.confirm-popup .action-buttons button.submit-button {
+  background: #f6921e !important;
+  color: white;
+}
+
+.confirm-popup .action-buttons button.cancel-button {
+  background: #969ca3 !important;
+
+  color: white;
+}
+
+.confirm-popup-body h4 {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 20px 0 25px;
+}
+
+.confirm-popup-body p {
+  text-align: center;
+  color: #696969;
+  margin-bottom: 15px;
+}
+
+.confirm-popup .action-buttons {
+  margin-bottom: 10px;
+}
+
+.MuiDialogActions-root.MuiDialogActions-spacing.action-buttons.css-hlj6pa-MuiDialogActions-root {
+  justify-content: center;
+}
+
+.action-buttons button {
+  margin: 0 10px 0 10px;
+  padding: 12px 35px;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.05rem;
+  font-family: "Poppins", sans-serif;
+  color: #fff !important;
+  opacity: 1;
+  border-radius: 44px;
+}
+
+.download-csv {
+  position: relative;
+  margin: 0;
+  height: 0px;
+  top: 7px;
+}
+
+button.edit-button {
+  position: relative;
+  top: 30px;
+  right: 15px;
+  float: right;
+  border: 1px solid;
+  cursor: pointer;
+  color: #e77236;
+  background: 0;
+  padding: 6px 13px;
+  border-radius: 6px;
+  z-index: 9;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 700;
+  line-height: normal;
+}
+
+button.edit-button svg {
+  margin: 0 6px 0 0;
+  font-size: 16px;
+}
+
+/*  */
+
+.audit-log-wrap {
+  position: relative;
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
+  left: 0px;
+  border-radius: 6px;
+  margin-bottom: 12px !important;
+  border: 1px solid #ddd;
+  background: #fff;
+  flex: 1;
+  padding: 8px 16px;
+  text-align: left;
+  line-height: 1.5rem;
+}
+
+.audit-log-wrap h4 {
+  color: #e77236;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.audit-log-wrap h6 {
+  color: #888888 !important;
+  font-weight: 400 !important;
+  font-size: 0.78rem;
+  letter-spacing: 0.4px;
+}
+
+.audit-log-wrap p {
+  margin: 0;
+  word-break: break-all;
+}
+
+/* ............... */
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthXs.css-22jxwj-MuiPaper-root-MuiDialog-paper {
+  text-align: center;
+}
+
+.blue-theme h2.confirm-heading {
+  background: #e77236;
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.submit-button.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  background: #4a6c8d;
+}
+
+/*  */
+.btn-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: -30px;
+  position: fixed;
+  width: 9.5%;
+  justify-content: space-between;
+}
+
+.btn-container.btn-container-new {
+  position: relative;
+  width: 100%;
+}
+
+.btn-container.btn-container-new .das-add-btn {
+  position: relative;
+  top: -6px;
+  background: #fff !important;
+  border-width: 1px !important;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+}
+
+.refresh {
+  border: 1px solid #e77236 !important;
+  color: #e77236 !important;
+  text-transform: none !important;
+  position: absolute !important;
+  left: 50px !important;
+  background: #fff !important;
+  top: -8px !important;
+  min-width: 36px !important;
+  height: 35px;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+  border-radius: 6px !important;
+}
+
+.common-button {
+  border: 1px solid #e77236 !important;
+  color: #e77236 !important;
+  text-transform: none !important;
+  background: #fff !important;
+  min-width: 36px !important;
+  height: 35px;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+  border-radius: 6px !important;
+}
+
+.bg-history-container button.refresh {
+  right: 17px !important;
+  left: auto !important;
+}
+
+/*  */
+/* .table-icons {
+  margin-bottom: 32px;
+} */
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns button img.table-icon-img {
+  display: none;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns button strong {
+  left: auto;
+}
+
+.drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns button {
+  width: 7rem !important;
+  top: 8px;
+}
+
+.MuiDrawer-paperAnchorDockedRight.MuiDrawer-paper {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.22),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.detail-form input {
+  padding: 8.5px 18px;
+  font-size: 0.85rem;
+  height: 1.4375em;
+}
+
+.drawer-body.add-entity-risk-rule.add-new-user-drawer .detail-form .add-user-fields.add-das-mid-fields .MuiInputBase-formControl.MuiAutocomplete-inputRoot {
+  padding: 9px !important;
+  /* padding-bottom: 10px !important; */
+  border-radius: 40px !important;
+}
+
+.setup-acquirer-btn,
+.setup-risk-btn {
+  position: absolute !important;
+  right: 16px;
+  line-height: 0px;
+  top: 14px;
+  padding: 4px !important;
+  z-index: 999;
+  font-size: 0.85rem;
+  background-color: initial !important;
+  border: 2px solid #e77236 !important;
+  color: #e77236 !important;
+  min-width: auto !important;
+  transition: all 0.5s ease 0s;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.heading {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  margin: 0 0 0px 4px;
+  padding: 0px 0 0;
+  color: #333;
+  position: relative;
+  top: 13px;
+}
+
+.risk-wrapper {
+  position: relative;
+}
+
+.risk-wrapper .table-icons {
+  display: none;
+}
+
+.detail-form fieldset {
+  border-radius: 8px;
+}
+
+.detail-form .MuiInputBase-formControl {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border-radius: 8px !important;
+}
+
+.MuiTextField-root.statement.risk-statement-text {
+  margin: 15px 0 0 0;
+}
+
+.blacklisted-prohibited-lists {
+  padding: 0;
+  position: relative;
+  margin: 15px 0 -18px;
+  width: 33.333333%;
+}
+
+.blacklisted-prohibited-lists label {
+  display: block;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  top: 15px;
+}
+
+input[type="file"] {
+  height: auto;
+  cursor: pointer;
+}
+
+.prohibited-list-upload-error {
+  width: 100%;
+  display: block;
+  position: relative;
+  padding: 0 21px;
+  font-size: 0.8rem;
+  color: red;
+}
+
+.prohibited-output-wrap {
+  position: relative;
+  border: 5px solid #f1f5f8;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 1px auto 35px;
+  left: -1px;
+  top: 30px;
+  width: 96%;
+  background: #fff;
+}
+
+.prohibited-output-wrap h4 {
+  font-weight: 600;
+  letter-spacing: 0.03rem;
+  margin: 0 0 10px;
+}
+
+.prohibited-output-scroller {
+  height: 250px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.prohibited-output-wrap ul {
+  -webkit-column-count: 3;
+  column-count: 3;
+}
+
+.prohibited-output-wrap ul li {
+  font-size: 0.78em;
+  background: #f7f7f7;
+  margin: 0 0 5px;
+  padding: 4px 6px;
+  border-radius: 31px;
+  text-align: center;
+  border: 1px solid #e2e2e2;
+}
+
+textarea {
+  height: auto !important;
+  padding: 8.5px 6px !important;
+  font-size: 0.85rem !important;
+}
+
+/*======= merchant view css ==========*/
+img.pos-icon {
+  width: 24.5px;
+  position: relative;
+  top: 1px;
+}
+
+.terminal-badge span.MuiBadge-badge {
+  font-weight: 500;
+  font-size: 10px;
+  min-width: 16px;
+  line-height: 2;
+  padding: 0 4px;
+  height: 16px;
+  border-radius: 10px;
+  background: #f6921e !important;
+  top: 4px;
+}
+
+.merchant-view-wrap {
+  position: relative;
+  margin: 0px 0 0 0;
+}
+
+.merchant-statementList {
+  position: relative;
+}
+
+.risk-statement.search-transaction-chargeback {
+  margin-left: 1rem;
+}
+
+.transaction-table .das-table {
+  height: calc(100vh - 160px);
+}
+
+.pro-detail-table .das-table {
+  height: calc(100vh - 170px);
+}
+
+.refrral-merchnat-table .das-table {
+  height: calc(100vh - 220px) !important;
+}
+
+.pbl-drawer-cart .das-table {
+  height: calc(100vh - 60vh);
+}
+
+.tabs-ui {
+  margin: -14px 0 0 0;
+}
+
+.detail-table-container .das-table {
+  height: calc(100vh - 220px);
+}
+
+.detail-table-container .das-table .data-gird-table-wrapper .MuiDataGrid-root.MuiDataGrid-autoHeight {
+  height: 100%;
+}
+
+.detail-table-container .das-table::-webkit-scrollbar-thumb {
+  display: block;
+  background: #e77236;
+}
+
+.das-table .MuiDataGrid-main {
+  display: block;
+}
+
+.detail-table-container .das-table::-webkit-scrollbar {
+  width: 4px;
+}
+
+.das-table .MuiDataGrid-main::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* .transaction-table .MuiDataGrid-cell:nth-child(n+1) {
+  position: sticky;
+  left: 0;
+}
+.transaction-table .MuiDataGrid-cell:nth-child(n+2) {
+  position: sticky;
+  left: 80px;
+}
+.transaction-table .MuiDataGrid-cell:nth-child(n+3) {
+  position: sticky;
+  left: 340px;
+} */
+.blue-theme h2.confirm-heading {
+  background: #f6921e !important;
+}
+
+.react-datepicker__input-container .MuiFormControl-root.MuiTextField-root {
+  width: 100%;
+}
+
+.react-datepicker__input-container input#outlined-basic {
+  padding: 10px;
+}
+
+/*  ========== risk rule css =========  */
+.risk-wrapper .das-table {
+  height: calc(100vh - 170px) !important;
+  margin-top: 2.5vh;
+}
+
+.risk-wrapper .heading {
+  top: 0;
+}
+
+.risk-wrapper button.setup-risk-btn {
+  top: 0;
+}
+
+form.detail-form.refund-form .risk-statement .action-buttons {
+  margin: 30px 0 0 0 !important;
+}
+
+/* 
+.additionalFilterPopover input[type=checkbox] {
+  accent-color: rgb(246, 146, 30);
+} */
+.disable-submit-btn {
+  pointer-events: none;
+  opacity: 0.5 !important;
+}
+
+.additionalFiterData input[type='checkbox'] {
+  width: 15px;
+  height: 15px;
+}
+
+input[type="checkbox"]:checked {
+  background: #f6921e !important;
+  border-color: #e56523 !important
+}
+
+.add-cart-container {
+  margin: 13px 0;
+  border: 5px solid #f1f5f8;
+  /* padding: 5px 5px; */
+  border-radius: 6px;
+  position: relative;
+}
+
+.display-hidden {
+  opacity: 0;
+}
+
+.file-upload-container {
+  display: flex;
+  margin: 10px 20px;
+  position: absolute;
+  top: 15px;
+  z-index: -1;
+}
+
+.file-upload-container button {
+  padding: 5px;
+}
+
+.file-upload-container label {
+  padding: 0px;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  grid-gap: 1rem;
+  gap: 1rem;
+}
+
+.blacklisted-prohibited-lists .file-upload-container {
+  margin: 0 !important;
+}
+
+.blacklisted-prohibited-lists .prohibited-list-upload-error {
+  padding: 4px 0 !important;
+  margin: 0 !important;
+  top: 15px;
+}
+
+.auto-complete-comp.flex-row.w-100 .blacklisted-prohibited-lists {
+  margin: -10px 0 10px 0 !important;
+  width: 100% !important;
+}
+
+.auto-complete-comp.flex-row.w-100 .blacklisted-prohibited-lists label {
+  top: 4px;
+}
+
+.blacklisted-countries legend {
+  border: 0 !important;
+}
+
+.blacklisted-countries fieldset.MuiOutlinedInput-notchedOutline {
+  border-radius: 0;
+  border: 0;
+}
+
+.blacklisted-countries .flex-row.autocomplete-field-with-checkbox .MuiFormControl-root.MuiFormControl-fullWidth.MuiTextField-root {
+  border: 1px solid #c3c3c3;
+  border-radius: 100px;
+  margin: 6px 0 0 0;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  height: 36px;
+}
+
+.auto-complete-comp.flex-row.w-100 .blacklisted-prohibited-lists input.display-hidden {
+  height: 30px;
+  top: 12px;
+  position: relative;
+}
+
+.action-buttons.risk-ac-buttons button.cancel-button {
+  border: 0;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.action-buttons.risk-ac-buttons button.submit-button {
+  height: 42px;
+}
+
+.action-buttons.risk-ac-buttons button.submit-button:disabled {
+  background: #ffc268 !important;
+}
+
+.auto-complete-comp.flex-row.w-100 .blacklisted-prohibited-lists .file-upload-container label {
+  position: relative;
+  left: 10px;
+}
+
+
+.rotating-icon {
+  animation: rotate 2s linear infinite;
+}
+
+.moveUpDown-icon {
+  animation: moveUpDown 2s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  /* Moves up */
+  100% {
+    transform: translateY(0);
+  }
+
+  /* Moves back down */
+}
+
+.icon-action-button {
+  border: 1px solid #e77236 !important;
+  color: #e77236 !important;
+  text-transform: none !important;
+  background: #fff !important;
+  min-width: 36px !important;
+  height: 35px;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+  border-radius: 6px !important;
+}
+
+.new-listing-flex {
+  display: flex;
+  gap: 2px;
+}
+
+.new-listing-flex img.clipboard-copy {
+  display: none;
+  cursor: pointer;
+  position: relative;
+  top: 0px;
+}
+
+.new-listing-flex:hover img.clipboard-copy {
+  display: inline-flex;
+}
+
+.new-listing-flex.allow-hover-text {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+img.not-copy {
+  display: none;
+}
+
+.new-listing-flex.allow-hover-text h4 {
+  transition: all .4s ease-in-out;
+  margin: 0;
+}
+
+.new-listing-flex.allow-hover-text p {
+  transition: all .4s ease-in-out;
+  margin: 0 0 0 0;
+}
+
+.product-wraps-inner-product-drawer .new-listing-flex.allow-hover-text {
+  margin: 0 0 8px 0;
+}
+
+.new-listing-flex.allow-hover-text:hover h4,
+.new-listing-flex.allow-hover-text:hover p {
+  background: #fff3e2;
+  padding: 0px 2px 0 2px;
+  border-radius: 4px;
+}
+
+.action-button-popover .popover-box button.MuiButtonBase-root.MuiButton-root {
+  height: 2.5rem !important;
+}
+
+.action-button-popover .popover-box button.MuiButtonBase-root.MuiButton-root strong {
+  top: 7px !important;
+}
+
+.copyRefCode label .icon-color.ml-2.cursor-pointer {
+  display: none;
+}
+
+.transaction-tiles {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.transaction-tiles .tile-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border: 1px solid #e77236 !important;
+  color: #e77236 !important;
+  text-transform: none !important;
+  background: #fff !important;
+  min-width: 36px !important;
+  gap: 10px;
+  height: 35px;
+  box-shadow: 0 2px 8px 0 rgba(99, 99, 99, .2);
+  padding: 0 15px;
+}
+
+.transaction-tiles .tile-left h3 {
+  font-size: .85rem;
+}

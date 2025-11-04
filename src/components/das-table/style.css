@@ -1,0 +1,278 @@
+/* ======== scrollbar horizontal =========*/
+::-webkit-scrollbar:horizontal {
+  height: 8px;
+  background-color: rgb(231, 231, 231);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: #000;
+  border-radius: 10px;
+}
+
+.transaction-status-icons {
+  width: 27px;
+  margin-right: 5px;
+}
+
+.transaction-scheme-icons {
+  width: 28px;
+}
+
+.footer {
+  border-top: 1px solid rgb(206, 202, 202);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 5px;
+}
+
+/* Table Header styles */
+.MuiDataGrid-columnHeaders {
+  background: #FBEFE3;
+}
+
+.MuiDataGrid-columnHeader.super-app-theme--header {
+  color: #000;
+  font-size: 13px;
+}
+
+/* table row */
+.super-app-theme--dastable.MuiDataGrid-row {
+  font-size: 12px;
+}
+
+.super-app-theme--dastable svg path {
+  color: #f6921e;
+}
+
+.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiDataGrid-iconSeparator {
+  display: none;
+}
+
+.box-listing.edit-box .MuiFormControl-root.MuiTextField-root.MuiFormControl-root {
+  width: 100%;
+}
+
+.das-table .MuiDataGrid-root {
+  background: #fff;
+}
+
+/*  */
+
+
+.MuiDataGrid-toolbarContainer {
+  background: transparent;
+  border: 0 !important;
+  padding: 0 0;
+  position: fixed;
+  top: 64px;
+  left: 184px;
+}
+
+.MuiDataGrid-toolbarContainer button.MuiButtonBase-root {
+  border: 1px solid;
+  padding: 4px 5px;
+  position: relative;
+  min-width: auto;
+  top: -2px;
+  vertical-align: middle;
+  background: #fff;
+  color: #e77236;
+  text-indent: -240px;
+  font-size: 0;
+  overflow: hidden;
+  height: 35px;
+  transition: all .3s ease 0s;
+}
+
+.MuiDataGrid-toolbarContainer button.MuiButtonBase-root::before {
+  content: "Additional Columns";
+  position: relative;
+  margin: 0 4px 0 25px;
+  transition: all .3s ease 0s;
+}
+
+.MuiDataGrid-toolbarContainer button.MuiButtonBase-root .MuiButton-startIcon {
+  display: inherit;
+  margin-right: 8px;
+  margin-left: -5px;
+  position: absolute;
+  padding: 7px 1px 7px 15px;
+  left: 1px;
+  background: #fff;
+  transition: all .3s ease 0s;
+  display: none;
+}
+
+.MuiDataGrid-toolbarContainer button.MuiButtonBase-root:hover::before {
+  display: block;
+  text-indent: 10px;
+  font-size: 13px;
+  position: relative;
+  top: 0.5px;
+  transition: all .3s ease 0s;
+}
+
+.MuiDataGrid-toolbarContainer button.MuiButtonBase-root::after {
+  content: "▥";
+  position: absolute;
+  margin: 0 4px 0 0px;
+  font-size: 26px;
+  transition: all .3s ease 0s;
+  left: 0px;
+  padding: 8px 5px 8px 8px;
+  text-indent: 0;
+  background: #fff;
+  z-index: 999999;
+}
+
+.das-table {
+  margin-top: 0.3vh;
+  position: relative;
+  display: flex;
+}
+
+/* .product-details-container .MuiDataGrid-virtualScroller {
+  height: 21.8vh !important;
+}
+
+.user-management-table .MuiDataGrid-virtualScroller {
+  height: 21.8vh !important;
+} */
+
+.MuiDataGrid-virtualScroller {
+  overflow-y: auto !important;
+  height: 74vh !important;
+}
+
+.MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb {
+  display: block;
+}
+
+.MuiDataGrid-root.MuiDataGrid-autoHeight .MuiDataGrid-row--lastVisible .MuiDataGrid-cell {
+  border-bottom-color: rgba(224, 224, 224, 1) !important;
+}
+
+.select-rows fieldset {
+  border: 0;
+}
+
+.select-rows .MuiInputBase-root.MuiInputBase-formControl {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #7b7c7c;
+}
+
+.MuiDataGrid-columnHeadersInner .css-k008qs {
+  height: auto;
+}
+
+.MuiDataGrid-columnHeaderTitleContainer {
+  color: #000;
+}
+
+.risk-statement label {
+  -webkit-transform: translate(14px, -13px) scale(1) !important;
+  transform: translate(14px, -13px) scale(1) !important;
+  background: #fff;
+  padding: 0 5px;
+  color: #000 !important;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.risk-statement legend {
+  -webkit-transform: translate(14px, -13px) scale(1) !important;
+  transform: translate(14px, -13px) scale(1) !important;
+  /* background: #fff; */
+  padding: 0 5px;
+  color: #000 !important;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+label.support-fields.new-support-fields.catalog-radio-options {
+  display: inline;
+  width: 50%;
+}
+
+.risk-statement .Radio-grid {
+  margin: 20px 0 -20px 0;
+}
+.risk-statement .Radio-grid fieldset{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+}
+.risk-statement .Radio-grid fieldset label span.MuiTypography-root {
+  font-size: 14px;
+}
+
+.submit-button {
+  background: #f6921e !important;
+  border: 0px;
+}
+
+.table-filter {
+  position: relative;
+}
+
+h4.link-detail {
+  color: #e77236 !important;
+  cursor: pointer;
+  width: fit-content;
+}
+
+h4.link-detail:hover {
+  color: rgb(255, 155, 4) !important
+}
+
+h4.without-link-detail {
+  color: #010101 !important;
+  cursor: default !important;
+}
+
+.footer-right {
+  /* min-width: 450px; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+span.rowcount {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.page-number-footer {
+  padding: 3px;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 5px;
+  height: 19px;
+  margin: 0 5px 0 2px;
+  outline: none;
+  text-align: center;
+  font-weight: 600;
+}
+
+.page-number-footer:active {
+  outline: 1.5px solid #ccc;
+}
+
+.getting-loaded {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.refresh.download-drawer-refresh-button {
+  top: 62px !important;
+  right: 5px !important;
+  left: auto !important;
+  z-index: 9;
+}
+svg.CSV, svg.excel {
+  width: 30px;
+}

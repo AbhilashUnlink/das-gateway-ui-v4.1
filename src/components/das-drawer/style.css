@@ -1,0 +1,36 @@
+.drawer-header {
+    background: #484848;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 24px !important;
+    height: 72px !important;
+    background: linear-gradient(180deg, rgba(253, 164, 44, 0.7) -26.39%, rgba(255, 191, 105, 0.4) 100%), #FFFFFF;
+    border-width: 1px 1px 0px 1px;
+    border-style: solid;
+    border-color: #FFFFFF;
+    border-radius: 16px 16px 0px 0px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.drawer-header button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium {
+    position: absolute;
+    right: 10px;
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiDrawer-paper {
+    top: 128px;
+    height: calc(100vh - 0px);
+    border-radius: 16px 16px 0px 0px;
+    right: 20px;
+}
+
+.MuiDrawer-root.MuiDrawer-modal.drawer-wrapper.MuiModal-root .MuiBackdrop-root.MuiModal-backdrop {
+    top: 60px;
+    height: calc(100vh - 60px);
+    background-color: rgb(254 254 254 / 50%);
+}

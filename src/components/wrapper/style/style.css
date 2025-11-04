@@ -1,0 +1,1333 @@
+/*============== Login css================*/
+
+.login-wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../../../assets/background-login.png);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.login-box {
+    width: 26rem;
+    max-width: 1280px;
+    padding: 3em 3em;
+    background: #fff;
+    margin: 0 auto;
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    border-radius: 6px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.login-img {
+    width: 50%;
+    padding: 0 0;
+}
+
+img.login-key-img {
+    width: 100%;
+    display: block;
+    border-radius: 6px 0px 0px 6px;
+}
+
+.log-box {
+    width: 100%;
+    padding: 0 0em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+
+}
+
+img.login-logo {
+    position: relative;
+    margin: 0 auto 20px;
+    width: 240px;
+}
+
+form {
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+.log-box .MuiFormControl-root {
+    display: block;
+    width: 100%;
+    margin: 0 0 0px 0;
+    position: relative;
+}
+
+.log-box .MuiFormControl-root input {
+    display: block;
+    width: 100%;
+    padding-left: 40px !important;
+}
+
+
+
+
+svg.login-f-icons {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    fill: #797979;
+    z-index: 9;
+}
+
+/* error */
+
+
+.login-box .MuiOutlinedInput-root {
+    display: flex;
+    height: 55px;
+    width: 100%;
+}
+
+/* for otp error */
+.form-fields {
+    position: relative;
+    margin: 0 0 35px 0;
+}
+
+
+
+.form-fields+.form-fields {
+    margin-bottom: 25px;
+}
+
+.log-box h4 {
+    display: block;
+    margin: 10px 0 20px 0;
+    color: #436388;
+    font-weight: 600;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+}
+
+.login-errors {
+    color: red;
+    position: absolute;
+    bottom: -23px;
+    font-size: .86em;
+    bottom: -30px;
+}
+
+button.forgot-password {
+    position: relative;
+    z-index: 9;
+    letter-spacing: .02rem;
+    font-size: .9rem;
+    font-weight: 600;
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    color: #436388;
+    cursor: pointer;
+    float: none;
+
+}
+
+button.forgot-password:hover {
+    text-decoration: underline;
+}
+
+
+button.login-btn {
+    width: 100%;
+    display: block;
+    margin: 12px auto 0;
+    background: #436388;
+    background: -webkit-linear-gradient(to right, #3f2b96, #426387);
+    background: linear-gradient(to right, #3f2b96, #426387);
+    border: 0;
+    padding: 6px 20px;
+    height: 44px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: .9em;
+    color: #fff;
+    letter-spacing: 1px;
+    font-family: "Poppins", sans-serif;
+}
+
+button.login-btn:hover,
+button.login-btn:focus {
+    background: #436388;
+    background: -webkit-linear-gradient(to right, #426387, #3f2b96);
+    background: linear-gradient(to right, #426387, #3f2b96);
+}
+
+button.login-btn.back-login svg {
+    vertical-align: sub;
+    font-size: 18px;
+}
+
+button.login-btn.back-login {
+    background: #8e8d9b;
+    background: -webkit-linear-gradient(to right, #929292, #878696, #c4c3c4);
+    background: linear-gradient(to right, #929292, #878696, #c4c3c4);
+}
+
+button.login-btn.back-login:hover,
+button.login-btn.back-login:focus {
+    background: #8e8d9b;
+    background: -webkit-linear-gradient(to right, #c4c3c4, #878696, #929292);
+    background: linear-gradient(to right, #c4c3c4, #878696, #929292);
+}
+
+/*=============== forgot password ================*/
+.log-box p {
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-size: 1rem;
+    padding: 0 1rem;
+    line-height: 22px;
+    color: #555;
+    letter-spacing: .3px;
+}
+
+/*=============== Success Message ================*/
+.success-message {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 0 2em;
+    z-index: 999;
+}
+
+.success-message h5 {
+    font-size: 1.2rem;
+    margin: 0 0 15px 0;
+    color: #436391;
+    font-weight: 500;
+    text-align: center;
+}
+
+.login-box .language-wrap {
+    position: absolute;
+    right: 3px;
+    top: 15px;
+    background: #fff;
+    z-index: 9;
+}
+
+/* ==== otp ====*/
+.form-fields .otp-field {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 -10px 0;
+}
+
+.form-fields .otp-field .otp-fieldstypes {
+    width: 21% !important;
+    margin: 0 5% 0 0;
+}
+
+label.otp-label {
+    margin: 0 0 10px 0;
+    display: block;
+}
+
+.form-fields .otp-field .otp-fieldstypes:last-child {
+    margin: 0 !important;
+}
+
+.form-fields .otp-field .otp-fieldstypes legend {
+    display: none;
+}
+
+.form-fields .otp-field .otp-fieldstypes input {
+    text-align: center;
+    height: 48px;
+}
+
+.ant-input-number.otp-fieldstypes {
+    border-color: rgba(0, 0, 0, 0.23);
+    border-radius: 5px;
+}
+
+
+.css-14lo706 {
+    float: unset;
+    width: auto;
+    overflow: hidden;
+    display: block;
+    padding: 0;
+    height: 11px;
+    font-size: 0.75em;
+    visibility: hidden;
+    max-width: 100%;
+    -webkit-transition: max-width 100ms cubic-bezier(0.0, 0, 0.2, 1) 50ms;
+    transition: max-width 100ms cubic-bezier(0.0, 0, 0.2, 1) 50ms;
+    white-space: nowrap;
+}
+
+.reset-otp-input {
+    width: 50px !important;
+    height: 60px !important;
+    padding: 0px !important;
+    text-align: center;
+    border-radius: 6px;
+    /* margin-top: 11px; */
+    outline: none;
+    border: 1px solid rgb(204, 204, 204);
+    margin: 0 3% 0 0;
+    /* margin-right: 10px !important */
+    -moz-appearance: textfield;
+}
+
+
+/* ==== otp ====*/
+.form-fields .otp-field {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 -10px 0;
+}
+
+.form-fields .otp-field .otp-fieldstypes {
+    width: 21% !important;
+    margin: 0 5% 0 0;
+}
+
+label.otp-label {
+    margin: 0 0 -100px 0;
+    display: block;
+    position: relative;
+    text-align: center;
+    top: -54px;
+    font-size: 1.3em;
+}
+
+.form-fields .otp-field .otp-fieldstypes:last-child {
+    margin: 0 !important;
+}
+
+.form-fields .otp-field .otp-fieldstypes legend {
+    display: none;
+}
+
+.form-fields .otp-field .otp-fieldstypes input {
+    text-align: center;
+    height: 48px;
+}
+
+.ant-input-number.otp-fieldstypes {
+    border-color: rgba(0, 0, 0, 0.23);
+    border-radius: 5px;
+}
+
+/* ====================== Custom Textfield ======================*/
+
+
+:where(.css-dev-only-do-not-override-1s3dcof).ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload.ant-upload-select {
+    width: 100%;
+    height: 102px;
+    margin-inline-end: 8px;
+    margin-bottom: 8px;
+    text-align: center;
+    vertical-align: top;
+    background-color: rgba(0, 0, 0, 0.02);
+    border: 2px dashed #c6c6c6;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: border-color 0.3s;
+
+}
+
+.log-box input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.risk-wrapper {
+    position: relative;
+}
+
+/* new-ui */
+
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* new layout css */
+.new-login-wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: #fff;
+}
+
+.new-login-box {
+    display: flex;
+    width: 100%;
+    position: relative;
+    height: 100%;
+}
+
+.new-log-box {
+    width: 50%;
+    height: 100%;
+    padding: 0em 3em;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #333333;
+}
+
+.new-log-wrap {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    gap: 25px;
+    width: 584px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) -0.05%, rgba(255, 255, 255, 0) 100.05%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.2));
+    backdrop-filter: blur(7.5px);
+    border-radius: 24px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.new-right-login {
+    width: 50%;
+    background: url(../../../assets/authenticate-bg.jpg);
+    height: 100vh;
+    background-size: cover;
+}
+
+img.new-login-logo {
+    width: 200px;
+    text-align: center;
+    margin: 0 auto 20px;
+    display: block;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    z-index: 99;
+}
+
+.new-log-box h1 {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    letter-spacing: -1.38px;
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 15px 0;
+    position: relative;
+    /* top: -80px; */
+    /* left: 25px; */
+}
+
+.new-log-box h1 span {
+    background: #f6921e;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.new-login-box .language-wrap {
+    position: relative;
+    right: 0;
+    top: 0;
+    z-index: 99;
+    border-radius: 40px;
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: flex-end;
+    border: 0 !important;
+}
+
+.new-login-box .language-wrap button.dropdown-select-button {
+    color: #fff;
+    min-width: auto;
+}
+
+.new-login-box .language-wrap button.language-button {
+    padding: 12px 12px;
+    border: 0 !important;
+    min-width: auto;
+}
+
+.new-login-box .language-wrap button.MuiButtonBase-root.language-button.MuiButtonGroup-firstButton {
+    border: 0 !important;
+    color: #fff !important;
+}
+
+.new-login-box .language-wrap button.dropdown-select-button svg path {
+    stroke: #fff;
+}
+
+.language-wrap button.language-button p {
+    position: relative;
+    margin: 0 0 0 8px;
+}
+
+.new-login-box .MuiFormControl-root {
+    width: 100%;
+    margin: 0 0 0px 0;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.new-login-box .MuiGrid-item {
+    margin: 0 0 30px 0;
+}
+
+.new-log-wrap form label {
+    margin: 0 0 3px 0;
+    display: none;
+    color: #333;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.appbar-header .language-wrap.timeWrap,
+.appbar-header .language-wrap {
+    border: 0 !important;
+    border-right: 1px solid #ccc !important;
+    border-radius: 0 !important;
+}
+
+.appbar-header .language-wrap button.language-button {
+    border: 0 !important;
+}
+
+.appbar-header .language-wrap .verticalDivision {
+    border: 0 !important;
+    margin: -10px 5px !important;
+}
+
+.appbar-header .userDetailsContainer {
+    padding: 6px 10px !important;
+    top: -3px;
+    border: 1px solid #f6921e !important;
+    border-radius: 10px !important;
+}
+
+.appbar-header .userDetailsContainer:hover {
+    background: #f6921e;
+    color: #fff;
+}
+
+.new-log-box .MuiFormControl-root input {
+    display: block;
+    width: 100%;
+    padding-left: 55px !important;
+}
+
+.new-login-box .MuiOutlinedInput-root {
+    display: flex;
+    /* height: 55px; */
+    width: 100%;
+    border-radius: 8px;
+    padding-left: 0 !important;
+}
+
+.new-login-box .MuiOutlinedInput-root fieldset {
+    border: 0;
+    padding: 0 0 !important;
+}
+
+.new-log-box input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+    -webkit-transition: background-color 5000s ease-in-out 0s;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.new-log-box label.MuiInputLabel-root {
+    transform: translate(0px, -35px) scale(1);
+    color: #333;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.new-log-box svg.login-f-icons {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    /* fill: #797979; */
+    fill: #f6921e;
+    z-index: 9;
+}
+
+.eye-icon svg {
+    fill: #f6921e
+}
+
+.new-log-box .form-fields {
+    margin-bottom: 60px;
+}
+
+.new-log-box .form-fields legend {
+    display: none;
+}
+
+.new-log-box .form-fields fieldset {
+    border-color: #DEDEDE;
+}
+
+.new-log-box button.login-btn {
+    background: #f6921e;
+    border-radius: 8px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.clear {
+    clear: both;
+}
+
+.new-log-box button.login-btn:hover {
+    background: linear-gradient(to right, #929292, #878696, #c4c3c4);
+}
+
+.new-log-box button.login-btn.back-login {
+    background: transparent;
+    color: #E56523;
+    text-align: left;
+    position: relative;
+    padding: 0 0;
+    width: auto;
+    display: inline-block;
+}
+
+.new-log-box button.login-btn.back-login:hover {
+    color: #8e8d9b;
+}
+
+.new-log-box button.login-btn {
+    height: 55px;
+}
+
+.new-log-box .MuiInputAdornment-root button.MuiButtonBase-root {
+    margin: 0;
+}
+
+.new-log-box button.forgot-password {
+    color: #ed8f20;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0px 0 0 0;
+    font-family: 'Public Sans', sans-serif;
+}
+
+
+.new-log-box h6.not-registered button.forgot-password {
+    display: flex;
+    color: #F7941D;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+.new-log-box h6.not-registered {
+
+    color: #6A615A;
+    text-align: center;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%;
+    letter-spacing: -0.3px;
+    margin: 0px 0 0 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.new-paymentOptionsLogoContainer {
+    position: fixed;
+    bottom: -30px;
+    margin: 0 auto;
+    border-top: 1px solid #dedede;
+    width: inherit;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    grid-gap: 13px;
+    vertical-align: top;
+    gap: 13px;
+    padding: 30px 0 0;
+}
+
+img.new-paymentOptionsLogo {
+    width: 120px;
+    filter: grayscale(1);
+    position: relative;
+    top: -32px;
+}
+
+/*  forgot password  */
+.new-log-wrap p {
+    text-align: center;
+    margin: 0 0 70px 0;
+}
+
+.new-log-wrap .Mui-error {
+    text-align: left;
+    font-size: 12px;
+    padding-left: 0px;
+    margin: 4px 0 0 0;
+}
+
+.new-log-box .form-fields.forgot-form-fields {
+    margin-bottom: 30px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.otp-provided {
+    position: relative;
+    text-align: center;
+    top: -54px;
+    font-size: 1.3em;
+}
+
+p.forgot-password-description {
+    margin-top: -60px;
+}
+
+button.enter-otp-btn {
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+    width: 110px;
+    background: #f6921e;
+    border-radius: 50px;
+    display: block;
+    top: -59px;
+    border: 0;
+    padding: 7px 11px;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Public-sans', sans-serif;
+    font-weight: 600;
+}
+
+.right-panel .ant-select-single .ant-select-selector .ant-select-selection-item {
+    line-height: 29px !important;
+}
+
+.new-log-wrap .success-message h5 {
+    /* margin: -80px 0 0 0; */
+    color: #e16423;
+}
+
+.new-log-wrap .reset-successful-msg button.login-btn.back-login {
+    top: -200px;
+}
+
+/*  Create Account  */
+.new-log-wrap button.account-select-box {
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    min-height: 275px;
+    margin: 0px 3.5% 20px;
+}
+
+.new-log-wrap strong.choose-text {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+    color: #999;
+    text-align: center;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 16px;
+}
+
+.new-log-wrap strong.choose-text b {
+    color: #333;
+}
+
+.new-log-wrap span.choose-icon {
+    background: transparent;
+}
+
+button.account-select-box.addborder {
+    border: 2px solid transparent;
+    border-radius: 30px;
+    background: linear-gradient(137deg, #FCC954 33.7%, #E56523 100%), linear-gradient(137deg, #FCC954 33.7%, #E56523 100%);
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    box-shadow: 0px 20px 30px 0px rgba(244, 145, 29, 0.20);
+}
+
+button.account-select-box.addborder span.choose-icon svg path {
+    fill: #fff;
+}
+
+button.account-select-box.addborder strong.choose-text {
+    color: #fff;
+}
+
+button.account-select-box.addborder strong.choose-text b {
+    color: #fff;
+}
+
+/*   table   */
+.ag-root-wrapper {
+    border: 0 !important;
+}
+
+.ag-header,
+.ag-pinned-left-header,
+.ag-theme-alpine .ag-header {
+    border: 0 !important;
+    background: transparent !important;
+}
+
+.ag-header,
+.ag-root-wrapper {
+    border-radius: 10px 10px 0px 0px;
+}
+
+.ag-theme-alpine .ag-cell {
+    border-right: 0px solid #ababab75 !important;
+}
+
+.ag-theme-alpine .ag-row,
+.ag-theme-alpine .ag-ltr .ag-cell {
+    border: 0 !important;
+}
+
+.otp-field {
+    position: relative;
+    width: 100%;
+    margin: 20px auto 20px;
+    text-align: center;
+}
+
+/* create account */
+.new-log-wrap .container {
+    display: flex;
+    /* align-items: center; */
+    width: 52rem;
+    margin: 30px auto;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 0;
+}
+
+.new-log-wrap .left-panel {
+    display: none;
+}
+
+.new-log-wrap .right-panel {
+    width: 100%;
+}
+
+.new-log-wrap .heading {
+    margin-bottom: -5px;
+    /* margin-top:10px */
+    color: #333;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: -0.78px;
+}
+
+.heading.choose-heading {
+    margin: 0 0 0px 0;
+}
+
+.heading.choose-heading p {
+    margin: 30px 0 40px 0 !important;
+    color: #6A615A;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 140%;
+    /* 21px */
+    letter-spacing: -0.3px;
+    text-align: left;
+}
+
+.new-log-wrap .right-panel .info-title {
+    font-size: 14px;
+    margin-top: 13px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #6a6a65;
+}
+
+.new-log-wrap .right-panel .create-button {
+    color: #fff;
+    background: #f6921e !important;
+    border-radius: 50px !important;
+    width: 100%;
+    border: none;
+    height: 52px;
+    cursor: pointer;
+    /* margin-top: 0; */
+}
+
+.new-log-wrap .disableButton {
+    background: #f6921e !important;
+    border-radius: 50px !important;
+    width: 100%;
+    border: none;
+    height: 52px;
+    cursor: pointer;
+    /* margin-top: 25px; */
+}
+
+.form-container.form-container-wrapped {
+    margin-bottom: 20px;
+}
+
+.text-color {
+    color: #E56523
+}
+
+.new-log-wrap .ant-checkbox-checked .ant-checkbox-inner {
+    background: #f6921e;
+    border-color: #E56523;
+}
+
+.new-log-wrap .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.new-log-wrap .ant-checkbox:hover .ant-checkbox-inner,
+.new-log-wrap .ant-checkbox-input:focus+.ant-checkbox-inner {
+    border-color: #E56523;
+}
+
+.new-log-wrap .input-group-verified {
+    color: #e76c26;
+}
+
+.new-log-wrap .right-panel span.ant-input-affix-wrapper {
+    height: 52px;
+    border-radius: 50px !important;
+}
+
+.new-log-wrap .right-panel .ant-input {
+    height: 52px;
+    border-radius: 50px !important;
+    /* padding: 8px 15px !important; */
+}
+
+.new-log-wrap .right-panel .ant-select.ant-select-single.ant-select-show-arrow .ant-select-selector {
+    height: 52px;
+    padding: 10px 15px !important;
+}
+
+.new-log-wrap .right-panel span.ant-input-group-addon {
+    border-radius: 50px 0 0 50px;
+}
+
+.new-log-wrap .right-panel .w-48 .ant-form-item span span span.ant-input-affix-wrapper {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+
+.new-log-wrap .right-panel span.ant-input-affix-wrapper input {
+    position: relative;
+    top: 0px;
+    background: transparent;
+    height: 40px;
+}
+
+.new-log-wrap .right-panel button.input-group-addon.verify-button {
+    border-radius: 60px;
+    background: #f6921e !important;
+    padding: 6px 20px !IMPORTANT;
+    border: 0;
+}
+
+.password-info-wrap {
+    position: relative;
+    border-radius: 5px;
+    background: #F9F9F9;
+    padding: 7px 12px;
+    margin: -25px 0 -25px 0;
+}
+
+.password-info-wrap h4 {
+    color: #333333;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 140%;
+    /* 19.6px */
+}
+
+.password-info-wrap ul {
+    margin: 0 0 0 18px;
+}
+
+.password-info-wrap ul li {
+    color: #878787;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 140%;
+    /* 19.6px */
+    list-style-type: disc;
+    margin: 0 0 0 7px;
+}
+
+/*   verify OTP  */
+.didnt-recieved {
+    color: #6A615A;
+    text-align: center;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    /* 21px */
+    letter-spacing: -0.3px;
+    margin: 50px 0 -5px 0;
+}
+
+.choose-country-code-select .MuiInputBase-root fieldset {
+    border-right: 0;
+}
+
+.new-login-box .new-log-box .MuiPopper-root.language-popper .MuiPaper-root ul li p {
+    margin: 0 0 0 0;
+}
+
+/*     Media query new layout      */
+@media (min-height: 550px) and (max-height: 820px) and (min-width: 1200px) and (max-width: 1440px) {
+    @supports (-webkit-appearance:none) {
+        img.new-login-logo {
+            width: 155px;
+        }
+
+        .new-log-wrap {
+            position: relative;
+            width: 80%;
+            margin: 0px 0 0 0;
+        }
+
+        .new-log-box h1 {
+            font-size: 32px !important;
+            margin: 10px 0 10px 0 !important;
+        }
+
+        .new-log-box h1.reset-password-heading {
+            margin-bottom: 40px !important;
+        }
+
+        .new-log-box h6.not-registered {
+            margin: 15px 0 0 0 !important;
+        }
+
+        .heading.choose-heading p {
+            margin: 10px 0 15px 0 !important;
+        }
+
+        .new-log-wrap button.account-select-box {
+            min-height: 240px;
+        }
+
+        span.choose-icon svg {
+            width: 62px;
+        }
+
+        .new-log-wrap .right-panel .info-title {
+            margin-top: 4px;
+            margin-bottom: -7px !important;
+        }
+
+        .password-info-wrap ul li {
+            font-size: 12px;
+        }
+
+        .new-log-wrap .heading {
+            margin: 12px 0 -5px 0;
+            font-size: 21px;
+        }
+
+        .password-info-wrap {
+            padding: 6px 12px;
+            margin: 8px 0 -5px 0;
+        }
+
+        p.forgot-password-description {
+            margin: -20px 0 30px 0;
+        }
+
+        label.otp-label {
+            top: -30px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 2400px) {
+    img.new-login-logo {
+        width: 175px;
+    }
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1440px) {
+    .new-log-box h1 {
+        font-size: 36px;
+        margin: -10px 0 80px 0;
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1365px) {
+    img.new-login-logo {
+        width: 150px;
+    }
+
+    .new-log-box h1 {
+        font-size: 36px;
+        margin: -10px 0 80px 0;
+    }
+
+    .new-login-box .MuiOutlinedInput-root {
+        height: 48px;
+    }
+
+    .new-log-box svg.login-f-icons {
+        top: 9px;
+    }
+
+    .new-log-box .form-fields {
+        margin-bottom: 62px;
+    }
+
+    .new-log-box button.login-btn {
+        height: 48px;
+        margin: 0 auto -15px;
+    }
+
+    .new-log-box h6.not-registered {
+        margin: 30px 0 0 0;
+    }
+
+    .new-log-box h6.not-registered.not-reg-create-password {
+        margin: 12px 0 0 0;
+    }
+
+    img.new-paymentOptionsLogo {
+        width: 100px;
+    }
+
+    .new-log-box button.login-btn.back-login {
+        margin: 30px 0 0 0;
+    }
+
+    .new-log-box .form-fields.otp-fields {
+        margin-top: -35px;
+    }
+
+    .login-btn.forgot-submit-button {
+        margin-top: -30px !important;
+        position: relative;
+    }
+
+    .new-log-wrap button.account-select-box {
+        min-height: 240px;
+    }
+
+    .new-log-wrap .right-panel .heading {
+        font-size: 21px;
+    }
+
+    .new-log-wrap .disableButton {
+        height: 36px;
+        margin: -10px 0px -10px 0;
+    }
+
+    .new-log-wrap .right-panel .ant-input,
+    .new-log-wrap .right-panel span.ant-input-affix-wrapper {
+        height: 36px;
+    }
+
+    .new-log-wrap .right-panel .ant-select.ant-select-single.ant-select-show-arrow .ant-select-selector {
+        height: 36px;
+        padding: 2px 15px !important;
+    }
+
+    .new-paymentOptionsLogoContainer {
+        bottom: -40px;
+        padding: 20px 0 0;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+    .new-paymentOptionsLogoContainer {
+        width: 42%;
+    }
+
+    .new-log-wrap {
+        position: relative;
+        width: 100%;
+    }
+
+    .new-log-box h1 {
+        font-size: 30px;
+        margin: 0 0 60px 0;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    img.new-login-logo {
+        width: 168px;
+    }
+
+    .new-login-wrapper {
+        height: auto;
+    }
+
+    .new-login-box {
+        display: block;
+    }
+
+    .new-log-box {
+        width: 100%;
+        padding: 2em 0em;
+    }
+
+    .new-log-wrap {
+        width: 100%;
+    }
+
+    .new-log-box h1 {
+        font-size: 32px;
+        margin: 0 0 60px 0;
+    }
+
+    .new-log-box .form-fields {
+        margin-bottom: 60px;
+    }
+
+    .new-log-wrap form {
+        width: 94%;
+        margin: 0 auto;
+    }
+
+    .new-paymentOptionsLogoContainer {
+        position: relative;
+        bottom: 0;
+        padding: 30px 0 0;
+        margin: 25px 0 -20px 0;
+    }
+
+    .new-right-login {
+        display: none;
+    }
+
+    .new-log-wrap {
+        width: 100%;
+        margin: 110px 0 0 0;
+    }
+
+    .das-swiper {
+        display: none;
+    }
+
+    .email-verify-box {
+        width: 99% !important;
+    }
+
+    .new-log-wrap button.account-select-box {
+        min-height: 185px;
+        margin: 0 0 20px 0;
+        width: 100%;
+    }
+
+    .heading.choose-heading p {
+        margin: 10px 0 20px 0 !important;
+    }
+
+    span.choose-icon svg {
+        width: 48px;
+    }
+
+    span.choose-icon {
+        margin: 0px auto 0px;
+        padding: 0px 0 0px;
+    }
+
+    #register-form .form-container {
+        display: block;
+    }
+
+    .form-container .w-48 {
+        width: 100% !important;
+        margin: 0 0 10px 0;
+    }
+
+    .new-log-wrap .heading {
+        font-size: 21px;
+    }
+
+    .mfa-setup.mfa-toggled-setup.verify-mfa-code {
+        width: 82%;
+        left: 4%;
+        transform: none;
+        top: 13%;
+    }
+
+    .secret-key-qr-wrap {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .secret-key-wraps::before {
+        display: none;
+    }
+
+    .secret-key-wraps {
+        min-height: auto;
+        padding: 0 0 0 0px;
+        border-left: none;
+        margin: 12px 0 0px 0;
+    }
+
+    span.secret-key-text {
+        font-size: .75rem;
+        padding: 8px 51px 8px 20px;
+        margin: 0 0 15px 0px;
+    }
+
+    .mfa-qr-wrapper {
+        width: 100%;
+    }
+}
