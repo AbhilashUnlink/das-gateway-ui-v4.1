@@ -10,7 +10,6 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useMemo } from 'react';
-import { Add, AddTask, Done, RestartAlt } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { OPERATORS_VALUE, operatorOptionsMap } from './filterOptions';
 import { resetInitialFilter } from 'store/features/gateway-config';
@@ -19,6 +18,7 @@ import { FILTER_INPUT_TYPES, HAS_3DS_TYPE, HEADER_COLUMN, View_Name_Space } from
 import { showInAscendingOrder } from 'utils/helper';
 import DateRangePicker from './component/date-range-picker';
 import NewDateRangeFilter from './component/NewDateRangeFilter';
+import { PlusSvgIcon, ResetSvgIcon } from 'components/svg-icons/SvgIcons';
 
 export const NewFilterBox = ({
   filters,
@@ -137,12 +137,11 @@ export const NewFilterBox = ({
 
   return (
     <>
-      <div className="">
-
+      <div className="next-gen-filter-wrap">
         <div style={{ width: allFilters?.length === 0 ? '100%' : '79%', display: "flex", alignItems: "center" }}>
           {/* filter initial */}
           {!filters?.field ? (
-            <div className="form-group" style={{ width: '100%' }}>
+            <div className="form-group p-0-inline" style={{ width: '100%', margin: '0' }}>
               <Autocomplete
                 options={options?.sort(showInAscendingOrder)}
                 value={filters?.field}
@@ -182,8 +181,8 @@ export const NewFilterBox = ({
                 <span onClick={() => handleField()}>{filters?.fieldLabel}</span>
               </p>
               <div
-                className="form-group label-form-wrap"
-                style={{ paddingLeft: '10px', width: '68%' }}
+                className="form-group p-0-inline label-form-wrap"
+                style={{ paddingLeft: '7px', width: '68%', margin:'0' }}
               >
                 <Autocomplete
                   options={operatorOptionsMap[filters.selectFilterType]?.map(
@@ -233,7 +232,7 @@ export const NewFilterBox = ({
                   {/* {...((filters?.operator == 'isnull' || filters?.operator == 'notnull') &&  {onClick:()=>{handleBackClick();}})} */}
                 </p>
                 {filters?.operator != 'isnull' && filters?.operator != 'notnull' &&
-                  <div className="form-group label-operator-form-wrap">
+                  <div className="form-group p-0-inline label-operator-form-wrap" style={{margin:'0', paddingLeft: '7px',}}>
                     {filters.selectFilterType === FILTER_INPUT_TYPES.TEXT && (
                       <TextField
                         type="text"
@@ -491,7 +490,7 @@ export const NewFilterBox = ({
               disabled={!filters?.field || !filters?.operator || !filters?.value}
               onClick={() => handlePlusClick()}
             >
-              <Add />
+              <PlusSvgIcon />
             </button>
             <button className={"new-gen-filter-action-button"}
               onClick={() => {
@@ -501,7 +500,7 @@ export const NewFilterBox = ({
                 }
               }}
             >
-              <RestartAlt />
+              <ResetSvgIcon />
             </button>
 
             <button className={"new-gen-filter-action-button"}

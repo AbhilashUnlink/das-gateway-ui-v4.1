@@ -761,7 +761,6 @@ export const NewFilterPopup = ({
   };
 
   return (
-    <div>
       <NewFilterBox
         filters={filters}
         handleKeyDown={handleKeyDown}
@@ -781,65 +780,5 @@ export const NewFilterPopup = ({
         handleOperator={handleOperator}
         handleField={handleField}
       />
-      {/* <Tooltip
-        className="tooltip-menu"
-        title={t('FilterPopup.button.NextGenFilter')}
-        placement="left"
-        arrow
-      >
-        <Button
-          className="download-csv-button filter-btn nx-gen-filter-btn"
-          aria-describedby={id}
-          onClick={applyFilterFunction}
-        >
-          <TuneIcon />
-          <div className="badge">{count}</div>
-        </Button>
-      </Tooltip>
-      <Popper
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        transition
-        className={`popover-box`}
-      >
-        {({ TransitionProps }: any) => (
-          <Fade {...TransitionProps} timeout={350} className="popover-box-div">
-            <Box sx={{ bgcolor: 'background.paper' }}>
-              <form>
-                <h3>
-                  {t('Filter.AdvancedNextGenFilters')}
-                  <Button
-                    className="close-filter"
-                    onClick={() => setOpen(false)}
-                  >
-                    <CloseIcon />
-                  </Button>
-                </h3>
-                <NewFilterBox
-                  filters={filters}
-                  handleKeyDown={handleKeyDown}
-                  handleChange={handleChange}
-                  handlePlusClick={handlePlusClick}
-                  options={fieldOptions ?? []}
-                  allFilters={allFilters}
-                  handleRemove={handleRemove}
-                  handleResetFilter={handleResetFilter}
-                  handleApplyFilter={handleApplyFilter}
-                  handleSelectFilter={handleSelectFilter}
-                  selectedFilter={selectedFilter}
-                  getOptions={getOptions}
-                  ns={ns}
-                  handleEditChip={handleEditChip}
-                  handleBackClick={handleBackClick}
-                  handleOperator={handleOperator}
-                  handleField={handleField}
-                />
-              </form>
-            </Box>
-          </Fade>
-        )}
-      </Popper> */}
-    </div>
   );
 };

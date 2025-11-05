@@ -950,7 +950,7 @@ button.edit-button svg {
 }
 
 .common-button {
-  border: 1px solid #e77236 !important;
+  /* border: 1px solid #e77236 !important; */
   color: #e77236 !important;
   text-transform: none !important;
   background: #fff !important;
@@ -959,7 +959,13 @@ button.edit-button svg {
   box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
   border-radius: 6px !important;
 }
+.filterPlusIconContainer div {
+  display: flex;
+}
 
+.common-button div {
+  display: flex;
+}
 .bg-history-container button.refresh {
   right: 17px !important;
   left: auto !important;

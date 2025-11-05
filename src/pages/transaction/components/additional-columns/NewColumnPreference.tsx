@@ -12,7 +12,6 @@ import {
   styled,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import additionalColumns from "../../../../assets/images/additionalColumns.png";
 import "./style.css";
 import { useEffect, useState } from "react";
 import PreferenceList from "./PreferenceList";
@@ -23,7 +22,7 @@ import { DATE_FORMATS_OPTIONS } from "components/constants/date-formats";
 import { setUserPreference } from "store/features/gateway-config";
 import GridItem from "components/grid-item/GridItem";
 import ConfirmationDialogRaw from "components/confirmation-dialog/ConfirmationDialog";
-import { CloseSvgIcon, DeleteSvgIcon, PreferenceSvgIcon } from "components/svg-icons/SvgIcons";
+import { CloseSvgIcon, ColumnPreferenceSvgIcon, DeleteSvgIcon, PreferenceSvgIcon } from "components/svg-icons/SvgIcons";
 import DasSnackbar from "components/das-snackbar/DasSnackbar";
 
 const NewColumnPreference = ({
@@ -195,11 +194,7 @@ const NewColumnPreference = ({
       >
         <Tooltip title={t("User_Settings.Column Preference")} arrow>
           <div className="filterPlusIconContainer">
-            <img
-              src={additionalColumns}
-              alt="filter"
-              className="filterPlusIcon"
-            />
+            <ColumnPreferenceSvgIcon />
           </div>
         </Tooltip>
       </Button>
