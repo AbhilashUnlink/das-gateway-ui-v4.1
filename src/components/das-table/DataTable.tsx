@@ -14,6 +14,7 @@ import DasDrawer from '../das-drawer/DasDrawer';
 import { DRAWER_TYPE, DRAWER_WIDTH } from '../constants/drawer';
 import SkeletonLoadingOverlay from './SkeletonOverlay';
 import { NewFilterPopup } from 'components/popper/NewFilterPopup';
+import { DownloadSvgIcon } from 'components/svg-icons/SvgIcons';
 
 // import { resetFilter } from '../../redux/features/filter';
 // import { useDispatch } from 'react-redux';
@@ -123,7 +124,7 @@ export default function DataTable({
                     placement={'top'}
                     buttonClassName={'common-button'}
                     onClick={() => setShowDownloadPopup(true)}
-                    icon={<Download sx={{ fontSize: '20px', padding: '2px' }} />}
+                    icon={<DownloadSvgIcon sx={{ fontSize: '20px', padding: '2px' }} />}
                   // loading={loading}
                   />
                 )}

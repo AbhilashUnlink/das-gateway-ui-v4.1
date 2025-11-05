@@ -616,7 +616,7 @@ div#filter-select {
 
 .label-wrap {
   width: max-content;
-  font-size: .75rem;
+  font-size: 13px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -625,12 +625,12 @@ div#filter-select {
 
 .label-operator-wrap {
   width: max-content;
-  font-size: .75rem;
+  font-size: 13px;
 }
 
 .label-operator-wrap span {
   width: max-content;
-  font-size: .75rem;
+  font-size: 13px;
   cursor: pointer;
 }
 
@@ -649,9 +649,9 @@ div#filter-select {
   display: grid;
 }
 
-.label-operator-form-wrap input {
+/* .label-operator-form-wrap input {
   font-size: .75rem !important;
-}
+} */
 
 .label-operator-form-wrap>.date-range-view>.MuiTextField-root {
   width: 100%;
@@ -674,6 +674,8 @@ div#filter-select {
 
 div#filter-select p {
   display: inline-flex;
+  font-size: 13px;
+  margin: 0;
 }
 
 .form-group.label-operator-form-wrap .MuiInputBase-root.MuiOutlinedInput-root .MuiButtonBase-root.MuiChip-root span.MuiChip-label {
@@ -711,11 +713,83 @@ div#filter-select p {
 }
 
 .new-gen-filter-action-button {
-  border: 1px solid;
-  height: 24px;
+  border: 1px solid #1a1a1a;
+  height: 27px;
   background: transparent;
   cursor: pointer;
-  padding: 0;
-  border-radius: 2px;
-  padding: 0 6px
+  color: #1a1a1a;
+  border-radius: 4px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  min-width: 27px;
+}
+button.new-gen-filter-action-button:last-child
+ {
+    background: #F7941D;
+    border-color: #F7941D;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0px 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+button.new-gen-filter-action-button:last-child:hover{
+  background: #de7d07;
+    border-color: #de7d07;
+    color: #fff;
+}
+.next-gen-filter-wrap
+ {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 6px 8px 10px;
+  width: 480px;
+  height: 36px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+  
+  .p-0-inline .MuiInputBase-root {
+      padding: 0 !important;
+  }
+  .p-0-inline .MuiInputBase-root input{
+    font-size: 13px;
+  }
+  .p-0-inline .MuiInputBase-root input:focus {
+      outline: 0;
+  }
+  
+  .p-0-inline .MuiInputBase-root fieldset {
+      border: 0;
+  }
+  ul.MuiAutocomplete-listbox li {
+    font-size: 13px;
+}
+.MuiList-root.MuiList-padding.MuiMenu-list li.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiMenuItem-root.MuiMenuItem-gutters p {
+  margin: 0;
+  font-size: 13px;
+}
+.form-group.p-0-inline.label-form-wrap input, .form-group.p-0-inline.label-operator-wrap input {
+  position: relative;
+  top: 1px;
+}
+.form-group.p-0-inline.label-operator-form-wrap input{
+  position: relative;
+  top: 1px;
+}
+.form-group.p-0-inline.label-operator-form-wrap .MuiInputBase-root.MuiOutlinedInput-root div#filter-select {
+  margin: 0;
+  line-height: normal;
+  min-height: auto;
+  padding: 0px 0 !important;
+  position: relative;
+  top: 11px;
 }

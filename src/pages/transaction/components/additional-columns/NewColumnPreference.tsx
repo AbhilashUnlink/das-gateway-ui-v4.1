@@ -27,7 +27,7 @@ import { DATE_FORMATS_OPTIONS } from "components/constants/date-formats";
 import { setUserPreference } from "store/features/gateway-config";
 import GridItem from "components/grid-item/GridItem";
 import ConfirmationDialogRaw from "components/confirmation-dialog/ConfirmationDialog";
-import { CloseSvgIcon, DeleteSvgIcon, PreferenceSvgIcon } from "components/svg-icons/SvgIcons";
+import { CloseSvgIcon, ColumnPreferenceSvgIcon, DeleteSvgIcon, PreferenceSvgIcon } from "components/svg-icons/SvgIcons";
 
 const NewColumnPreference = ({
   columnsWithAccess,
@@ -198,11 +198,7 @@ const NewColumnPreference = ({
       >
         <Tooltip title={t("User_Settings.Column Preference")} arrow>
           <div className="filterPlusIconContainer">
-            <img
-              src={additionalColumns}
-              alt="filter"
-              className="filterPlusIcon"
-            />
+            <ColumnPreferenceSvgIcon />
           </div>
         </Tooltip>
       </Button>

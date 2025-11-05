@@ -28,6 +28,7 @@ import NewColumnPreference from './components/additional-columns/NewColumnPrefer
 import DetailsItemValue from '../../components/skeletons/DetailsItemValue';
 import useDateFormatter from '../../hooks/date-preference/useDateFormatter';
 import DasDrawer from 'components/das-drawer/DasDrawer';
+import { RefreshSvgIcon } from 'components/svg-icons/SvgIcons';
 
 // const DasDrawer = lazy(
 //   () =>
@@ -249,7 +250,7 @@ const Transactions = () => {
             placement={'top'}
             buttonClassName={'common-button'}
             onClick={onRefresh}
-            icon={<SyncIcon className={tableRowsLoading ? "rotating-icon" : ""} />}
+            icon={<RefreshSvgIcon className={tableRowsLoading ? "rotating-icon" : ""} />}
             loading={tableRowsLoading}
           />
           <NewColumnPreference
