@@ -226,7 +226,8 @@ export default function DataTable({
               isRowSelectable={isRowSelectable}
               onRowSelectionModelChange={onSelectionModelChange}
               getRowClassName={getRowClassName}
-              rowHeight={40}
+              getRowHeight={() => "auto"}
+              rowHeight={52}
               localeText={{ noRowsLabel: t(noRecords) }}
               disableColumnMenu
               rows={rows}

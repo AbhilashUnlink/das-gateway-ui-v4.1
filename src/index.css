@@ -4,8 +4,21 @@ body {
     margin: 0;
     font-family: 'Public Sans', sans-serif;
 }
+
 .ant-layout {
     background: #FFFBF1;
     background: linear-gradient(180deg, #FDEBCA 1.82%, #F4EAD8 29.71%, #FFFBF1 115.19%) !important;
     background: -webkit-linear-gradient(180deg, #FDEBCA 1.82%, #F4EAD8 29.71%, #FFFBF1 115.19%) !important;
+}
+
+.table-header-top-label.value {
+    color: #2f2f2f;
+}
+
+.MuiDataGrid-virtualScroller {
+    padding-left: var(--pinned-offset, 0px) !important;
+}
+
+.table-header-top-label {
+    font-weight: 600;
 }

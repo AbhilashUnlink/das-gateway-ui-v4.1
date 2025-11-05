@@ -10,6 +10,7 @@ import ActionButton from '../../buttons/ActionButton';
 import { Tooltip } from '@mui/material';
 import i18n from 'i18n';
 import { FILTER_INPUT_TYPES } from 'components/popper/constants/filter-constants';
+import { BookmarkBorderOutlined } from '@mui/icons-material';
 
 
 export const columns: any = (filterDateFormatter: any) => {
@@ -18,6 +19,11 @@ export const columns: any = (filterDateFormatter: any) => {
       {
         field: 'action',
         headerName: i18n.t('TransactionsResult.columnDefs.Action'),
+        renderHeader: () => (
+          <div style={{ marginLeft: "10px", color: "orange" }}>
+            <BookmarkBorderOutlined />
+          </div>
+        ),
         translation: "TransactionsResult.columnDefs.Action",
         sortable: false,
         headerClassName: 'super-app-theme--header',
@@ -32,32 +38,39 @@ export const columns: any = (filterDateFormatter: any) => {
       {
         field: 'TransactionID',
         headerName: i18n.t('TransactionsResult.columnDefs.TransactionID'),
-        translation: "TransactionsResult.columnDefs.TransactionID",
         sortable: false,
-        width: 130,
-        headerClassName: 'super-app-theme--header',
-        hide: false,
-        showInAdditionalColumn: true,
-        nonSelectableField: true,
-        defaultSelectedInAdditionalColumn: true,
-        showInStatementTransaction: true,
-        type: FILTER_INPUT_TYPES.NUMBER,
-      },
-      {
-        field: 'uuid',
-        headerName: i18n.t('TransactionsResult.columnDefs.TransactionRefID'),
-        translation: "TransactionsResult.columnDefs.TransactionRefID",
-        sortable: false,
-        headerClassName: 'super-app-theme--header',
         width: 260,
-        hide: false,
-        showInAdditionalColumn: true,
-        defaultSelectedInAdditionalColumn: true,
-        nonSelectableField: true,
-        pinnable: true,
-        showInStatementTransaction: true,
-        type: FILTER_INPUT_TYPES.TEXT,
+        hideable: false,
+        renderCell: (params: any) => (
+          <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
+            <div className="table-header-top-label value">{params.row?.uuid}</div>
+            <div>{params.row?.TransactionID}</div>
+          </div>
+        ),
+        renderHeader: () => (
+          <div>
+            <div className="table-header-top-label">
+              {i18n.t('TransactionsResult.columnDefs.TransactionRefID')}
+            </div>
+            <div>{i18n.t('TransactionsResult.columnDefs.TransactionID')}</div>
+          </div>
+        ),
       },
+      // {
+      //   field: 'uuid',
+      //   headerName: i18n.t('TransactionsResult.columnDefs.TransactionRefID'),
+      //   translation: "TransactionsResult.columnDefs.TransactionRefID",
+      //   sortable: false,
+      //   headerClassName: 'super-app-theme--header',
+      //   width: 260,
+      //   hide: false,
+      //   showInAdditionalColumn: true,
+      //   defaultSelectedInAdditionalColumn: true,
+      //   nonSelectableField: true,
+      //   pinnable: true,
+      //   showInStatementTransaction: true,
+      //   type: FILTER_INPUT_TYPES.TEXT,
+      // },
       {
         field: 'LegalName',
         headerName: i18n.t('TransactionsResult.columnDefs.Merchant'),

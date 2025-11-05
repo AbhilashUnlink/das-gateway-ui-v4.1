@@ -6,6 +6,7 @@ import { SnackbarProvider } from 'notistack';
 import { Provider } from 'react-redux';
 import { persistor, store } from 'store/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import { DasSnackbarConfig } from 'components/das-snackbar/DasSnackbar.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -18,9 +19,8 @@ createRoot(document.getElementById('root')!).render(
             autoHideDuration={3000}
             preventDuplicate
           >
-
+            <DasSnackbarConfig />
             <App />
-
           </SnackbarProvider>
         </BrowserRouter>
       </PersistGate>

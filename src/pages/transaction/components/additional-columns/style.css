@@ -1,36 +1,43 @@
 .additional-filter-wrapper button.additiona_filter_btn {
-    left: 6.5rem;
-    position: relative;
+  left: 6.5rem;
+  position: relative;
 }
+
 img.filterPlusIcon {
-    width: 22px;
+  width: 22px;
 }
+
 div#additional-transition-popper {
   transform: translate(190px, 98px) !important;
 }
+
 div#additionalFilterPopover {
-    position: absolute;
-    left: 0px;
-    width: 320px;
-    min-width: 320px;
-}   
-.badge.add-badge{
-    right: -13px;
-    left: auto;
+  position: absolute;
+  left: 0px;
+  width: 320px;
+  min-width: 320px;
 }
+
+.badge.add-badge {
+  right: -13px;
+  left: auto;
+}
+
 .additionalFiterData {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
+
 input.searchTextInAdditionaFilter {
-    padding: 8px 20px;
-    margin: 0 0 0px 0;
-    border-radius: 34px;
-    border: 1px solid #ccc;
+  padding: 8px 20px;
+  margin: 0 0 0px 0;
+  border-radius: 34px;
+  border: 1px solid #ccc;
 }
+
 .searchContainer.additionalFiterData {
   margin: 0 -20px 10px -20px;
-  padding: 0 20px 5px 20px;
+  padding: 0 4px 5px 12px;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -38,84 +45,91 @@ input.searchTextInAdditionaFilter {
   gap: 8px;
   border-bottom: 1px solid #ccc;
 }
+
 .searchContainer.additionalFiterData label.cursor_pointer {
-    vertical-align: middle;
-    position: relative;
-    line-height: 33px;
+  vertical-align: middle;
+  position: relative;
+  line-height: 33px;
 }
+
 /* additional filter */
 .additionalFiterData {
-    display: flex;
-    gap: 7px;
-    align-items: center;
-  }
-  
-  .filterPlusIconContainer {
-    display: flex;
-  }
-  
-  .filterPlusIcon {
-    width: 100%;
-    max-width: 22px;
-  }
-  
-  .additiona_filter_btn:hover .filterPlusIcon {
-    filter: brightness(0) invert(1);
-    height: 24px;
-    top: 5px;
-    position: relative;
-  }
-  .select-all-form-group {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
+  display: flex;
+  gap: 7px;
+  align-items: center;
 }
+
+.filterPlusIconContainer {
+  display: flex;
+}
+
+.filterPlusIcon {
+  width: 100%;
+  max-width: 22px;
+}
+
+.additiona_filter_btn:hover .filterPlusIcon {
+  filter: brightness(0) invert(1);
+  height: 24px;
+  top: 5px;
+  position: relative;
+}
+
+.select-all-form-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
 input.searchTextInAdditionaFilter {
   width: 86%;
 }
-  .filterPlusIconStrong {
-    top: unset !important;
-  }
-  
-  /* .additionalFilterPopper {
+
+.filterPlusIconStrong {
+  top: unset !important;
+}
+
+/* .additionalFilterPopper {
     inset: 0px auto auto 90px !important;
   } */
-  .additiona_filter_btn {
-    right: 58px !important;
-    display: flex !important;
-  }
-  
-  .additionalFilterPopover {
-    right: -60px !important;
-    width: 315px !important;
-    min-width: 315px;
-    max-width: 315px !important;
-    margin-top: 0;
-  }
-  
-  .additionalFilterOpenPopover {
-    right: 75px !important;
-    width: 100%;
-    min-width: unset !important;
-    max-width: 260px !important;
-  }
-  
-  .additionalFilterOptions.largerCheckbox {
-    width: 40px;
-    height: 40px;
-  }
-  /*=============== transaction popper =============*/
-  
-  button.transaction-popper-btn {
-    min-width: auto;
-    color: #F4911D;
-  }
-
-  div#additionalFilterPopover button.close-filter {
-    top: -3px;
+.additiona_filter_btn {
+  right: 58px !important;
+  display: flex !important;
 }
+
+.additionalFilterPopover {
+  right: -60px !important;
+  width: 315px !important;
+  min-width: 315px;
+  max-width: 315px !important;
+  margin-top: 0;
+}
+
+.additionalFilterOpenPopover {
+  right: 75px !important;
+  width: 100%;
+  min-width: unset !important;
+  max-width: 260px !important;
+}
+
+.additionalFilterOptions.largerCheckbox {
+  width: 40px;
+  height: 40px;
+}
+
+/*=============== transaction popper =============*/
+
+button.transaction-popper-btn {
+  min-width: auto;
+  color: #F4911D;
+}
+
+div#additionalFilterPopover button.close-filter {
+  top: -3px;
+}
+
 svg.info-tooltip-popper {
   position: absolute;
   left: 165px;
@@ -123,9 +137,10 @@ svg.info-tooltip-popper {
   z-index: 1;
 }
 
-.MuiTooltip-tooltip strong span{
+.MuiTooltip-tooltip strong span {
   font-weight: 400;
 }
+
 .select-all-form-group label.cursor_pointer {
   font-weight: 600;
   text-transform: uppercase;
@@ -136,125 +151,158 @@ svg.info-tooltip-popper {
 
 
 
-  button.additional-button {
-    float: none;
-    background: #fff;
-    color: #e77236;
-    text-decoration: none;
-    padding: 5px 7px 3px 7px;
-    border-radius: 6px;
-    text-transform: uppercase;
-    display: block;
-    text-align: center;
-    position: relative;
-    font-size: 0.8rem;
-    letter-spacing: 0.03rem;
-    top: -8px;
-    right: 0;
-    font-weight: 600;
-    border: 1px solid #e77236;
-    height: 36px;
-    line-height: 36px;
-    min-width: 32px;
-    width: -moz-fit-content;
-    width: fit-content;
-    font-family: "Poppins", sans-serif;
-    transition: all 0.5s ease 0s;
-    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
-    cursor: pointer;
-    z-index: 2;
-  }
-  
-  button.additional-button strong {
-    font-size: 0;
-    font-weight: 600;
-    transition: all 0.5s ease 0s;
-    display: none;
-    margin: 0 0 0 0px;
-    position: relative;
-    padding: 0 0 0 30px;
-  }
-  
-  button.additional-button:hover {
-    background: #f6921e !important;
-    border-color: #FFAF69;
-    transition: all 0.5s ease 0s;
-  }
-  
-  button.additional-button:hover strong {
-    display: inline-block;
-    transition: all 0.5s ease 0s;
-    font-size: 0.8rem;
-    margin: 0 0 0 0px;
-    position: relative;
-    color: #fff;
-    left: -18px;
-    top: -7px;
-  }
-  
-  button.additional-button:hover svg {
-    fill: #ffffff;
-  }
-  .additional-preference-column {
-    position: relative;
-    padding: 10px 15px;
+button.additional-button {
+  float: none;
+  background: #fff;
+  color: #e77236;
+  text-decoration: none;
+  padding: 5px 7px 3px 7px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  position: relative;
+  font-size: 0.8rem;
+  letter-spacing: 0.03rem;
+  top: -8px;
+  right: 0;
+  font-weight: 600;
+  border: 1px solid #e77236;
+  height: 36px;
+  line-height: 36px;
+  min-width: 32px;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.5s ease 0s;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+  cursor: pointer;
+  z-index: 2;
 }
+
+button.additional-button strong {
+  font-size: 0;
+  font-weight: 600;
+  transition: all 0.5s ease 0s;
+  display: none;
+  margin: 0 0 0 0px;
+  position: relative;
+  padding: 0 0 0 30px;
+}
+
+button.additional-button:hover {
+  background: #f6921e !important;
+  border-color: #FFAF69;
+  transition: all 0.5s ease 0s;
+}
+
+button.additional-button:hover strong {
+  display: inline-block;
+  transition: all 0.5s ease 0s;
+  font-size: 0.8rem;
+  margin: 0 0 0 0px;
+  position: relative;
+  color: #fff;
+  left: -18px;
+  top: -7px;
+}
+
+button.additional-button:hover svg {
+  fill: #ffffff;
+}
+
+.additional-preference-column {
+  position: relative;
+  padding: 10px 15px;
+}
+
 .additional-preference-column .searchContainer.additionalFiterData {
   margin: 10px 0 10px 0 !important;
   padding: 0 0 0 0;
 }
+
 .additional-preference-column .filter-footer {
   margin: 15px 0 0 0 !important;
 }
+
 .additional-preference-radio-column {
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
 .additional-preference-radio-column button {
   width: 100px;
   margin-top: 10px;
   background-color: #e77236;
   border-radius: 6px;
 }
+
 .MuiFormGroup-root.MuiRadioGroup-root .Mui-checked {
   color: #e77236;
 }
+
 .additional-filter-box.additional-preference-box {
   position: relative;
 }
+
 .searchContainer.additionalFiterData input[type="text"] {
   width: 80%;
   border: 1px solid #dedede;
-  padding: 8px 7px 8px 12px;
-  border-radius: 40px 0px 0px 40px;
+  padding: 0 10px;
+  border-radius: 8px 0px 0px 8px;
   display: flex;
   position: relative;
+  height: 36px !important;
 }
-.searchContainer.additionalFiterData form{
+
+.searchContainer.additionalFiterData form {
   position: relative;
   margin: 0 0 5px;
   padding-bottom: 10px;
 }
+
 .form-group {
   position: relative;
   margin: 10px 0 0px 0;
 }
-.searchContainer.additionalFiterData button.MuiButtonBase-root {
+
+.add-prefernce-button {
   position: absolute;
   right: 0px;
-  top: 0px;
-  border-left: 1px solid #e77236;
-  border-radius: 0px 18px 18px 0px !important;
-  padding: 5px 18px 4px;
-  line-height: 24px;
+  top: -10px;
+  border-left: 0;
+  border-radius: 0px 8px 8px 0px !important;
+  width: 70px !important;
+}
+
+.prefernce-action-button {
+  border: 1px solid #e77236;
+  padding: 5px 12px 4px;
+  height: 38px !important;
   background: #e77236;
   color: #fff;
   margin: 0;
-  width: 20%;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
 }
-.searchContainer.additionalFiterData button.MuiButtonBase-root:hover{
+
+.apply-preference-button {
+  display: flex;
+  align-items: center;
+}
+
+.prefernce-action-button.apply-preference-button {
+  width: 100px !important;
+  margin-right: 10px;
+}
+
+.searchContainer.additionalFiterData button.MuiButtonBase-root:hover {
   background: #f6921e;
 }
 
@@ -273,6 +321,7 @@ svg.info-tooltip-popper {
   flex: none;
   order: 0;
 }
+
 .additional-filter-box.additional-preference-box .filter-scroller {
   max-height: 70vh;
   overflow: hidden;
@@ -280,22 +329,27 @@ svg.info-tooltip-popper {
   width: 100%;
   padding-right: 10px;
 }
+
 button.icon-action-button.add-filt-btn {
   left: 102px;
   top: -8px;
 }
+
 .additional-preference-radio-column .searchContainer.additionalFiterData {
   border: 0;
   margin: 0px 0 0 0 !important;
 }
+
 .additional-preference-radio-column .searchContainer.additionalFiterData form h3 {
   margin-top: 0;
 }
+
 .additional-preference-radio-column .searchContainer.additionalFiterData form {
   padding: 0px 0px 0;
   margin: 0 auto;
   width: 100%;
 }
+
 .additional-preference-radio-column .searchContainer.additionalFiterData form::before {
   background: #fff;
   border: 1px solid #ccc;
@@ -310,25 +364,30 @@ button.icon-action-button.add-filt-btn {
   top: -17px;
   display: none;
 }
+
 .additional-preference-radio-column .searchContainer.additionalFiterData label.MuiFormControlLabel-root span.MuiTypography-root {
   font-size: .9rem;
   text-transform: capitalize;
   display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .additional-preference-radio-column .searchContainer.additionalFiterData label.MuiFormControlLabel-root span.MuiButtonBase-root.MuiRadio-root {
   padding: 4px 7px;
 }
-.additional-preference-radio-column .searchContainer.additionalFiterData label.MuiFormControlLabel-root span.MuiButtonBase-root.MuiRadio-root span svg.MuiSvgIcon-root{
+
+.additional-preference-radio-column .searchContainer.additionalFiterData label.MuiFormControlLabel-root span.MuiButtonBase-root.MuiRadio-root span svg.MuiSvgIcon-root {
   width: 18px;
 }
-.searchContainer.additionalFiterData input[type="text"]:focus, .searchContainer.additionalFiterData input[type="text"]:hover {
+
+.searchContainer.additionalFiterData input[type="text"]:focus,
+.searchContainer.additionalFiterData input[type="text"]:hover {
   outline: 0;
 }
+
 .drawer-header.preference-header span {
   text-transform: capitalize;
 }
@@ -336,17 +395,21 @@ button.icon-action-button.add-filt-btn {
 .additional-preference-radio-column .searchContainer.additionalFiterData .MuiFormControl-root {
   width: 100%;
   overflow: hidden;
-    /* height: 63vh; */
-    /* height: 38vh; */
-    /* overflow-y: scroll; */
-    padding: 0 0 0 3px;
+  /* height: 63vh; */
+  /* height: 38vh; */
+  /* overflow-y: scroll; */
+  padding: 0 0 0 3px;
 }
-.additional-preference-radio-column .searchContainer.additionalFiterData .MuiFormControl-root::-webkit-scrollbar-thumb, .additional-preference-radio-column .searchContainer.additionalFiterData .MuiFormControl-root::-webkit-scrollbar-track{
+
+.additional-preference-radio-column .searchContainer.additionalFiterData .MuiFormControl-root::-webkit-scrollbar-thumb,
+.additional-preference-radio-column .searchContainer.additionalFiterData .MuiFormControl-root::-webkit-scrollbar-track {
   display: block;
 }
+
 .list-action-view:last-child {
   margin: 0 0 12px 0;
 }
+
 .list-action-view {
   display: flex;
   justify-content: space-between;
@@ -357,9 +420,11 @@ button.icon-action-button.add-filt-btn {
   padding: 6px 12px;
   border-radius: 8px;
 }
-.list-action-view .act-btns{
+
+.list-action-view .act-btns {
   min-width: auto;
 }
+
 .list-action-view .act-btns button {
   width: auto;
   background: transparent;
@@ -367,18 +432,23 @@ button.icon-action-button.add-filt-btn {
   margin: 0 0px;
   cursor: pointer;
 }
+
 .list-action-view .act-btns button svg.MuiSvgIcon-root {
   font-size: 1.1rem;
 }
-.list-action-view .act-btns button.edit-list{
-color: #368fe7;
+
+.list-action-view .act-btns button.edit-list {
+  color: #368fe7;
 }
-.list-action-view .act-btns button.delete-list{
-color: #fe5959;
+
+.list-action-view .act-btns button.delete-list {
+  color: #fe5959;
 }
-.list-action-view .act-btns button.view-list{
+
+.list-action-view .act-btns button.view-list {
   color: #e77236;
 }
+
 /* .drawer-header.preference-header h3 {
   font-size: .85rem;
   width: 90%;
@@ -392,6 +462,7 @@ color: #fe5959;
 .act-btns {
   min-width: 78px;
 }
+
 h3.prf-column-add-hading {
   position: relative;
   width: 100%;
@@ -409,28 +480,45 @@ h3.prf-column-add-hading {
   text-align: left;
   margin: 0px 4% 1px !important;
 }
+
 .new-additional-pref-column.additional-preference-column {
   padding: 18px 5px;
   margin: -18px 0 0 0;
 }
+
 button.delete-list.disabled {
   color: grey !important;
   cursor: not-allowed;
 }
 
-.error-duplicate-list{
-  color:red;
+.error-duplicate-list {
+  color: red;
   padding-left: 10px;
   font-size: small;
 }
+
 .MuiFormGroup-root.MuiRadioGroup-root {
   display: flex;
   gap: 10px;
 }
+
 .list-action-view.active {
   border-color: #F7941D;
   background: #FFF6E6;
 }
+
 .list-action-view .act-btns button.delete-list.disabled svg path {
   stroke: grey;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.w-full {
+  width: 100%;
 }
