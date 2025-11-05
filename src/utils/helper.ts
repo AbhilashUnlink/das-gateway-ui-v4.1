@@ -34,6 +34,10 @@ import Purcahse from "../assets/transaction-icons/purchase-successful.png";
 import Refund from "../assets/transaction-icons/payment-refunded.png";
 import Authorisation from "../assets/transaction-icons/payment-authorized.png";
 import VoidAuthorised from "../assets/transaction-icons/voided-authorization.png";
+import {
+  subsidaryLevel,
+  type T_subsidaryType,
+} from "config/common/subsidaryLevel";
 // import { store } from "../store/store";
 
 const SECRET_KEY = import.meta.env.VITE_X_API_KEY;
@@ -431,6 +435,36 @@ const getTransactionTypeIconClass = (TransactionType: any, status: any) => {
   }
 };
 
+const objectToBase64 = (obj: any) => {
+  const jsonString = JSON.stringify(obj); // Convert object to JSON string
+  const utf8Bytes = new TextEncoder().encode(jsonString);
+  const base64 = btoa(String.fromCharCode(...utf8Bytes));
+  return base64
+    .replace(/\+/g, "-") // Convert '+' to '-'
+    .replace(/\//g, "_") // Convert '/' to '_'
+    .replace(/=+$/, ""); // Remove trailing '='
+};
+
+export default function getEntity(SUBSIDARY: any) {
+  return SUBSIDARY?.map((entity: T_subsidaryType) => {
+    return {
+      label: `PG ${subsidaryLevel[entity]}`,
+      value: entity,
+      oldLabel: subsidaryLevel[entity],
+    };
+  }).filter((item: { oldLabel: string }) => item.oldLabel);
+}
+
+function showInAscendingOrder(a: any, b: any) {
+  if ((a.headerName || a.label) < (b.headerName || b.label)) {
+    return -1;
+  }
+  if ((a.headerName || a.label) > (b.headerName || b.label)) {
+    return 1;
+  }
+  return 0;
+}
+
 export {
   base64ToObject,
   getAmount,
@@ -454,4 +488,7 @@ export {
   getSignInDataFromLocalStorage,
   onCopyClick,
   getTransactionTypeIconClass,
+  objectToBase64,
+  showInAscendingOrder,
+  filterDateFormatter,
 };

@@ -8,7 +8,7 @@ interface ISubsidaryLevel {
   EU: string;
   CN: string;
 }
-export type subsidaryType = "SG" | "JP" | "MU" | "LT" | "MY" | "HK" | "EU" | "CN";
+export type T_subsidaryType = "SG" | "JP" | "MU" | "LT" | "MY" | "HK" | "EU" | "CN";
 export const subsidaryLevel: ISubsidaryLevel = {
   SG: "Singapore",
   JP: "Japan",

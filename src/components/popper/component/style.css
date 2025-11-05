@@ -1,0 +1,145 @@
+.new-date-range-picker-main-div.date-relative-container {
+    top: 0;
+    right: 35rem;
+    width: 31rem;
+}
+
+.absolute-relative {
+    border: 2px solid var(--bs-blue);
+    color: var(--bs-blue);
+    font-weight: 700;
+    padding: 3px 12px;
+    cursor: pointer;
+    background: transparent;
+}
+
+.absolute-relative.active {
+    background-color: var(--bs-blue) !important;
+    color: white;
+    border: 2px solid var(--bs-blue);
+}
+
+.my-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.gap-8px {
+    gap: 8px;
+}
+
+.absolute-container {
+    right: 267px;
+    top: -132px;
+}
+
+.new-date-range-picker .react-datepicker {
+    width: 30.3rem !important;
+    box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+}
+
+.from-to-dates {
+    margin-right: 8px;
+}
+
+.new-date-range-picker-main-div {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px !important;
+    width: 31.1rem;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 5px;
+    padding: 8px 0px;
+}
+.w-31{
+    width: 31.1rem;
+}
+
+.date-time-div {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.input-date-field {
+    width: 45px !important;
+    height: 2px !important;
+    font-size: 11px !important;
+}
+
+.date-picker-relative-buttons {
+    width: 2rem;
+    height: 1.6rem;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px;
+    border: 1px solid #ccc;
+    border-radius: 6px 6px 0px 6px;
+}
+
+.date-picker-relative-buttons:hover {
+    background-color: orange;
+    font-weight: 600;
+    border-color: orange;
+    color: white;
+}
+
+.active.date-picker-relative-buttons {
+    background-color: orange;
+    font-weight: 600;
+    border-color: orange;
+    color: white;
+}
+
+.hr {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: white !important;
+    width: 100%;
+    height: 2px;
+}
+
+.relative-filter-label {
+    width: 5rem;
+}
+
+.hour-minute-button {
+    flex-wrap: wrap;
+}
+
+.p-20 {
+    padding: 20px !important;
+}
+
+.p-10 {
+    padding: 10px !important;
+}
+
+.below-clendar-div {
+    width: 27rem;
+}
+
+.filter-absolute-time-picker {
+    font-size: 14px !important;
+    padding: 2px 4px !important;
+    height: 22px !important;
+    width: 7rem !important;
+    background: white !important;
+    border: 1px solid #ccc !important
+}
+
+
+input.filter-absolute-time-picker {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 12px !important;
+    font-weight: 500;
+    border-radius: 5px;
+}

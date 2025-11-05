@@ -2,7 +2,6 @@ import { Routes, Route, Outlet } from "react-router";
 import Login from "pages/authentication/login";
 import PublicRoute from "./routes-wrapper/PublicRoute";
 import PrivateRoute from "./routes-wrapper/PrivateRoute";
-import { hasAccess } from "utils/has-access";
 import ProtectedRoutesList from "components/router/protected-routes-list";
 import PageNotFound from "pages/error";
 import MenuAppBar from "components/menu-app-bar";
@@ -43,12 +42,12 @@ const App = () => {
           </PrivateRoute>
         }
       >
-        {ProtectedRoutesList.map(({ component: Component, path, accessKey }: any, index: number) => (
+        {ProtectedRoutesList.map(({ component: Component, path }: any, index: number) => (
           <Route
             key={index}
             path={path}
             element={
-              hasAccess(accessKey) ? <Component /> : <PageNotFound />
+              <Component />
             }
           />
         ))}
