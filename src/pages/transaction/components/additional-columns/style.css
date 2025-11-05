@@ -257,17 +257,28 @@ svg.info-tooltip-popper {
 .searchContainer.additionalFiterData button.MuiButtonBase-root:hover{
   background: #f6921e;
 }
-.drawer-header.preference-header {
-  background: #3d3d3d;
-  min-height: 48px;
-}
+
 .additional-filter-box.additional-preference-box {
   position: relative;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 12px 12px;
+  background: #FFF6E6;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  flex: none;
+  order: 0;
 }
 .additional-filter-box.additional-preference-box .filter-scroller {
-  max-height: 63vh;
+  max-height: 70vh;
+  overflow: hidden;
+  overflow-y: auto;
+  width: 100%;
+  padding-right: 10px;
 }
 button.icon-action-button.add-filt-btn {
   left: 102px;
@@ -277,10 +288,13 @@ button.icon-action-button.add-filt-btn {
   border: 0;
   margin: 0px 0 0 0 !important;
 }
+.additional-preference-radio-column .searchContainer.additionalFiterData form h3 {
+  margin-top: 0;
+}
 .additional-preference-radio-column .searchContainer.additionalFiterData form {
-  padding: 14px 10px 0;
+  padding: 0px 0px 0;
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
 }
 .additional-preference-radio-column .searchContainer.additionalFiterData form::before {
   background: #fff;
@@ -338,13 +352,19 @@ button.icon-action-button.add-filt-btn {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  width: 100%;
+  width: 88%;
+  border: 1px solid #E5E5E5;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+.list-action-view .act-btns{
+  min-width: auto;
 }
 .list-action-view .act-btns button {
   width: auto;
   background: transparent;
   border: 0;
-  margin: 0 10px;
+  margin: 0 0px;
   cursor: pointer;
 }
 .list-action-view .act-btns button svg.MuiSvgIcon-root {
@@ -359,7 +379,7 @@ color: #fe5959;
 .list-action-view .act-btns button.view-list{
   color: #e77236;
 }
-.drawer-header.preference-header h3 {
+/* .drawer-header.preference-header h3 {
   font-size: .85rem;
   width: 90%;
   display: block;
@@ -368,51 +388,26 @@ color: #fe5959;
   white-space: nowrap;
   color: #fff;
   text-transform: capitalize;
-}
+} */
 .act-btns {
   min-width: 78px;
 }
 h3.prf-column-add-hading {
   position: relative;
   width: 100%;
-  top: -7px;
+  top: 0px;
   padding: 0 0 3px 0;
+  text-align: left;
 }
 
-h3.prf-column-add-hading::before {
-  position: absolute;
-  bottom: -5px;
-  left: -32px;
-  width: 100%;
-  height: 1px;
-  content: "";
-  background: #dedede;
-}
-h3.prf-column-add-hading::after {
-  position: absolute;
-  bottom: -5px;
-  right: -32px;
-  width: 100%;
-  height: 1px;
-  content: "";
-  background: #dedede;
-}
-.new-additional-pref-column.additional-preference-column::before {
-  position: absolute;
-  width: 1px;
-  height: 101%;
-  content: "";
-  left: -4px;
-  top: 1px;
-  background: #dedede;
-  bottom: 0;
-}
+
 .additional-preference-radio-column.additional-preference-add-section .searchContainer.additionalFiterData {
-  padding: 15px 0 16px 0;
-  left: 2%;
+  padding: 15px 0px 25px 0px;
   position: relative;
-  width: 98%;
-  border-bottom: 1px solid #dedede;
+  width: 92%;
+  border-bottom: 1px solid #e5e5e5;
+  text-align: left;
+  margin: 0px 4% 1px !important;
 }
 .new-additional-pref-column.additional-preference-column {
   padding: 18px 5px;
@@ -427,4 +422,15 @@ button.delete-list.disabled {
   color:red;
   padding-left: 10px;
   font-size: small;
+}
+.MuiFormGroup-root.MuiRadioGroup-root {
+  display: flex;
+  gap: 10px;
+}
+.list-action-view.active {
+  border-color: #F7941D;
+  background: #FFF6E6;
+}
+.list-action-view .act-btns button.delete-list.disabled svg path {
+  stroke: grey;
 }

@@ -1,6 +1,9 @@
 // import { Done } from "@mui/icons-material";
 // import { Button } from "@mui/material";
+import { Switch } from "@mui/material";
 import { Checkbox } from "antd";
+import IosSwitch from "components/layout-switcher/IosSwitch";
+import { MoveSvgIcon } from "components/svg-icons/SvgIcons";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -56,7 +59,7 @@ const PreferenceList = ({ columnsWithAccess,unChecked,setUnChecked,selectedList,
             {items?.map((item: any, index: number) => (
               <div
                 key={item.id}
-                style={{ display: ["CurrencyCode", "TransactionType"]?.includes(item?.field) ? 'none' : 'flex' }}
+                style={{ display: ["CurrencyCode", "TransactionType"]?.includes(item?.field) ? 'none' : 'flex', justifyContent:'space-between', padding:'5px 0' }}
                 className={`list-item ${
                   draggingItemIndex === index ? 'dragging' : ''
                 }`}
@@ -69,19 +72,15 @@ const PreferenceList = ({ columnsWithAccess,unChecked,setUnChecked,selectedList,
                 onDrop={handleDrop}
                 //style={{display:"flex",gap:"8px",alignItems:"center",height:"2rem"}}
               >
-                <div className="ddd"
-                style={{height:"1.3rem"}}
+                <div className="moving-column-preference"
+                style={{display:'flex', alignItems:'center', gap:'10px'}}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 393 511.528"
-                  >
-                    <path d="M59.096 0c32.639 0 59.098 26.459 59.098 59.096 0 32.638-26.459 59.098-59.098 59.098C26.459 118.194 0 91.734 0 59.096 0 26.459 26.459 0 59.096 0zm274.808 393.335c32.637 0 59.096 26.459 59.096 59.097 0 32.637-26.459 59.096-59.096 59.096-32.638 0-59.097-26.459-59.097-59.096 0-32.638 26.459-59.097 59.097-59.097zm-274.808 0c32.639 0 59.098 26.459 59.098 59.097 0 32.637-26.459 59.096-59.098 59.096C26.459 511.528 0 485.069 0 452.432c0-32.638 26.459-59.097 59.096-59.097zm274.808-196.668c32.637 0 59.096 26.459 59.096 59.096 0 32.639-26.459 59.098-59.096 59.098-32.638 0-59.097-26.459-59.097-59.098 0-32.637 26.459-59.096 59.097-59.096zm-274.808 0c32.639 0 59.098 26.459 59.098 59.096 0 32.639-26.459 59.098-59.098 59.098C26.459 314.861 0 288.402 0 255.763c0-32.637 26.459-59.096 59.096-59.096zM333.904 0C366.541 0 393 26.459 393 59.096c0 32.638-26.459 59.098-59.096 59.098-32.638 0-59.097-26.46-59.097-59.098C274.807 26.459 301.266 0 333.904 0z" />
-                  </svg>
+                  <MoveSvgIcon  className="move-svg-icon" style={{position:'relative', top:'2px'}}/>
+                <span>{t(item.headerName)}</span>
                 </div>
                   <div
                   className="preference-checkbox">
-                  <Checkbox 
+                  <IosSwitch
                   checked={!unChecked || !unChecked?.includes(item.field)}
                   disabled={["default","DAS Lite"].includes(selectedList)}
                   
@@ -97,9 +96,8 @@ const PreferenceList = ({ columnsWithAccess,unChecked,setUnChecked,selectedList,
                             }
                       }
                     }}>
-                    </Checkbox>
+                    </IosSwitch>
                     </div>
-                <span>{t(item.headerName)}</span>
               </div>
             ))}
           </div>
