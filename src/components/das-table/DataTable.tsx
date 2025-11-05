@@ -115,7 +115,7 @@ export default function DataTable({
 
           {/* this is used in statement where before filter we are having approve and wired status buttons */}
           {showRightActionButtons && (
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <div style={{ display: "flex", justifyContent: "flex-end", flexDirection:'row-reverse', gap:'15px' }}>
               <>
                 {showDownloadButton && (
                   <TooltipDasButton

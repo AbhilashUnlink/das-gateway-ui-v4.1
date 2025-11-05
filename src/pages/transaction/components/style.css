@@ -965,10 +965,9 @@ button.edit-button svg {
   left: auto !important;
 }
 
-/*  */
-/* .table-icons {
-  margin-bottom: 32px;
-} */
+ .table-icons {
+  margin-bottom: 12px;
+}
 .drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns button img.table-icon-img {
   display: none;
 }
@@ -1466,25 +1465,60 @@ img.not-copy {
 .transaction-tiles {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 3px 0px 0;
+  gap: 8px;
+  width: auto;
+  height: 36px;
+  background: #FFF6E6;
+  border: 1px solid #FFFFFF;
+  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .transaction-tiles .tile-left {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  border: 1px solid #e77236 !important;
-  color: #e77236 !important;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
   text-transform: none !important;
-  background: #fff !important;
   min-width: 36px !important;
-  gap: 10px;
-  height: 35px;
-  box-shadow: 0 2px 8px 0 rgba(99, 99, 99, .2);
-  padding: 0 15px;
+  gap: 0px;
+  height: 36px;
+  padding: 1px 15px;
+  text-align: left;
+  position: relative;
 }
-
+.transaction-tiles .tile-left::after {
+  position: absolute;
+  content: "";
+  background: orange;
+  width: 1px;
+  height: 20px;
+  right: -3px;
+  top: 8px;
+}
 .transaction-tiles .tile-left h3 {
-  font-size: .85rem;
+  font-size: 12px;
+  color: #e77236 !important;
+  margin: 0;
+  text-align: left;
+  font-weight: 500;
+}
+.transaction-tiles .tile-left h4{
+  color: #1a1a1a !important;
+  margin: 0;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+}
+.transaction-tiles .tile-left:last-child::after {
+  display: none !important;
 }

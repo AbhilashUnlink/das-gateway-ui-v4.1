@@ -385,3 +385,6 @@ button.ant-btn.notification-popover {
   max-width: 52px;
   padding: 0 14px 0 3px;
 }
+.menu-buttons-new button:hover {
+  box-shadow: none;
+}

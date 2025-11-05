@@ -12,8 +12,8 @@ const MenuAppBar = ({ toggleSideBar }: { toggleSideBar: any }) => {
   return (
     <Suspense fallback={<></>}>
       <div className="menu-buttons-new">
-        <div style={{ width: "10%" }}>
-          <Menu onClick={toggleSideBar} />
+        <div style={{ width: "10%", display:'flex', alignItems:'center', padding: '5px 10px' }}>
+          <Menu onClick={toggleSideBar} style={{cursor:'pointer'}} />
         </div>
         <div style={{ width: "90%", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
           <SelectTime />

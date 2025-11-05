@@ -480,8 +480,8 @@ li.ant-menu-item.ant-menu-item-selected{    height: 50px !important;
     width: 36px;
     height: 36px;
     background: rgba(247, 148, 29, 0.1);
-    left: 19px;
-    top: 4px;
+    left: 15px;
+    top: 7px;
     content: "";
     position: absolute;
     border-radius: 100px;
@@ -501,4 +501,11 @@ li.ant-menu-item.ant-menu-item-active::before {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed li.ant-menu-item.ant-menu-item-selected::before {
+  left: 19px;
+  top: 4px;
+}
+aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed li.ant-menu-item:hover{
+  background: transparent !important;
 }
