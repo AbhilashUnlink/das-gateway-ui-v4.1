@@ -719,10 +719,11 @@ div#filter-select p {
   cursor: pointer;
   color: #1a1a1a;
   border-radius: 4px;
-  padding: 0 4px;
+  padding: 0 0px;
   display: flex;
   align-items: center;
   min-width: 27px;
+  justify-content: center;
 }
 button.new-gen-filter-action-button:last-child
  {
@@ -754,6 +755,7 @@ button.new-gen-filter-action-button:last-child:hover{
   flex: none;
   order: 2;
   flex-grow: 0;
+  position: relative;
 }
 
   
@@ -792,4 +794,25 @@ button.new-gen-filter-action-button:last-child:hover{
   padding: 0px 0 !important;
   position: relative;
   top: 11px;
+}
+.next-gen-filter-wrap .MuiStack-root.filter-chips {
+  position: absolute;
+  right: 0%;
+  background: #fff;
+  min-width: 480px;
+  max-width: 480px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.04);
+  z-index: 99;
+  top: 100%;
+  border: 1px solid rgba(219, 219, 219, 1);
+}
+.new-gen-filter-action-button:nth-child(2) div svg {
+  width: 15px;
+}
+.new-gen-filter-action-button div svg
+{
+  width: 21px;
+  height: 21px;
 }

@@ -23,6 +23,7 @@ export const schema = {
       component: "text-field",
       name: "password",
       type: "password",
+      startIcon: "PasswordOutlineIcon",
       placeholder: i18n.t("Password"),
       validate: [
         {
