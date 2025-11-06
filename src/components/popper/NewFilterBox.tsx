@@ -3,13 +3,14 @@ import {
   Box,
   Button,
   Chip,
+  IconButton,
   MenuItem,
   Select,
   Stack,
   TextField,
   Typography,
 } from '@mui/material';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { OPERATORS_VALUE, operatorOptionsMap } from './filterOptions';
 import { resetInitialFilter } from 'store/features/gateway-config';
@@ -18,7 +19,7 @@ import { FILTER_INPUT_TYPES, HAS_3DS_TYPE, HEADER_COLUMN, View_Name_Space } from
 import { showInAscendingOrder } from 'utils/helper';
 import DateRangePicker from './component/date-range-picker';
 import NewDateRangeFilter from './component/NewDateRangeFilter';
-import { PlusSvgIcon, ResetSvgIcon } from 'components/svg-icons/SvgIcons';
+import { CloseSvgIcon, PlusSvgIcon, ResetSvgIcon } from 'components/svg-icons/SvgIcons';
 
 export const NewFilterBox = ({
   filters,
@@ -51,10 +52,17 @@ export const NewFilterBox = ({
 
   const getWidth = (val: string, fallback: string = 'Value') =>
     `${Math.max((val || fallback).length, 1)}ch`;
+const [filterPop, setFilterPop]= useState(false);
+  const handleFilterPopClose = () =>{
+    setFilterPop(false);
+  };
 
   const renderChips = useMemo(() => {
     return (
       <Stack className="filter-chips">
+        <IconButton onClick={() => handleFilterPopClose()} style={{position:'absolute', right:'-13px', top:'-13px', width:'36px', height:'36px', padding:'10px 5px 5px'}}>
+            <CloseSvgIcon/>
+          </IconButton>
         {allFilters?.length > 0 &&
           allFilters.map((filter: any, index: number) => {
             const valueFilter =
@@ -138,7 +146,7 @@ export const NewFilterBox = ({
   return (
     <>
       <div className="next-gen-filter-wrap">
-        <div style={{ width: allFilters?.length === 0 ? '100%' : '79%', display: "flex", alignItems: "center" }}>
+        <div style={{ width: allFilters?.length === 0 ? '100%' : '100%', display: "flex", alignItems: "center" }}>
           {/* filter initial */}
           {!filters?.field ? (
             <div className="form-group p-0-inline" style={{ width: '100%', margin: '0' }}>
@@ -461,7 +469,8 @@ export const NewFilterBox = ({
             )
           )}
           {/* and or button */}
-          {allFilters?.length >= 1 && <div style={{ width: '15%' }}>
+          {allFilters?.length >= 1 && <div style={{ width: '19%' }}>
+          <div className="form-group p-0-inline label-and-or-form-wrap" style={{margin:'0', paddingLeft: '7px',}}>
             <Select
               style={{ width: '100%' }}
               id="filter-select"
@@ -483,18 +492,24 @@ export const NewFilterBox = ({
                 );
               })}
             </Select>
+              </div>
           </div>}
 
           <div style={{ display: "flex", gap: "5px" }}>
             <button className={"new-gen-filter-action-button"}
               disabled={!filters?.field || !filters?.operator || !filters?.value}
-              onClick={() => handlePlusClick()}
+              onClick={() =>{
+                 handlePlusClick();
+                setFilterPop(true);
+              }
+              }
             >
               <PlusSvgIcon />
             </button>
             <button className={"new-gen-filter-action-button"}
               onClick={() => {
                 handleResetFilter();
+                setFilterPop(false);
                 if (ns === View_Name_Space.TRANSACTION) {
                   dispatch(resetInitialFilter());
                 }
@@ -510,6 +525,7 @@ export const NewFilterBox = ({
               }
               onClick={() => {
                 handleApplyFilter();
+                setFilterPop(true);
                 if (ns === View_Name_Space.TRANSACTION) {
                   dispatch(resetInitialFilter());
                 }
@@ -521,7 +537,7 @@ export const NewFilterBox = ({
         </div>
 
 
-        {renderChips}
+        {allFilters?.length > 0 && filterPop && renderChips}
 
       </div>
     </>
