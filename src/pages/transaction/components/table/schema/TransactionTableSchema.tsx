@@ -3,14 +3,15 @@ import {
   getAmount,
   getAmountWithCurrency,
   getCardType,
-  getStatusIcon,
+  // getStatusIcon,
 } from '../../../../../utils/helper';
 import { INTEGRATION_TYPE, PAYMENT_TYPE, TRANSACTION_TYPE_LABEL } from '../../constants/transaction';
 import ActionButton from '../../buttons/ActionButton';
-import { Tooltip } from '@mui/material';
+// import { Tooltip } from '@mui/material';
 import i18n from 'i18n';
 import { FILTER_INPUT_TYPES } from 'components/popper/constants/filter-constants';
 import { BookmarkBorderOutlined } from '@mui/icons-material';
+import UuidCopy from 'components/uuid-copy/UuidCopy';
 
 
 export const columns: any = (filterDateFormatter: any) => {
@@ -43,7 +44,7 @@ export const columns: any = (filterDateFormatter: any) => {
         hideable: false,
         renderCell: (params: any) => (
           <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
-            <div className="table-header-top-label value">{params.row?.uuid}</div>
+            <div className="table-header-top-label value"><UuidCopy uuid={params.row?.uuid} /></div>
             <div>{params.row?.TransactionID}</div>
           </div>
         ),
@@ -72,6 +73,299 @@ export const columns: any = (filterDateFormatter: any) => {
       //   type: FILTER_INPUT_TYPES.TEXT,
       // },
       {
+        field: 'status',
+        headerName: i18n.t('TransactionsResult.columnDefs.status'),
+        type: FILTER_INPUT_TYPES.SELECT,
+        translation: "TransactionsResult.columnDefs.status",
+        renderCell: (params: any) => {
+          const transactionStatus = params?.row?.status || params?.row?.Status;
+          // console.log(transactionStatus,"transactionStatus");
+          const colors: any = {
+            SUCCESSFUL: {
+              color: "#1e8f20",       // dark green text
+              bgcolor: "#c6f3da",     // light green background
+            },
+            NOTSUCCESSFUL: {
+              color: "#ff4443",       // dark red text
+              bgcolor: "#ffe2e2",     // light red background
+            },
+            PENDING: {
+              color: "#ae7f15",       // dark amber text
+              bgcolor: "#ffe8b5",     // light amber background
+            },
+          };
+
+          return (
+            <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
+              <div className="table-header-top-label value"
+                style={{
+                  color: colors[transactionStatus].color,
+                  backgroundColor: colors[transactionStatus].bgcolor,
+                  borderRadius: "4px",
+                  padding: "2px 6px",
+                  width: "fit-content",
+                  fontWeight: 500,
+                }}
+              >{TRANSACTION_TYPE_LABEL[params.row.TransactionType]?.toUpperCase()}</div>
+            </div>
+          )
+        },
+        renderHeader: () => (
+          <div>
+            <div className="table-header-top-label">
+              Transaction Type
+            </div>
+            <div>Status</div>
+          </div>
+        ),
+        // renderCell: (params: any) => {
+        //   const transactionStatus = params?.row?.status || params?.row?.Status;
+        //   const GatewayError = i18n.t('TransactionsResult.columnDefs.GatewayError');
+        //   const ResponseCode = i18n.t('TransactionsResult.columnDefs.ResponseCode');
+        //   return (
+        //     <>
+        //       {transactionStatus === 'NOTSUCCESSFUL' ?
+        //         <Tooltip title={
+        //           <>
+        //             <ol>
+        //               <li className="products-names"><strong>{ResponseCode}:</strong> {params.row?.ResponseCode}</li>
+        //               <li className="products-names"><strong>{GatewayError}:</strong> {params.row?.GatewayResponse}</li>
+        //             </ol>
+        //           </>
+        //         } arrow>
+        //           <img
+        //             src={getStatusIcon(transactionStatus)}
+        //             className="transaction-status-icons"
+        //             alt={transactionStatus}
+        //           />
+        //         </Tooltip>
+        //         : <img
+        //           src={getStatusIcon(transactionStatus)}
+        //           className="transaction-status-icons"
+        //           alt={transactionStatus}
+        //         />
+        //       }
+        //       {params.row
+        //         ? TRANSACTION_TYPE_LABEL[params.row.TransactionType]?.toUpperCase()
+        //         : ''}
+        //     </>
+        //   );
+        // },
+        sortable: false,
+        headerClassName: 'super-app-theme--header',
+        width: 180,
+        align: 'left',
+        hide: false,
+        showInAdditionalColumn: true,
+        nonSelectableField: true,
+        defaultSelectedInAdditionalColumn: true,
+        showInStatementTransaction: true,
+      },
+      {
+        field: 'amount',
+        headerName: i18n.t('TransactionsResult.columnDefs.Amount'),
+        translation: "TransactionsResult.columnDefs.Amount",
+        sortable: false,
+        headerClassName: 'super-app-theme--header',
+        width: 120,
+        align: 'left',
+        hide: false,
+        showInAdditionalColumn: true,
+        nonSelectableField: true,
+        defaultSelectedInAdditionalColumn: true,
+        showInStatementTransaction: true,
+        type: FILTER_INPUT_TYPES.NUMBER,
+        renderHeader: () => (
+          <div>
+            <div className="table-header-top-label">
+              {i18n.t('TransactionsResult.columnDefs.Amount')}
+            </div>
+            <div>Fees</div>
+          </div>
+        ),
+        renderCell: (params: any) => {
+          const transactionAmount = params?.row?.amount || params?.row?.Amount;
+          const fees =
+            getAmountWithCurrency(getAmount(transactionAmount, params?.row?.CurrencyCode), params?.row?.CurrencyCode);
+
+          return (
+            <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
+              <div className="table-header-top-label value">
+                {getAmountWithCurrency(getAmount(transactionAmount, params?.row?.CurrencyCode), params?.row?.CurrencyCode)}
+              </div>
+              <div>
+                {fees}
+              </div>
+            </div>
+          )
+        },
+
+      },
+      {
+        field: 'Date',
+        headerName: i18n.t('TransactionsResult.columnDefs.Date'),
+        translation: "TransactionsResult.columnDefs.Date",
+        sortable: false,
+        headerClassName: 'super-app-theme--header',
+        minWidth: 220,
+        hide: false,
+        showInAdditionalColumn: true,
+        nonSelectableField: true,
+        defaultSelectedInAdditionalColumn: true,
+        showInStatementTransaction: true,
+        type: FILTER_INPUT_TYPES.NEWDATERANGEPICKER,
+        renderHeader: () => (
+          <div>
+            <div className="table-header-top-label">
+              {i18n.t('TransactionsResult.columnDefs.Date')}
+            </div>
+            <div>{i18n.t('TransactionsResult.columnDefs.UpdatedTransactionDate')}</div>
+          </div>
+        ),
+        renderCell: (params: any) => {
+          const transactionDate = params?.row?.Date && filterDateFormatter(params?.row?.Date);
+          const updatedDate = params?.row?.Date && filterDateFormatter(params?.row?.UpdatedDate);
+          return (
+            <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
+              <div className="table-header-top-label value">
+                {transactionDate}
+              </div>
+              <div>
+                {updatedDate}
+              </div>
+            </div>
+          )
+        },
+      },
+      // {
+      //   field: 'UpdatedDate',
+      //   headerName: i18n.t('TransactionsResult.columnDefs.UpdatedTransactionDate'),
+      //   translation: "TransactionsResult.columnDefs.UpdatedTransactionDate",
+      //   sortable: false,
+      //   headerClassName: 'super-app-theme--header',
+      //   minWidth: 220,
+      //   hide: false,
+      //   valueGetter: (_params: any, row: any) =>
+      //     row?.UpdatedDate &&
+      //     filterDateFormatter(row?.UpdatedDate),
+      //   nonSelectableField: true,
+      //   defaultSelectedInAdditionalColumn: true,
+      //   showInStatementTransaction: true,
+      //   showInAdditionalColumn: true,
+      //   type: FILTER_INPUT_TYPES.NEWDATERANGEPICKER,
+      // },
+
+      {
+        field: 'PaymentType',
+        headerName: i18n.t('TransactionsResult.columnDefs.PaymentType'),
+        renderHeader: () => (
+          <div>
+            <div className="table-header-top-label">
+              {i18n.t('TransactionsResult.columnDefs.PaymentType')}
+            </div>
+            <div style={{ display: "flex", gap: "5px" }}>
+              <div>
+                {i18n.t('TransactionsResult.columnDefs.Scheme')}
+              </div>
+              <div className='table-header-divider'>
+
+              </div>
+              <div>
+                {i18n.t('TransactionsResult.columnDefs.CardNumber')}
+              </div>
+            </div>
+          </div>
+        ),
+        translation: "TransactionsResult.columnDefs.PaymentType",
+        sortable: false,
+        headerClassName: 'super-app-theme--header',
+        width: 220,
+        align: 'left',
+        hide: false,
+        showInAdditionalColumn: true,
+        renderCell: (params: any) => {
+          return <>
+            <div style={{ display: "flex", gap: "8px", alignItems: "center", justifyContent: "flex-start", height: "50px" }}>
+              <div style={{ background: "white", borderRadius: "8px", display: "flex", justifyContent: "center", alignItems: "center", objectFit: "contain", padding: "5px", boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}>
+                <img
+                  src={getCardType(params?.row?.Scheme)}
+                  className="transaction-scheme-icons"
+                  style={{ width: "24px" }}
+                  alt=""
+                />
+              </div>
+              <div>
+                <div>
+                  {params?.row?.PaymentType ? PAYMENT_TYPE[(params?.row?.PaymentType)].toUpperCase() : 'N/A'},
+                </div>
+                <div>
+                  {params?.row?.CardNumber}
+                </div>
+              </div>
+            </div>
+
+          </>
+        },
+        nonSelectableField: true,
+        showInStatementTransaction: true,
+        defaultSelectedInAdditionalColumn: true,
+        type: FILTER_INPUT_TYPES.AUTOSELECT,
+      },
+
+      // {
+      //   field: 'Scheme',
+      //   headerName: i18n.t('TransactionsResult.columnDefs.Scheme'),
+      //   translation: "TransactionsResult.columnDefs.Scheme",
+      //   sortable: false,
+      //   headerClassName: 'super-app-theme--header',
+      //   width: 80,
+      //   hide: false,
+      //   renderCell: function (params: any) {
+      //     return (
+      //       <>
+      //         <img
+      //           src={getCardType(params.row.Scheme)}
+      //           className="transaction-scheme-icons"
+      //           alt=""
+      //         />
+      //       </>
+      //     );
+      //   },
+      //   showInAdditionalColumn: true,
+      //   nonSelectableField: true,
+      //   defaultSelectedInAdditionalColumn: true,
+      //   type: FILTER_INPUT_TYPES.SELECT,
+      // },
+      // {
+      //   field: 'CardNumber',
+      //   headerName: i18n.t('TransactionsResult.columnDefs.CardNumber'),
+      //   translation: "TransactionsResult.columnDefs.CardNumber",
+      //   sortable: false,
+      //   width: 130,
+      //   headerClassName: 'super-app-theme--header',
+      //   hide: false,
+      //   showInAdditionalColumn: true,
+      //   nonSelectableField: true,
+      //   defaultSelectedInAdditionalColumn: true,
+      //   showInStatementTransaction: true,
+      //   type: FILTER_INPUT_TYPES.TEXT,
+      // },
+      {
+        field: 'DASMID',
+        headerName: i18n.t('TransactionsResult.columnDefs.DASMID'),
+        translation: "TransactionsResult.columnDefs.DASMID",
+        sortable: false,
+        headerClassName: 'super-app-theme--header',
+        width: 125,
+        align: 'left',
+        hide: false,
+        showInAdditionalColumn: true,
+        nonSelectableField: true,
+        defaultSelectedInAdditionalColumn: true,
+        type: FILTER_INPUT_TYPES.AUTOSELECT,
+      },
+
+      {
         field: 'LegalName',
         headerName: i18n.t('TransactionsResult.columnDefs.Merchant'),
         translation: "TransactionsResult.columnDefs.Merchant",
@@ -99,151 +393,10 @@ export const columns: any = (filterDateFormatter: any) => {
         defaultSelectedInAdditionalColumn: true,
         type: FILTER_INPUT_TYPES.TEXT,
       },
-      {
-        field: 'amount',
-        headerName: i18n.t('TransactionsResult.columnDefs.Amount'),
-        translation: "TransactionsResult.columnDefs.Amount",
-        sortable: false,
-        headerClassName: 'super-app-theme--header',
-        width: 120,
-        align: 'left',
-        valueGetter: (_params: any, row: any) => {
-          // on statement transaction we are getting Amount and on transaction we are getting amount
-          const transactionAmount = row?.amount || row?.Amount;
-          if (row?.CurrencyCode) {
-            return getAmountWithCurrency(getAmount(transactionAmount, row?.CurrencyCode), row?.CurrencyCode);
-          } else {
-            return "N/A"
-          }
-        },
-        hide: false,
-        showInAdditionalColumn: true,
-        nonSelectableField: true,
-        defaultSelectedInAdditionalColumn: true,
-        showInStatementTransaction: true,
-        type: FILTER_INPUT_TYPES.NUMBER,
-      },
-      {
-        field: 'status',
-        headerName: i18n.t('TransactionsResult.columnDefs.status'),
-        type: FILTER_INPUT_TYPES.SELECT,
-        translation: "TransactionsResult.columnDefs.status",
-        renderCell: (params: any) => {
-          // on statement transaction we are getting Amount and on transaction we are getting amount
-          const transactionStatus = params?.row?.status || params?.row?.Status;
-          const GatewayError = i18n.t('TransactionsResult.columnDefs.GatewayError');
-          const ResponseCode = i18n.t('TransactionsResult.columnDefs.ResponseCode');
-          return (
-            <>
-              {transactionStatus === 'NOTSUCCESSFUL' ?
-                <Tooltip title={
-                  <>
-                    <ol>
-                      <li className="products-names"><strong>{ResponseCode}:</strong> {params.row?.ResponseCode}</li>
-                      <li className="products-names"><strong>{GatewayError}:</strong> {params.row?.GatewayResponse}</li>
-                    </ol>
-                  </>
-                } arrow>
-                  <img
-                    src={getStatusIcon(transactionStatus)}
-                    className="transaction-status-icons"
-                    alt={transactionStatus}
-                  />
-                </Tooltip>
-                : <img
-                  src={getStatusIcon(transactionStatus)}
-                  className="transaction-status-icons"
-                  alt={transactionStatus}
-                />
-              }
-              {params.row
-                ? TRANSACTION_TYPE_LABEL[params.row.TransactionType]?.toUpperCase()
-                : ''}
-            </>
-          );
-        },
-        sortable: false,
-        headerClassName: 'super-app-theme--header',
-        width: 180,
-        align: 'left',
-        hide: false,
-        showInAdditionalColumn: true,
-        nonSelectableField: true,
-        defaultSelectedInAdditionalColumn: true,
-        showInStatementTransaction: true,
-      },
-      {
-        field: 'Date',
-        headerName: i18n.t('TransactionsResult.columnDefs.Date'),
-        translation: "TransactionsResult.columnDefs.Date",
-        sortable: false,
-        headerClassName: 'super-app-theme--header',
-        minWidth: 220,
-        hide: false,
-        valueGetter: (_params: any, row: any) =>
-          row?.Date &&
-          filterDateFormatter(row?.Date),
-        showInAdditionalColumn: true,
-        nonSelectableField: true,
-        defaultSelectedInAdditionalColumn: true,
-        showInStatementTransaction: true,
-        type: FILTER_INPUT_TYPES.NEWDATERANGEPICKER,
-      },
-      {
-        field: 'UpdatedDate',
-        headerName: i18n.t('TransactionsResult.columnDefs.UpdatedTransactionDate'),
-        translation: "TransactionsResult.columnDefs.UpdatedTransactionDate",
-        sortable: false,
-        headerClassName: 'super-app-theme--header',
-        minWidth: 220,
-        hide: false,
-        valueGetter: (_params: any, row: any) =>
-          row?.UpdatedDate &&
-          filterDateFormatter(row?.UpdatedDate),
-        nonSelectableField: true,
-        defaultSelectedInAdditionalColumn: true,
-        showInStatementTransaction: true,
-        showInAdditionalColumn: true,
-        type: FILTER_INPUT_TYPES.NEWDATERANGEPICKER,
-      },
-      {
-        field: 'DASMID',
-        headerName: i18n.t('TransactionsResult.columnDefs.DASMID'),
-        translation: "TransactionsResult.columnDefs.DASMID",
-        sortable: false,
-        headerClassName: 'super-app-theme--header',
-        width: 125,
-        align: 'left',
-        hide: false,
-        showInAdditionalColumn: true,
-        nonSelectableField: true,
-        defaultSelectedInAdditionalColumn: true,
-        type: FILTER_INPUT_TYPES.AUTOSELECT,
-      },
-      {
-        field: 'Scheme',
-        headerName: i18n.t('TransactionsResult.columnDefs.Scheme'),
-        translation: "TransactionsResult.columnDefs.Scheme",
-        sortable: false,
-        headerClassName: 'super-app-theme--header',
-        width: 80,
-        hide: false,
-        renderCell: function (params: any) {
-          return (
-            <>
-              <img
-                src={getCardType(params.row.Scheme)}
-                className="transaction-scheme-icons"
-                alt=""
-              />
-            </>
-          );
-        },
-        showInAdditionalColumn: true,
-        nonSelectableField: true,
-        defaultSelectedInAdditionalColumn: true,
-        type: FILTER_INPUT_TYPES.SELECT,
-      },
+
+
+
+
       {
         field: 'has3DS',
         headerName: i18n.t('TransactionsResult.columnDefs.IntegrationMethod'),
@@ -290,23 +443,7 @@ export const columns: any = (filterDateFormatter: any) => {
         defaultSelectedInAdditionalColumn: true,
         type: FILTER_INPUT_TYPES.AUTOSELECT,
       },
-      {
-        field: 'PaymentType',
-        headerName: i18n.t('TransactionsResult.columnDefs.PaymentType'),
-        translation: "TransactionsResult.columnDefs.PaymentType",
-        sortable: false,
-        headerClassName: 'super-app-theme--header',
-        width: 120,
-        align: 'left',
-        hide: false,
-        showInAdditionalColumn: true,
-        renderCell: (params: any) =>
-          params?.row?.PaymentType ? PAYMENT_TYPE[(params?.row?.PaymentType)].toUpperCase() : 'N/A',
-        nonSelectableField: true,
-        showInStatementTransaction: true,
-        defaultSelectedInAdditionalColumn: true,
-        type: FILTER_INPUT_TYPES.AUTOSELECT,
-      },
+
       {
         field: 'TransactionType',
         headerName: i18n.t('TransactionsResult.columnDefs.TransactionType'),
@@ -331,20 +468,7 @@ export const columns: any = (filterDateFormatter: any) => {
           );
         }
       },
-      {
-        field: 'CardNumber',
-        headerName: i18n.t('TransactionsResult.columnDefs.CardNumber'),
-        translation: "TransactionsResult.columnDefs.CardNumber",
-        sortable: false,
-        width: 130,
-        headerClassName: 'super-app-theme--header',
-        hide: false,
-        showInAdditionalColumn: true,
-        nonSelectableField: true,
-        defaultSelectedInAdditionalColumn: true,
-        showInStatementTransaction: true,
-        type: FILTER_INPUT_TYPES.TEXT,
-      },
+
 
       {
         field: 'MerchantRefID',

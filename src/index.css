@@ -22,3 +22,16 @@ body {
 .table-header-top-label {
     font-weight: 600;
 }
+
+.transaction-action-button {
+    margin-top: 14px;
+}
+
+.table-header-divider {
+    width: 2px;
+    height: 14px;
+    background: #b6b2b2;
+    position: relative;
+    top: 4px;
+    border-radius: 50px;
+}

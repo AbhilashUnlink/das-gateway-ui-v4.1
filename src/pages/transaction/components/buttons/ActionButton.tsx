@@ -74,7 +74,7 @@ const ActionButton = ({ data }: any) => {
   const loading = useSelector(loadingTransactionDetails);
   return (
     <>
-      <DasInfo onClick={(e: any) => handlePopover(e, uuid)} />
+      <DasInfo className={"transaction-action-button"} onClick={(e: any) => handlePopover(e, uuid)} />
 
       <Popover
         id={popid}
