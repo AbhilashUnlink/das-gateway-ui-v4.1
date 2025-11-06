@@ -6,28 +6,24 @@ import {
   Drawer,
   FormControl,
   FormControlLabel,
-  FormLabel,
   Radio,
   RadioGroup,
   Grid,
   styled,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import additionalColumns from "../../../../assets/images/additionalColumns.png";
 import "./style.css";
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, Delete } from "@mui/icons-material";
-import DasSnackbar from "components/das-snackbar/DasSnackbar";
 import PreferenceList from "./PreferenceList";
 import { useDispatch, useSelector } from "react-redux";
 import { useFetchWrapper as Api } from "utils";
 import { FILE_FORMATS_VALUES } from "pages/user-settings/file-format";
-import { Done } from "@mui/icons-material";
 import { DATE_FORMATS_OPTIONS } from "components/constants/date-formats";
 import { setUserPreference } from "store/features/gateway-config";
 import GridItem from "components/grid-item/GridItem";
 import ConfirmationDialogRaw from "components/confirmation-dialog/ConfirmationDialog";
 import { CloseSvgIcon, ColumnPreferenceSvgIcon, DeleteSvgIcon, PreferenceSvgIcon } from "components/svg-icons/SvgIcons";
+import DasSnackbar from "components/das-snackbar/DasSnackbar";
 
 const NewColumnPreference = ({
   columnsWithAccess,
@@ -255,14 +251,14 @@ const NewColumnPreference = ({
           >
             <CloseSvgIcon className="close-svg-icon" />
           </IconButton>
-          <PreferenceSvgIcon className="column-preference-svg"/>
-          <h3 style={{paddingLeft:'15px'}} title={selectedList}>{t(`${selectedList}`)}</h3>
+          <PreferenceSvgIcon className="column-preference-svg" />
+          <h3 style={{ paddingLeft: '15px' }} title={selectedList}>{t(`${selectedList}`)}</h3>
         </DrawerHeader>
         <Grid container spacing={2}>
           <GridItem
             style={{ width: "46%", boxShadow: "none", borderRadius: "none" }}
           >
-                        <div className="additional-preference-radio-column additional-preference-add-section">
+            <div className="additional-preference-radio-column additional-preference-add-section">
               <div className="searchContainer additionalFiterData">
                 <form onSubmit={handleAddList}>
                   <h3>{t("User_Settings.Add Custom Preference List")}</h3>
@@ -293,9 +289,9 @@ const NewColumnPreference = ({
                         )}`}
                       </span>
                     )}
-                    <Button type="submit" disabled={isListNameError}>
+                    <button className="prefernce-action-button add-prefernce-button" type="submit" disabled={isListNameError}>
                       {t("User_Settings.buttons.Add")}
-                    </Button>
+                    </button>
                   </div>
                 </form>
               </div>
@@ -348,7 +344,7 @@ const NewColumnPreference = ({
                             }
                             className={
                               item === selectedList ||
-                              ["default", "DAS Lite"].includes(item)
+                                ["default", "DAS Lite"].includes(item)
                                 ? "delete-list disabled"
                                 : "delete-list"
                             }
@@ -361,9 +357,9 @@ const NewColumnPreference = ({
                   </RadioGroup>
                 </FormControl>
 
-                <div>
+                <div className="flex justify-end w-full">
                   <button
-                    className="apply-Preference-filter"
+                    className="prefernce-action-button  apply-preference-button"
                     onClick={() => {
                       const order = updatedList
                         ?.filter(
@@ -384,8 +380,7 @@ const NewColumnPreference = ({
                       });
                     }}
                   >
-                    {" "}
-                    <Done /> {t("Filter.button.Apply")}
+                    {t("Filter.button.Apply")}
                   </button>
                 </div>
               </div>
