@@ -8,13 +8,12 @@ import './style.css';
 import { useTranslation } from 'react-i18next';
 // import ConfirmationDialogRaw from '../confirmation-dialog/ConfirmationDialog';
 import TooltipDasButton from '../../pages/transaction/components/buttons/TootlipDasButton';
-import { Download } from '@mui/icons-material';
 import DownlaodDrawer from './DownlaodDrawer';
 import DasDrawer from '../das-drawer/DasDrawer';
 import { DRAWER_TYPE, DRAWER_WIDTH } from '../constants/drawer';
 import SkeletonLoadingOverlay from './SkeletonOverlay';
 import { NewFilterPopup } from 'components/popper/NewFilterPopup';
-import { DownloadSvgIcon } from 'components/svg-icons/SvgIcons';
+import { DownloadReportTitleSvgIcon, DownloadSvgIcon } from 'components/svg-icons/SvgIcons';
 
 // import { resetFilter } from '../../redux/features/filter';
 // import { useDispatch } from 'react-redux';
@@ -98,6 +97,7 @@ export default function DataTable({
             isDrawerOpen: showDownloadPopup,
             type: DRAWER_TYPE.CHILDREN,
             width: DRAWER_WIDTH.FIFTY,
+            icon:<DownloadReportTitleSvgIcon/>,
             title:
               'TransactionDetailDrawerBody.TransactionReportDownload.TransactionDownload',
           }}

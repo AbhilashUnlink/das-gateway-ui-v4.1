@@ -20,6 +20,8 @@
 .drawer-header button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium {
     position: absolute;
     right: 10px;
+    width: 40px;
+    height: 40px;
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiDrawer-paper {

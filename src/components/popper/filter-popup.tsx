@@ -18,7 +18,7 @@ import { useState } from 'react';
 import FilterPopupData from './config/FilterPopupData';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { resetFilter, setFilterPayload, userFilter } from '../../redux/features/filter';
+import { resetFilter, setFilterPayload, userFilter } from 'store/features/filter';
 import countries from '../../config/common/countries';
 import MCC from './config/mcc';
 import PRODUCT_TYPE from './constants/products';
@@ -31,11 +31,7 @@ import {
   TRANSACTION_PAYMENT_TYPE,
   TRANSACTION_TYPE,
 } from '../../pages/transaction/components/constants/transaction';
-import {
-  FilterPopupPropsType,
-  FilterPropsType,
-  HeaderNameType,
-} from '../../@types/filter.type';
+
 import {
   FILTER_POPOP_OF,
   HAS_3DS_TYPE,
@@ -60,32 +56,27 @@ import {
   STATEMENT_WHITELISTED_STATUS,
   WIRED_TYPE,
 } from '../../pages/statements/components/merchant-statement/constants/statement-status';
-import {
-  REGESTRATION_TYPE,
-  SALES_LEAD_FILTER_DATA,
-} from '../../pages/sales-lead/components/constant/salesLead';
-import {
-  CHARGEBACK_FILTER,
-  FILTER_HEADERS,
-} from '../../pages/dispute-management/constants/dispute-dates';
 import DasSnackbar from '../das-snackbar/DasSnackbar';
 import { BILLING_CYCLE } from '../../config/common/billingCycle';
 // import { setMerchantDetailsProductList } from '../../redux/features/merchant';
 import FitlerBox from './FitlerBox';
-import { customSort, filterDateFormatterNoTimeZone, trimToSingleSpace } from '../../utils/helper';
 import { MONTH_FORMAT } from '../constants/constants';
 // import { User_Management_Access } from '../../pages/merchants/merchant-view/components/merchant-details/constants/userManagementAccessLevel';
 import { USER_ACCESS_ROLE } from '../../pages/merchants/merchant-view/components/merchant-details/constants/merchantDetails';
 import useLegacy from '../../hooks/use-legacy/useLegacy';
 import { hasAccess } from '../../utils/has-access';
-import { allReasonCodes } from '../../redux/features/gateway-config';
-import { setFilteredDASMID } from '../../redux/features/merchant';
+import { allReasonCodes } from '../../store/features/gateway-config';
+import { setFilteredDASMID } from '../../store/features/merchant';
 import useEntity from '../../hooks/use-entity/useEntity';
-import { CATALOG_CATEGORY_STATUS } from 'pages/merchants/merchant-view/components/merchant-details/components/merchant-catalogs/constants/status';
-import useGetMerchantList from 'pages/rules/hooks/merchant-acquirer-list/useGetMerchantList';
-import useGetAcquirerList from 'pages/rules/hooks/merchant-acquirer-list/useGetAcquirerList';
+import { REGESTRATION_TYPE, SALES_LEAD_FILTER_DATA } from 'components/constants/sales-lead';
+import { CHARGEBACK_FILTER, FILTER_HEADERS } from 'components/constants/dispute-dates';
+import { customSort, filterDateFormatterNoTimeZone, trimToSingleSpace } from 'utils/helper';
+import { CATALOG_CATEGORY_STATUS } from 'pages/merchants/merchant-view/components/merchant-details/merchant-catalogs/constants/status';
+import useGetMerchantList from 'hooks/use-get-merchant-list/useGetMerchantList';
+import useGetAcquirerList from 'hooks/use-get-acquirer-list/useGetAcquirerList';
 import { assignmentTypeOptions } from 'pages/rules/schemas/assignmentsSchema';
 import { RULE_TYPE_OPTIONS } from 'pages/rules/constants/rule-type';
+import type { FilterPopupPropsType, FilterPropsType, HeaderNameType } from '../../@types/filter.type';
 //import { HASH_CARD_STATUS } from '../../pages/hash-card/constants/hashcard';
 
 const FilterPopup = ({

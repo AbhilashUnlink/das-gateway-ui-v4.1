@@ -468,7 +468,7 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
             </svg>
           </IconButton>
           {/* Drawer Title */}
-          <span>
+          <span style={{display:'flex', gap:'8px', alignItems:'center'}}>
             {drawer.icon ? drawer.icon : ''}
             <h3
             // style={{ color: drawer.titleColor ? drawer.titleColor : 'white' }}
@@ -507,6 +507,7 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
             payload={payload}
           />
         )}
+        {drawer.type === DRAWER_TYPE.CHILDREN && children}
         {/* {drawer.type === DRAWER_TYPE.RISK && (
           <RiskDrawer
             drawer={drawer}
@@ -680,7 +681,7 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
         {drawer.type === DRAWER_TYPE.MDR_RATES_FORM && (
           <MDRRatesDrawer drawer={drawer} handleDrawerClose={() => handleDrawerClose(drawer)} />
         )}
-        {drawer.type === DRAWER_TYPE.CHILDREN && children}
+        
 
         {drawer.type === DRAWER_TYPE.ONBOARDING_UPLOAD_MISSING_INFO && (
           <UploadMissingInfoDrawer

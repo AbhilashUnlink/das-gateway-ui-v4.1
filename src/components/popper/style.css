@@ -816,3 +816,206 @@ button.new-gen-filter-action-button:last-child:hover{
   width: 21px;
   height: 21px;
 }
+svg.column-preference-svg {
+  width: 34px;
+  height: 34px;
+  position: relative;
+  top: 3px;
+}
+.download-report-title-svg-wrap svg {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  top: 2px;
+}
+button.requestbtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  gap: 8px;
+  border: none;
+  height: 48px;
+  background: #F7941D;
+  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+h5.total-records-found {
+  font-size: 14px;
+  font-weight: 400;
+  color: #4D4D4D;
+}
+.download-item-lists {
+  box-sizing: border-box;
+  padding: 0px 12px 12px;
+  width: 100%;
+  min-height: 72px;
+  background: #FAFAFA;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  margin: 0 0 15px 0px;
+}
+.flex.download-list-name span, .flex.download-list-name {
+  height: 30px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  color: #1A1A1A;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.download-btn-wrap img {
+  width: 21px;
+  position: relative;
+  margin: 6px 15px 0px 0;
+}
+.t-download-list-filter h3 {
+  height: 20px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #4D4D4D;
+}
+button.dwnld-rep-btn {
+  padding: 0;
+  border: none;
+  background: transparent;
+  /* height: 42px;
+  width: 42px; */
+  border-radius: 0;
+  box-shadow: none;
+}
+button.dwnld-rep-btn:hover, button.dwnld-rep-btn:focus{
+  background: transparent !important;
+  box-shadow: 0 0 0;
+}
+button.dwnld-rep-btn .download-report-title-svg-wrap svg {
+  width: 40px;
+  height: 40px;
+}
+.report-status {
+  padding: 2px 4px;
+  height: 20px;
+  background: #ececec;
+  border-radius: 4px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1a1a1a;
+}
+.Ready{
+  background: #C6F3DA;
+  color: #1E8F1F;
+}
+.Failed {
+  background: #fbd0d0;
+  color: #fe3030;
+}
+.Initiated {
+  background: #fbe5d0;
+  color: #fea830;
+}
+.In.Progress {
+  background: transparent;
+  color: #1a1a1a;
+}
+.In.Progress svg {
+  position: relative;
+  top: 2px;
+  margin: 0 5px 0 0;
+}
+.download-list-wrapper {
+  height: 42vh;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 6px 8px 6px 0;
+  margin: 0px 0 0 0;
+}
+
+div#transaction-filter-popover .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
+  padding: 20px 20px;
+  min-width: 280px;
+}
+
+div#transaction-filter-popover .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded h3 {
+  margin: -8px -21px 12px -21px;
+  font-size: 14px;
+  color: #000;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ccc;
+  padding: 0 15px 12px 17px;
+  font-weight: 600;
+}
+
+div#transaction-filter-popover .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded .filt-listing h4 {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+div#transaction-filter-popover .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded .filt-listing h4 span {
+  font-weight: 400;
+  color: #8d8d8d;
+  display: inline-block;
+  margin: 0 0 0 5px;
+}
+button.ant-btn.ant-btn-default.filtered-items {
+  position: relative;
+  top: 5px;
+  min-width: auto;
+  border: 0;
+  background: transparent;
+  color: #e56523;
+}
+
+button.close-filter-popper {
+  position: absolute;
+  right: 9px;
+  top: 7px;
+  background: transparent;
+  border: 0;
+  z-index: 99999;
+  cursor: pointer;
+}
+
+.confirm-close {
+  position: absolute;
+  right: 20px;
+  top: 17px;
+}
+
+.confirm-close button.btn-close {
+  opacity: 1;
+  filter: invert(1);
+  cursor: pointer;
+}
+.download-item-lists .ant-progress {
+  top: -13px;
+}
+.ant-progress-bg.ant-progress-bg-outer {
+  height: 4px !important;
+}

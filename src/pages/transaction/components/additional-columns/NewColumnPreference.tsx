@@ -252,7 +252,7 @@ const NewColumnPreference = ({
             <CloseSvgIcon className="close-svg-icon" />
           </IconButton>
           <PreferenceSvgIcon className="column-preference-svg" />
-          <h3 style={{ paddingLeft: '15px' }} title={selectedList}>{t(`${selectedList}`)}</h3>
+          <h3 style={{ paddingLeft: '15px' }} title={t("User_Settings.Column Preference")}>{t("User_Settings.Column Preference")}</h3>
         </DrawerHeader>
         <Grid container spacing={2}>
           <GridItem

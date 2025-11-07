@@ -69,8 +69,13 @@ const getAmount = (amount?: any, currency?: any) => {
 
 function filterDateFormatter(payloadDate: Date, patternStr: string) {
   return formatInTimeZone(payloadDate, selectedTimeZone, patternStr);
-}
-
+};
+function filterDateFormatterNoTimeZone(payloadDate: Date, patternStr: string) {
+  return formatDate(payloadDate, patternStr);
+};
+function trimToSingleSpace(input:any) {
+  return input.replace(/\s+/g, ' ').trim();
+};
 const getFilterRequest = (item: any) => {
   if (item.selectFilterType === "autoSelect") {
     if (Array.isArray(item.valueLabel)) {
@@ -491,4 +496,6 @@ export {
   objectToBase64,
   showInAscendingOrder,
   filterDateFormatter,
+  filterDateFormatterNoTimeZone,
+  trimToSingleSpace
 };

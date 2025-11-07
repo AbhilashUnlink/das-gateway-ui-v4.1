@@ -287,3 +287,62 @@ svg.CSV, svg.excel {
   display: flex;
   align-items: center;
 }
+
+/* =============== Download Drawer =============== */
+.transaction-popper-drawer {
+  padding: 10px 20px;
+  position: relative;
+}
+.transaction-popper-drawer .btn-wrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  width: 100%;
+  height: 72px;
+  background: #FFF6E6;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.transaction-popper-drawer .tggle-das-switch {
+  display: flex;
+  width: 70%;
+  justify-content: flex-start;
+  gap: 40px;
+}
+
+.transaction-popper-drawer .tggle-das-switch label {/* Report Format */
+  width: 120.67px;
+  height: 20px;
+
+/* Highlight Text */
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+/* identical to box height, or 143% */
+  display: flex;
+  align-items: center;
+  color: #1A1A1A;
+}
+.transaction-popper-drawer .tggle-das-switch .ant-radio-group label.ant-radio-wrapper {
+  width: auto;
+  margin: 0 25px 0 0;
+  font-weight: 400;
+}
+.transaction-popper-drawer .tggle-das-switch .ant-radio-group label.ant-radio-wrapper .ant-radio-checked span.ant-radio-inner::after {
+  background: #F7941D;
+  transform: scale(.6);
+}
+.transaction-popper-drawer .tggle-das-switch .ant-radio-group label.ant-radio-wrapper .ant-radio-checked span.ant-radio-inner {
+  border-color: #F7941D;
+  background-color: #FFFFFF;
+  width: 20px;
+  height: 20px;
+}

@@ -1,43 +1,46 @@
-import { Badge, Button, Select, Space } from 'antd';
-import i18n from '../../i18n';
-import DataTable from './DataTable';
-import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
-import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
+import { Badge, Button, Flex, Progress, Radio } from "antd";
+import i18n from "../../i18n";
+import DataTable from "./DataTable";
+import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
+import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import {
   getformatDate,
   //  getInitialRowCount
-} from '../../utils/helper';
-import { useTranslation } from 'react-i18next';
+} from "../../utils/helper";
+import { useTranslation } from "react-i18next";
 import {
   downloadReportStatus,
   downloadReportStatusConstants,
-} from '../../config/common/transaction-download-status';
-import pendingDownload from '../../assets/pending-download.gif';
-import failedDownload from '../../assets/transaction-icons/payment-failed.png';
-import { Sync } from '@mui/icons-material';
-import CloseIcon from '@mui/icons-material/Close';
+} from "../../config/common/transaction-download-status";
+import pendingDownload from "../../assets/pending-download.gif";
+import failedDownload from "../../assets/transaction-icons/payment-failed.png";
+import { Sync } from "@mui/icons-material";
+import CloseIcon from "@mui/icons-material/Close";
 import {
   useEffect,
   //  useMemo,
   useState,
-} from 'react';
-import { Popover, Tooltip } from '@mui/material';
+} from "react";
+import { Popover, Tooltip } from "@mui/material";
 import {
   downloadListLoading,
   downloadTransactionReportApi,
   getDownloadTransactionReportList,
   getDownloadTransactionReportListApi,
-} from '../../store/features/transaction-table';
-import { useDispatch, useSelector } from 'react-redux';
-import { DATE_TIME_FORMAT, SELECTED_TIME_ZONE } from '../constants/constants';
+} from "../../store/features/transaction-table";
+import { useDispatch, useSelector } from "react-redux";
+import { DATE_TIME_FORMAT, SELECTED_TIME_ZONE } from "../constants/constants";
 // import ConfirmationDialogRaw from '../confirmation-dialog/ConfirmationDialog';
-import { DOWNLOAD_RECORD_COUNTS } from '../../pages/transaction/components/constants/transaction';
-import useLegacy from '../../hooks/use-legacy/useLegacy';
-import { TRANSACTION, TRANSACTION_LEGACY } from '../constants/api-paths';
-import InfoOutlined from '@mui/icons-material/InfoOutlined';
-import TooltipDasButton from '../../pages/transaction/components/buttons/TootlipDasButton';
-import { FILE_FORMATS_VALUES, fileFormatOptions } from 'pages/user-settings/file-format';
-import { CsvSvgIcon, ExcelSvgIcon } from 'components/svg-icons/SvgIcons';
+import { DOWNLOAD_RECORD_COUNTS } from "../../pages/transaction/components/constants/transaction";
+import useLegacy from "../../hooks/use-legacy/useLegacy";
+import { TRANSACTION, TRANSACTION_LEGACY } from "../constants/api-paths";
+import InfoOutlined from "@mui/icons-material/InfoOutlined";
+import TooltipDasButton from "../../pages/transaction/components/buttons/TootlipDasButton";
+import {
+  FILE_FORMATS_VALUES,
+  fileFormatOptions,
+} from "pages/user-settings/file-format";
+import { CsvSvgIcon, DownloadReportButtonSvgIcon, ExcelSvgIcon, InProgressSvgIcon } from "components/svg-icons/SvgIcons";
 
 const DownloadListTable = ({
   disableRequestDownloadButton,
@@ -54,39 +57,44 @@ const DownloadListTable = ({
   const [showMaxLimitReachedPopup, setShowMaxLimitReachedPopup] =
     useState(false);
   const tableTotalCount = useSelector(
-    (store: any) => store.transactionTable.count,
+    (store: any) => store.transactionTable.count
   );
   const selectedFormatType = useSelector(
-    (store: any) =>
-      store?.config?.userPreference?.formatType,
+    (store: any) => store?.config?.userPreference?.formatType
   );
 
   const updateText: any = {
     HPP: "HOSTED PAYMENT PAGE",
     SERVERTOSERVERAPI: "SERVER TO SERVER (API)",
     NOTSUCCESSFUL: "Not Successful",
-    VOIDAUTHORISATION: 'VOID AUTHORISATION',
-    PROCESSING: 'Pending',
-    SUCCESSFUL: 'Successful',
-    CARDPAYMENT: 'CARD PAYMENT',
-    paypay: 'PAYPAY',
-    gcash: 'GCASH',
-    konbini: 'KONBINI',
-    payeasy: 'PAYEASY',
-    CAPTURE: 'CAPTURE',
-    PURCHASE: 'PURCHASE',
-    AUTHORISATION: 'AUTHORISATION',
-    REFUND: 'REFUND',
-
+    VOIDAUTHORISATION: "VOID AUTHORISATION",
+    PROCESSING: "Pending",
+    SUCCESSFUL: "Successful",
+    CARDPAYMENT: "CARD PAYMENT",
+    paypay: "PAYPAY",
+    gcash: "GCASH",
+    konbini: "KONBINI",
+    payeasy: "PAYEASY",
+    CAPTURE: "CAPTURE",
+    PURCHASE: "PURCHASE",
+    AUTHORISATION: "AUTHORISATION",
+    REFUND: "REFUND",
   };
   const handleClick = (event: any, values: any) => {
-    const availableKeys = ["Status", "Integration Type", "Transaction Type", "Payment Type"].filter((key) => key in values);
+    const availableKeys = [
+      "Status",
+      "Integration Type",
+      "Transaction Type",
+      "Payment Type",
+    ].filter((key) => key in values);
     if (availableKeys?.length > 0) {
       const newObject = availableKeys.reduce((acc: any, key: any) => {
-        const hasMultipleValues = values[key]?.includes(',');
+        const hasMultipleValues = values[key]?.includes(",");
         if (hasMultipleValues) {
-          const multiVal = values[key].split(',').map((str: any) => updateText[str.trim()] || str.trim());
-          acc[key] = multiVal?.join(', ');
+          const multiVal = values[key]
+            .split(",")
+            .map((str: any) => updateText[str.trim()] || str.trim());
+          acc[key] = multiVal?.join(", ");
         } else {
           acc[key] = updateText[values[key]];
         }
@@ -104,22 +112,26 @@ const DownloadListTable = ({
     setAnchorEl(null);
     setOpen(false);
   };
+  const handleOpen = (event: any) => {
+    setAnchorEl(event.currentTarget);
+    setOpen(true);
+  };
 
-  const id = open ? 'transaction-filter-popover' : undefined;
+  const id = open ? "transaction-filter-popover" : undefined;
   const { t } = useTranslation();
   const columns: any = [
     {
-      field: 'action',
-      headerName: i18n.t('TransactionsResult.columnDefs.Action'),
+      field: "action",
+      headerName: i18n.t("TransactionsResult.columnDefs.Action"),
       sortable: false,
-      headerClassName: 'super-app-theme--header',
+      headerClassName: "super-app-theme--header",
       width: 80,
       renderCell: function ({ row }: any) {
         const { status, id, CreatedAt } = row;
         return (
           <>
             {downloadReportStatus[status] ===
-              downloadReportStatusConstants.Ready ? (
+            downloadReportStatusConstants.Ready ? (
               <Button
                 onClick={() => {
                   const values = {
@@ -133,7 +145,7 @@ const DownloadListTable = ({
                 <Tooltip
                   placement="top"
                   title={t(
-                    'TransactionDetailDrawerBody.TransactionReportDownload.DownloadReport',
+                    "TransactionDetailDrawerBody.TransactionReportDownload.DownloadReport"
                   )}
                 >
                   <DownloadForOfflineIcon />
@@ -163,11 +175,11 @@ const DownloadListTable = ({
     },
 
     {
-      field: 'fileName',
-      headerClassName: 'super-app-theme--header',
+      field: "fileName",
+      headerClassName: "super-app-theme--header",
       suppressMenu: true,
       headerName: i18n.t(
-        'TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.FileName',
+        "TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.FileName"
       ),
       minWidth: 300,
       renderCell: function ({ row }: any) {
@@ -175,41 +187,40 @@ const DownloadListTable = ({
           <>
             <span>
               {t(
-                'TransactionDetailDrawerBody.TransactionReportDownload.DownloadReportTitle',
+                "TransactionDetailDrawerBody.TransactionReportDownload.DownloadReportTitle"
               )}
-            </span>{' '}
+            </span>{" "}
             &nbsp;{getformatDate(row.CreatedAt, DATE_TIME_FORMAT)}
           </>
         );
       },
     },
     {
-      field: 'Format',
-      headerClassName: 'super-app-theme--header',
+      field: "Format",
+      headerClassName: "super-app-theme--header",
       suppressMenu: true,
       headerName: i18n.t(
-        'TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.FileFormat',
+        "TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.FileFormat"
       ),
       minWidth: 130,
       renderCell: function ({ row }: any) {
         return (
           <>
-            {row?.filter?.Format === FILE_FORMATS_VALUES.CSV ?
+            {row?.filter?.Format === FILE_FORMATS_VALUES.CSV ? (
               <CsvSvgIcon className={row?.filter?.Format} />
-              :
-
+            ) : (
               <ExcelSvgIcon className={row?.filter?.Format} />
-            }
+            )}
           </>
         );
       },
     },
     {
-      field: 'filter',
+      field: "filter",
       suppressMenu: true,
-      headerClassName: 'super-app-theme--header',
+      headerClassName: "super-app-theme--header",
       headerName: i18n.t(
-        'TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.Filter',
+        "TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.Filter"
       ),
       minWidth: 130,
       maxWidth: 130,
@@ -217,11 +228,11 @@ const DownloadListTable = ({
         return (
           <>
             <div className="filters-wrapper">
-              <Tooltip placement="top" arrow title={'Applied Filters'}>
+              <Tooltip placement="top" arrow title={"Applied Filters"}>
                 <Button
                   className="filtered-items"
                   aria-describedby={id}
-                  onClick={e => handleClick(e, row.filter)}
+                  onClick={(e) => handleClick(e, row.filter)}
                 >
                   <FilterAltOutlinedIcon />
                   <Badge className="app-filter-count">
@@ -235,11 +246,11 @@ const DownloadListTable = ({
       },
     },
     {
-      field: 'status',
+      field: "status",
       suppressMenu: true,
-      headerClassName: 'super-app-theme--header',
+      headerClassName: "super-app-theme--header",
       headerName: i18n.t(
-        'TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.Status',
+        "TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.Status"
       ),
       minWidth: 100,
       maxWidth: 130,
@@ -254,11 +265,12 @@ const DownloadListTable = ({
     },
   ];
   const rows = useSelector(
-    (store: any) => store.transactionTable.downloadTransactionReportList,
+    (store: any) => store.transactionTable.downloadTransactionReportList
   );
   const { reportListCount } = useSelector(
-    (store: any) => store.transactionTable,
+    (store: any) => store.transactionTable
   );
+  console.log(rows, "rows");
   let timeZone = localStorage.getItem(SELECTED_TIME_ZONE);
   const dispatch = useDispatch();
   const { filter } = useSelector((store: any) => store.filter);
@@ -285,14 +297,14 @@ const DownloadListTable = ({
             anchorEl={anchorEl}
             onClose={handleClose}
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
+              vertical: "bottom",
+              horizontal: "left",
             }}
           >
             <>
               <h3>
                 {t(
-                  'TransactionDetailDrawerBody.TransactionReportDownload.AppliedFilters',
+                  "TransactionDetailDrawerBody.TransactionReportDownload.AppliedFilters"
                 )}
               </h3>
               <button className="close-filter-popper" onClick={handleClose}>
@@ -304,47 +316,115 @@ const DownloadListTable = ({
                     return (
                       <div key={index} className="filt-listing">
                         <h4>
-                          {key.toUpperCase()}: <span>{decodeURIComponent(value)}</span>
+                          {key.toUpperCase()}:{" "}
+                          <span>{decodeURIComponent(value)}</span>
                         </h4>
                       </div>
                     );
-                  },
+                  }
                 )}
               </div>
             </>
           </Popover>
         </div>
-        <TooltipDasButton
-          title={t('TransactionsResult.Refresh')}
-          placement={'top'}
-          buttonClassName={'refresh download-drawer-refresh-button'}
-          onClick={() => dispatch(getDownloadTransactionReportList(apiPath))}
-          icon={<Sync className={loading ? 'rotating-icon' : ''} />}
-          disabled={rows?.length === 0 ? true : false}
-          loading={loading}
-        />
-        {/* {!disableRequestDownloadButton && ( */}
-        <h5 className="total-records-found">
-          Total Records: <strong>{tableTotalCount}</strong>
-        </h5>
+        <div
+          className="flex"
+          style={{ alignItems: "center", justifyContent: "space-between" }}
+        >
+          <h5 className="total-records-found">
+            Total Records: <strong>{tableTotalCount}</strong>
+          </h5>
+          <Button
+            className="view-filter-applied"
+            aria-describedby={id}
+            onClick={handleOpen}
+            style={{
+              background: "transparent",
+              padding: "0",
+              border: "0px",
+              textDecoration: "underline",
+              boxShadow: "none",
+            }}
+          >
+            View Applied Filters
+          </Button>
+          <Popover
+            className="action-button-popover"
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+          >
+            <>
+              <h3>
+                {t(
+                  "TransactionDetailDrawerBody.TransactionReportDownload.AppliedFilters"
+                )}
+              </h3>
+              <button className="close-filter-popper" onClick={handleClose}>
+                <CloseIcon />
+              </button>
+              <div>
+                {Object.entries(filterPopupData).map(
+                  ([key, value]: any, index) => {
+                    return (
+                      <div key={index} className="filt-listing">
+                        <h4>
+                          {key.toUpperCase()}:{" "}
+                          <span>{decodeURIComponent(value)}</span>
+                        </h4>
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+            </>
+          </Popover>
+        </div>
         {/* )} */}
         <div className="btn-wrapper">
           <div className="tggle-das-switch">
-            <label>{t(t(
-              'TransactionDetailDrawerBody.TransactionReportDownload.ReportType'))}</label>
-            <Space direction="vertical">
+            <label>
+              {t(
+                t(
+                  "TransactionDetailDrawerBody.TransactionReportDownload.ReportType"
+                )
+              )}
+            </label>
+            <Flex vertical gap="middle">
+            <Radio.Group 
+            block
+            onChange={(val: any) => {
+              setFileFormatType(val);
+              if (
+                tableTotalCount > DOWNLOAD_RECORD_COUNTS.min &&
+                tableTotalCount < DOWNLOAD_RECORD_COUNTS.max
+              )
+                setDisableRequestDownloadButton(false);
+            }}
+            options={fileFormatOptions} 
+            defaultValue={selectedFormatType} />
+            </Flex>
+            {/* <Space direction="vertical">
               <Select
                 defaultValue={selectedFormatType}
                 size="small"
                 style={{ width: 100 }}
                 onChange={(val: any) => {
                   setFileFormatType(val);
-                  if (tableTotalCount > DOWNLOAD_RECORD_COUNTS.min && tableTotalCount < DOWNLOAD_RECORD_COUNTS.max) setDisableRequestDownloadButton(false);
+                  if (
+                    tableTotalCount > DOWNLOAD_RECORD_COUNTS.min &&
+                    tableTotalCount < DOWNLOAD_RECORD_COUNTS.max
+                  )
+                    setDisableRequestDownloadButton(false);
                 }}
                 options={fileFormatOptions}
               />
-
-            </Space>
+            </Space> */}
           </div>
           <button
             type="button"
@@ -363,30 +443,122 @@ const DownloadListTable = ({
                     filter: filter,
                     apiPath: apiPath,
                     selectedFormatType: fileFormatType,
-                  }),
+                  })
                 );
               }
             }}
           >
             {t(
-              'TransactionDetailDrawerBody.TransactionReportDownload.RequestDownload',
+              "TransactionDetailDrawerBody.TransactionReportDownload.RequestDownload"
             )}
           </button>
         </div>
         <h3>
           {t(
-            'TransactionDetailDrawerBody.TransactionReportDownload.PleaseDownload',
+            "TransactionDetailDrawerBody.TransactionReportDownload.PleaseDownload"
           )}
           <Tooltip
             title={`${i18n.t(
-              'TransactionDetailDrawerBody.TransactionReportDownload.FileTimeLimit',
+              "TransactionDetailDrawerBody.TransactionReportDownload.FileTimeLimit"
             )}`}
             arrow
           >
             <InfoOutlined />
-          </Tooltip>{' '}
+          </Tooltip>{" "}
         </h3>
-        <DataTable
+
+
+        <div className="download-list-wrapper">
+        {rows?.map((item:any, index:any) => (
+        <div key={index} className="download-item-lists">
+          <Progress percent={item?.status === 1? 25 : item?.status === 2 ?50 : item?.status === 3?100 : 0} showInfo={false} />
+          <div className="flex"
+          style={{ alignItems: "center", justifyContent: "space-between" }}
+          >
+           <div className={`report-status ${downloadReportStatus[item?.status]}`}>
+           {item?.status === 2 && (
+    <InProgressSvgIcon/>
+  )}
+  {downloadReportStatus[item?.status]}
+          </div>
+          <Button
+            className="view-filter-applied"
+            aria-describedby={id}
+            onClick={(e) => handleClick(e, item?.filter)}
+            style={{
+              background: "transparent",
+              padding: "0",
+              border: "0px",
+              textDecoration: "underline",
+              boxShadow: "none",
+            }}
+          >
+            View Applied Filters
+          </Button>
+          </div>
+          <div className="flex"
+          style={{ alignItems: "center", justifyContent: "space-between" }}
+          >
+            <div className="flex download-list-name"
+            style={{ alignItems: "center", justifyContent: "flex-start", gap:'5px' }}
+            >
+          <span className="flex" style={{ alignItems: "center", justifyContent: "space-between" }}>
+          {item?.filter?.Format === FILE_FORMATS_VALUES.CSV ? (
+              <CsvSvgIcon className={item?.filter?.Format} />
+            ) : (
+              <ExcelSvgIcon className={item?.filter?.Format} />
+            )}
+              {t(
+                "TransactionDetailDrawerBody.TransactionReportDownload.DownloadReportTitle"
+              )}
+            </span>{getformatDate(item?.CreatedAt, DATE_TIME_FORMAT)}
+            </div>
+
+           <div className="download-btn-wrap">
+            {downloadReportStatus[item?.status] ===
+            downloadReportStatusConstants.Ready ? (
+              <Button
+                onClick={() => {
+                  const values = {
+                    id,
+                    CreatedAt,
+                  };
+                  dispatch(downloadTransactionReportApi(values));
+                }}
+                className="dwnld-rep-btn"
+              >
+                <Tooltip
+                  placement="top"
+                  title={t(
+                    "TransactionDetailDrawerBody.TransactionReportDownload.DownloadReport"
+                  )}
+                >
+                  <DownloadReportButtonSvgIcon />
+                </Tooltip>
+              </Button>
+            ) : downloadReportStatus[item?.status] ===
+              downloadReportStatusConstants.Failure ? (
+              <>
+                <img
+                  src={failedDownload}
+                  className="pending-download failed-download"
+                  alt="Failed Download"
+                />
+              </>
+            ) : (
+              <>
+                <DownloadReportButtonSvgIcon
+                  className="pending-download"
+                  alt="Pending Download"
+                />
+              </>
+            )}
+            </div> 
+          </div>
+          </div>
+        ))}
+        </div>
+        {/* <DataTable
           columns={columns}
           rows={rows}
           rowId={({ id }: any) => id}
@@ -399,7 +571,7 @@ const DownloadListTable = ({
           count={reportListCount}
           showFooter={true}
           loading={loading}
-        />
+        /> */}
         {/* <ConfirmationDialogRaw
           className="show-max-limit-reached-popup"
           open={showMaxLimitReachedPopup}

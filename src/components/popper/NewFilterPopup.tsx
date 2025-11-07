@@ -172,7 +172,7 @@ export const NewFilterPopup = ({
         (i.visible == undefined || i.visible == true)
       ) {
         const columnName = i.headerName?.split('/');
-        const multiple = multiFilter.includes(i.field ?? false);
+        const multiple = multiFilter?.includes(i.field ?? false);
         return [
           ...c,
           {

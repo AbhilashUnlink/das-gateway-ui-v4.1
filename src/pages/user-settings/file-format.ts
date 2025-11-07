@@ -1,5 +1,6 @@
+import type { CheckboxGroupProps } from "antd/es/checkbox";
 import i18n from "i18n";
-export const fileFormatOptions: any = [
+export const fileFormatOptions: CheckboxGroupProps<string>['options'] = [
   {
     label: i18n.t("User_Settings.fileFormat.CSV"),
     value: "CSV",
