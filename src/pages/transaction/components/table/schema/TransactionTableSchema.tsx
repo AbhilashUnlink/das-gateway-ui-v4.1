@@ -11,10 +11,13 @@ import ActionButton from '../../buttons/ActionButton';
 import i18n from 'i18n';
 import { FILTER_INPUT_TYPES } from 'components/popper/constants/filter-constants';
 import { BookmarkBorderOutlined } from '@mui/icons-material';
-import UuidCopy from 'components/uuid-copy/UuidCopy';
+import DasCopyComponent from 'components/das-copy/DasCopyComponent';
+import CustomHeaderDispaly from 'components/das-table/CustomHeaderDispaly';
+import DateTimeComparison from 'components/date-comparison/DateTimeComparison';
+import CustomBodyRowDisplay from 'components/das-table/CustomBodyRowDisplay';
 
 
-export const columns: any = (filterDateFormatter: any) => {
+export const columns: any = () => {
   const data = {
     fields: [
       {
@@ -40,21 +43,19 @@ export const columns: any = (filterDateFormatter: any) => {
         field: 'TransactionID',
         headerName: i18n.t('TransactionsResult.columnDefs.TransactionID'),
         sortable: false,
-        width: 260,
+        headerClassName: 'super-app-theme--header',
+        width: 200,
         hideable: false,
         renderCell: (params: any) => (
           <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
-            <div className="table-header-top-label value"><UuidCopy uuid={params.row?.uuid} /></div>
-            <div>{params.row?.TransactionID}</div>
+            <CustomBodyRowDisplay rowTopValue={<DasCopyComponent text={params.row?.uuid} truncate={true} />} rowBottomValue={<DasCopyComponent text={params.row?.TransactionID} />} rowTopClassName="uuid-top-label-value" rowBottomClassName="transaction-id-copy-value"/>
           </div>
         ),
         renderHeader: () => (
-          <div>
-            <div className="table-header-top-label">
-              {i18n.t('TransactionsResult.columnDefs.TransactionRefID')}
-            </div>
-            <div>{i18n.t('TransactionsResult.columnDefs.TransactionID')}</div>
-          </div>
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.TransactionRefID')}
+          headingBottom={i18n.t('TransactionsResult.columnDefs.TransactionID')}
+          />
         ),
       },
       // {
@@ -111,12 +112,10 @@ export const columns: any = (filterDateFormatter: any) => {
           )
         },
         renderHeader: () => (
-          <div>
-            <div className="table-header-top-label">
-              Transaction Type
-            </div>
-            <div>Status</div>
-          </div>
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.TransactionType')}
+          headingBottom={i18n.t('TransactionsResult.columnDefs.status')}
+          />
         ),
         // renderCell: (params: any) => {
         //   const transactionStatus = params?.row?.status || params?.row?.Status;
@@ -176,12 +175,10 @@ export const columns: any = (filterDateFormatter: any) => {
         showInStatementTransaction: true,
         type: FILTER_INPUT_TYPES.NUMBER,
         renderHeader: () => (
-          <div>
-            <div className="table-header-top-label">
-              {i18n.t('TransactionsResult.columnDefs.Amount')}
-            </div>
-            <div>Fees</div>
-          </div>
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.Amount')}
+          headingBottom={i18n.t('TransactionsResult.columnDefs.Fees')}
+          />
         ),
         renderCell: (params: any) => {
           const transactionAmount = params?.row?.amount || params?.row?.Amount;
@@ -189,14 +186,9 @@ export const columns: any = (filterDateFormatter: any) => {
             getAmountWithCurrency(getAmount(transactionAmount, params?.row?.CurrencyCode), params?.row?.CurrencyCode);
 
           return (
-            <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
-              <div className="table-header-top-label value">
-                {getAmountWithCurrency(getAmount(transactionAmount, params?.row?.CurrencyCode), params?.row?.CurrencyCode)}
-              </div>
-              <div>
-                {fees}
-              </div>
-            </div>
+            <>
+            <CustomBodyRowDisplay rowTopValue={getAmountWithCurrency(getAmount(transactionAmount, params?.row?.CurrencyCode), params?.row?.CurrencyCode)} rowBottomValue={fees} rowTopClassName="amount-top-label-value"/>
+            </>
           )
         },
 
@@ -215,27 +207,88 @@ export const columns: any = (filterDateFormatter: any) => {
         showInStatementTransaction: true,
         type: FILTER_INPUT_TYPES.NEWDATERANGEPICKER,
         renderHeader: () => (
-          <div>
-            <div className="table-header-top-label">
-              {i18n.t('TransactionsResult.columnDefs.Date')}
-            </div>
-            <div>{i18n.t('TransactionsResult.columnDefs.UpdatedTransactionDate')}</div>
-          </div>
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.Date')}
+          headingBottom={i18n.t('TransactionsResult.columnDefs.UpdatedTransactionDate')}
+          />
         ),
-        renderCell: (params: any) => {
-          const transactionDate = params?.row?.Date && filterDateFormatter(params?.row?.Date);
-          const updatedDate = params?.row?.Date && filterDateFormatter(params?.row?.UpdatedDate);
-          return (
-            <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
-              <div className="table-header-top-label value">
-                {transactionDate}
-              </div>
-              <div>
-                {updatedDate}
-              </div>
-            </div>
-          )
-        },
+        renderCell: (params: any) => (
+          <DateTimeComparison
+          transactionDateStr={params?.row?.Date}
+          updatedDateStr={params?.row?.UpdatedDate}
+          // filterDateFormatter={filterDateFormatter}
+        />
+        ),
+          // const transactionDateStr = params?.row?.Date;
+          // const updatedDateStr = params?.row?.UpdatedDate;
+        
+          // if (!transactionDateStr || !updatedDateStr) return null;
+        
+          // // Parse actual Date objects
+          // const transaction = new Date(transactionDateStr);
+          // const updated = new Date(updatedDateStr);
+        
+          // const isDifferent =
+          //   transaction.getHours() !== updated.getHours() ||
+          //   transaction.getMinutes() !== updated.getMinutes() ||
+          //   transaction.getSeconds() !== updated.getSeconds();
+        
+          // // Use your existing date formatter
+          // const transactionDate = filterDateFormatter(transactionDateStr);
+          // const updatedDate = filterDateFormatter(updatedDateStr);
+        
+          // // Extract the time portion (HH:MM:SS)
+          // const timeMatch = updatedDate.match(/(\d{2}:\d{2}:\d{2})/);
+        
+          // let updatedTimeElement: JSX.Element | string = updatedDate;
+        
+          // if (timeMatch) {
+          //   const [hours, minutes, seconds] = timeMatch[0].split(":");
+        
+          //   // Replace the original HH:MM:SS with a JSX span
+          //   const before = updatedDate.split(timeMatch[0])[0]; // part before time
+          //   const after = updatedDate.split(timeMatch[0])[1]; // part after time (like ' PM')
+        
+          //   updatedTimeElement = (
+          //     <span>
+          //       {before}
+          //       {hours}:{minutes}:
+          //       <span style={{ color: isDifferent ? "red" : "inherit" }}>{seconds}</span>
+          //       {after}
+          //     </span>
+          //   );
+          // }
+        
+          // return (
+          //   <div
+          //     style={{
+          //       display: "flex",
+          //       flexDirection: "column",
+          //       height: "50px",
+          //       justifyContent: "center",
+          //     }}
+          //   >
+          //     <div className="table-header-top-label value">{transactionDate}</div>
+          //     <div>{updatedTimeElement}</div>
+          //   </div>
+          // );
+        //},
+        
+        
+        // renderCell: (params: any) => {
+        //   const transactionDate = params?.row?.Date && filterDateFormatter(params?.row?.Date);
+        //   const updatedDate = params?.row?.Date && filterDateFormatter(params?.row?.UpdatedDate);
+        //   return (
+        //     <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
+        //       <div className="table-header-top-label value">
+        //         {transactionDate}
+        //       </div>
+        //       <div>
+        //         {updatedDate}
+        //       </div>
+        //     </div>
+        //   )
+        // },
       },
       // {
       //   field: 'UpdatedDate',
@@ -259,22 +312,11 @@ export const columns: any = (filterDateFormatter: any) => {
         field: 'PaymentType',
         headerName: i18n.t('TransactionsResult.columnDefs.PaymentType'),
         renderHeader: () => (
-          <div>
-            <div className="table-header-top-label">
-              {i18n.t('TransactionsResult.columnDefs.PaymentType')}
-            </div>
-            <div style={{ display: "flex", gap: "5px" }}>
-              <div>
-                {i18n.t('TransactionsResult.columnDefs.Scheme')}
-              </div>
-              <div className='table-header-divider'>
-
-              </div>
-              <div>
-                {i18n.t('TransactionsResult.columnDefs.CardNumber')}
-              </div>
-            </div>
-          </div>
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.PaymentType')}
+          headingBottom={i18n.t('TransactionsResult.columnDefs.Scheme')}
+          headingBottomRight={i18n.t('TransactionsResult.columnDefs.CardNumber')}
+          />
         ),
         translation: "TransactionsResult.columnDefs.PaymentType",
         sortable: false,
@@ -286,7 +328,8 @@ export const columns: any = (filterDateFormatter: any) => {
         renderCell: (params: any) => {
           return <>
             <div style={{ display: "flex", gap: "8px", alignItems: "center", justifyContent: "flex-start", height: "50px" }}>
-              <div style={{ background: "white", borderRadius: "8px", display: "flex", justifyContent: "center", alignItems: "center", objectFit: "contain", padding: "5px", boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}>
+              <div style={{ background: "white", borderRadius: "4px", display: "flex", justifyContent: "center", alignItems: "center", objectFit: "contain", padding: "0px", boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px", gap: '10px',width: '44px',
+              height: '36px', border: '1px solid #E5E5E5' }}>
                 <img
                   src={getCardType(params?.row?.Scheme)}
                   className="transaction-scheme-icons"
@@ -295,8 +338,8 @@ export const columns: any = (filterDateFormatter: any) => {
                 />
               </div>
               <div>
-                <div>
-                  {params?.row?.PaymentType ? PAYMENT_TYPE[(params?.row?.PaymentType)].toUpperCase() : 'N/A'},
+                <div className='small-text'>
+                  {params?.row?.PaymentType ? PAYMENT_TYPE[(params?.row?.PaymentType)].toUpperCase() : 'N/A'}
                 </div>
                 <div>
                   {params?.row?.CardNumber}
@@ -363,6 +406,11 @@ export const columns: any = (filterDateFormatter: any) => {
         nonSelectableField: true,
         defaultSelectedInAdditionalColumn: true,
         type: FILTER_INPUT_TYPES.AUTOSELECT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.DASMID')}
+          />
+        ),
       },
 
       {
@@ -377,6 +425,11 @@ export const columns: any = (filterDateFormatter: any) => {
         defaultSelectedInAdditionalColumn: true,
         hide: false,
         type: FILTER_INPUT_TYPES.AUTOSELECT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.Merchant')}
+          />
+        ),
       },
       {
         field: 'LegalNameInEnglish',
@@ -392,6 +445,11 @@ export const columns: any = (filterDateFormatter: any) => {
         nonSelectableField: true,
         defaultSelectedInAdditionalColumn: true,
         type: FILTER_INPUT_TYPES.TEXT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionDetail.TransactionInfo.fields.LegalNameInEnglish')}
+          />
+        ),
       },
 
 
@@ -421,6 +479,11 @@ export const columns: any = (filterDateFormatter: any) => {
         nonSelectableField: true,
         defaultSelectedInAdditionalColumn: true,
         type: FILTER_INPUT_TYPES.SELECTWITHOUTIN,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.IntegrationMethod')}
+          />
+        ),
       },
       {
         field: 'AcquirerCode',
@@ -442,6 +505,11 @@ export const columns: any = (filterDateFormatter: any) => {
         nonSelectableField: true,
         defaultSelectedInAdditionalColumn: true,
         type: FILTER_INPUT_TYPES.AUTOSELECT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.Acquirer')}
+          />
+        ),
       },
 
       {
@@ -458,6 +526,11 @@ export const columns: any = (filterDateFormatter: any) => {
         defaultSelectedInAdditionalColumn: true,
         showInStatementTransaction: true,
         type: FILTER_INPUT_TYPES.SELECT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.TransactionType')}
+          />
+        ),
         renderCell: (params: any) => {
           return (
             <>
@@ -482,6 +555,11 @@ export const columns: any = (filterDateFormatter: any) => {
         nonSelectableField: true,
         defaultSelectedInAdditionalColumn: true,
         type: FILTER_INPUT_TYPES.TEXT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.MerchantRefID')}
+          />
+        ),
       },
       {
         field: 'trackID',
@@ -494,6 +572,11 @@ export const columns: any = (filterDateFormatter: any) => {
         showInAdditionalColumn: true,
         defaultSelectedInAdditionalColumn: false,
         type: FILTER_INPUT_TYPES.TEXT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.trackID')}
+          />
+        ),
       },
       {
         field: 'AcquirerMID',
@@ -506,6 +589,11 @@ export const columns: any = (filterDateFormatter: any) => {
         showInAdditionalColumn: true,
         defaultSelectedInAdditionalColumn: false,
         type: FILTER_INPUT_TYPES.AUTOSELECT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.AcquirerMID')}
+          />
+        ),
       },
       {
         field: 'AuthCode',
@@ -518,6 +606,11 @@ export const columns: any = (filterDateFormatter: any) => {
         showInAdditionalColumn: true,
         defaultSelectedInAdditionalColumn: false,
         type: FILTER_INPUT_TYPES.TEXT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.AuthCode')}
+          />
+        ),
       },
       {
         field: 'CurrencyCode',
@@ -530,6 +623,11 @@ export const columns: any = (filterDateFormatter: any) => {
         showInAdditionalColumn: false,
         defaultSelectedInAdditionalColumn: true,
         type: FILTER_INPUT_TYPES.SELECT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.CurrencyCode')}
+          />
+        ),
       },
       {
         field: 'ProductType',
@@ -542,19 +640,24 @@ export const columns: any = (filterDateFormatter: any) => {
         showInAdditionalColumn: true,
         defaultSelectedInAdditionalColumn: false,
         type: FILTER_INPUT_TYPES.SELECT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.productType')}
+          />
+        ),
       },
-      {
-        field: 'V2UUID',
-        headerName: i18n.t('TransactionsResult.columnDefs.V2UUID'),
-        translation: "TransactionsResult.columnDefs.V2UUID",
-        sortable: false,
-        width: 130,
-        headerClassName: 'super-app-theme--header',
-        hide: true,
-        showInAdditionalColumn: false,
-        defaultSelectedInAdditionalColumn: false,
-        type: FILTER_INPUT_TYPES.TEXT,
-      },
+      // {
+      //   field: 'V2UUID',
+      //   headerName: i18n.t('TransactionsResult.columnDefs.V2UUID'),
+      //   translation: "TransactionsResult.columnDefs.V2UUID",
+      //   sortable: false,
+      //   width: 130,
+      //   headerClassName: 'super-app-theme--header',
+      //   hide: true,
+      //   showInAdditionalColumn: false,
+      //   defaultSelectedInAdditionalColumn: false,
+      //   type: FILTER_INPUT_TYPES.TEXT,
+      // },
       {
         field: 'SubscriptionId',
         headerName: i18n.t('TransactionsResult.columnDefs.subscriptionID'),
@@ -566,6 +669,11 @@ export const columns: any = (filterDateFormatter: any) => {
         showInAdditionalColumn: true,
         defaultSelectedInAdditionalColumn: false,
         type: FILTER_INPUT_TYPES.TEXT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.subscriptionID')}
+          />
+        ),
       },
       {
         field: 'TerminalId',
@@ -578,6 +686,11 @@ export const columns: any = (filterDateFormatter: any) => {
         showInAdditionalColumn: true,
         defaultSelectedInAdditionalColumn: false,
         type: FILTER_INPUT_TYPES.NUMBERSTRING,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.TerminalID')}
+          />
+        ),
       },
       {
         field: 'TerminalName',
@@ -590,6 +703,11 @@ export const columns: any = (filterDateFormatter: any) => {
         showInAdditionalColumn: true,
         defaultSelectedInAdditionalColumn: false,
         type: FILTER_INPUT_TYPES.TEXT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.TerminalName')}
+          />
+        ),
       },
       {
         field: 'PBLLinkName',
@@ -597,12 +715,18 @@ export const columns: any = (filterDateFormatter: any) => {
         headerName: i18n.t('PayByLinkConfiguration.PayByLink_ColumnDefs.linkname'),
         translation: "PayByLinkConfiguration.PayByLink_ColumnDefs.linkname",
         minWidth: 120,
+        headerClassName: 'super-app-theme--header',
         renderCell: (params: any) =>
           params?.row?.PBLLinkName ? params?.row?.PBLLinkName : 'N/A',
         hide: false,
         showInAdditionalColumn: true,
         defaultSelectedInAdditionalColumn: false,
         type: FILTER_INPUT_TYPES.TEXT,
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.linkname')}
+          />
+        ),
       },
       {
         field: 'IntegrationType',
@@ -612,7 +736,11 @@ export const columns: any = (filterDateFormatter: any) => {
         width: 200,
         type: FILTER_INPUT_TYPES.SELECTWITHOUTIN,
         // hideFromFilter: false,
-
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.IntegrationType')}
+          />
+        ),
         renderCell: (params: any) => {
           return (
             <>

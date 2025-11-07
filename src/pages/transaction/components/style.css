@@ -1528,3 +1528,17 @@ img.not-copy {
 .transaction-tiles .tile-left:last-child::after {
   display: none !important;
 }
+.date-value.uuid-top-label-value {
+  position: relative;
+  top: 6px;
+}
+.row-bottom-value span {
+  color: #808080;
+}
+.date-value.top-label-value {
+  font-weight: 400;
+}
+.transaction-id-copy-value span {
+  position: relative;
+  top: -3px;
+}

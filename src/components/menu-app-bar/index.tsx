@@ -1,3 +1,4 @@
+import Das from '../../assets/logo/logo.png';
 import { Suspense } from "react";
 import "./style.css";
 import { lazy } from "react";
@@ -11,6 +12,11 @@ const UserProfile = lazy(() => import("../user-profile/UserProfile"));
 const MenuAppBar = ({ toggleSideBar }: { toggleSideBar: any }) => {
   return (
     <Suspense fallback={<></>}>
+      <img
+            src={Das}
+            className={'das-logo-big'}
+            alt="Payment Options"
+          />
       <div className="menu-buttons-new">
         <div style={{ width: "10%", display:'flex', alignItems:'center', padding: '5px 10px' }}>
           <Menu onClick={toggleSideBar} style={{cursor:'pointer'}} />

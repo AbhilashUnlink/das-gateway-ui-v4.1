@@ -294,9 +294,11 @@ span.MuiTooltip-arrow.css-kudwh-MuiTooltip-arrow {
   color:#f6921e !important;
 }
 img.das-logo-big {
-  width: 124px;
+  width: auto;
   position: relative;
-  left: -3px;
+  left: 2px;
+  height: auto;
+  padding: 6px 4px;
 }
 /* ================ */
 header.appbar-header {
@@ -472,16 +474,22 @@ li.ant-menu-item.ant-menu-item-selected {
 li.ant-menu-item.ant-menu-item-selected svg path{
   fill:#F7941D
 }
-li.ant-menu-item{    height: 50px !important;
-  line-height: 50px !important;}
-li.ant-menu-item.ant-menu-item-selected{    height: 50px !important;
-  line-height: 50px !important;}
+li.ant-menu-item{    height: 40px !important;
+  line-height: 40px !important;}
+li.ant-menu-item.ant-menu-item-selected{    height: 40px !important;
+  line-height: 40px !important;}
+  li.ant-menu-item svg {
+    width: 14px;
+}
+span.ant-menu-title-content {
+    font-size: 12.5px;
+}
   li.ant-menu-item.ant-menu-item-selected::before {
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
     background: rgba(247, 148, 29, 0.1);
-    left: 15px;
-    top: 7px;
+    left: 16px;
+    top: 6px;
     content: "";
     position: absolute;
     border-radius: 100px;
@@ -503,8 +511,8 @@ li.ant-menu-item.ant-menu-item-active::before {
   justify-content: space-between;
 }
 aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed li.ant-menu-item.ant-menu-item-selected::before {
-  left: 19px;
-  top: 4px;
+  left: 20px;
+  top: 2px;
 }
 aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed li.ant-menu-item:hover{
   background: transparent !important;

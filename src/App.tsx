@@ -79,19 +79,7 @@ const ProtectedLayout = () => {
 
   return (
     <Layout>
-      <Sider
-        // onMouseEnter={() => setCollapsed(false)}
-        // onMouseLeave={() => setCollapsed(true)}
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-        style={{ backgroundColor: '#ffffff' }}
-      >
-        <SideMenu collapsed={collapsed} />
-      </Sider>
-
-      <Layout>
-        <Header
+      <Header
           style={{
             padding: 0,
             background: '#ffffff',
@@ -101,6 +89,19 @@ const ProtectedLayout = () => {
         >
           <MenuAppBar toggleSideBar={toggleSideBar} />
         </Header>
+      
+
+      <Layout>
+      <Sider
+        // onMouseEnter={() => setCollapsed(false)}
+        // onMouseLeave={() => setCollapsed(true)}
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+        style={{ backgroundColor: '#ffffff' }}
+      >
+        <SideMenu />
+      </Sider>
 
         <Content style={{ padding: 24, minHeight: 280 }}>
           <Outlet />

@@ -276,3 +276,14 @@ span.rowcount {
 svg.CSV, svg.excel {
   width: 30px;
 }
+.MuiDataGrid-columnHeaders {
+  background: linear-gradient(180deg, rgba(253, 164, 44, 0.7) -26.39%, rgba(255, 191, 105, 0.4) 100%), #FFFFFF;
+}
+
+.MuiDataGrid-columnHeader.MuiDataGrid-withBorderColor.super-app-theme--header {
+  background: transparent !important;
+}
+.MuiDataGrid-cell{
+  display: flex;
+  align-items: center;
+}
