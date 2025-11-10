@@ -91,8 +91,6 @@ button.download-csv-button {
   position: relative;
   font-size: 0.8rem;
   letter-spacing: 0.03rem;
-  top: -8px;
-  right: 0;
   font-weight: 600;
   border: 1px solid var(--bs-blue);
   height: 36px;
@@ -143,11 +141,6 @@ button.download-csv-button:hover svg {
 }
 
 /*   ======= filter button css =============*/
-button.filter-btn {
-  position: absolute;
-  right: 15px;
-  top: 61px;
-}
 
 button.nx-gen-filter-btn {
   position: absolute;
@@ -189,14 +182,20 @@ button.nx-gen-filter-btn {
 .popover-box-div h3 {
   font-size: 1rem;
   text-transform: uppercase;
-  margin: 0 -20px 15px -20px;
+  margin: -18px -20px 15px -20px;
   border-bottom: 1px solid #ccc;
-  padding: 0px 18px 10px;
   font-weight: bolder !important;
   font-family: "Poppins", sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 6px 24px !important;
+  height: 72px !important;
+  background: linear-gradient(180deg, rgba(253, 164, 44, 0.7) -26.39%, rgba(255, 191, 105, 0.4) 100%), #FFFFFF;
+  border-width: 1px 1px 0px 1px;
+  border-style: solid;
+  border-color: #FFFFFF;
+  border-radius: 16px 16px 0px 0px;
 }
 
 .filter-body {
@@ -1028,4 +1027,14 @@ span.MuiBadge-root.tooltip-menu.badge-class span.MuiBadge-badge {
   border-radius: 5px;
   right: -2px;
   top: 1px;
+}
+.next-gen-filter-wrap .MuiStack-root.filter-chips .form-group.p-0-inline.label-and-or-form-wrap .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-sizeSmall.select-operand-box.MuiSelect-root {
+  line-height: 24px;
+  height: 24px;
+  font-size: 14px;
+}
+
+.next-gen-filter-wrap .MuiStack-root.filter-chips .form-group.p-0-inline.label-and-or-form-wrap .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-sizeSmall.select-operand-box.MuiSelect-root div#filter-select {
+  font-size: 13px;
+  padding: 6px 28px 6px 7px;
 }

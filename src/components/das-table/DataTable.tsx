@@ -4,7 +4,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Suspense, useEffect, useState } from 'react';
 import CustomFooter from './CustomFooter';
 import './style.css';
-// import FilterPopup from 'components/popper/filter-popup';
+import FilterPopup from 'components/popper/filter-popup';
 import { useTranslation } from 'react-i18next';
 // import ConfirmationDialogRaw from '../confirmation-dialog/ConfirmationDialog';
 import TooltipDasButton from '../../pages/transaction/components/buttons/TootlipDasButton';
@@ -133,7 +133,7 @@ export default function DataTable({
               {rightActionButtons}</div>
           )}
 
-          <NewFilterPopup
+          {/* <NewFilterPopup
             columns={columns}
             count={nxtGenfilterCount}
             setCount={setnextGenFilterCount}
@@ -141,9 +141,9 @@ export default function DataTable({
             currentScreen={currentScreen}
             multiFilter={multiFilter}
             filteredObject={filteredObject}
-          />
-
-          {/* {showFilter &&
+          /> */}
+<div style={{ display: "flex", justifyContent: "flex-end", flexDirection:'row-reverse', gap:'15px' }}>
+           {showFilter &&
             (currentScreen === 'TransactionList' ? (
               <>
                 <NewFilterPopup
@@ -197,7 +197,8 @@ export default function DataTable({
                 count={filterCount}
                 setCount={setFilterCount}
               />
-            ))} */}
+            ))}
+        </div>
         </div>
         <div className={`das-table ${dasTableClassName}`}>
           <div

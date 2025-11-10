@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Popper from '@mui/material/Popper';
-import Fade from '@mui/material/Fade';
-import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
-import CloseIcon from '@mui/icons-material/Close';
+import { useEffect } from "react";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Popper from "@mui/material/Popper";
+import Fade from "@mui/material/Fade";
+import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
+import CloseIcon from "@mui/icons-material/Close";
 import {
   endOfDay,
   format,
@@ -12,25 +12,29 @@ import {
   getYear,
   startOfDay,
   subDays,
-} from 'date-fns';
-import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import FilterPopupData from './config/FilterPopupData';
+} from "date-fns";
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import FilterPopupData from "./config/FilterPopupData";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { resetFilter, setFilterPayload, userFilter } from 'store/features/filter';
-import countries from '../../config/common/countries';
-import MCC from './config/mcc';
-import PRODUCT_TYPE from './constants/products';
-import timezone from './config/timezone';
-import './style.css';
-import { Tooltip } from '@mui/material';
+import { useDispatch, useSelector } from "react-redux";
+import {
+  resetFilter,
+  setFilterPayload,
+  userFilter,
+} from "store/features/filter";
+import countries from "../../config/common/countries";
+import MCC from "./config/mcc";
+import PRODUCT_TYPE from "./constants/products";
+import timezone from "./config/timezone";
+import "./style.css";
+import { IconButton, Tooltip } from "@mui/material";
 import {
   CARD_TYPE,
   INTEGRATION_TYPE,
   TRANSACTION_PAYMENT_TYPE,
   TRANSACTION_TYPE,
-} from '../../pages/transaction/components/constants/transaction';
+} from "../../pages/transaction/components/constants/transaction";
 
 import {
   FILTER_POPOP_OF,
@@ -43,11 +47,11 @@ import {
   SUBSCRIPTION_STATUS,
   SUBSCRIPTION_STATUS_LABELS,
   View_Name_Space,
-} from './constants/filter-constants';
-import { CHARGE_BACK_TYPE } from '../../config/common/charge-back-types';
+} from "./constants/filter-constants";
+import { CHARGE_BACK_TYPE } from "../../config/common/charge-back-types";
 // import { ACQUIRER_NAMES_LIST } from '../../config/common/acquirer-names-list';
-import Currency from '../../config/common/currency';
-import { ProductTypes } from '../../config/common/product-types';
+import Currency from "../../config/common/currency";
+import { ProductTypes } from "../../config/common/product-types";
 import {
   RECON_TYPE,
   STATEMENT_FILTER,
@@ -55,28 +59,44 @@ import {
   STATEMENT_STATUS_FILTER,
   STATEMENT_WHITELISTED_STATUS,
   WIRED_TYPE,
-} from '../../pages/statements/components/merchant-statement/constants/statement-status';
-import DasSnackbar from '../das-snackbar/DasSnackbar';
-import { BILLING_CYCLE } from '../../config/common/billingCycle';
+} from "../../pages/statements/components/merchant-statement/constants/statement-status";
+import DasSnackbar from "../das-snackbar/DasSnackbar";
+import { BILLING_CYCLE } from "../../config/common/billingCycle";
 // import { setMerchantDetailsProductList } from '../../redux/features/merchant';
-import FitlerBox from './FitlerBox';
-import { MONTH_FORMAT } from '../constants/constants';
+import FitlerBox from "./FitlerBox";
+import { MONTH_FORMAT } from "../constants/constants";
 // import { User_Management_Access } from '../../pages/merchants/merchant-view/components/merchant-details/constants/userManagementAccessLevel';
-import { USER_ACCESS_ROLE } from '../../pages/merchants/merchant-view/components/merchant-details/constants/merchantDetails';
-import useLegacy from '../../hooks/use-legacy/useLegacy';
-import { hasAccess } from '../../utils/has-access';
-import { allReasonCodes } from '../../store/features/gateway-config';
-import { setFilteredDASMID } from '../../store/features/merchant';
-import useEntity from '../../hooks/use-entity/useEntity';
-import { REGESTRATION_TYPE, SALES_LEAD_FILTER_DATA } from 'components/constants/sales-lead';
-import { CHARGEBACK_FILTER, FILTER_HEADERS } from 'components/constants/dispute-dates';
-import { customSort, filterDateFormatterNoTimeZone, trimToSingleSpace } from 'utils/helper';
-import { CATALOG_CATEGORY_STATUS } from 'pages/merchants/merchant-view/components/merchant-details/merchant-catalogs/constants/status';
-import useGetMerchantList from 'hooks/use-get-merchant-list/useGetMerchantList';
-import useGetAcquirerList from 'hooks/use-get-acquirer-list/useGetAcquirerList';
-import { assignmentTypeOptions } from 'pages/rules/schemas/assignmentsSchema';
-import { RULE_TYPE_OPTIONS } from 'pages/rules/constants/rule-type';
-import type { FilterPopupPropsType, FilterPropsType, HeaderNameType } from '../../@types/filter.type';
+import { USER_ACCESS_ROLE } from "../../pages/merchants/merchant-view/components/merchant-details/constants/merchantDetails";
+import useLegacy from "../../hooks/use-legacy/useLegacy";
+import { hasAccess } from "../../utils/has-access";
+import { allReasonCodes } from "../../store/features/gateway-config";
+import { setFilteredDASMID } from "../../store/features/merchant";
+import useEntity from "../../hooks/use-entity/useEntity";
+import {
+  REGESTRATION_TYPE,
+  SALES_LEAD_FILTER_DATA,
+} from "components/constants/sales-lead";
+import {
+  CHARGEBACK_FILTER,
+  FILTER_HEADERS,
+} from "components/constants/dispute-dates";
+import {
+  customSort,
+  filterDateFormatterNoTimeZone,
+  trimToSingleSpace,
+} from "utils/helper";
+import { CATALOG_CATEGORY_STATUS } from "pages/merchants/merchant-view/components/merchant-details/merchant-catalogs/constants/status";
+import useGetMerchantList from "hooks/use-get-merchant-list/useGetMerchantList";
+import useGetAcquirerList from "hooks/use-get-acquirer-list/useGetAcquirerList";
+import { assignmentTypeOptions } from "pages/rules/schemas/assignmentsSchema";
+import { RULE_TYPE_OPTIONS } from "pages/rules/constants/rule-type";
+import type {
+  FilterPopupPropsType,
+  FilterPropsType,
+  HeaderNameType,
+} from "../../@types/filter.type";
+import TooltipDasButton from "pages/transaction/components/buttons/TootlipDasButton";
+import { AdvFilterSvgIcon, CloseSvgIcon } from "components/svg-icons/SvgIcons";
 //import { HASH_CARD_STATUS } from '../../pages/hash-card/constants/hashcard';
 
 const FilterPopup = ({
@@ -105,7 +125,8 @@ const FilterPopup = ({
   // );
 
   const { dasmidOptions, legalNamesList } = useGetMerchantList();
-  const { AcquirerMIDFilterOptions, AcquirerFilterOptions } = useGetAcquirerList();
+  const { AcquirerMIDFilterOptions, AcquirerFilterOptions } =
+    useGetAcquirerList();
 
   const { t } = useTranslation();
   const { drawer } = useSelector((store: any) => store?.drawer);
@@ -129,21 +150,23 @@ const FilterPopup = ({
   //   (store: any) => store?.merchant?.merchantDetails,
   // );
   const {
-    // legalNamesList, 
-    salesLeadFilterMerchantData, salesLeadFilterPartnerData } = useSelector((store: any) => store?.config);
+    // legalNamesList,
+    salesLeadFilterMerchantData,
+    salesLeadFilterPartnerData,
+  } = useSelector((store: any) => store?.config);
 
   const INTERNAL = hasAccess(
-    'LEGAL_NAME_IN_ENGLISH_COLUMN_IN_TRANSACTIONS_TAB',
+    "LEGAL_NAME_IN_ENGLISH_COLUMN_IN_TRANSACTIONS_TAB"
   );
-  const ADVANCED_FITLER = t('Filter.AdvancedFilters');
+  const ADVANCED_FITLER = t("Filter.AdvancedFilters");
   // const RESET = t('Filter.button.Reset');
   // const APPLY = t('Filter.button.Apply');
-  const TRANSLATED_VALUE = t('Filter.Value');
+  const TRANSLATED_VALUE = t("Filter.Value");
 
   // screen name : filter options
   const REDUCE = {
     [FILTER_POPOP_OF.PRODUCT_INFO_ON_MERCHANT_DETAILS]: [
-      t('MerchantList.Product_View_ColumnDefs.AcquirerCode'),
+      t("MerchantList.Product_View_ColumnDefs.AcquirerCode"),
     ],
   };
   const CONDITIONAL_FILTER_OPTIONS = REDUCE[currentScreen]
@@ -153,60 +176,82 @@ const FilterPopup = ({
   const REDUCED_HEADER_COLUMNS = [
     ...CONDITIONAL_FILTER_OPTIONS,
     ...[
-      t('TransactionsResult.columnDefs.Action'),
-      t('TransactionsResult.columnDefs.StartDate'),
-      t('TransactionsResult.columnDefs.EndDate'),
+      t("TransactionsResult.columnDefs.Action"),
+      t("TransactionsResult.columnDefs.StartDate"),
+      t("TransactionsResult.columnDefs.EndDate"),
       // t('TransactionsResult.columnDefs.MerchantRefID'),
       // t('TransactionsResult.columnDefs.AcquirerMID'),
       // t('TransactionsResult.columnDefs.AuthCode'),
       // t('TransactionsResult.columnDefs.trackID'),
-      t('MerchantList.Merchants_View_ColumnDefs.Products'),
-      t('MerchantList.Merchants_View_ColumnDefs.CreatedDate'),
-      t('DisputeManagement.columnDefs.UpdatedAt'),
-      t('ResellerAccount.columnDefs.ReferredMerchants'),
-      t('StatementList.Statements_View_ColumnDefs.TotalPayout'),
-      t('StatementList.Statements_View_ColumnDefs.RollingReserveAmount'),
-      t('StatementList.Statements_View_ColumnDefs.CumulativeReserves'),
-      t('StatementList.Statements_View_ColumnDefs.TransactionEndDate'),
-      t('Holiday.ColumnDefs.Type'),
-      t('Holiday.ColumnDefs.Day'),
-      t('Acquirer_Details.AcquirerMID.fields.Description'),
-      t('Merchant_Detail.Subscription.columnDefs.trialPeriod'),
-      t('Merchant_Detail.Subscription.columnDefs.discount'),
-      t('Merchant_Detail.Subscription.columnDefs.Subscribers'),
-      t('Merchant_Detail.Product_Information.columnDefs.Name'),
+      t("MerchantList.Merchants_View_ColumnDefs.Products"),
+      t("MerchantList.Merchants_View_ColumnDefs.CreatedDate"),
+      t("DisputeManagement.columnDefs.UpdatedAt"),
+      t("ResellerAccount.columnDefs.ReferredMerchants"),
+      t("StatementList.Statements_View_ColumnDefs.TotalPayout"),
+      t("StatementList.Statements_View_ColumnDefs.RollingReserveAmount"),
+      t("StatementList.Statements_View_ColumnDefs.CumulativeReserves"),
+      t("StatementList.Statements_View_ColumnDefs.TransactionEndDate"),
+      t("Holiday.ColumnDefs.Type"),
+      t("Holiday.ColumnDefs.Day"),
+      t("Acquirer_Details.AcquirerMID.fields.Description"),
+      t("Merchant_Detail.Subscription.columnDefs.trialPeriod"),
+      t("Merchant_Detail.Subscription.columnDefs.discount"),
+      t("Merchant_Detail.Subscription.columnDefs.Subscribers"),
+      t("Merchant_Detail.Product_Information.columnDefs.Name"),
       "Rule",
       "IsActive",
       "Rule Actions",
-      t('Merchant_Detail.Product_Information.columnDefs.Type'),
+      t("Merchant_Detail.Product_Information.columnDefs.Type"),
       // t('Merchant_Detail.Product_Information.columnDefs.MCC'),
-      t('Merchant_Detail.Product_Information.columnDefs.V2DASMID'),
-      t('Enable / Disable MID'),
-      t('FinanceStatements.Statement_ColumnDefs.amount'),
-      t('FinanceStatements.Statement_ColumnDefs.ROLLING_RESERVE_HELD_AMOUNT'),
-      t('FinanceStatements.Statement_ColumnDefs.CUMULATIVE_RESERVES'),
-      t('FinanceStatements.Statement_ColumnDefs.TRANSACTION_END_DATE'),
-      t('Merchant_Detail.User_Management.columnDefs.Products'),
-      t('Merchant_Detail.User_Management.columnDefs.Join_Date'),
-      t('Merchant_Detail.MerchantDetail.MCC'),
-      t('HashCard.Column_Def.Updated Date'),
-      t('HashCard.Column_Def.Created Date'),
-      t('HashCard.Column_Def.Updated By'),
-      t('HashCard.Column_Def.Created By'),
-      t('HashCard.Form_Fields.Comments'),
-      t('MerchantList.MerchantCatalogs.MerchantCategory.ColumnsDefs.CreatedAt'),
-      t('MerchantList.MerchantCatalogs.MerchantCategory.ColumnsDefs.UpdatedAt'),
-      t('MerchantList.MerchantCatalogs.MerchantCategory.ColumnsDefs.CategoryDesc'),
-      t('MerchantList.MerchantCatalogs.MerchantCategoryProducts.ColumnsDefs.ProductImage'),
-      t('MerchantList.MerchantCatalogs.MerchantCategoryProducts.ColumnsDefs.CreatedAt'),
-      t('MerchantList.MerchantCatalogs.MerchantCategoryProducts.ColumnsDefs.UpdatedAt'),
-      t('MerchantList.MerchantCatalogs.MerchantCategoryProducts.ColumnsDefs.ProductDesc'),
-      t('MerchantList.MerchantCatalogs.MerchantCategoryProducts.ColumnsDefs.ProductID'),
-      t('MerchantList.MerchantSettingsTabs.IP_Whitelisting.Column_Def.Created By'),
-      t('MerchantList.MerchantSettingsTabs.IP_Whitelisting.Column_Def.Created Date'),
-      t('MerchantList.MerchantSettingsTabs.IP_Whitelisting.Column_Def.Updated By'),
-      t('MerchantList.MerchantSettingsTabs.IP_Whitelisting.Column_Def.Updated Date'),
-      t('MerchantList.MerchantSettingsTabs.IP_Whitelisting.Form_Fields.Comments'),
+      t("Merchant_Detail.Product_Information.columnDefs.V2DASMID"),
+      t("Enable / Disable MID"),
+      t("FinanceStatements.Statement_ColumnDefs.amount"),
+      t("FinanceStatements.Statement_ColumnDefs.ROLLING_RESERVE_HELD_AMOUNT"),
+      t("FinanceStatements.Statement_ColumnDefs.CUMULATIVE_RESERVES"),
+      t("FinanceStatements.Statement_ColumnDefs.TRANSACTION_END_DATE"),
+      t("Merchant_Detail.User_Management.columnDefs.Products"),
+      t("Merchant_Detail.User_Management.columnDefs.Join_Date"),
+      t("Merchant_Detail.MerchantDetail.MCC"),
+      t("HashCard.Column_Def.Updated Date"),
+      t("HashCard.Column_Def.Created Date"),
+      t("HashCard.Column_Def.Updated By"),
+      t("HashCard.Column_Def.Created By"),
+      t("HashCard.Form_Fields.Comments"),
+      t("MerchantList.MerchantCatalogs.MerchantCategory.ColumnsDefs.CreatedAt"),
+      t("MerchantList.MerchantCatalogs.MerchantCategory.ColumnsDefs.UpdatedAt"),
+      t(
+        "MerchantList.MerchantCatalogs.MerchantCategory.ColumnsDefs.CategoryDesc"
+      ),
+      t(
+        "MerchantList.MerchantCatalogs.MerchantCategoryProducts.ColumnsDefs.ProductImage"
+      ),
+      t(
+        "MerchantList.MerchantCatalogs.MerchantCategoryProducts.ColumnsDefs.CreatedAt"
+      ),
+      t(
+        "MerchantList.MerchantCatalogs.MerchantCategoryProducts.ColumnsDefs.UpdatedAt"
+      ),
+      t(
+        "MerchantList.MerchantCatalogs.MerchantCategoryProducts.ColumnsDefs.ProductDesc"
+      ),
+      t(
+        "MerchantList.MerchantCatalogs.MerchantCategoryProducts.ColumnsDefs.ProductID"
+      ),
+      t(
+        "MerchantList.MerchantSettingsTabs.IP_Whitelisting.Column_Def.Created By"
+      ),
+      t(
+        "MerchantList.MerchantSettingsTabs.IP_Whitelisting.Column_Def.Created Date"
+      ),
+      t(
+        "MerchantList.MerchantSettingsTabs.IP_Whitelisting.Column_Def.Updated By"
+      ),
+      t(
+        "MerchantList.MerchantSettingsTabs.IP_Whitelisting.Column_Def.Updated Date"
+      ),
+      t(
+        "MerchantList.MerchantSettingsTabs.IP_Whitelisting.Form_Fields.Comments"
+      ),
     ],
   ];
 
@@ -225,7 +270,7 @@ const FilterPopup = ({
     //   handleResetFilter();
     // }
     setAnchorEl(event.currentTarget);
-    setOpen(previousOpen => !previousOpen);
+    setOpen((previousOpen) => !previousOpen);
     dispatch(setFilterPayload(null));
     ns === View_Name_Space.TRANSACTION &&
       initialFilterData?.length > 0 &&
@@ -233,7 +278,7 @@ const FilterPopup = ({
   };
 
   const canBeOpen = open && Boolean(anchorEl);
-  const id = canBeOpen ? 'transition-popper' : undefined;
+  const id = canBeOpen ? "transition-popper" : undefined;
 
   const dispatch = useDispatch();
 
@@ -245,8 +290,8 @@ const FilterPopup = ({
       (option: any) =>
         !filterData?.find(
           (filterItem: any, indx: number) =>
-            option.value === filterItem.HeaderColumn && indx !== i,
-        ),
+            option.value === filterItem.HeaderColumn && indx !== i
+        )
     );
     const items_label = t(items.label);
     if (
@@ -274,8 +319,8 @@ const FilterPopup = ({
         filterProps.multiple = multiFilter.includes(filterData[i].HeaderColumn);
       } else if (filterData[i].HeaderColumn === HEADER_COLUMN.CASE_TYPE) {
         filterProps.options = Object.keys(CHARGE_BACK_TYPE)
-          .filter(type => type !== 'InternalDispute') // This line filters out InternalDispute
-          .map(type => {
+          .filter((type) => type !== "InternalDispute") // This line filters out InternalDispute
+          .map((type) => {
             return { headerName: CHARGE_BACK_TYPE[type], value: type };
           });
         filterProps.html_element = HTML_ELEMENT.SELECT;
@@ -285,13 +330,13 @@ const FilterPopup = ({
           const value = data.value;
           return {
             headerName: data.label,
-            value: value.replaceAll(' ', '%20'),
+            value: value.replaceAll(" ", "%20"),
           };
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
       } else if (filterData[i]?.HeaderColumn === HEADER_COLUMN.AMOUNT) {
-        filterProps.type = 'number';
-        filterProps.name = 'Name';
+        filterProps.type = "number";
+        filterProps.name = "Name";
         filterProps.html_element = HTML_ELEMENT.TEXT_FIELD;
       } else if (
         filterData[i]?.HeaderColumn === HEADER_COLUMN.SUBSIDIARY_ID ||
@@ -300,13 +345,13 @@ const FilterPopup = ({
         filterProps.name = HEADER_COLUMN.SUBSIDIARY_ID;
         filterProps.html_element = HTML_ELEMENT.SELECT;
         filterProps.multiple = multiFilter.includes(
-          filterData[i]?.HeaderColumn,
+          filterData[i]?.HeaderColumn
         );
       } else if (
         filterData[i]?.HeaderColumn?.toLowerCase() === HEADER_COLUMN.STATUS
       ) {
         const STATUS_COLUMN: any = STATUS[ns];
-        filterProps.options = Object.keys(STATUS_COLUMN).map(status => {
+        filterProps.options = Object.keys(STATUS_COLUMN).map((status) => {
           if (ns === View_Name_Space.SUBSCRIPTION_STATUS) {
             return {
               headerName:
@@ -332,22 +377,21 @@ const FilterPopup = ({
               headerName: STATUS.HASH_CARD_STATUS[status],
               value: STATUS_COLUMN[status],
             };
-          }
-          else {
+          } else {
             let statusItem = { headerName: status, value: status };
             return statusItem;
           }
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
         filterProps.multiple = multiFilter?.includes(
-          filterData[i]?.HeaderColumn,
+          filterData[i]?.HeaderColumn
         );
       } else if (
         filterData[i]?.HeaderColumn === HEADER_COLUMN.PARTNER_ISACTIVE
       ) {
         const STATUS_COLUMN: any = STATUS[ns];
         if (ns === View_Name_Space.SUBSCRIPTION) {
-          filterProps.options = Object.keys(STATUS_COLUMN).map(status => {
+          filterProps.options = Object.keys(STATUS_COLUMN).map((status) => {
             let statusItem = {
               headerName: t(`SUBSCRIPTION_STATUS.${status}`),
               value: STATUS_COLUMN[status],
@@ -355,7 +399,7 @@ const FilterPopup = ({
             return statusItem;
           });
         } else if (ns === View_Name_Space.PARTNER) {
-          filterProps.options = Object.keys(STATUS_COLUMN).map(status => {
+          filterProps.options = Object.keys(STATUS_COLUMN).map((status) => {
             let statusItem = {
               headerName: STATUS.PARTNER_STATUS[status],
               value: STATUS_COLUMN[status],
@@ -366,7 +410,7 @@ const FilterPopup = ({
 
         filterProps.html_element = HTML_ELEMENT.SELECT;
         filterProps.multiple = multiFilter?.includes(
-          filterData[i]?.HeaderColumn,
+          filterData[i]?.HeaderColumn
         );
       } else if (
         // filterData[i].HeaderColumn === HEADER_COLUMN.ACQUIRER_NAME ||
@@ -376,12 +420,12 @@ const FilterPopup = ({
         // filterProps.options = ACQUIRER_NAMES_LIST.map((type: any) => {
         //   return { headerName: type.label, value: type.value };
         // });
-        filterProps.options = AcquirerFilterOptions
+        filterProps.options = AcquirerFilterOptions;
         // localStorage.getItem('acquirerCode')
         //   ? localStorage.getItem('acquirerCode')?.split(',')
         //   : [];
         filterProps.html_element = HTML_ELEMENT.SELECT_WITH_SEARCH;
-        filterProps.name = 'Name';
+        filterProps.name = "Name";
         filterProps.multiple = true;
         // filterProps.default_value = '';
         // filterProps.multiple = multiFilter?.includes(
@@ -398,60 +442,67 @@ const FilterPopup = ({
           return statusItem;
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i]?.HeaderColumn,
+          filterData[i]?.HeaderColumn
         );
-      }
-      else if (
+      } else if (
         filterData[i]?.HeaderColumn === HEADER_COLUMN.INTEGRATION_TYPE
       ) {
         filterProps.options = Object.keys(INTEGRATION_TYPE).map((type: any) => {
-          let statusItem = { headerName: INTEGRATION_TYPE[type].toUpperCase(), value: type };
+          let statusItem = {
+            headerName: INTEGRATION_TYPE[type].toUpperCase(),
+            value: type,
+          };
           return statusItem;
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i]?.HeaderColumn,
+          filterData[i]?.HeaderColumn
         );
-      }
-      else if (filterData[i].HeaderColumn === HEADER_COLUMN.CURRENCY_CODE) {
+      } else if (filterData[i].HeaderColumn === HEADER_COLUMN.CURRENCY_CODE) {
         filterProps.options = Currency?.map(({ value }: any) => {
           let currencyItem = { headerName: value, value };
           return currencyItem;
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter.includes(filterData[i].HeaderColumn);
-      }
-      else if (filterData[i].HeaderColumn === HEADER_COLUMN.assignmentType) {
-        filterProps.options = assignmentTypeOptions?.map(({ label, value }: any) => {
-          let currencyItem = { headerName: label, value };
-          return currencyItem;
-        });
+      } else if (filterData[i].HeaderColumn === HEADER_COLUMN.assignmentType) {
+        filterProps.options = assignmentTypeOptions?.map(
+          ({ label, value }: any) => {
+            let currencyItem = { headerName: label, value };
+            return currencyItem;
+          }
+        );
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
-      }
-      else if (filterData[i].HeaderColumn === HEADER_COLUMN.CATALOG_CATEGORY_STATUS) {
-        filterProps.options = CATALOG_CATEGORY_STATUS?.map(({ label, value }: any) => {
-          let categoryStatus = { headerName: label, value };
-          return categoryStatus;
-        });
+        filterProps.default_value = "";
+      } else if (
+        filterData[i].HeaderColumn === HEADER_COLUMN.CATALOG_CATEGORY_STATUS
+      ) {
+        filterProps.options = CATALOG_CATEGORY_STATUS?.map(
+          ({ label, value }: any) => {
+            let categoryStatus = { headerName: label, value };
+            return categoryStatus;
+          }
+        );
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter.includes(filterData[i].HeaderColumn);
-      }
-      else if (filterData[i].HeaderColumn === HEADER_COLUMN.CATALOG_PRODUCT_STATUS) {
-        filterProps.options = CATALOG_CATEGORY_STATUS?.map(({ label, value }: any) => {
-          let categoryStatus = { headerName: label, value };
-          return categoryStatus;
-        });
+      } else if (
+        filterData[i].HeaderColumn === HEADER_COLUMN.CATALOG_PRODUCT_STATUS
+      ) {
+        filterProps.options = CATALOG_CATEGORY_STATUS?.map(
+          ({ label, value }: any) => {
+            let categoryStatus = { headerName: label, value };
+            return categoryStatus;
+          }
+        );
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter.includes(filterData[i].HeaderColumn);
-      }
-      else if (
+      } else if (
         filterData[i].HeaderColumn === HEADER_COLUMN.PRODUCT_TYPE ||
         filterData[i].HeaderColumn === HEADER_COLUMN.TYPE
       ) {
@@ -460,8 +511,7 @@ const FilterPopup = ({
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
         filterProps.multiple = multiFilter.includes(filterData[i].HeaderColumn);
-      }
-      else if (filterData[i]?.HeaderColumn === HEADER_COLUMN.SCHEME) {
+      } else if (filterData[i]?.HeaderColumn === HEADER_COLUMN.SCHEME) {
         filterProps.options = Object.keys(CARD_TYPE).map((type: any) => {
           let schema = {
             headerName: CARD_TYPE[type].toUpperCase(),
@@ -470,9 +520,9 @@ const FilterPopup = ({
           return schema;
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter.includes(
-          filterData[i]?.HeaderColumn,
+          filterData[i]?.HeaderColumn
         );
       } else if (filterData[i]?.HeaderColumn === HEADER_COLUMN.MCC) {
         filterProps.options = MCC?.map((item: any) => {
@@ -480,20 +530,20 @@ const FilterPopup = ({
           return mccItem;
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i]?.HeaderColumn,
+          filterData[i]?.HeaderColumn
         );
       } else if (
         filterData[i]?.HeaderColumn === HEADER_COLUMN.TYPE &&
         ns === View_Name_Space.PRODUCTS
       ) {
-        filterProps.options = Object.keys(PRODUCT_TYPE).map(type => {
+        filterProps.options = Object.keys(PRODUCT_TYPE).map((type) => {
           let productItem = { label: PRODUCT_TYPE[type], value: type };
           return productItem;
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter.includes(filterData[i].HeaderColumn);
       } else if (filterData[i]?.HeaderColumn === HEADER_COLUMN.TIME_ZOME) {
         filterProps.options = timezone?.map(({ label, value }: any) => {
@@ -502,7 +552,7 @@ const FilterPopup = ({
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
         filterProps.multiple = multiFilter.includes(
-          filterData[i]?.HeaderColumn,
+          filterData[i]?.HeaderColumn
         );
       } else if (
         filterData[i].HeaderColumn === HEADER_COLUMN.SUBSCRIBER_CARD_EXP ||
@@ -510,9 +560,9 @@ const FilterPopup = ({
           filterData[i].HeaderColumn === HEADER_COLUMN.HOLIDAY_DATE) ||
         (ns === View_Name_Space.STATEMENTS &&
           filterData[i].HeaderColumn === HEADER_COLUMN.DATE) ||
-        (currentScreen === 'StatementTransactions' &&
+        (currentScreen === "StatementTransactions" &&
           filterData[i].HeaderColumn === HEADER_COLUMN.DATE) ||
-        (currentScreen === 'StatementTransactions' &&
+        (currentScreen === "StatementTransactions" &&
           filterData[i].HeaderColumn === HEADER_COLUMN.UPDATED_DATE) ||
         filterData[i]?.HeaderColumn === HEADER_COLUMN.CREATED_AT ||
         filterData[i].HeaderColumn === HEADER_COLUMN.ISSUED_DATE ||
@@ -538,30 +588,31 @@ const FilterPopup = ({
           return { headerName: type, value: type };
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i].HeaderColumn,
+          filterData[i].HeaderColumn
         );
-      }
-      else if (filterData[i].HeaderColumn === HEADER_COLUMN.STATEMENT_STATUS) {
+      } else if (
+        filterData[i].HeaderColumn === HEADER_COLUMN.STATEMENT_STATUS
+      ) {
         filterProps.options = STATEMENT_STATUS_FILTER(INTERNAL).map(
           (type: any) => {
             return { headerName: type.label, value: type.value };
-          },
+          }
         );
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i].HeaderColumn,
+          filterData[i].HeaderColumn
         );
       } else if (filterData[i].HeaderColumn === HEADER_COLUMN.WIRED_STATUS) {
         filterProps.options = Object.keys(WIRED_TYPE).map((type: any) => {
           return { headerName: WIRED_TYPE[type], value: type };
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i].HeaderColumn,
+          filterData[i].HeaderColumn
         );
       } else if (
         filterData[i].HeaderColumn === HEADER_COLUMN.STATEMENT_WHITELISTED
@@ -570,9 +621,9 @@ const FilterPopup = ({
           return { headerName: type.label, value: type.value };
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i].HeaderColumn,
+          filterData[i].HeaderColumn
         );
       } else if (
         filterData[i].HeaderColumn === HEADER_COLUMN.REGISTRATION_TYPE
@@ -580,55 +631,53 @@ const FilterPopup = ({
         filterProps.options = Object.keys(REGESTRATION_TYPE).map(
           (type: any) => {
             return { headerName: REGESTRATION_TYPE[type], value: type };
-          },
+          }
         );
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i].HeaderColumn,
+          filterData[i].HeaderColumn
         );
       } else if (filterData[i].HeaderColumn === HEADER_COLUMN.HAS_3DS) {
         filterProps.options = Object.keys(HAS_3DS_TYPE).map((type: any) => {
           return { headerName: HAS_3DS_TYPE[type], value: type };
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i].HeaderColumn,
+          filterData[i].HeaderColumn
         );
-      }
-      else if (filterData[i].HeaderColumn === HEADER_COLUMN.PAYMENT_TYPE) {
+      } else if (filterData[i].HeaderColumn === HEADER_COLUMN.PAYMENT_TYPE) {
         filterProps.options = TRANSACTION_PAYMENT_TYPE.map((type: any) => {
           return { headerName: type.label, value: type.value };
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i].HeaderColumn,
+          filterData[i].HeaderColumn
         );
-      }
-      else if (
+      } else if (
         filterData[i].HeaderColumn === HEADER_COLUMN.BILLING_CYCLE_TYPE
       ) {
         filterProps.options = BILLING_CYCLE.map((type: any) => {
           return { headerName: type.label, value: type.value };
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i].HeaderColumn,
+          filterData[i].HeaderColumn
         );
       } else if (
         filterData[i].HeaderColumn === HEADER_COLUMN.ROLLING_RESERVE_HELD ||
         filterData[i].HeaderColumn === HEADER_COLUMN.ROLLING_RESERVE_RELEASED ||
         filterData[i].HeaderColumn ===
-        HEADER_COLUMN.FIXED_DEPOSITE_HELD_YTD_AMOUNT ||
+          HEADER_COLUMN.FIXED_DEPOSITE_HELD_YTD_AMOUNT ||
         filterData[i].HeaderColumn === HEADER_COLUMN.ADJUSTMENTS_AMOUNT ||
         filterData[i].HeaderColumn === HEADER_COLUMN.NET_SALES ||
         filterData[i].HeaderColumn === HEADER_COLUMN.TOTAL_FEES
       ) {
-        filterProps.type = 'number';
-        filterProps.name = 'Name';
+        filterProps.type = "number";
+        filterProps.name = "Name";
         filterProps.html_element = HTML_ELEMENT.TEXT_FIELD;
       } else if (
         filterData[i].HeaderColumn === HEADER_COLUMN.AMOUNT ||
@@ -636,8 +685,8 @@ const FilterPopup = ({
         filterData[i].HeaderColumn === HEADER_COLUMN.COMPLETED_PAYMENT_CYCLE ||
         filterData[i].HeaderColumn === HEADER_COLUMN.SUBSCRIPTION_PLAN_AMOUNT
       ) {
-        filterProps.type = 'number';
-        filterProps.name = 'Name';
+        filterProps.type = "number";
+        filterProps.name = "Name";
         filterProps.html_element = HTML_ELEMENT.TEXT_FIELD;
       } else if (
         filterData[i].HeaderColumn === HEADER_COLUMN.CCY ||
@@ -647,22 +696,21 @@ const FilterPopup = ({
           return { headerName: item, value: item };
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter.includes(filterData[i].HeaderColumn);
       } else if (
         filterData[i].HeaderColumn === HEADER_COLUMN.DASMID ||
         filterData[i].HeaderColumn === HEADER_COLUMN.DAS_MID
       ) {
-
         // if (legacy) {
         //   dasmidOptions = localStorage.getItem('v2DasmidOptions')
         //     ? localStorage.getItem('v2DasmidOptions')?.split(',')
         //     : [];
         // }
-        filterProps.name = 'Name';
+        filterProps.name = "Name";
         filterProps.html_element = HTML_ELEMENT.SELECT_WITH_SEARCH;
         filterProps.multiple = true;
-        filterProps.options = dasmidOptions
+        filterProps.options = dasmidOptions;
         // currentScreen === FILTER_POPOP_OF.PRODUCT_INFO_ON_MERCHANT_DETAILS
         //   ? merchantDetailsDASMIDList
         //   : dasmidOptions;
@@ -670,16 +718,24 @@ const FilterPopup = ({
         filterData[i].HeaderColumn === HEADER_COLUMN.LEGAL_NAME ||
         filterData[i].HeaderColumn === HEADER_COLUMN.COMPANY_NAME
       ) {
+        const accountsList =
+          currentScreen === SALES_LEAD_FILTER_POPOP_OF.SALES_LEAD_MERCHANT
+            ? salesLeadFilterMerchantData
+            : salesLeadFilterPartnerData;
 
-        const accountsList = currentScreen === SALES_LEAD_FILTER_POPOP_OF.SALES_LEAD_MERCHANT ? salesLeadFilterMerchantData : salesLeadFilterPartnerData;
+        const salesLeadAccountsList =
+          accountsList && Array.isArray(accountsList)
+            ? accountsList?.map(({ business }: any) => {
+                return business?.companyName;
+              })
+            : [];
 
-        const salesLeadAccountsList = accountsList && Array.isArray(accountsList) ? accountsList?.map(({ business }: any) => {
-          return business?.companyName;
-        }) : [];
+        const legalNamesOptions =
+          ns == View_Name_Space.SALESLEAD
+            ? customSort([...salesLeadAccountsList])
+            : [...legalNamesList];
 
-        const legalNamesOptions = ns == View_Name_Space.SALESLEAD ? customSort([...salesLeadAccountsList]) : [...legalNamesList];
-
-        filterProps.name = 'Name';
+        filterProps.name = "Name";
         filterProps.html_element = HTML_ELEMENT.SELECT_WITH_SEARCH;
         filterProps.multiple = false;
         filterProps.options = legalNamesOptions;
@@ -687,11 +743,11 @@ const FilterPopup = ({
         // const acquirerMIDData = localStorage.getItem('acquirerMIDData')
         //   ? localStorage.getItem('acquirerMIDData')?.split(',')
         //   : [];
-        filterProps.name = 'Name';
+        filterProps.name = "Name";
         filterProps.html_element = HTML_ELEMENT.SELECT_WITH_SEARCH;
         filterProps.multiple = true;
 
-        filterProps.options = AcquirerMIDFilterOptions
+        filterProps.options = AcquirerMIDFilterOptions;
         // currentScreen === FILTER_POPOP_OF.ACQUIRER_MID_DETAIL_TABLE
         // ? AcquirerMIDFilterOptions
         //   : acquirerMIDData;
@@ -702,64 +758,66 @@ const FilterPopup = ({
         filterProps.options = Object.keys(SUBSCRIPTION_STATUS).map(
           (type: any) => {
             return { headerName: SUBSCRIPTION_STATUS[type], value: type };
-          },
+          }
         );
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i].HeaderColumn,
+          filterData[i].HeaderColumn
         );
       } else if (filterData[i].HeaderColumn === HEADER_COLUMN.ACCESS_LEVEL) {
         filterProps.options = USER_ACCESS_ROLE.map((type: any) => {
           return { headerName: type.label, value: type.value };
         });
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
+        filterProps.default_value = "";
         filterProps.multiple = multiFilter?.includes(
-          filterData[i].HeaderColumn,
+          filterData[i].HeaderColumn
         );
       } else if (filterData[i].HeaderColumn === HEADER_COLUMN.IsActive) {
-        filterProps.options = Object.entries(STATUS[ns]).map(([key, value]: any) => {
-          return {
-            headerName: key,
-            value
+        filterProps.options = Object.entries(STATUS[ns]).map(
+          ([key, value]: any) => {
+            return {
+              headerName: key,
+              value,
+            };
           }
-        });
+        );
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
-      }
-      else if (filterData[i].HeaderColumn === "RuleType") {
-        filterProps.options = RULE_TYPE_OPTIONS?.map(({ label, value }: any) => {
-          return {
-            headerName: label,
-            value
+        filterProps.default_value = "";
+      } else if (filterData[i].HeaderColumn === "RuleType") {
+        filterProps.options = RULE_TYPE_OPTIONS?.map(
+          ({ label, value }: any) => {
+            return {
+              headerName: label,
+              value,
+            };
           }
-        });
+        );
         filterProps.html_element = HTML_ELEMENT.SELECT;
-        filterProps.default_value = '';
-      }
-      else {
-        filterProps.name = 'Name';
+        filterProps.default_value = "";
+      } else {
+        filterProps.name = "Name";
         filterProps.html_element = HTML_ELEMENT.TEXT_FIELD;
-        filterProps.type = 'text';
+        filterProps.type = "text";
       }
     } else if (items_label === TRANSLATED_VALUE) {
-      filterProps.name = 'Name';
+      filterProps.name = "Name";
       filterProps.html_element = HTML_ELEMENT.TEXT_FIELD;
     }
     return filterProps;
   };
 
   const getDateFormat = (date: Date) => {
-    return format(date, 'yyyy/MM/dd');
+    return format(date, "yyyy/MM/dd");
   };
 
   const onHandleChange = (key: string, value: any, index: number) => {
     setDisableRequestDownloadButton && setDisableRequestDownloadButton(true);
     setDisableApplyButton && setDisableApplyButton(false);
     let data = filterData;
-    if (key === 'HeaderColumn') {
-      data[index].Name = '';
+    if (key === "HeaderColumn") {
+      data[index].Name = "";
     }
 
     if (data[index]) {
@@ -779,13 +837,20 @@ const FilterPopup = ({
           !REDUCED_HEADER_COLUMNS.includes(i.headerName) &&
           (i.visible == undefined || i.visible == true)
         ) {
-          const columnName = i.headerName?.split('/');
+          const columnName = i.headerName?.split("/");
           // changeing label from DAS MID to Phantom MID
-          return [...c, { headerName: columnName[0] === "DAS MID" ? "Phantom MID" : columnName[0], value: i.field }];
+          return [
+            ...c,
+            {
+              headerName:
+                columnName[0] === "DAS MID" ? "Phantom MID" : columnName[0],
+              value: i.field,
+            },
+          ];
         } else {
           return c;
         }
-      }, []),
+      }, [])
     );
   }, [columns]);
   const handleApplyFilter = () => {
@@ -805,7 +870,7 @@ const FilterPopup = ({
         itm.HeaderColumn === HEADER_COLUMN.DUE_DATE ||
         itm.HeaderColumn === HEADER_COLUMN.SUBSCRIPTION_STARTS_AT ||
         itm.HeaderColumn === HEADER_COLUMN.SUBSCRIPTION_ENDS_AT ||
-        itm.HeaderColumn === HEADER_COLUMN.NEXT_PAYMENT_DATE,
+        itm.HeaderColumn === HEADER_COLUMN.NEXT_PAYMENT_DATE
     );
     let filterPayload = filterData.filter(
       (itm: any) =>
@@ -817,7 +882,7 @@ const FilterPopup = ({
         // itm.HeaderColumn !== HEADER_COLUMN.DUE_DATE &&
         itm.HeaderColumn !== HEADER_COLUMN.SUBSCRIPTION_STARTS_AT &&
         itm.HeaderColumn !== HEADER_COLUMN.SUBSCRIPTION_ENDS_AT &&
-        itm.HeaderColumn !== HEADER_COLUMN.NEXT_PAYMENT_DATE,
+        itm.HeaderColumn !== HEADER_COLUMN.NEXT_PAYMENT_DATE
     );
     for (let date_col_index in filterDateColumn) {
       const date_cloumn = filterDateColumn[date_col_index];
@@ -826,7 +891,7 @@ const FilterPopup = ({
         let endDate = getDateFormat(
           date_cloumn.Name[1] !== null
             ? date_cloumn.Name[1]
-            : date_cloumn.Name[0],
+            : date_cloumn.Name[0]
         );
         if (
           (ns === View_Name_Space.TRANSACTION &&
@@ -835,22 +900,22 @@ const FilterPopup = ({
         ) {
           startDate = filterDateFormatterNoTimeZone(
             date_cloumn.Name[0],
-            'yyyy/MM/dd HH:mm:ss',
+            "yyyy/MM/dd HH:mm:ss"
           );
           endDate = filterDateFormatterNoTimeZone(
             date_cloumn.Name[1] !== null
               ? date_cloumn.Name[1]
               : date_cloumn.Name[0],
-            'yyyy/MM/dd HH:mm:ss',
+            "yyyy/MM/dd HH:mm:ss"
           );
         }
-        let startDateName = 'StartDate';
-        let endDateName = 'EndDate';
+        let startDateName = "StartDate";
+        let endDateName = "EndDate";
         let newKey;
         if (
           customHeaderName ||
           date_cloumn?.HeaderColumn ===
-          STATEMENT_FILTER.TRANSACTION_UPDATED_DATE
+            STATEMENT_FILTER.TRANSACTION_UPDATED_DATE
           // location.pathname === '/finance/statements' ||
           // location.pathname === '/salesLead' ||
           // location.pathname === '/dispute-management/list'
@@ -875,7 +940,7 @@ const FilterPopup = ({
               newKey = FILTER_HEADERS.createdAt;
               break;
             case CHARGEBACK_FILTER.IssuedDate:
-              newKey = '';
+              newKey = "";
               break;
             case CHARGEBACK_FILTER.DueDate:
               newKey = FILTER_HEADERS.DueDate;
@@ -889,7 +954,7 @@ const FilterPopup = ({
           ];*/
 
           filterPayload = filterPayload.filter(
-            (item: any) => item.HeaderColumn != date_cloumn?.HeaderColumn,
+            (item: any) => item.HeaderColumn != date_cloumn?.HeaderColumn
           );
           let startDateValue = startDate;
           let endDateValue = endDate;
@@ -943,72 +1008,60 @@ const FilterPopup = ({
     }
 
     for (let index in filterPayload) {
-      if (filterPayload[index].Name !== '') {
+      if (filterPayload[index].Name !== "") {
         let filterSelectedValue = filterPayload[index].Name;
         if (
           [HEADER_COLUMN.STATEMENT_ID, HEADER_COLUMN.HOLIDAY].includes(
-            filterPayload[index].HeaderColumn,
+            filterPayload[index].HeaderColumn
           )
         ) {
           filterSelectedValue = `"${filterSelectedValue}"`;
           filter = `${filter}&${filterPayload[index].HeaderColumn}=${filterSelectedValue}`;
-        } 
-        else if (
-          ["RuleType"].includes(
-            filterPayload[index].HeaderColumn,
-          )
-        ) {
+        } else if (["RuleType"].includes(filterPayload[index].HeaderColumn)) {
           filter = `${filter}&ruleType=${filterSelectedValue}`;
-        } 
-        else if (
-          ["IsActive"].includes(
-            filterPayload[index].HeaderColumn,
-          )
-        ) {
+        } else if (["IsActive"].includes(filterPayload[index].HeaderColumn)) {
           filter = `${filter}&isActive=${filterSelectedValue}`;
-        } 
-        else if (
+        } else if (
           [HEADER_COLUMN.SUBSCRIBER_CARD_EXP].includes(
-            filterPayload[index].HeaderColumn,
+            filterPayload[index].HeaderColumn
           )
         ) {
-          filter = `${filter}&${filterPayload[index].HeaderColumn
-            }=${filterDateFormatterNoTimeZone(
-              new Date(filterSelectedValue),
-              MONTH_FORMAT,
-            )}`;
-        } else if (filterPayload[index].HeaderColumn === 'ctcFirstName') {
+          filter = `${filter}&${
+            filterPayload[index].HeaderColumn
+          }=${filterDateFormatterNoTimeZone(
+            new Date(filterSelectedValue),
+            MONTH_FORMAT
+          )}`;
+        } else if (filterPayload[index].HeaderColumn === "ctcFirstName") {
           const trimmedContactPersonPayload =
             trimToSingleSpace(filterSelectedValue);
           const isSingleWord =
-            trimmedContactPersonPayload.split(' ')?.length > 1 ? false : true;
-          let contactPersonPayload = '';
+            trimmedContactPersonPayload.split(" ")?.length > 1 ? false : true;
+          let contactPersonPayload = "";
           if (isSingleWord) {
             contactPersonPayload = `${filterPayload[index].HeaderColumn}=${trimmedContactPersonPayload}`;
           } else {
             const [ctcFirstName, ...rest] =
-              trimmedContactPersonPayload?.split(' ');
+              trimmedContactPersonPayload?.split(" ");
             contactPersonPayload = `${filterPayload[index].HeaderColumn}=${ctcFirstName}&ctcLastName=${rest}`;
           }
           filter = `${filter}&${contactPersonPayload}`;
-        } else if (filterPayload[index].HeaderColumn === 'LegalNameInEnglish') {
+        } else if (filterPayload[index].HeaderColumn === "LegalNameInEnglish") {
           const emcodedLegalNameInEnglish =
             encodeURIComponent(filterSelectedValue);
           filter = `${filter}&${filterPayload[index].HeaderColumn}=${emcodedLegalNameInEnglish}`;
-        }
-
-        else if (
+        } else if (
           [HEADER_COLUMN.HOLIDAY_DATE].includes(
-            filterPayload[index].HeaderColumn,
+            filterPayload[index].HeaderColumn
           ) &&
           currentScreen == SIDE_MENU_TABS.HOLIDAY
         ) {
           const startMonth = `${(getMonth(filterSelectedValue[0]) + 1)
             .toString()
-            .padStart(2, '0')}/${getYear(filterSelectedValue[0])}`;
+            .padStart(2, "0")}/${getYear(filterSelectedValue[0])}`;
           const endMonth = `${(getMonth(filterSelectedValue[1]) + 1)
             .toString()
-            .padStart(2, '0')}/${getYear(filterSelectedValue[1])}`;
+            .padStart(2, "0")}/${getYear(filterSelectedValue[1])}`;
           if (filterSelectedValue[1]) {
             filter = `${filter}&HolidayStartMonthDate=${startMonth}&HolidayEndMonthDate=${endMonth}`;
           } else {
@@ -1021,13 +1074,13 @@ const FilterPopup = ({
     }
     let emptyFilterPayload = filterPayload?.find(
       (item: any) =>
-        item.HeaderColumn === '' ||
-        item.Name === '' ||
+        item.HeaderColumn === "" ||
+        item.Name === "" ||
         (Array.isArray(item.Name) &&
-          item.Name.every((val: any) => val === null)),
+          item.Name.every((val: any) => val === null))
     );
     if (emptyFilterPayload) {
-      DasSnackbar.error(t('API_STATUS_MESSAGE.' + 'ADD_NEW_FILTER_ERROR'));
+      DasSnackbar.error(t("API_STATUS_MESSAGE." + "ADD_NEW_FILTER_ERROR"));
     } else {
       if (dynamicFilter) {
         dispatch(userFilter(filter));
@@ -1037,9 +1090,9 @@ const FilterPopup = ({
     }
     if (
       currentScreen === FILTER_POPOP_OF.PRODUCT_INFO_ON_MERCHANT_DETAILS &&
-      filterData[0].Name !== ''
+      filterData[0].Name !== ""
     ) {
-      let filteredDasMid = filter?.split('=')[1]?.split(',');
+      let filteredDasMid = filter?.split("=")[1]?.split(",");
       dispatch(setFilteredDASMID(filteredDasMid));
       // dispatch(
       //   setMerchantDetailsProductList(
@@ -1051,10 +1104,10 @@ const FilterPopup = ({
 
   const addNewFilterRule = (ind: any) => {
     setDisableRequestDownloadButton && setDisableRequestDownloadButton(true);
-    if (filterData[ind].HeaderColumn !== '' && filterData[ind].Name !== '') {
-      setFilterData([...filterData, { HeaderColumn: '', Name: '' }]);
+    if (filterData[ind].HeaderColumn !== "" && filterData[ind].Name !== "") {
+      setFilterData([...filterData, { HeaderColumn: "", Name: "" }]);
     } else {
-      DasSnackbar.error(t('API_STATUS_MESSAGE.' + 'ADD_NEW_FILTER_ERROR'));
+      DasSnackbar.error(t("API_STATUS_MESSAGE." + "ADD_NEW_FILTER_ERROR"));
     }
   };
 
@@ -1063,7 +1116,7 @@ const FilterPopup = ({
     setDisableApplyButton && setDisableApplyButton(false);
     let filterItems = [...filterData];
     let newFilterItems = filterItems.filter(
-      (item: any, i) => i !== index && item,
+      (item: any, i) => i !== index && item
     );
     setFilterData([...newFilterItems]);
     setAnchorEl(anchorEl);
@@ -1072,19 +1125,19 @@ const FilterPopup = ({
 
   useEffect(() => {
     const totalFilters = filterData?.filter(
-      (item: any) => item.HeaderColumn && item.Name,
+      (item: any) => item.HeaderColumn && item.Name
     )?.length;
     setCount(totalFilters);
     if (filterData.length === 0 && initialFilterData?.length === 0) {
       if (!legacy && ns === View_Name_Space.TRANSACTION && initialFilter) {
         setFilterData([
           {
-            HeaderColumn: 'Date',
+            HeaderColumn: "Date",
             Name: [startOfDay(subDays(new Date(), 6)), endOfDay(new Date())],
           },
         ]);
       } else {
-        setFilterData([{ HeaderColumn: '', Name: '' }]);
+        setFilterData([{ HeaderColumn: "", Name: "" }]);
       }
     } else {
       return;
@@ -1093,7 +1146,7 @@ const FilterPopup = ({
 
   const handleResetFilter = () => {
     setInitialFilterData && setInitialFilterData([]);
-    setFilterData([{ HeaderColumn: '', Name: '' }]);
+    setFilterData([{ HeaderColumn: "", Name: "" }]);
     setCount(0);
     dispatch(resetFilter());
     setDisableRequestDownloadButton && setDisableRequestDownloadButton(true);
@@ -1131,22 +1184,31 @@ const FilterPopup = ({
     );
   } else {
     return (
-      <div>
-        <Tooltip
+      <>
+        {/* <Tooltip
           className="tooltip-menu"
           title={t('FilterPopup.button.Filter')}
           placement="left"
           arrow
-        >
-          <Button
-            className="download-csv-button filter-btn"
+        > */}
+        <TooltipDasButton
+          title={"FilterPopup.button.Filter"}
+          placement={"top"}
+          aria-describedby={id}
+          buttonClassName={"common-button"}
+          onClick={applyFilterFunction}
+          icon={<AdvFilterSvgIcon />}
+          badge={count}
+        />
+        {/* <Button
+            className="common-button"
             aria-describedby={id}
             onClick={applyFilterFunction}
           >
             <FilterAltOutlinedIcon />
             <div className="badge">{count}</div>
           </Button>
-        </Tooltip>
+        </Tooltip> */}
         <Popper
           id={id}
           open={open}
@@ -1160,16 +1222,13 @@ const FilterPopup = ({
               timeout={350}
               className="popover-box-div"
             >
-              <Box sx={{ bgcolor: 'background.paper' }}>
+              <Box sx={{ bgcolor: "background.paper" }}>
                 <form>
                   <h3>
                     {ADVANCED_FITLER}
-                    <Button
-                      className="close-filter"
-                      onClick={() => setOpen(false)}
-                    >
-                      <CloseIcon />
-                    </Button>
+                    <IconButton onClick={() => setOpen(false)}>
+                      <CloseSvgIcon />
+                    </IconButton>
                   </h3>
                   <FitlerBox {...props} />
                 </form>
@@ -1177,7 +1236,7 @@ const FilterPopup = ({
             </Fade>
           )}
         </Popper>
-      </div>
+      </>
     );
   }
 };

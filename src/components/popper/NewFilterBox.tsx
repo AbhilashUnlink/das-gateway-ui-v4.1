@@ -1,7 +1,6 @@
 import {
   Autocomplete,
   Box,
-  Button,
   Chip,
   IconButton,
   MenuItem,
@@ -57,13 +56,15 @@ export const NewFilterBox = ({
 
   const getWidth = (val: string, fallback: string = 'Value') =>
     `${Math.max((val || fallback).length, 1)}ch`;
-const [filterPop, setFilterPop]= useState(false);
+const [filterPop, setFilterPop]= useState(true);
   const handleFilterPopClose = () =>{
     setFilterPop(false);
+    setOpenFilter(false);
   };
 
   const renderChips = useMemo(() => {
     return (
+      allFilters?.length > 0 && openFilter ?
       <Stack className="filter-chips">
         <IconButton onClick={() => handleFilterPopClose()} style={{position:'absolute', right:'-13px', top:'-13px', width:'36px', height:'36px', padding:'10px 5px 5px'}}>
             <CloseSvgIcon/>
@@ -81,17 +82,43 @@ const [filterPop, setFilterPop]= useState(false);
             const bgColor = filter?.id === filters?.id ? "#e6c2c2" : 'var(--bs-blue-light)';
             return (
               <React.Fragment key={"filter" + index}>
-                {(allFilters?.length - index) < allFilters?.length && <Chip
-                  key={index + 1}
-                  label={filter?.operand}
-                  sx={{
-                    fontSize: 'smaller',
-                    height: 'fit-content',
-                    padding: '5px 0px',
-                    backgroundColor: '#e4b6b0',
-                    color: '#000',
-                  }}
-                />}
+                
+                {(allFilters?.length - index) < allFilters?.length && 
+                <div key={index + 1} className="form-group p-0-inline label-and-or-form-wrap" style={{margin:'0', paddingLeft: '7px',}}>
+                <Select
+                  style={{ width: '100%' }}
+                  id="filter-select"
+                  name="operand"
+                  value={filter?.operand}
+                  size="small"
+                  autoWidth={true}
+                  className="select-operand-box"
+                  // disabled
+                  // multiple={data.multiple}
+                  // placeholder="Select"
+                  onChange={event => handleSelectFilter(event.target.value)}
+                >
+                  {['AND', 'OR']?.map((itm: any, i: number) => {
+                    return (
+                      <MenuItem key={i} value={itm} className="menu-ui-list">
+                        {itm}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+                  </div>
+                // <Chip
+                //   key={index + 1}
+                //   label={filter?.operand}
+                //   sx={{
+                //     fontSize: 'smaller',
+                //     height: 'fit-content',
+                //     padding: '5px 0px',
+                //     backgroundColor: '#e4b6b0',
+                //     color: '#000',
+                //   }}
+                // />
+                }
                 {Array.isArray(filter.valueLabel) ? (
                   <Chip
                     key={index}
@@ -145,6 +172,12 @@ const [filterPop, setFilterPop]= useState(false);
 
           })}
       </Stack>
+      :
+      <>
+      <Stack className="filter-chips">
+      <h3 style={{textAlign:'center', fontSize:'14px'}}>No FIlter has been applied yet.</h3>
+      </Stack>
+      </>
     );
   }, [allFilters, filters, selectedFilter]);
 
@@ -556,7 +589,7 @@ const [filterPop, setFilterPop]= useState(false);
         </div>
 
 
-        {allFilters?.length > 0 && filterPop && openFilter && renderChips}
+        {filterPop && openFilter && renderChips}
 
       </div>
 }

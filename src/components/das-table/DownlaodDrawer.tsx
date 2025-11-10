@@ -52,7 +52,7 @@ const DownlaodDrawer = ({
           count={count}
           setCount={setCount}
         /> */}
-        <DownloadListTable disableRequestDownloadButton={disableRequestDownloadButton} setDisableRequestDownloadButton={setDisableRequestDownloadButton} />
+        <DownloadListTable disableRequestDownloadButton={disableRequestDownloadButton} setDisableRequestDownloadButton={setDisableRequestDownloadButton} initialFilterData={initialFilterData}  />
       </div>
     </>
   );

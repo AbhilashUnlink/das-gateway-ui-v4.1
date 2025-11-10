@@ -501,3 +501,13 @@ export const InProgressSvgIcon = ({ className, style }: any) => {
     </div>
   );
 };
+export const AdvFilterSvgIcon = ({ className, style }: any) => {
+  return (
+    <div>
+      <svg className={className} style={style} width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.80512 6.35449H15.1417C15.7538 6.35449 16.2512 6.85136 16.2512 7.46289V8.68595C16.2512 9.13504 15.9738 9.68924 15.6964 9.96634L13.3051 12.078C12.9703 12.3551 12.7503 12.9093 12.7503 13.3584V15.7472C12.7503 16.0816 12.5303 16.5212 12.253 16.6932L11.4782 17.1805C10.7512 17.6296 9.75643 17.1231 9.75643 16.2345V13.2915C9.75643 12.8998 9.53643 12.4029 9.30686 12.1258L7.19295 9.89945C6.91556 9.63191 6.69556 9.12549 6.69556 8.79106V7.52022C6.69556 6.85136 7.19295 6.35449 7.80512 6.35449Z" stroke="#1A1A1A" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M8.60875 21.0214H14.3479C19.1305 21.0214 21.0435 19.1104 21.0435 14.3328V8.59974C21.0435 3.82216 19.1305 1.91113 14.3479 1.91113H8.60875C3.82613 1.91113 1.91309 3.82216 1.91309 8.59974V14.3328C1.91309 19.1104 3.82613 21.0214 8.60875 21.0214Z" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
+    </div>
+  );
+};

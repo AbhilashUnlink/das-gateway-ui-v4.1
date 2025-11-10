@@ -1,8 +1,5 @@
-import { Badge, Button, Flex, Progress, Radio } from "antd";
+import { Button, Flex, Progress, Radio } from "antd";
 import i18n from "../../i18n";
-import DataTable from "./DataTable";
-import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
-import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import {
   getformatDate,
   //  getInitialRowCount
@@ -12,9 +9,8 @@ import {
   downloadReportStatus,
   downloadReportStatusConstants,
 } from "../../config/common/transaction-download-status";
-import pendingDownload from "../../assets/pending-download.gif";
+// import pendingDownload from "../../assets/pending-download.gif";
 import failedDownload from "../../assets/transaction-icons/payment-failed.png";
-import { Sync } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import {
   useEffect,
@@ -23,7 +19,7 @@ import {
 } from "react";
 import { Popover, Tooltip } from "@mui/material";
 import {
-  downloadListLoading,
+  // downloadListLoading,
   downloadTransactionReportApi,
   getDownloadTransactionReportList,
   getDownloadTransactionReportListApi,
@@ -32,10 +28,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { DATE_TIME_FORMAT, SELECTED_TIME_ZONE } from "../constants/constants";
 // import ConfirmationDialogRaw from '../confirmation-dialog/ConfirmationDialog';
 import { DOWNLOAD_RECORD_COUNTS } from "../../pages/transaction/components/constants/transaction";
-import useLegacy from "../../hooks/use-legacy/useLegacy";
-import { TRANSACTION, TRANSACTION_LEGACY } from "../constants/api-paths";
+import { TRANSACTION } from "../constants/api-paths";
 import InfoOutlined from "@mui/icons-material/InfoOutlined";
-import TooltipDasButton from "../../pages/transaction/components/buttons/TootlipDasButton";
 import {
   FILE_FORMATS_VALUES,
   fileFormatOptions,
@@ -45,17 +39,19 @@ import { CsvSvgIcon, DownloadReportButtonSvgIcon, ExcelSvgIcon, InProgressSvgIco
 const DownloadListTable = ({
   disableRequestDownloadButton,
   setDisableRequestDownloadButton,
+  initialFilterData,
 }: any) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
+  const [filterAppliedPopover, setOpenFilterAppliedPopover] = useState(false);
   const [filterPopupData, setFilterPopupData] = useState({});
   // const screenHeightOtherThanTableHeight = 550;
   // const initialRowCount = useMemo(() => getInitialRowCount(screenHeightOtherThanTableHeight), [screenHeightOtherThanTableHeight]);
   // const [take, setTake] = useState(() => initialRowCount);
-  const [take, setTake] = useState(5);
-  const [skip, setSkip] = useState(0);
-  const [showMaxLimitReachedPopup, setShowMaxLimitReachedPopup] =
-    useState(false);
+  // const [take, setTake] = useState(5);
+  // const [skip, setSkip] = useState(0);
+  // const [showMaxLimitReachedPopup, setShowMaxLimitReachedPopup] =
+  //   useState(false);
   const tableTotalCount = useSelector(
     (store: any) => store.transactionTable.count
   );
@@ -112,180 +108,182 @@ const DownloadListTable = ({
     setAnchorEl(null);
     setOpen(false);
   };
+  const handleFilterPopoverClose = () => {
+    setAnchorEl(null);
+    setOpenFilterAppliedPopover(false);
+  };
   const handleOpen = (event: any) => {
     setAnchorEl(event.currentTarget);
-    setOpen(true);
+    setOpenFilterAppliedPopover(true);
   };
 
   const id = open ? "transaction-filter-popover" : undefined;
+  const idfilter = filterAppliedPopover ? "transaction-filter-popover" : undefined;
   const { t } = useTranslation();
-  const columns: any = [
-    {
-      field: "action",
-      headerName: i18n.t("TransactionsResult.columnDefs.Action"),
-      sortable: false,
-      headerClassName: "super-app-theme--header",
-      width: 80,
-      renderCell: function ({ row }: any) {
-        const { status, id, CreatedAt } = row;
-        return (
-          <>
-            {downloadReportStatus[status] ===
-            downloadReportStatusConstants.Ready ? (
-              <Button
-                onClick={() => {
-                  const values = {
-                    id,
-                    CreatedAt,
-                  };
-                  dispatch(downloadTransactionReportApi(values));
-                }}
-                className="table-btn view-settings"
-              >
-                <Tooltip
-                  placement="top"
-                  title={t(
-                    "TransactionDetailDrawerBody.TransactionReportDownload.DownloadReport"
-                  )}
-                >
-                  <DownloadForOfflineIcon />
-                </Tooltip>
-              </Button>
-            ) : downloadReportStatus[status] ===
-              downloadReportStatusConstants.Failure ? (
-              <>
-                <img
-                  src={failedDownload}
-                  className="pending-download failed-download"
-                  alt="Failed Download"
-                />
-              </>
-            ) : (
-              <>
-                <img
-                  src={pendingDownload}
-                  className="pending-download"
-                  alt="Pending Download"
-                />
-              </>
-            )}
-          </>
-        );
-      },
-    },
+  // const columns: any = [
+  //   {
+  //     field: "action",
+  //     headerName: i18n.t("TransactionsResult.columnDefs.Action"),
+  //     sortable: false,
+  //     headerClassName: "super-app-theme--header",
+  //     width: 80,
+  //     renderCell: function ({ row }: any) {
+  //       const { status, id, CreatedAt } = row;
+  //       return (
+  //         <>
+  //           {downloadReportStatus[status] ===
+  //           downloadReportStatusConstants.Ready ? (
+  //             <Button
+  //               onClick={() => {
+  //                 const values = {
+  //                   id,
+  //                   CreatedAt,
+  //                 };
+  //                 dispatch(downloadTransactionReportApi(values));
+  //               }}
+  //               className="table-btn view-settings"
+  //             >
+  //               <Tooltip
+  //                 placement="top"
+  //                 title={t(
+  //                   "TransactionDetailDrawerBody.TransactionReportDownload.DownloadReport"
+  //                 )}
+  //               >
+  //                 <DownloadForOfflineIcon />
+  //               </Tooltip>
+  //             </Button>
+  //           ) : downloadReportStatus[status] ===
+  //             downloadReportStatusConstants.Failure ? (
+  //             <>
+  //               <img
+  //                 src={failedDownload}
+  //                 className="pending-download failed-download"
+  //                 alt="Failed Download"
+  //               />
+  //             </>
+  //           ) : (
+  //             <>
+  //               <img
+  //                 src={pendingDownload}
+  //                 className="pending-download"
+  //                 alt="Pending Download"
+  //               />
+  //             </>
+  //           )}
+  //         </>
+  //       );
+  //     },
+  //   },
 
-    {
-      field: "fileName",
-      headerClassName: "super-app-theme--header",
-      suppressMenu: true,
-      headerName: i18n.t(
-        "TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.FileName"
-      ),
-      minWidth: 300,
-      renderCell: function ({ row }: any) {
-        return (
-          <>
-            <span>
-              {t(
-                "TransactionDetailDrawerBody.TransactionReportDownload.DownloadReportTitle"
-              )}
-            </span>{" "}
-            &nbsp;{getformatDate(row.CreatedAt, DATE_TIME_FORMAT)}
-          </>
-        );
-      },
-    },
-    {
-      field: "Format",
-      headerClassName: "super-app-theme--header",
-      suppressMenu: true,
-      headerName: i18n.t(
-        "TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.FileFormat"
-      ),
-      minWidth: 130,
-      renderCell: function ({ row }: any) {
-        return (
-          <>
-            {row?.filter?.Format === FILE_FORMATS_VALUES.CSV ? (
-              <CsvSvgIcon className={row?.filter?.Format} />
-            ) : (
-              <ExcelSvgIcon className={row?.filter?.Format} />
-            )}
-          </>
-        );
-      },
-    },
-    {
-      field: "filter",
-      suppressMenu: true,
-      headerClassName: "super-app-theme--header",
-      headerName: i18n.t(
-        "TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.Filter"
-      ),
-      minWidth: 130,
-      maxWidth: 130,
-      renderCell: function ({ row }: any) {
-        return (
-          <>
-            <div className="filters-wrapper">
-              <Tooltip placement="top" arrow title={"Applied Filters"}>
-                <Button
-                  className="filtered-items"
-                  aria-describedby={id}
-                  onClick={(e) => handleClick(e, row.filter)}
-                >
-                  <FilterAltOutlinedIcon />
-                  <Badge className="app-filter-count">
-                    {Object.keys(row?.filter)?.length}
-                  </Badge>
-                </Button>
-              </Tooltip>
-            </div>
-          </>
-        );
-      },
-    },
-    {
-      field: "status",
-      suppressMenu: true,
-      headerClassName: "super-app-theme--header",
-      headerName: i18n.t(
-        "TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.Status"
-      ),
-      minWidth: 100,
-      maxWidth: 130,
-      cellClass: ({ row }: any) => downloadReportStatus[row.status],
-      renderCell: function ({ row }: any) {
-        return (
-          <div className={downloadReportStatus[row.status]}>
-            {downloadReportStatus[row.status]}
-          </div>
-        );
-      },
-    },
-  ];
+  //   {
+  //     field: "fileName",
+  //     headerClassName: "super-app-theme--header",
+  //     suppressMenu: true,
+  //     headerName: i18n.t(
+  //       "TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.FileName"
+  //     ),
+  //     minWidth: 300,
+  //     renderCell: function ({ row }: any) {
+  //       return (
+  //         <>
+  //           <span>
+  //             {t(
+  //               "TransactionDetailDrawerBody.TransactionReportDownload.DownloadReportTitle"
+  //             )}
+  //           </span>{" "}
+  //           &nbsp;{getformatDate(row.CreatedAt, DATE_TIME_FORMAT)}
+  //         </>
+  //       );
+  //     },
+  //   },
+  //   {
+  //     field: "Format",
+  //     headerClassName: "super-app-theme--header",
+  //     suppressMenu: true,
+  //     headerName: i18n.t(
+  //       "TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.FileFormat"
+  //     ),
+  //     minWidth: 130,
+  //     renderCell: function ({ row }: any) {
+  //       return (
+  //         <>
+  //           {row?.filter?.Format === FILE_FORMATS_VALUES.CSV ? (
+  //             <CsvSvgIcon className={row?.filter?.Format} />
+  //           ) : (
+  //             <ExcelSvgIcon className={row?.filter?.Format} />
+  //           )}
+  //         </>
+  //       );
+  //     },
+  //   },
+  //   {
+  //     field: "filter",
+  //     suppressMenu: true,
+  //     headerClassName: "super-app-theme--header",
+  //     headerName: i18n.t(
+  //       "TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.Filter"
+  //     ),
+  //     minWidth: 130,
+  //     maxWidth: 130,
+  //     renderCell: function ({ row }: any) {
+  //       return (
+  //         <>
+  //           <div className="filters-wrapper">
+  //             <Tooltip placement="top" arrow title={"Applied Filters"}>
+  //               <Button
+  //                 className="filtered-items"
+  //                 aria-describedby={id}
+  //                 onClick={(e) => handleClick(e, row.filter)}
+  //               >
+  //                 <FilterAltOutlinedIcon />
+  //                 <Badge className="app-filter-count">
+  //                   {Object.keys(row?.filter)?.length}
+  //                 </Badge>
+  //               </Button>
+  //             </Tooltip>
+  //           </div>
+  //         </>
+  //       );
+  //     },
+  //   },
+  //   {
+  //     field: "status",
+  //     suppressMenu: true,
+  //     headerClassName: "super-app-theme--header",
+  //     headerName: i18n.t(
+  //       "TransactionDetailDrawerBody.TransactionReportDownload.ColumsnDefs.Status"
+  //     ),
+  //     minWidth: 100,
+  //     maxWidth: 130,
+  //     cellClass: ({ row }: any) => downloadReportStatus[row.status],
+  //     renderCell: function ({ row }: any) {
+  //       return (
+  //         <div className={downloadReportStatus[row.status]}>
+  //           {downloadReportStatus[row.status]}
+  //         </div>
+  //       );
+  //     },
+  //   },
+  // ];
   const rows = useSelector(
     (store: any) => store.transactionTable.downloadTransactionReportList
   );
-  const { reportListCount } = useSelector(
-    (store: any) => store.transactionTable
-  );
-  console.log(rows, "rows");
+  // const { reportListCount } = useSelector(
+  //   (store: any) => store.transactionTable
+  // );
+  console.log(initialFilterData, "initialFilterData");
   let timeZone = localStorage.getItem(SELECTED_TIME_ZONE);
   const dispatch = useDispatch();
   const { filter } = useSelector((store: any) => store.filter);
-  const legacy = useLegacy();
-  const apiPath = legacy
-    ? `${TRANSACTION_LEGACY.REPORT_DOWNLOAD_API}?take=${take}&skip=${skip}&TimeZone=${timeZone}`
-    : `${TRANSACTION.REPORT_DOWNLOAD_API}?take=${take}&skip=${skip}&TimeZone=${timeZone}`;
+  const apiPath = `${TRANSACTION.REPORT_DOWNLOAD_API}&TimeZone=${timeZone}`;
   //const apiPath = `reports/transactions/download-req-list?take=${take}&skip=${skip}`;
   const [fileFormatType, setFileFormatType] = useState(selectedFormatType);
 
   useEffect(() => {
     dispatch(getDownloadTransactionReportList(apiPath));
-  }, [take, skip]);
+  }, []);
 
-  const loading = useSelector(downloadListLoading);
+  // const loading = useSelector(downloadListLoading);
   return (
     <>
       <div className={`ag-theme-alpine w-100 t-download-list-filter`}>
@@ -350,10 +348,10 @@ const DownloadListTable = ({
           </Button>
           <Popover
             className="action-button-popover"
-            id={id}
-            open={open}
+            id={idfilter}
+            open={filterAppliedPopover}
             anchorEl={anchorEl}
-            onClose={handleClose}
+            onClose={handleFilterPopoverClose}
             anchorOrigin={{
               vertical: "bottom",
               horizontal: "left",
@@ -365,22 +363,25 @@ const DownloadListTable = ({
                   "TransactionDetailDrawerBody.TransactionReportDownload.AppliedFilters"
                 )}
               </h3>
-              <button className="close-filter-popper" onClick={handleClose}>
+              <button className="close-filter-popper" onClick={handleFilterPopoverClose}>
                 <CloseIcon />
               </button>
               <div>
-                {Object.entries(filterPopupData).map(
-                  ([key, value]: any, index) => {
-                    return (
-                      <div key={index} className="filt-listing">
-                        <h4>
-                          {key.toUpperCase()}:{" "}
-                          <span>{decodeURIComponent(value)}</span>
-                        </h4>
-                      </div>
-                    );
-                  }
-                )}
+              <div>
+              {initialFilterData?.map((item: any, index: number) => (
+                <div key={index} className="filt-listing">
+                  <h4>
+                    {item.HeaderColumn.toUpperCase()}:{" "}
+                    <span>
+                      {Array.isArray(item.Name)
+                        ? item.Name.join(", ")
+                        : item.Name}
+                    </span>
+                  </h4>
+                </div>
+              ))}       
+</div>
+
               </div>
             </>
           </Popover>
@@ -399,7 +400,7 @@ const DownloadListTable = ({
             <Radio.Group 
             block
             onChange={(val: any) => {
-              setFileFormatType(val);
+              setFileFormatType(val?.target?.value);
               if (
                 tableTotalCount > DOWNLOAD_RECORD_COUNTS.min &&
                 tableTotalCount < DOWNLOAD_RECORD_COUNTS.max
@@ -436,7 +437,7 @@ const DownloadListTable = ({
             onClick={() => {
               setDisableRequestDownloadButton(true);
               if (tableTotalCount > DOWNLOAD_RECORD_COUNTS.max) {
-                setShowMaxLimitReachedPopup(true);
+                // setShowMaxLimitReachedPopup(true);
               } else {
                 dispatch(
                   getDownloadTransactionReportListApi({
@@ -558,20 +559,7 @@ const DownloadListTable = ({
           </div>
         ))}
         </div>
-        {/* <DataTable
-          columns={columns}
-          rows={rows}
-          rowId={({ id }: any) => id}
-          autoHeight={false}
-          skip={skip}
-          setSkip={setSkip}
-          take={take}
-          setTake={setTake}
-          initialRowCount={5}
-          count={reportListCount}
-          showFooter={true}
-          loading={loading}
-        /> */}
+        
         {/* <ConfirmationDialogRaw
           className="show-max-limit-reached-popup"
           open={showMaxLimitReachedPopup}
