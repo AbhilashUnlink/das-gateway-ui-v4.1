@@ -1074,8 +1074,10 @@ const common = {
       SearchTransactionDetails: 'Search Transaction Result',
     },
     TransactionTile:{
+      "Total Transactions":"Total Transactions",
       "Total Sales":"Total Sales",
       "Total Refund":"Total Refund",
+      "Total Declined":"Total Declined",
       "Approval Ratio":"Approval Ratio",
     },
     TransactionInfo: {

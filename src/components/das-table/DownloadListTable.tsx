@@ -521,7 +521,7 @@ const DownloadListTable = ({
                 onClick={() => {
                   const values = {
                     id,
-                    CreatedAt,
+                    CreatedAt:item?.CreatedAt,
                   };
                   dispatch(downloadTransactionReportApi(values));
                 }}

@@ -19,7 +19,8 @@ import { FILTER_INPUT_TYPES, HAS_3DS_TYPE, HEADER_COLUMN, View_Name_Space } from
 import { showInAscendingOrder } from 'utils/helper';
 import DateRangePicker from './component/date-range-picker';
 import NewDateRangeFilter from './component/NewDateRangeFilter';
-import { CloseSvgIcon, PlusSvgIcon, ResetSvgIcon } from 'components/svg-icons/SvgIcons';
+import { CloseSvgIcon, NextGenFilterSvgIcon, PlusSvgIcon, ResetSvgIcon } from 'components/svg-icons/SvgIcons';
+import TooltipDasButton from 'pages/transaction/components/buttons/TootlipDasButton';
 
 export const NewFilterBox = ({
   filters,
@@ -41,6 +42,10 @@ export const NewFilterBox = ({
 }: any) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const [openFilter, setOpenFilter] = useState(false);
+  const OnNewFilterClick = () =>{
+    setOpenFilter(!openFilter);
+  };
   const isBetOp = filters?.operator == OPERATORS_VALUE.BETWEEN || filters?.operator == OPERATORS_VALUE.NOT_BETWEEN;
 
   // const selectMode = (filters?.operator === 'in' || filters?.operator === 'notin') ? options?.find(
@@ -143,8 +148,22 @@ const [filterPop, setFilterPop]= useState(false);
     );
   }, [allFilters, filters, selectedFilter]);
 
+
+
+
   return (
     <>
+    <TooltipDasButton
+              title={"FilterPopup.button.NextGenFilter"}
+              placement={"top"}
+              buttonClassName={"common-button"}
+              onClick={OnNewFilterClick}
+              icon={
+                <NextGenFilterSvgIcon/>
+              }
+              badge={allFilters?.length}
+            />
+     {openFilter &&
       <div className="next-gen-filter-wrap">
         <div style={{ width: allFilters?.length === 0 ? '100%' : '100%', display: "flex", alignItems: "center" }}>
           {/* filter initial */}
@@ -537,9 +556,10 @@ const [filterPop, setFilterPop]= useState(false);
         </div>
 
 
-        {allFilters?.length > 0 && filterPop && renderChips}
+        {allFilters?.length > 0 && filterPop && openFilter && renderChips}
 
       </div>
+}
     </>
   );
 };

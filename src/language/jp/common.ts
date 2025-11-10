@@ -1059,8 +1059,10 @@ const common = {
       SearchTransactionDetails: '取引結果の検索',
     },
     TransactionTile:{
+      "Total Transactions":"総取引数",
       "Total Sales":"总销售额",
       "Total Refund":"退款总额",
+      "Total Declined":"合計減少しました",
       "Approval Ratio":"批准比率",
     },
     TransactionInfo: {

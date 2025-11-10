@@ -527,6 +527,7 @@ img.new-login-logo {
     display: block;
     width: 100%;
     padding-left: 45px !important;
+    font-size: 14px;
 }
 
 .new-login-box .MuiOutlinedInput-root {
@@ -546,6 +547,7 @@ img.new-login-logo {
     -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
     -webkit-transition: background-color 5000s ease-in-out 0s;
     transition: background-color 5000s ease-in-out 0s;
+    padding: 12px;
 }
 
 .new-log-box label.MuiInputLabel-root {
@@ -560,7 +562,7 @@ img.new-login-logo {
 .new-log-box svg.login-f-icons {
     position: absolute;
     left: 20px;
-    top: 18px;
+    top: 16px;
     /* fill: #797979; */
     fill: #f6921e;
     z-index: 9;

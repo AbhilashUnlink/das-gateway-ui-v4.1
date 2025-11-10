@@ -38,3 +38,6 @@ body {
     color: #808080;
     font-size: 12px;
 }
+.ant-tooltip-arrow::before {
+    background-color: #f7941d !important;
+  }

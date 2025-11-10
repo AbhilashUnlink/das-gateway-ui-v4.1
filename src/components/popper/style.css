@@ -755,7 +755,8 @@ button.new-gen-filter-action-button:last-child:hover{
   flex: none;
   order: 2;
   flex-grow: 0;
-  position: relative;
+  position: absolute;
+  right: 70px;
 }
 
   
@@ -1018,4 +1019,13 @@ button.close-filter-popper {
 }
 .ant-progress-bg.ant-progress-bg-outer {
   height: 4px !important;
+}
+.drawer-header.preference-header button div {
+  display: flex;
+}
+span.MuiBadge-root.tooltip-menu.badge-class span.MuiBadge-badge {
+  background-color: #000;
+  border-radius: 5px;
+  right: -2px;
+  top: 1px;
 }
