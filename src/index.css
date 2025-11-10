@@ -41,3 +41,6 @@ body {
 .ant-tooltip-arrow::before {
     background-color: #f7941d !important;
   }
+  .drawer-header button div {
+    display: flex;
+}

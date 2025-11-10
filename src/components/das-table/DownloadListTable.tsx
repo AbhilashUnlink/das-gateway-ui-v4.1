@@ -1,5 +1,8 @@
-import { Button, Flex, Progress, Radio } from "antd";
+import { Badge, Button, Flex, Progress, Radio } from "antd";
 import i18n from "../../i18n";
+import DataTable from "./DataTable";
+import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
+import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import {
   getformatDate,
   //  getInitialRowCount
@@ -9,8 +12,9 @@ import {
   downloadReportStatus,
   downloadReportStatusConstants,
 } from "../../config/common/transaction-download-status";
-// import pendingDownload from "../../assets/pending-download.gif";
+import pendingDownload from "../../assets/pending-download.gif";
 import failedDownload from "../../assets/transaction-icons/payment-failed.png";
+import { Sync } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import {
   useEffect,
@@ -19,7 +23,7 @@ import {
 } from "react";
 import { Popover, Tooltip } from "@mui/material";
 import {
-  // downloadListLoading,
+  downloadListLoading,
   downloadTransactionReportApi,
   getDownloadTransactionReportList,
   getDownloadTransactionReportListApi,
@@ -28,8 +32,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { DATE_TIME_FORMAT, SELECTED_TIME_ZONE } from "../constants/constants";
 // import ConfirmationDialogRaw from '../confirmation-dialog/ConfirmationDialog';
 import { DOWNLOAD_RECORD_COUNTS } from "../../pages/transaction/components/constants/transaction";
-import { TRANSACTION } from "../constants/api-paths";
+import useLegacy from "../../hooks/use-legacy/useLegacy";
+import { TRANSACTION, TRANSACTION_LEGACY } from "../constants/api-paths";
 import InfoOutlined from "@mui/icons-material/InfoOutlined";
+import TooltipDasButton from "../../pages/transaction/components/buttons/TootlipDasButton";
 import {
   FILE_FORMATS_VALUES,
   fileFormatOptions,
@@ -39,7 +45,7 @@ import { CsvSvgIcon, DownloadReportButtonSvgIcon, ExcelSvgIcon, InProgressSvgIco
 const DownloadListTable = ({
   disableRequestDownloadButton,
   setDisableRequestDownloadButton,
-  initialFilterData,
+  initialFilterData
 }: any) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
@@ -48,10 +54,10 @@ const DownloadListTable = ({
   // const screenHeightOtherThanTableHeight = 550;
   // const initialRowCount = useMemo(() => getInitialRowCount(screenHeightOtherThanTableHeight), [screenHeightOtherThanTableHeight]);
   // const [take, setTake] = useState(() => initialRowCount);
-  // const [take, setTake] = useState(5);
-  // const [skip, setSkip] = useState(0);
-  // const [showMaxLimitReachedPopup, setShowMaxLimitReachedPopup] =
-  //   useState(false);
+  const [take, setTake] = useState(5);
+  const [skip, setSkip] = useState(0);
+  const [showMaxLimitReachedPopup, setShowMaxLimitReachedPopup] =
+    useState(false);
   const tableTotalCount = useSelector(
     (store: any) => store.transactionTable.count
   );
@@ -268,22 +274,24 @@ const DownloadListTable = ({
   const rows = useSelector(
     (store: any) => store.transactionTable.downloadTransactionReportList
   );
-  // const { reportListCount } = useSelector(
-  //   (store: any) => store.transactionTable
-  // );
-  console.log(initialFilterData, "initialFilterData");
+  const { reportListCount } = useSelector(
+    (store: any) => store.transactionTable
+  );
   let timeZone = localStorage.getItem(SELECTED_TIME_ZONE);
   const dispatch = useDispatch();
   const { filter } = useSelector((store: any) => store.filter);
-  const apiPath = `${TRANSACTION.REPORT_DOWNLOAD_API}&TimeZone=${timeZone}`;
+  const legacy = useLegacy();
+  const apiPath = legacy
+    ? `${TRANSACTION_LEGACY.REPORT_DOWNLOAD_API}?take=${take}&skip=${skip}&TimeZone=${timeZone}`
+    : `${TRANSACTION.REPORT_DOWNLOAD_API}?take=${take}&skip=${skip}&TimeZone=${timeZone}`;
   //const apiPath = `reports/transactions/download-req-list?take=${take}&skip=${skip}`;
   const [fileFormatType, setFileFormatType] = useState(selectedFormatType);
 
   useEffect(() => {
     dispatch(getDownloadTransactionReportList(apiPath));
-  }, []);
+  }, [take, skip]);
 
-  // const loading = useSelector(downloadListLoading);
+  const loading = useSelector(downloadListLoading);
   return (
     <>
       <div className={`ag-theme-alpine w-100 t-download-list-filter`}>
@@ -437,7 +445,7 @@ const DownloadListTable = ({
             onClick={() => {
               setDisableRequestDownloadButton(true);
               if (tableTotalCount > DOWNLOAD_RECORD_COUNTS.max) {
-                // setShowMaxLimitReachedPopup(true);
+                setShowMaxLimitReachedPopup(true);
               } else {
                 dispatch(
                   getDownloadTransactionReportListApi({
