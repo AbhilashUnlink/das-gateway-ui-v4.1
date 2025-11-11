@@ -655,7 +655,8 @@ const common = {
       "ResponseCode": "レスポンスコード",
       "TransactionID":"取引ID",
       "LinkName":"リンク名",
-      "MerchantAccountEnglish":"マーチャントアカウント（英語）"
+      "MerchantAccountEnglish":"マーチャントアカウント（英語）",
+      "StatementID": "Statement ID",
     },
     BreadCrumb: {
       Home: 'ホーム',

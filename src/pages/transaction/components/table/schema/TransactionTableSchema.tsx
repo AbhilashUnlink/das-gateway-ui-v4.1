@@ -394,6 +394,28 @@ export const columns: any = () => {
       //   type: FILTER_INPUT_TYPES.TEXT,
       // },
       {
+        field: 'StatementID',
+        headerName: i18n.t('TransactionsResult.columnDefs.StatementID'),
+        translation: "TransactionsResult.columnDefs.StatementID",
+        sortable: false,
+        width: 180,
+        headerClassName: 'super-app-theme--header',
+        hide: false,
+        showInAdditionalColumn: true,
+        defaultSelectedInAdditionalColumn: false,
+        type: FILTER_INPUT_TYPES.TEXT,
+        renderCell: (params: any) => (
+          <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
+            <CustomBodyRowDisplay rowTopValue={params.row?.MerchantRefID === "N/A" ? "N/A" : <DasCopyComponent text={params.row?.MerchantRefID} truncate={true} />}  rowTopClassName={"track-id-copy-value"}/>
+          </div>
+        ),
+        renderHeader: () => (
+          <CustomHeaderDispaly
+          headingTop={i18n.t('TransactionsResult.columnDefs.StatementID')}
+          />
+        ),
+      },
+      {
         field: 'DASMID',
         headerName: i18n.t('TransactionsResult.columnDefs.DASMID'),
         translation: "TransactionsResult.columnDefs.DASMID",

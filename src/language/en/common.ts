@@ -666,7 +666,8 @@ const common = {
       "ResponseCode": "Response Code",
       "TransactionID":"Transaction ID",
       "LinkName":"Link Name",
-      "MerchantAccountEnglish":"Merchant Account (English)"
+      "MerchantAccountEnglish":"Merchant Account (English)",
+      "StatementID": "Statement ID",
     },
     BreadCrumb: {
       Home: 'Home',
