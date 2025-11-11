@@ -1,26 +1,29 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DataGrid } from '@mui/x-data-grid';
-import { Suspense, useEffect, useState } from 'react';
-import CustomFooter from './CustomFooter';
-import './style.css';
-import FilterPopup from 'components/popper/filter-popup';
-import { useTranslation } from 'react-i18next';
+import { DataGrid } from "@mui/x-data-grid";
+import { Suspense, useEffect, useState } from "react";
+import CustomFooter from "./CustomFooter";
+import "./style.css";
+import FilterPopup from "components/popper/filter-popup";
+import { useTranslation } from "react-i18next";
 // import ConfirmationDialogRaw from '../confirmation-dialog/ConfirmationDialog';
-import TooltipDasButton from '../../pages/transaction/components/buttons/TootlipDasButton';
-import DownlaodDrawer from './DownlaodDrawer';
-import DasDrawer from '../das-drawer/DasDrawer';
-import { DRAWER_TYPE, DRAWER_WIDTH } from '../constants/drawer';
-import SkeletonLoadingOverlay from './SkeletonOverlay';
-import { NewFilterPopup } from 'components/popper/NewFilterPopup';
-import { DownloadReportTitleSvgIcon, DownloadSvgIcon } from 'components/svg-icons/SvgIcons';
+import TooltipDasButton from "../../pages/transaction/components/buttons/TootlipDasButton";
+import DownlaodDrawer from "./DownlaodDrawer";
+import DasDrawer from "../das-drawer/DasDrawer";
+import { DRAWER_TYPE, DRAWER_WIDTH } from "../constants/drawer";
+import SkeletonLoadingOverlay from "./SkeletonOverlay";
+import { NewFilterPopup } from "components/popper/NewFilterPopup";
+import {
+  DownloadReportTitleSvgIcon,
+  DownloadSvgIcon,
+} from "components/svg-icons/SvgIcons";
 
 // import { resetFilter } from '../../redux/features/filter';
 // import { useDispatch } from 'react-redux';
 
 export default function DataTable({
   title = "",
-  dasTableClassName = '',
+  dasTableClassName = "",
   columns,
   rows = [],
   rowId,
@@ -36,19 +39,19 @@ export default function DataTable({
   showFooter,
   ns,
   checkboxSelection,
-  isRowSelectable = () => { },
+  isRowSelectable = () => {},
   onSelectionModelChange,
   showMonthYearPicker,
   dateFormat,
   ReleasedPastFutureDate,
   customHeaderName,
-  className = 'table-icons',
-  popupClassName = '',
+  className = "table-icons",
+  popupClassName = "",
   showDownloadButton = false,
-  currentScreen = '',
+  currentScreen = "",
   columnVisibilityModel = {},
   dynamicFilter,
-  NORECORD = 'NO_RECORD_FOUND',
+  NORECORD = "NO_RECORD_FOUND",
   loading = false,
   showRightActionButtons = false, // this is used in statement where before filter we are having approve and wired status buttons
   rightActionButtons,
@@ -63,14 +66,13 @@ export default function DataTable({
   const [nxtGenfilterCount, setnextGenFilterCount] = useState(0);
   const [noRecords, setNoRecords] = useState("");
 
-  // no records will show only after 2.5 seconds till then it'll not show it 
+  // no records will show only after 2.5 seconds till then it'll not show it
   useEffect(() => {
     const timer = setTimeout(() => {
       setNoRecords(NORECORD);
     }, 2500);
     return () => clearTimeout(timer);
   }, []);
-
 
   const filterProps = {
     columns,
@@ -97,9 +99,9 @@ export default function DataTable({
             isDrawerOpen: showDownloadPopup,
             type: DRAWER_TYPE.CHILDREN,
             width: DRAWER_WIDTH.FIFTY,
-            icon:<DownloadReportTitleSvgIcon/>,
+            icon: <DownloadReportTitleSvgIcon />,
             title:
-              'TransactionDetailDrawerBody.TransactionReportDownload.TransactionDownload',
+              "TransactionDetailDrawerBody.TransactionReportDownload.TransactionDownload",
           }}
           onClose={() => {
             setShowDownloadPopup(false);
@@ -108,55 +110,93 @@ export default function DataTable({
           <DownlaodDrawer {...filterProps} />
         </DasDrawer>
 
-        <div className={className} style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems:"center" }}>
-          <span style={{ fontSize: "20px", fontWeight: "600", color: "#1a1a1a" }}>
+        <div
+          className={className}
+          style={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <span
+            style={{ fontSize: "18px", fontWeight: "600", color: "#1a1a1a", borderLeft: "4px solid var(--color-primary)", paddingLeft: '12px' }}
+          >
             {title}
           </span>
 
-
           {/* this is used in statement where before filter we are having approve and wired status buttons */}
           {showRightActionButtons && (
-            <div style={{ display: "flex", justifyContent: "flex-end", flexDirection:'row-reverse', gap:'15px' }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                flexDirection: "row-reverse",
+                gap: "15px",
+              }}
+            >
               <>
                 {showDownloadButton && (
                   <TooltipDasButton
-                    title={'TransactionsResult.DownloadCSV'}
-                    placement={'top'}
-                    buttonClassName={'common-button'}
+                    title={"TransactionsResult.DownloadCSV"}
+                    placement={"top"}
+                    buttonClassName={"common-button"}
                     onClick={() => setShowDownloadPopup(true)}
-                    icon={<DownloadSvgIcon sx={{ fontSize: '20px', padding: '2px' }} />}
-                  // loading={loading}
+                    icon={
+                      <DownloadSvgIcon
+                        sx={{ fontSize: "20px", padding: "2px" }}
+                      />
+                    }
+                    // loading={loading}
                   />
                 )}
               </>
 
-              {rightActionButtons}</div>
-          )}
+             
+            
 
-          {/* <NewFilterPopup
-            columns={columns}
-            count={nxtGenfilterCount}
-            setCount={setnextGenFilterCount}
-            ns={ns}
-            currentScreen={currentScreen}
-            multiFilter={multiFilter}
-            filteredObject={filteredObject}
-          /> */}
-<div style={{ display: "flex", justifyContent: "flex-end", flexDirection:'row-reverse', gap:'15px' }}>
-           {showFilter &&
-            (currentScreen === 'TransactionList' ? (
-              <>
-                <NewFilterPopup
-                  columns={columns}
-                  count={nxtGenfilterCount}
-                  setCount={setnextGenFilterCount}
-                  ns={ns}
-                  currentScreen={currentScreen}
-                  multiFilter={multiFilter}
-                  filteredObject={filteredObject}
-                />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              flexDirection: "row-reverse",
+              gap: "15px",
+            }}
+          >
+            {showFilter &&
+              (currentScreen === "TransactionList" ? (
+                <>
+                  <NewFilterPopup
+                    columns={columns}
+                    count={nxtGenfilterCount}
+                    setCount={setnextGenFilterCount}
+                    ns={ns}
+                    currentScreen={currentScreen}
+                    multiFilter={multiFilter}
+                    filteredObject={filteredObject}
+                  />
 
-
+                  <FilterPopup
+                    columns={columns}
+                    multiFilter={multiFilter}
+                    ns={ns}
+                    filter=""
+                    dateFormat={dateFormat}
+                    showMonthYearPicker={showMonthYearPicker}
+                    ReleasedPastFutureDate={ReleasedPastFutureDate}
+                    customHeaderName={customHeaderName}
+                    popupClassName={popupClassName}
+                    removePopper={false}
+                    currentScreen={currentScreen}
+                    dynamicFilter={dynamicFilter}
+                    setSkip={setSkip}
+                    initialFilterData={initialFilterData}
+                    setInitialFilterData={setInitialFilterData}
+                    count={filterCount}
+                    setCount={setFilterCount}
+                  />
+                </>
+              ) : (
                 <FilterPopup
                   columns={columns}
                   multiFilter={multiFilter}
@@ -176,52 +216,34 @@ export default function DataTable({
                   count={filterCount}
                   setCount={setFilterCount}
                 />
-              </>
-            ) : (
-              <FilterPopup
-                columns={columns}
-                multiFilter={multiFilter}
-                ns={ns}
-                filter=""
-                dateFormat={dateFormat}
-                showMonthYearPicker={showMonthYearPicker}
-                ReleasedPastFutureDate={ReleasedPastFutureDate}
-                customHeaderName={customHeaderName}
-                popupClassName={popupClassName}
-                removePopper={false}
-                currentScreen={currentScreen}
-                dynamicFilter={dynamicFilter}
-                setSkip={setSkip}
-                initialFilterData={initialFilterData}
-                setInitialFilterData={setInitialFilterData}
-                count={filterCount}
-                setCount={setFilterCount}
-              />
-            ))}
-        </div>
+              ))}
+          </div>
+          {rightActionButtons}
+          </div>
+          )}
         </div>
         <div className={`das-table ${dasTableClassName}`}>
           <div
             className="data-gird-table-wrapper"
             style={{
-              display: 'block',
-              overflow: 'auto',
-              width: '100%',
+              display: "block",
+              overflow: "auto",
+              width: "100%",
             }}
           >
             <DataGrid
               sx={
                 loading
                   ? {
-                    '& .MuiDataGrid-cell': {
-                      display: 'none',
-                    },
-                    '& .MuiDataGrid-columnHeaders': {
-                      minHeight: 42,
-                      height: 42,
-                      lineHeight: '42px',
+                      "& .MuiDataGrid-cell": {
+                        display: "none",
+                      },
+                      "& .MuiDataGrid-columnHeaders": {
+                        minHeight: 42,
+                        height: 42,
+                        lineHeight: "42px",
+                      },
                     }
-                  }
                   : {}
               }
               checkboxSelection={checkboxSelection}
@@ -245,7 +267,8 @@ export default function DataTable({
                 loadingOverlay: SkeletonLoadingOverlay,
               }}
               slotProps={{
-                pagination: { // ✅ Changed
+                pagination: {
+                  // ✅ Changed
                   count,
                   take,
                   setTake,
@@ -257,8 +280,6 @@ export default function DataTable({
                 },
               }}
             />
-
-
           </div>
         </div>
       </div>

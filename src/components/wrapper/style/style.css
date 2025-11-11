@@ -532,7 +532,7 @@ img.new-login-logo {
 
 .new-login-box .MuiOutlinedInput-root {
     display: flex;
-    /* height: 55px; */
+    height: 55px;
     width: 100%;
     border-radius: 8px;
     padding-left: 0 !important;
@@ -633,7 +633,7 @@ img.new-login-logo {
 
 .new-log-box h6.not-registered button.forgot-password {
     display: flex;
-    color: #F7941D;
+    color: var(--color-primary);
     font-family: 'Public Sans', sans-serif;
     font-size: 15px;
     font-style: normal;
@@ -1018,6 +1018,11 @@ button.account-select-box.addborder strong.choose-text b {
 .new-login-box .new-log-box .MuiPopper-root.language-popper .MuiPaper-root ul li p {
     margin: 0 0 0 0;
 }
+.das-swiper .slick-list {
+    width: 70%;
+    position: absolute !important;
+    right: 0;
+}
 
 /*     Media query new layout      */
 @media (min-height: 550px) and (max-height: 820px) and (min-width: 1200px) and (max-width: 1440px) {
@@ -1097,6 +1102,9 @@ button.account-select-box.addborder strong.choose-text b {
         font-size: 36px;
         margin: -10px 0 40px 0;
     }
+    .transaction-popper-drawer .tggle-das-switch{
+        gap: 20px;
+    }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1365px) {
@@ -1109,9 +1117,9 @@ button.account-select-box.addborder strong.choose-text b {
         margin: -10px 0 40px 0;
     }
 
-    .new-login-box .MuiOutlinedInput-root {
+    /* .new-login-box .MuiOutlinedInput-root {
         height: 48px;
-    }
+    } */
 
     /* .new-log-box svg.login-f-icons {
         top: 9px;

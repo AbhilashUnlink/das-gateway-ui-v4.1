@@ -189,7 +189,7 @@ button.nx-gen-filter-btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 24px !important;
+  padding: 0px 24px !important;
   height: 72px !important;
   background: linear-gradient(180deg, rgba(253, 164, 44, 0.7) -26.39%, rgba(255, 191, 105, 0.4) 100%), #FFFFFF;
   border-width: 1px 1px 0px 1px;
@@ -197,7 +197,12 @@ button.nx-gen-filter-btn {
   border-color: #FFFFFF;
   border-radius: 16px 16px 0px 0px;
 }
-
+.popover-box-div h3 .flex div {
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px 5px;
+  display: flex;
+}
 .filter-body {
   padding-top: 15px;
   margin-bottom: 0px;
@@ -230,10 +235,10 @@ button.nx-gen-filter-btn {
 
 .filter-footer {
   position: relative;
-  padding: 10px 15px 0;
-  border-top: 1px solid #ccc;
-  margin: 15px -20px 0;
-  text-align: right;
+  padding: 10px 0px 0;
+  border-top: 1px solid #e5e5e5;
+  margin: 15px 0px 0;
+  text-align: left;
   z-index: 1;
 }
 
@@ -242,11 +247,13 @@ button.nx-gen-filter-btn {
   background: transparent;
   vertical-align: middle;
   display: inline-block;
-  margin: 2px 20px -4px 0;
+  margin: 0px 20px 0px 0;
   font-size: 0.9rem;
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 9px 10px;
   color: var(--bs-blue);
+  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
 }
 
 .filter-scroller {
@@ -263,7 +270,15 @@ button.nx-gen-filter-btn {
 }
 
 button.reset-filter {
-  color: #686868;
+  color: #1a1a1a;
+  background: #ffffff;
+  width: 48%;
+  margin: 0 !important;
+}
+button.Apply-filter {
+  background: var(--color-primary);
+  color: #fff;
+  width: 48%;
 }
 
 button.close-filter {
@@ -289,11 +304,17 @@ button.close-filter {
 
 button.add-new-filter {
   font-size: 14px;
-  position: absolute;
+  position: relative;
   bottom: 0px;
   z-index: 999;
   color: var(--bs-blue);
-  left: 10px;
+  left: 0px;
+  background: transparent;
+  box-shadow: none !important;
+  width: auto;
+  display: block;
+  padding: 0 0 0 0;
+  margin: 0 0 6px 0;
 }
 
 button.add-new-filter svg {
@@ -726,8 +747,8 @@ div#filter-select p {
 }
 button.new-gen-filter-action-button:last-child
  {
-    background: #F7941D;
-    border-color: #F7941D;
+    background: var(--color-primary);
+    border-color: var(--color-primary);
     color: #fff;
     text-transform: uppercase;
     padding: 0px 10px;
@@ -755,7 +776,8 @@ button.new-gen-filter-action-button:last-child:hover{
   order: 2;
   flex-grow: 0;
   position: absolute;
-  right: 70px;
+  right: 125px;
+  z-index: 1;
 }
 
   
@@ -837,7 +859,7 @@ button.requestbtn {
   gap: 8px;
   border: none;
   height: 48px;
-  background: #F7941D;
+  background: var(--color-primary);
   box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   flex: none;
@@ -1037,4 +1059,7 @@ span.MuiBadge-root.tooltip-menu.badge-class span.MuiBadge-badge {
 .next-gen-filter-wrap .MuiStack-root.filter-chips .form-group.p-0-inline.label-and-or-form-wrap .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-sizeSmall.select-operand-box.MuiSelect-root div#filter-select {
   font-size: 13px;
   padding: 6px 28px 6px 7px;
+}
+.popover-box-div h3 button.MuiButtonBase-root div {
+  display: flex;
 }

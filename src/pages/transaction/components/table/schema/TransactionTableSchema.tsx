@@ -566,12 +566,17 @@ export const columns: any = () => {
         headerName: i18n.t('TransactionsResult.columnDefs.trackID'),
         translation: "TransactionsResult.columnDefs.trackID",
         sortable: false,
-        width: 260,
+        width: 180,
         headerClassName: 'super-app-theme--header',
         hide: false,
         showInAdditionalColumn: true,
         defaultSelectedInAdditionalColumn: false,
         type: FILTER_INPUT_TYPES.TEXT,
+        renderCell: (params: any) => (
+          <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
+            <CustomBodyRowDisplay rowTopValue={params.row?.trackID === "N/A" ? "N/A" : <DasCopyComponent text={params.row?.trackID} truncate={true} />}  rowTopClassName={"track-id-copy-value"}/>
+          </div>
+        ),
         renderHeader: () => (
           <CustomHeaderDispaly
           headingTop={i18n.t('TransactionsResult.columnDefs.trackID')}
@@ -583,12 +588,17 @@ export const columns: any = () => {
         headerName: i18n.t('TransactionsResult.columnDefs.AcquirerMID'),
         translation: "TransactionsResult.columnDefs.AcquirerMID",
         sortable: false,
-        width: 130,
+        width: 180,
         headerClassName: 'super-app-theme--header',
         hide: false,
         showInAdditionalColumn: true,
         defaultSelectedInAdditionalColumn: false,
         type: FILTER_INPUT_TYPES.AUTOSELECT,
+        renderCell: (params: any) => (
+          <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
+            <CustomBodyRowDisplay rowTopValue={params.row?.AcquirerMID === "N/A" ? "N/A" : <DasCopyComponent text={params.row?.AcquirerMID} truncate={true} />}  rowTopClassName={"track-id-copy-value"}/>
+          </div>
+        ),
         renderHeader: () => (
           <CustomHeaderDispaly
           headingTop={i18n.t('TransactionsResult.columnDefs.AcquirerMID')}
@@ -724,7 +734,7 @@ export const columns: any = () => {
         type: FILTER_INPUT_TYPES.TEXT,
         renderHeader: () => (
           <CustomHeaderDispaly
-          headingTop={i18n.t('TransactionsResult.columnDefs.linkname')}
+          headingTop={i18n.t('PayByLinkConfiguration.PayByLink_ColumnDefs.linkname')}
           />
         ),
       },

@@ -337,11 +337,11 @@ svg.CSV, svg.excel {
   font-weight: 400;
 }
 .transaction-popper-drawer .tggle-das-switch .ant-radio-group label.ant-radio-wrapper .ant-radio-checked span.ant-radio-inner::after {
-  background: #F7941D;
+  background: var(--color-primary);
   transform: scale(.6);
 }
 .transaction-popper-drawer .tggle-das-switch .ant-radio-group label.ant-radio-wrapper .ant-radio-checked span.ant-radio-inner {
-  border-color: #F7941D;
+  border-color: var(--color-primary);
   background-color: #FFFFFF;
   width: 20px;
   height: 20px;

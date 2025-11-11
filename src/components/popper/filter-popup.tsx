@@ -1225,7 +1225,10 @@ const FilterPopup = ({
               <Box sx={{ bgcolor: "background.paper" }}>
                 <form>
                   <h3>
+                    <div className="flex" style={{alignItems:'center'}}>
+                    <AdvFilterSvgIcon/>
                     {ADVANCED_FITLER}
+                    </div>
                     <IconButton onClick={() => setOpen(false)}>
                       <CloseSvgIcon />
                     </IconButton>

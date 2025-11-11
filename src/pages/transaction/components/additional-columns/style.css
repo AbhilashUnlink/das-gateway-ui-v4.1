@@ -503,7 +503,7 @@ button.delete-list.disabled {
 }
 
 .list-action-view.active {
-  border-color: #F7941D;
+  border-color: var(--color-primary);
   background: #FFF6E6;
 }
 

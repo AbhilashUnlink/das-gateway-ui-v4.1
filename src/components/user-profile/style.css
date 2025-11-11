@@ -54,8 +54,8 @@ button.footer-modal-button {
 
 button.footer-modal-button.submit {
   color: #fff;
-  border-color: #f7941d !important;
-  background-color: #f7941d !important;
+  border-color: var(--color-primary) !important;
+  background-color: var(--color-primary) !important;
 }
 
 button.footer-modal-button.submit:hover {
@@ -66,8 +66,8 @@ button.footer-modal-button.submit:hover {
 
 button.footer-modal-button.submit:disabled {
   color: #fff;
-  border-color: #f7941d !important;
-  background-color: #f7941d !important;
+  border-color: var(--color-primary) !important;
+  background-color: var(--color-primary) !important;
   cursor: not-allowed;
 }
 

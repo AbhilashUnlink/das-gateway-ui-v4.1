@@ -469,10 +469,10 @@ span.ant-menu-title-content {
 }
 li.ant-menu-item.ant-menu-item-selected {
   background-color: transparent;
-  color: #F7941D;
+  color: var(--color-primary);
 }
 li.ant-menu-item.ant-menu-item-selected svg path{
-  fill:#F7941D
+  fill:var(--color-primary)
 }
 li.ant-menu-item{    height: 40px !important;
   line-height: 40px !important;}

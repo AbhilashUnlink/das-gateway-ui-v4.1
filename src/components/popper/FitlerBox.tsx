@@ -94,18 +94,7 @@ const FitlerBox = ({
               {t('Filter.Add_New_Filter')}
             </Button>
           )}
-        <Button disabled={filterHasNoFieldOptionSelected} className="reset-filter" onClick={() => {
-          handleResetFilter();
-          if (
-            ns === View_Name_Space.TRANSACTION
-          ) {
-            dispatch(resetInitialFilter());
-          }
-        }
-        }>
-          <RestartAlt /> {t('Filter.button.Reset')}
-        </Button>
-        <Button className="Apply-filter"
+                  <Button className="Apply-filter"
           disabled={disableApplyButton}
           onClick={
             () => {
@@ -119,6 +108,18 @@ const FitlerBox = ({
             }}>
           <Done /> {t('Filter.button.Apply')}
         </Button>
+        <Button disabled={filterHasNoFieldOptionSelected} className="reset-filter" onClick={() => {
+          handleResetFilter();
+          if (
+            ns === View_Name_Space.TRANSACTION
+          ) {
+            dispatch(resetInitialFilter());
+          }
+        }
+        }>
+          <RestartAlt /> {t('Filter.button.Reset')}
+        </Button>
+
       </div>
     </>
   );

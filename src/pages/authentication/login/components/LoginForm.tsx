@@ -20,10 +20,10 @@ const LoginForm = () => {
     <>
       <FormRenderer
         schema={schema}
-        initialValues={{
-          username: "abhishek.sahu@paymentoptions.com.sg",
-          password: "Test12345678@#",
-        }}
+        // initialValues={{
+        //   username: "abhishek.sahu@paymentoptions.com.sg",
+        //   password: "Test12345678@#",
+        // }}
         FormTemplate={FormTemplate}
         validatorMapper={validatorMapper}
         componentMapper={ComponentMapper}
