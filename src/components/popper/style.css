@@ -777,7 +777,7 @@ button.new-gen-filter-action-button:last-child:hover{
   flex-grow: 0;
   position: absolute;
   right: 125px;
-  z-index: 1;
+  z-index: 3;
 }
 
   
@@ -1062,4 +1062,14 @@ span.MuiBadge-root.tooltip-menu.badge-class span.MuiBadge-badge {
 }
 .popover-box-div h3 button.MuiButtonBase-root div {
   display: flex;
+}
+.f-vederley {
+  background: rgb(255 245 216 / 55%);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  content: "";
+  z-index: 1;
+  top: 0;
 }

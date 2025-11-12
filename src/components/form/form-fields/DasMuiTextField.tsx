@@ -24,7 +24,7 @@ function DasMuiTextField(rawProps: any) {
   const icon =
     name === "username" ? (
       <EmailSvgIcon className="login-f-icons" />
-    ) : name === "password" ? (
+    ) : name === "password" || name === "Password" || name === "ConfirmPassword" || name === "newPassword" || name === "currentPassword" || name === "confirmNewPassword"  ? (
       <PasswordSvgIcon className="login-f-icons" />
     ) : null;
 

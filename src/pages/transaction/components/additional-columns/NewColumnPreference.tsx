@@ -2,7 +2,7 @@ import {
   Button,
   IconButton,
   Tooltip,
-  useTheme,
+  // useTheme,
   Drawer,
   FormControl,
   FormControlLabel,
@@ -41,7 +41,7 @@ const NewColumnPreference = ({
       },
     },
   });
-  const theme = useTheme();
+  // const theme = useTheme();
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [listName, setListName] = useState("");

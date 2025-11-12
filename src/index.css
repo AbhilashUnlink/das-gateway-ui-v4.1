@@ -49,3 +49,6 @@ body {
   .drawer-header button div {
     display: flex;
 }
+.ant-tooltip .ant-tooltip-inner {
+    background-color: #FF9800;
+}

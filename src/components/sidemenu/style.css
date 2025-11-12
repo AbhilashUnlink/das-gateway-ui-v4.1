@@ -360,7 +360,7 @@ header.appbar-header {
   margin: 0 8px 0 0;
 }
 .side-menu .main-menu .menu-item .menu-icon i.bi-hammer {
-  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-strokeWidth: 1.3px;
   -webkit-text-stroke-color: #fff;
   color: #E56523;
 }
@@ -455,7 +455,7 @@ header.appbar-header {
   color: #f6921e;
   line-height: 16px;
   border: 1px solid;
-  -webkit-text-stroke-width: 0;
+  -webkit-text-strokeWidth: 0;
 }
 
 .ant-layout-sider-collapsed span.ant-menu-title-content{
@@ -479,7 +479,7 @@ li.ant-menu-item{    height: 40px !important;
 li.ant-menu-item.ant-menu-item-selected{    height: 40px !important;
   line-height: 40px !important;}
   li.ant-menu-item svg {
-    width: 14px;
+    width: 15px;
 }
 span.ant-menu-title-content {
     font-size: 12.5px;

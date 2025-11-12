@@ -14,14 +14,14 @@ const TooltipDasButton = ({
 }: any) => {
   const { t } = useTranslation();
   return (
-    <Button sx={loading ? { pointerEvents: "none", opacity: ".9" } : {}} className={buttonClassName} onClick={onClick} disabled={disabled}>
-
       <Tooltip
         className="tooltip-menu"
         title={t(title)}
         placement={placement}
         arrow
       >
+    <Button sx={loading ? { pointerEvents: "none", opacity: ".9" } : {}} className={buttonClassName} onClick={onClick} disabled={disabled}>
+
         {badge ? (
             <Badge
               color="primary"
@@ -35,8 +35,8 @@ const TooltipDasButton = ({
           ) : (
             icon
           )}
-      </Tooltip>
     </Button>
+      </Tooltip>
   );
 };
 

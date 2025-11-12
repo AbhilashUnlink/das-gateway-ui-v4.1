@@ -11,6 +11,8 @@ import { useState } from "react";
 import { Content, Header } from "antd/es/layout/layout";
 import { Layout } from "antd";
 import "./index.css";
+import Forgot from "pages/authentication/forgot";
+import Reset from "pages/authentication/reset-password";
 
 const App = () => {
 
@@ -30,6 +32,22 @@ const App = () => {
         element={
           <PublicRoute>
             <Login />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/forgot-password"
+        element={
+          <PublicRoute>
+            <Forgot />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/reset-password"
+        element={
+          <PublicRoute>
+            <Reset />
           </PublicRoute>
         }
       />

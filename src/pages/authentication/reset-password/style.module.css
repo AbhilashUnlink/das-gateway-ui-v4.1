@@ -1,0 +1,128 @@
+ .input-group {
+    position: relative;
+}
+
+.input-group-addon {
+    position: absolute;
+    right: 6px;
+    top: 14px;
+    padding: 8px 15px;
+    font-size: 12px;
+    border-radius: 2px;
+    cursor: pointer;
+    /* width:100px;
+    height:100px; */
+    color: #fff;
+    background-color: #496C8E;
+}
+
+.error-text {
+    color: red;
+    margin-bottom: 5px;
+}
+
+.otp-input {
+    width: 50px !important;
+    height: 60px !important;
+    padding: 0px !important;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 11px;
+    outline: none;
+    border: 1px solid #bebebe;
+    margin-left: 6px !important;
+    margin-right: 6px !important;
+}
+
+.otp-input :global(.ant-input-number-input-wrap) {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+}
+
+.side-container {
+    width: 27%;
+    padding: 30px 20px;
+    border-right: 1px solid #e7e7e7;
+    position: relative;
+}
+
+.title-text {
+    font-size: 22px;
+    color: #496C8E;
+    font-family: 'Public Sans', sans-serif;
+    margin-bottom: -10px;
+}
+
+.resend-button {
+    width: 220px;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    color: #F4911D;
+    font-weight: 600;
+    padding: 10px;
+    margin-top: 0px;
+    font-family: 'Public Sans', sans-serif;
+}
+
+.verify-button {
+    align-self: center;
+    cursor: pointer;
+    width: 150px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background: var(--Linear, linear-gradient(92deg, #F6931E 0%, #E56523 100%)) !important;
+    padding: 17px 15px;
+    border: none;
+}
+
+.input-container {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.description-text {
+    margin-top: 10px;
+    font-size: 10px;
+    text-align: center;
+    width: 85%;
+}
+.sales-text{
+    position: relative;
+    margin-bottom: 15px;
+  }
+
+  .sales-text h4{
+    font-size: 1.2em;
+    margin: 6px 0 2px 0;
+    color: #496c8e;
+  }
+  .sales-text h4 strong {
+    text-transform: uppercase;
+    color: #00baf3;
+  }
+
+  .sales-text h5  {
+    font-size: 0.9rem;
+  }
+  .sales-text h5 strong {
+    display: inline-block;
+    margin-left: 4px;
+  }
+  @media only screen and (max-width: 479px) {
+    .otp-input {
+        width: 42px !important;
+        height: 54px !important;
+    }
+  }

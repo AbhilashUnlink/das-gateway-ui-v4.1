@@ -79,7 +79,7 @@ const [filterPop, setFilterPop]= useState(true);
                   })
                   : filter?.valueLabel?.showValue ?? filter?.valueLabel?.value
                 : filter?.valueLabel;
-            const bgColor = filter?.id === filters?.id ? "#e6c2c2" : 'var(--bs-blue-light)';
+            const bgColor = filter?.id === filters?.id ? "#FFF6E6" : '#FFF6E6';
             return (
               <React.Fragment key={"filter" + index}>
                 
@@ -139,6 +139,7 @@ const [filterPop, setFilterPop]= useState(true);
                         fontSize: "16px", // Increase size
                         "&:hover": {
                           color: "darkred", // Hover effect
+                          backgroundColor:'#FFF6E6'
                         },
                       },
                     }}
@@ -197,6 +198,8 @@ const [filterPop, setFilterPop]= useState(true);
               badge={allFilters?.length}
             />
      {openFilter &&
+     <>
+     <div className="f-vederley" onClick={OnNewFilterClick}></div>
       <div className="next-gen-filter-wrap">
         <div style={{ width: allFilters?.length === 0 ? '100%' : '100%', display: "flex", alignItems: "center" }}>
           {/* filter initial */}
@@ -592,6 +595,7 @@ const [filterPop, setFilterPop]= useState(true);
         {filterPop && openFilter && renderChips}
 
       </div>
+      </>
 }
     </>
   );

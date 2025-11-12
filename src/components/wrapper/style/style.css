@@ -267,7 +267,7 @@ label.otp-label {
 }
 
 .reset-otp-input {
-    width: 50px !important;
+    width: 15% !important;
     height: 60px !important;
     padding: 0px !important;
     text-align: center;
@@ -417,12 +417,12 @@ img.new-login-logo {
 }
 
 .new-log-box h1 {
-    font-family: 'Public Sans', sans-serif;
+    
     font-size: 30px;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
-    letter-spacing: -1.38px;
+    /* letter-spacing: -1.38px; */
     color: #ffffff;
     text-align: center;
     margin: 0 0 15px 0;
@@ -553,7 +553,7 @@ img.new-login-logo {
 .new-log-box label.MuiInputLabel-root {
     transform: translate(0px, -35px) scale(1);
     color: #333;
-    font-family: 'Public Sans', sans-serif;
+    
     font-size: 13px;
     font-style: normal;
     font-weight: 600;
@@ -588,7 +588,7 @@ img.new-login-logo {
     background: #f6921e;
     border-radius: 8px;
     width: 100%;
-    margin: 0 auto;
+    margin: 12px auto 0;
 }
 
 .clear {
@@ -601,16 +601,25 @@ img.new-login-logo {
 
 .new-log-box button.login-btn.back-login {
     background: transparent;
-    color: #E56523;
+    color: #ffffff;
     text-align: left;
     position: relative;
     padding: 0 0;
     width: auto;
-    display: inline-block;
+    display: flex;
+    height: auto;
+    margin: 0;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 400;
 }
 
 .new-log-box button.login-btn.back-login:hover {
-    color: #8e8d9b;
+    color: var(--color-primary);
+}
+.new-log-box button.login-btn.back-login:hover svg path {
+    stroke: var(--color-primary);
 }
 
 .new-log-box button.login-btn {
@@ -627,30 +636,30 @@ img.new-login-logo {
     font-style: normal;
     font-weight: 500;
     margin: 0px 0 0 0;
-    font-family: 'Public Sans', sans-serif;
+    text-decoration: underline;
+    
 }
 
 
 .new-log-box h6.not-registered button.forgot-password {
     display: flex;
     color: var(--color-primary);
-    font-family: 'Public Sans', sans-serif;
+    text-decoration: underline;
     font-size: 15px;
     font-style: normal;
     font-weight: 600;
-    letter-spacing: -0.3px;
+    letter-spacing: 0px;
 }
 
 .new-log-box h6.not-registered {
 
     color: #6A615A;
     text-align: center;
-    font-family: 'Public Sans', sans-serif;
+    
     font-size: 15px;
     font-style: normal;
     font-weight: 500;
     line-height: 160%;
-    letter-spacing: -0.3px;
     margin: 0px 0 0 0;
     width: 100%;
     z-index: 99;
@@ -758,7 +767,7 @@ button.enter-otp-btn {
     white-space: normal;
     color: #999;
     text-align: center;
-    font-family: 'Public Sans', sans-serif;
+    
     font-size: 16px;
 }
 
@@ -822,6 +831,8 @@ button.account-select-box.addborder strong.choose-text b {
     width: 100%;
     margin: 20px auto 20px;
     text-align: center;
+    display: flex;
+    gap: 12px;
 }
 
 /* create account */
@@ -847,12 +858,11 @@ button.account-select-box.addborder strong.choose-text b {
     margin-bottom: -5px;
     /* margin-top:10px */
     color: #333;
-    font-family: 'Public Sans', sans-serif;
+    
     font-size: 26px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
-    letter-spacing: -0.78px;
 }
 
 .heading.choose-heading {
@@ -862,13 +872,11 @@ button.account-select-box.addborder strong.choose-text b {
 .heading.choose-heading p {
     margin: 30px 0 40px 0 !important;
     color: #6A615A;
-    font-family: 'Public Sans', sans-serif;
+    
     font-size: 15px;
     font-style: normal;
     font-weight: 300;
     line-height: 140%;
-    /* 21px */
-    letter-spacing: -0.3px;
     text-align: left;
 }
 
@@ -973,7 +981,7 @@ button.account-select-box.addborder strong.choose-text b {
 
 .password-info-wrap h4 {
     color: #333333;
-    font-family: 'Public Sans', sans-serif;
+    
     font-size: 14px;
     font-style: normal;
     font-weight: bold;
@@ -987,7 +995,7 @@ button.account-select-box.addborder strong.choose-text b {
 
 .password-info-wrap ul li {
     color: #878787;
-    font-family: 'Public Sans', sans-serif;
+    
     font-size: 14px;
     font-style: normal;
     font-weight: 300;
@@ -999,18 +1007,24 @@ button.account-select-box.addborder strong.choose-text b {
 
 /*   verify OTP  */
 .didnt-recieved {
-    color: #6A615A;
+    color: #fff;
     text-align: center;
-    font-family: 'Public Sans', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-style: normal;
-    font-weight: 500;
-    line-height: 140%;
-    /* 21px */
-    letter-spacing: -0.3px;
-    margin: 50px 0 -5px 0;
+    font-weight: 400;
+    line-height: normal;
+    margin: 12px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
 }
-
+.resend-button {
+    cursor: pointer;
+    color: var(--color-primary);
+    text-decoration: underline;
+}
 .choose-country-code-select .MuiInputBase-root fieldset {
     border-right: 0;
 }
@@ -1022,6 +1036,16 @@ button.account-select-box.addborder strong.choose-text b {
     width: 70%;
     position: absolute !important;
     right: 0;
+}
+
+.new-login-box .language-wrap button.MuiButtonBase-root.language-button.MuiButtonGroup-firstButton:hover, .new-login-box .language-wrap button.MuiButtonBase-root.dropdown-select-button.MuiButtonGroup-lastButton:hover {
+    box-shadow: none !important;
+}
+p.forgot-password-description {
+    margin: -30px 0 0 0;
+    text-align: left;
+    color: #fff;
+    font-size: 14px;
 }
 
 /*     Media query new layout      */
@@ -1131,7 +1155,7 @@ button.account-select-box.addborder strong.choose-text b {
 
     .new-log-box button.login-btn {
         height: 48px;
-        margin: 0 auto -15px;
+        margin: 12px auto 0px;
     }
 
     .new-log-box h6.not-registered {
@@ -1147,7 +1171,7 @@ button.account-select-box.addborder strong.choose-text b {
     }
 
     .new-log-box button.login-btn.back-login {
-        margin: 30px 0 0 0;
+        margin: 0px 0 0 0;
     }
 
     .new-log-box .form-fields.otp-fields {

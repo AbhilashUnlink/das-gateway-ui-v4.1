@@ -468,8 +468,13 @@ function showInAscendingOrder(a: any, b: any) {
     return 1;
   }
   return 0;
-}
-
+};
+const emailValidationRegexPattern = new RegExp(
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+);
+const validatePasswordSpecialChracaterPattern = new RegExp(
+  /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^()_+\-=[\]{};:,.<>"'?/|\\`~]).+/
+);
 export {
   base64ToObject,
   getAmount,
@@ -497,5 +502,7 @@ export {
   showInAscendingOrder,
   filterDateFormatter,
   filterDateFormatterNoTimeZone,
-  trimToSingleSpace
+  trimToSingleSpace,
+  emailValidationRegexPattern,
+  validatePasswordSpecialChracaterPattern
 };
