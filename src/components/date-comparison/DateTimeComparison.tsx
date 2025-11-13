@@ -36,13 +36,13 @@ const DateTimeComparison: React.FC<DateTimeComparisonProps> = ({
   const updatedDate = formatDate(updated);
 
   // Extract time for red second highlighting
-  const timeMatch = updatedDate.match(/(\d{2}:\d{2}:\d{2})/);
-  let updatedTimeElement: JSX.Element | string = updatedDate;
+  const timeMatch = transactionDate.match(/(\d{2}:\d{2}:\d{2})/);
+  let updatedTimeElement: JSX.Element | string = transactionDate;
 
   if (timeMatch) {
     const [hours, minutes, seconds] = timeMatch[0].split(":");
-    const before = updatedDate.split(timeMatch[0])[0];
-    const after = updatedDate.split(timeMatch[0])[1];
+    const before = transactionDate.split(timeMatch[0])[0];
+    const after = transactionDate.split(timeMatch[0])[1];
 
     updatedTimeElement = (
       <span>
@@ -55,7 +55,7 @@ const DateTimeComparison: React.FC<DateTimeComparisonProps> = ({
   }
 
   return (
-    <CustomBodyRowDisplay rowTopValue={transactionDate} rowBottomValue={updatedTimeElement} rowTopClassName="top-label-value"/>
+    <CustomBodyRowDisplay rowTopValue={updatedTimeElement} rowBottomValue={updatedDate} rowTopClassName="top-label-value"/>
   );
 };
 

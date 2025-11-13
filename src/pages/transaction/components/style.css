@@ -483,7 +483,6 @@ form.detail-form.info-container.transaction-detail-container .detail-list .inner
 .drawer-body.transaction-detail-drawer .bg-history-container h5 {
   font-size: 1rem;
   font-weight: 500;
-  font-family: "Poppins", sans-serif;
   margin: 0 0 10px 0;
   padding: 0px 0 0 0;
   color: #333;
@@ -594,20 +593,17 @@ p.transaction-history-type {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.8rem;
-  font-family: "Poppins", sans-serif;
 }
 
 p.transaction-history-refid {
   font-size: 0.72rem;
   color: #555;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
 }
 
 .timeline-section ul li div span {
   font-size: 0.78rem;
   font-weight: 500;
-  font-family: "Poppins", sans-serif;
   color: #232323;
 }
 
@@ -616,7 +612,6 @@ p.transaction-history-refid {
 p.transaction-history-amonut {
   color: #e77236;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
   position: absolute;
   right: 15px;
@@ -628,7 +623,6 @@ p.transaction-history-status {
   font-size: 0.8rem;
   font-weight: 600;
   position: absolute;
-  font-family: "Poppins", sans-serif;
   right: 15px;
   top: 13px;
 }
@@ -782,7 +776,6 @@ h2.confirm-heading {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.02rem;
-  font-family: "Poppins", sans-serif;
   font-size: 1rem;
   background: #f6921e;
   color: #fff;
@@ -827,7 +820,6 @@ h2.confirm-heading {
   font-weight: 500;
   font-size: 0.75rem;
   letter-spacing: 0.05rem;
-  font-family: "Poppins", sans-serif;
   color: #fff !important;
   opacity: 1;
   border-radius: 44px;
@@ -853,7 +845,6 @@ button.edit-button {
   border-radius: 6px;
   z-index: 9;
   font-size: 12px;
-  font-family: "Poppins", sans-serif !important;
   font-weight: 700;
   line-height: normal;
 }
@@ -1025,7 +1016,6 @@ button.edit-button svg {
 .heading {
   font-size: 1rem;
   font-weight: 500;
-  font-family: "Poppins", sans-serif;
   margin: 0 0 0px 4px;
   padding: 0px 0 0;
   color: #333;
@@ -1541,4 +1531,10 @@ img.not-copy {
 .transaction-id-copy-value span {
   position: relative;
   top: -3px;
+}
+svg.row-mark-tag path {
+  stroke: #cfcfcf;
+}
+svg.row-mark-tag.active-tagged path {
+  fill: var(--color-primary);
 }

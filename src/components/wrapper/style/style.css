@@ -151,7 +151,6 @@ button.login-btn {
     font-size: .9em;
     color: #fff;
     letter-spacing: 1px;
-    font-family: "Poppins", sans-serif;
 }
 
 button.login-btn:hover,
@@ -735,7 +734,6 @@ button.enter-otp-btn {
     color: #fff;
     text-transform: uppercase;
     cursor: pointer;
-    font-family: 'Public-sans', sans-serif;
     font-weight: 600;
 }
 

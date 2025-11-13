@@ -1,17 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 :root {
     --color-primary: #F7941D;
+    --font-family:"Inter", sans-serif !important
 
 }
-body {
+body, html {
     margin: 0;
-    font-family: 'Public Sans', sans-serif;
+    /* font-family: 'Public Sans', sans-serif; */
+    font-family: var(--font-family);
 }
 
 .ant-layout {
     background: #FFFBF1;
     background: linear-gradient(180deg, #FDEBCA 1.82%, #F4EAD8 29.71%, #FFFBF1 115.19%) !important;
     background: -webkit-linear-gradient(180deg, #FDEBCA 1.82%, #F4EAD8 29.71%, #FFFBF1 115.19%) !important;
+    font-family: var(--font-family);
 }
 
 .table-header-top-label.value {
@@ -51,4 +55,41 @@ body {
 }
 .ant-tooltip .ant-tooltip-inner {
     background-color: #FF9800;
+}
+.MuiDataGrid-row:hover {
+    background-color: #FFF6E6 !important;
+}
+.ant-typography, .MuiDataGrid-cell, .MuiDataGrid-columnHeader,
+.ant-btn,
+.ant-input,
+.ant-select,
+.ant-table,
+.ant-menu,
+.ant-modal,
+.ant-card,
+.ant-form,
+.ant-notification,
+.ant-message,
+.ant-tooltip,
+.ant-tabs,
+.ant-collapse,
+.ant-dropdown,
+.ant-popover,
+.ant-tag{
+    font-family: var(--font-family);
+}
+.highlighted.MuiDataGrid-row .table-header-top-label.value.date-value.uuid-top-label-value span {
+    color: #7A7807;
+}
+.highlighted.MuiDataGrid-row::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    content: "";
+    background: #7A7807;
+}
+.highlighted.MuiDataGrid-row {
+    position: relative;
 }

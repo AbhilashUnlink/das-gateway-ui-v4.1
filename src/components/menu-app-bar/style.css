@@ -60,7 +60,6 @@ li.MuiBreadcrumbs-li a {
   margin: 0 0 0 7px;
   font-weight: 600;
   position: relative;
-  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   top: 2.5px;
 }
@@ -100,7 +99,6 @@ li.MuiBreadcrumbs-li a {
 
 .user-profile-head strong {
   /* text-transform: uppercase; */
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
   position: relative;
   top: 0px;
@@ -154,7 +152,6 @@ img.user-image {
   margin: 0 0 5px 0;
   text-transform: uppercase;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
 }
 
 .user-profile-body .user-listings {
@@ -173,7 +170,6 @@ img.user-image {
   position: relative;
   font-size: 14px;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   color: #E56523;
   text-transform: uppercase;
 }

@@ -10,14 +10,29 @@ import ActionButton from '../../buttons/ActionButton';
 // import { Tooltip } from '@mui/material';
 import i18n from 'i18n';
 import { FILTER_INPUT_TYPES } from 'components/popper/constants/filter-constants';
-import { BookmarkBorderOutlined } from '@mui/icons-material';
 import DasCopyComponent from 'components/das-copy/DasCopyComponent';
 import CustomHeaderDispaly from 'components/das-table/CustomHeaderDispaly';
 import DateTimeComparison from 'components/date-comparison/DateTimeComparison';
 import CustomBodyRowDisplay from 'components/das-table/CustomBodyRowDisplay';
+import { BookMarkSvgIcon, DownloadStatementSvgIcon } from 'components/svg-icons/SvgIcons';
+import { useState } from 'react';
 
 
 export const columns: any = () => {
+  const [taggedRows, setTaggedRows] = useState<Record<string, boolean>>({});
+  const [taggedData, setTaggedData] = useState<string[]>([]); // store multiple uuids
+
+  const toggleTagged = (rowId: string) => {
+    setTaggedRows((prev) => {
+      const updated = { ...prev, [rowId]: !prev[rowId] };
+
+      // update taggedData array accordingly
+      const updatedTaggedData = Object.keys(updated).filter((key) => updated[key]);
+      setTaggedData(updatedTaggedData);
+
+      return updated;
+    });
+  };
   const data = {
     fields: [
       {
@@ -25,14 +40,68 @@ export const columns: any = () => {
         headerName: i18n.t('TransactionsResult.columnDefs.Action'),
         renderHeader: () => (
           <div style={{ marginLeft: "10px", color: "orange" }}>
-            <BookmarkBorderOutlined />
+            <BookMarkSvgIcon
+              className="header-tag-bookmark"
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                console.log("Tagged Rows UUIDs:", taggedData);
+              }}
+            />
           </div>
         ),
         translation: "TransactionsResult.columnDefs.Action",
         sortable: false,
         headerClassName: 'super-app-theme--header',
         width: 80,
-        renderCell: (params: any) => <ActionButton data={params.row} />,
+        renderCell: (params: any) => {
+          const rowId = params?.row?.uuid;
+          const isTagged = taggedRows[rowId] || false;
+          
+          return (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "0 10px",
+              }}
+            >
+              <BookMarkSvgIcon
+                style={{ cursor: "pointer" }}
+                className={`row-mark-tag ${isTagged ? "active-tagged" : ""}`}
+                onClick={() => {
+                  console.log("Clicked row:", params?.row);
+                  toggleTagged(rowId);
+                  setTaggedData(rowId)
+                }}
+              />
+            </div>
+          );
+        },
+        // renderCell: (params: any) => {
+        //   const isTagged = taggedRows[params.row.id] || false;
+  
+        //   return (
+        //     // <ActionButton data={params.row} />
+        //     <div
+        //       className="flex"
+        //       style={{
+        //         justifyContent: "center",
+        //         alignItems: "center",
+        //         padding: "0 12px",
+        //       }}
+        //     >
+        //       <BookMarkSvgIcon
+        //         style={{ cursor: "pointer" }}
+        //         className={`row-mark-tag ${isTagged ? "active-tagged" : ""}`}
+        //         onClick={() => {
+        //           console.log("bookmarked", params.row);
+        //           toggleTagged(params.row.id);
+        //         }}
+        //       />
+        //     </div>
+        //   );
+        // },
         hide: false,
         showInAdditionalColumn: false,
         defaultSelectedInAdditionalColumn: true,
@@ -398,7 +467,7 @@ export const columns: any = () => {
         headerName: i18n.t('TransactionsResult.columnDefs.StatementID'),
         translation: "TransactionsResult.columnDefs.StatementID",
         sortable: false,
-        width: 180,
+        width: 220,
         headerClassName: 'super-app-theme--header',
         hide: false,
         showInAdditionalColumn: true,
@@ -406,7 +475,7 @@ export const columns: any = () => {
         type: FILTER_INPUT_TYPES.TEXT,
         renderCell: (params: any) => (
           <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
-            <CustomBodyRowDisplay rowTopValue={params.row?.MerchantRefID === "N/A" ? "N/A" : <DasCopyComponent text={params.row?.MerchantRefID} truncate={true} />}  rowTopClassName={"track-id-copy-value"}/>
+            <CustomBodyRowDisplay rowTopValue={params.row?.MerchantRefID === "N/A" ? "N/A" : <div className="flex" style={{gap:'5px'}}> <DasCopyComponent text={params.row?.MerchantRefID} truncate={true} /> <DownloadStatementSvgIcon style={{cursor:'pointer', width:'14px'}} onClick={()=> {(console.log("statementID"))}}/></div>}  rowTopClassName={"track-id-copy-value"}/>
           </div>
         ),
         renderHeader: () => (

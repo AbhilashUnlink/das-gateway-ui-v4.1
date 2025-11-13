@@ -34,7 +34,6 @@ export const useResetSubmit = async (
             i18next.t(`API_STATUS_MESSAGE.${response.messageCode}`),
           );
           sessionStorage.removeItem(RESET_EMAIL);
-          console.log("jdhjdhjhdjhd");
           navigate(LOGIN);
         } else if ([HTTP_STATUS.INTERNAL_SERVER].includes(response?.status)) {
           DasSnackbar.error(

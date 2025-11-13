@@ -52,7 +52,6 @@
 .title-text {
     font-size: 22px;
     color: #496C8E;
-    font-family: 'Public Sans', sans-serif;
     margin-bottom: -10px;
 }
 
@@ -66,7 +65,6 @@
     font-weight: 600;
     padding: 10px;
     margin-top: 0px;
-    font-family: 'Public Sans', sans-serif;
 }
 
 .verify-button {
