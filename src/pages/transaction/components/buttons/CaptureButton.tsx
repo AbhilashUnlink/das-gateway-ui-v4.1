@@ -47,7 +47,7 @@ const CaptureButton = ({ isEnabled, uuid, setAnchorEl, hasSingleAccess = false, 
           loading={loading}
           hasSingleAccess={hasSingleAccess}
           variant={'outlined'}
-          buttonClassName={'table-btn list-btn list-capture-btn'}
+          buttonClassName={'common-button'}
           handleOnClick={handleCaptureButtonClick}
           imgSrc={captureImage}
           imgClassName={'table-icon-img'}

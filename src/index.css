@@ -5,6 +5,9 @@
     --font-family:"Inter", sans-serif !important
 
 }
+button, a {
+    font-family: var(--font-family) !important;
+}
 body, html {
     margin: 0;
     /* font-family: 'Public Sans', sans-serif; */
@@ -17,7 +20,9 @@ body, html {
     background: -webkit-linear-gradient(180deg, #FDEBCA 1.82%, #F4EAD8 29.71%, #FFFBF1 115.19%) !important;
     font-family: var(--font-family);
 }
-
+li.MuiMenuItem-root {
+    font-family: var(--font-family) !important;
+}
 .table-header-top-label.value {
     color: #2f2f2f;
 }
@@ -75,7 +80,8 @@ body, html {
 .ant-collapse,
 .ant-dropdown,
 .ant-popover,
-.ant-tag{
+.ant-tag,
+span.MuiTypography-root{
     font-family: var(--font-family);
 }
 .highlighted.MuiDataGrid-row .table-header-top-label.value.date-value.uuid-top-label-value span {

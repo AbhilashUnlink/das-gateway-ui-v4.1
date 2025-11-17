@@ -487,8 +487,8 @@ span.ant-menu-title-content {
     width: 30px;
     height: 30px;
     background: rgba(247, 148, 29, 0.1);
-    left: 16px;
-    top: 6px;
+    left: 17px;
+    top: 5px;
     content: "";
     position: absolute;
     border-radius: 100px;
@@ -510,8 +510,8 @@ li.ant-menu-item.ant-menu-item-active::before {
   justify-content: space-between;
 }
 aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed li.ant-menu-item.ant-menu-item-selected::before {
-  left: 20px;
-  top: 2px;
+  left: 21px;
+  top: 1px;
 }
 aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed li.ant-menu-item:hover{
   background: transparent !important;

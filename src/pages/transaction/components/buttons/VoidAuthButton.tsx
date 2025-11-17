@@ -15,7 +15,8 @@ import DasSnackbar from '../../../../components/das-snackbar/DasSnackbar';
 import { getTransactionTable, postTransactionTable } from '../../../../store/features/transaction-table';
 import { getDetails, startTransactionActionLoader, stopTransactionActionLoader } from '../../../../store/features/details';
 import useLegacy from '../../../../hooks/use-legacy/useLegacy';
-import ConfirmationDialogRaw from 'components/confirmation-dialog/ConfirmationDialog';
+import { Button } from '@mui/material';
+// import ConfirmationDialogRaw from 'components/confirmation-dialog/ConfirmationDialog';
 
 const VoidAuthButton = ({ isEnabled,
   //  uuid,
@@ -98,7 +99,15 @@ const VoidAuthButton = ({ isEnabled,
 
   return (
     <>
-      <ConfirmationDialogRaw
+     <div className="drawer-body pricing-drawer-body edit-status-drawer">
+      <h4>{t('ConfirmationDialogRaw.voidButton.title')}</h4>
+      <p style={{ fontSize:'13px'}}>{t('ConfirmationDialogRaw.voidButton.content')}</p>
+      <div className="action-buttons" style={{display:'flex', justifyContent:'space-between', gap:'15px'}}>
+        <Button variant="contained" className='submit-button' onClick={handleVoidAuthQuery}>{t('ConfirmationDialogRaw.voidButton.Submit')}</Button>
+        <Button variant="contained" className='cancel-button' onClick={handleCloseDialog}>{t('ConfirmationDialogRaw.voidButton.Cancel')}</Button>
+      </div>
+    </div>
+      {/* <ConfirmationDialogRaw
         className="confirm-popup"
         open={isDialogOpen}
         onClose={handleCloseDialog}
@@ -108,13 +117,13 @@ const VoidAuthButton = ({ isEnabled,
         handleSubmit={handleVoidAuthQuery}
         cancel={t('ConfirmationDialogRaw.voidButton.Cancel')}
         submit={t('ConfirmationDialogRaw.voidButton.Submit')}
-      />
+      /> */}
       {isEnabled && (
         <DasButton
           loading={loading}
           hasSingleAccess={hasSingleAccess}
           variant={'outlined'}
-          buttonClassName={'table-btn list-btn list-void-btn'}
+          buttonClassName={'common-button'}
           handleOnClick={onClickVoid}
           imgSrc={voidImage}
           imgClassName={'table-icon-img'}

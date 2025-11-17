@@ -24,7 +24,9 @@ import AcquirerDetailsDrawer from '../../pages/transaction/components/drawers/de
 import useLegacy from '../../hooks/use-legacy/useLegacy';
 import TransactionDetailsWrapper from '../../pages/transaction/components/drawers/details-drawer';
 import { useNavigate } from 'react-router';
-import { CloseSvgIcon } from 'components/svg-icons/SvgIcons';
+import { CloseSvgIcon, NewTabSvgIcon, ShareSvgIcon } from 'components/svg-icons/SvgIcons';
+import TransactionQuickView from 'pages/transaction/components/drawers/details-drawer/components/quick-view/TransactionQuickView';
+import DasCopyComponent from 'components/das-copy/DasCopyComponent';
 // import RiskDrawer from '../../pages/risk/components/risk-drawer';
 // import ProductDrawer from '../../pages/merchants/merchant-view/components/drawers/product-details-drawer/ProductDrawer';
 // import NestedTable from '../../pages/merchants/merchant-view/components/drawers/nested-drawer/NestedTable';
@@ -218,6 +220,9 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
       case DRAWER_TYPE.ONFIDO_DOCS_DRAWER:
         setDrawerWidth(DRAWER_WIDTH.SEVENTY_FIVE);
         break;
+      case DRAWER_TYPE.TRANSACTION_QUICK_VIEW:
+        setDrawerWidth(DRAWER_WIDTH.TRANSACTION_QUICK_VIEW);
+        break;
       default:
         setDrawerWidth(DRAWER_WIDTH.DEFAULT);
     }
@@ -404,6 +409,10 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
         dispatch(setDrawer([]));
         dispatch(clearDetails());
         break;
+        case DRAWER_TYPE.TRANSACTION_QUICK_VIEW:
+          dispatch(setDrawer([]));
+          dispatch(clearDetails());
+          break;
       case DRAWER_TYPE.CHILDREN:
         onClose();
         break;
@@ -428,6 +437,36 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
         onClose={() => handleDrawerClose(drawer)}
         anchor="right"
       >
+       {drawer.type === DRAWER_TYPE.TRANSACTION_QUICK_VIEW ?
+        <DrawerHeader className={'drawer-header quick-view-drawer-header'}>
+          {/* close or back Button */}
+          <IconButton onClick={() => handleDrawerClose(drawer)}>
+            <CloseSvgIcon/>
+          </IconButton>
+          {/* Drawer Title */}
+          <span style={{display:'flex', gap:'2px', alignItems:'flex-start', flexDirection:'column'}}>
+            {drawer.icon ? drawer.icon : ''}
+            <h3
+            style={{ margin:'0', padding:'0' }}
+            >
+              {t(drawer?.title)}
+            </h3>
+           <h6 className='drawer-lower-header-title' style={{ margin:'0', padding:'0', display:'flex', gap:'5px' }}>
+            <DasCopyComponent text={drawer?.data?.uuid} truncate={false} />
+            <ShareSvgIcon
+            style={{width:'14px', cursor:'pointer'}}
+            onClick={()=>(
+              console.log("Share")
+            )}/>
+            <NewTabSvgIcon
+            style={{width:'14px', cursor:'pointer'}}
+            onClick={()=>(
+              console.log("New Tab")
+            )}/>
+            </h6>
+          </span>
+        </DrawerHeader>
+        :
         <DrawerHeader className='drawer-header'>
           {/* close or back Button */}
           <IconButton onClick={() => handleDrawerClose(drawer)}>
@@ -442,10 +481,8 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
               {t(drawer?.title)}
             </h3>
           </span>
-          {/* <span onClick={()=>handleDrawerClose(drawer)}>
-            X
-          </span> */}
         </DrawerHeader>
+}
         <Divider />
         {drawer.type === DRAWER_TYPE.DETAILS && <TransactionDetailsWrapper />}
         {drawer.type === DRAWER_TYPE.REFUND && (
@@ -464,6 +501,9 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
         )}
         {drawer.type === DRAWER_TYPE.ACQUIRER_DETAILS && (
           <AcquirerDetailsDrawer />
+        )}
+        {drawer.type === DRAWER_TYPE.TRANSACTION_QUICK_VIEW && (
+          <TransactionQuickView drawer={drawer} handleDrawerClose={() => handleDrawerClose(drawer)} />
         )}
         {drawer.type === DRAWER_TYPE.CAPTURE && (
           <CaptureDetails

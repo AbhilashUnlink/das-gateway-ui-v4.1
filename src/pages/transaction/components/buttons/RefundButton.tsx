@@ -46,7 +46,7 @@ const RefundButton = ({ isEnabled, uuid, setAnchorEl, hasSingleAccess = false, l
           loading={loading}
           hasSingleAccess={hasSingleAccess}
           variant={'outlined'}
-          buttonClassName={'table-btn list-btn view-details list-refund-btn'}
+          buttonClassName={'common-button'}
           handleOnClick={handleRefundButtonClick}
           imgSrc={refundImage}
           imgClassName={'table-icon-img'}

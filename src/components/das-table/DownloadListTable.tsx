@@ -41,6 +41,7 @@ import {
   fileFormatOptions,
 } from "pages/user-settings/file-format";
 import { CsvSvgIcon, DownloadReportButtonSvgIcon, ExcelSvgIcon, InProgressSvgIcon } from "components/svg-icons/SvgIcons";
+import columns from "pages/transaction/components/table/schema/TransactionTableSchema";
 
 const DownloadListTable = ({
   disableRequestDownloadButton,
@@ -376,10 +377,12 @@ const DownloadListTable = ({
               </button>
               <div>
               <div>
-              {initialFilterData?.map((item: any, index: number) => (
+              {initialFilterData?.map((item: any, index: number) => {
+              const key= columns()?.fields?.find((i:any)=>i.field===item.HeaderColumn)?.headerName;
+                return(
                 <div key={index} className="filt-listing">
                   <h4>
-                    {item.HeaderColumn.toUpperCase()}:{" "}
+                    {key.toUpperCase()}:{" "}
                     <span>
                       {Array.isArray(item.Name)
                         ? item.Name.join(", ")
@@ -387,7 +390,7 @@ const DownloadListTable = ({
                     </span>
                   </h4>
                 </div>
-              ))}       
+              )})}       
 </div>
 
               </div>

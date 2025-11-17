@@ -58,6 +58,7 @@ export default function DataTable({
   selectionModel,
   disableSelectionOnClick = false,
   filteredObject,
+  onRowClick
 }: any) {
   const { t } = useTranslation();
   const [showDownloadPopup, setShowDownloadPopup] = useState(false);
@@ -246,6 +247,7 @@ export default function DataTable({
                     }
                   : {}
               }
+              onRowClick={onRowClick}
               checkboxSelection={checkboxSelection}
               isRowSelectable={isRowSelectable}
               onRowSelectionModelChange={onSelectionModelChange}

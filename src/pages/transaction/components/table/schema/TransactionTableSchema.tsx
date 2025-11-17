@@ -6,7 +6,7 @@ import {
   // getStatusIcon,
 } from '../../../../../utils/helper';
 import { INTEGRATION_TYPE, PAYMENT_TYPE, TRANSACTION_TYPE_LABEL } from '../../constants/transaction';
-import ActionButton from '../../buttons/ActionButton';
+// import ActionButton from '../../buttons/ActionButton';
 // import { Tooltip } from '@mui/material';
 import i18n from 'i18n';
 import { FILTER_INPUT_TYPES } from 'components/popper/constants/filter-constants';
@@ -14,14 +14,22 @@ import DasCopyComponent from 'components/das-copy/DasCopyComponent';
 import CustomHeaderDispaly from 'components/das-table/CustomHeaderDispaly';
 import DateTimeComparison from 'components/date-comparison/DateTimeComparison';
 import CustomBodyRowDisplay from 'components/das-table/CustomBodyRowDisplay';
-import { BookMarkSvgIcon, DownloadStatementSvgIcon } from 'components/svg-icons/SvgIcons';
+import { BookMarkSvgIcon, DisputeSvgIcon, DownloadStatementSvgIcon } from 'components/svg-icons/SvgIcons';
 import { useState } from 'react';
+import { Tooltip } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDrawer } from 'store/features/drawer';
+import { DRAWER_TITLE, DRAWER_TYPE } from 'components/constants/drawer';
 
 
 export const columns: any = () => {
   const [taggedRows, setTaggedRows] = useState<Record<string, boolean>>({});
   const [taggedData, setTaggedData] = useState<string[]>([]); // store multiple uuids
-
+  const dispatch = useDispatch();
+  const { drawer } = useSelector((store: any) => store.drawer);
+  const transactionDetail: any = useSelector(
+    (store: any) => store.details.details,
+  );
   const toggleTagged = (rowId: string) => {
     setTaggedRows((prev) => {
       const updated = { ...prev, [rowId]: !prev[rowId] };
@@ -39,6 +47,7 @@ export const columns: any = () => {
         field: 'action',
         headerName: i18n.t('TransactionsResult.columnDefs.Action'),
         renderHeader: () => (
+          <Tooltip title={"Tag Selected Transactions"} arrow placement='right'>
           <div style={{ marginLeft: "10px", color: "orange" }}>
             <BookMarkSvgIcon
               className="header-tag-bookmark"
@@ -48,6 +57,7 @@ export const columns: any = () => {
               }}
             />
           </div>
+          </Tooltip>
         ),
         translation: "TransactionsResult.columnDefs.Action",
         sortable: false,
@@ -66,15 +76,20 @@ export const columns: any = () => {
                 padding: "0 10px",
               }}
             >
-              <BookMarkSvgIcon
+              <Tooltip title={"Tag Transaction"} arrow placement='right'>
+              <span>
+                <BookMarkSvgIcon
                 style={{ cursor: "pointer" }}
                 className={`row-mark-tag ${isTagged ? "active-tagged" : ""}`}
-                onClick={() => {
+                onClick={(e:any) => {
                   console.log("Clicked row:", params?.row);
+                  e.stopPropagation();
                   toggleTagged(rowId);
                   setTaggedData(rowId)
                 }}
               />
+              </span>
+              </Tooltip>
             </div>
           );
         },
@@ -82,7 +97,7 @@ export const columns: any = () => {
         //   const isTagged = taggedRows[params.row.id] || false;
   
         //   return (
-        //     // <ActionButton data={params.row} />
+            // <ActionButton data={params.row} />
         //     <div
         //       className="flex"
         //       style={{
@@ -107,6 +122,7 @@ export const columns: any = () => {
         defaultSelectedInAdditionalColumn: true,
         nonSelectableField: true,
         pinned: 'left',
+        // disableClickEventBubbling: true,
       },
       {
         field: 'TransactionID',
@@ -115,9 +131,41 @@ export const columns: any = () => {
         headerClassName: 'super-app-theme--header',
         width: 200,
         hideable: false,
+        disableClickEventBubbling: true,
         renderCell: (params: any) => (
           <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
-            <CustomBodyRowDisplay rowTopValue={<DasCopyComponent text={params.row?.uuid} truncate={true} />} rowBottomValue={<DasCopyComponent text={params.row?.TransactionID} />} rowTopClassName="uuid-top-label-value" rowBottomClassName="transaction-id-copy-value"/>
+            <CustomBodyRowDisplay rowTopValue={
+              <div className='flex' style={{gap:'5px', alignItems:'center'}}>
+              <DasCopyComponent text={params.row?.uuid} truncate={true} />
+              {(params?.row?.TransactionType==="CAPTURE" || params?.row?.TransactionType==="PURCHASE") && params?.row?.status==="SUCCESSFUL" &&
+                <DisputeSvgIcon
+                 style={{width:'14px', cursor:"pointer", position:'relative', top:'3px'}}
+                 onClick={(e:any) => {
+                  console.log("openDisute");
+                  e.stopPropagation();
+                                     // navigate(MENU.TRANSACTIONS);
+                                     const amount = getAmount(transactionDetail.Amount, transactionDetail.CurrencyCode);
+                                     dispatch(
+                                       setDrawer([...drawer,
+                                       {
+                                         data: {
+                                           uuid: transactionDetail.TransactionRefID,
+                                           amount,
+                                           AcquirerName: transactionDetail.Acquirer,
+                                           ...transactionDetail
+                                         },
+                                         type: DRAWER_TYPE.CAPTURE,
+                                         title: DRAWER_TITLE.CAPTURE,
+                                         isDrawerOpen: true,
+                                       },
+                                       ]),
+                                     );
+                                     // dispatch(transactionInfoQuery(transactionDetail?.uuid));
+                                   }}
+                 />}
+              </div>} 
+              rowBottomValue={<DasCopyComponent text={params.row?.TransactionID} />
+          } rowTopClassName="uuid-top-label-value" rowBottomClassName="transaction-id-copy-value"/>
           </div>
         ),
         renderHeader: () => (
@@ -475,7 +523,7 @@ export const columns: any = () => {
         type: FILTER_INPUT_TYPES.TEXT,
         renderCell: (params: any) => (
           <div style={{ display: "flex", flexDirection: "column", height: "50px", justifyContent: "center" }}>
-            <CustomBodyRowDisplay rowTopValue={params.row?.MerchantRefID === "N/A" ? "N/A" : <div className="flex" style={{gap:'5px'}}> <DasCopyComponent text={params.row?.MerchantRefID} truncate={true} /> <DownloadStatementSvgIcon style={{cursor:'pointer', width:'14px'}} onClick={()=> {(console.log("statementID"))}}/></div>}  rowTopClassName={"track-id-copy-value"}/>
+            <CustomBodyRowDisplay rowTopValue={params.row?.MerchantRefID === "N/A" ? "N/A" : <div className="flex" style={{gap:'5px', alignItems:'center'}}> <DasCopyComponent text={params.row?.MerchantRefID} truncate={true} /> <DownloadStatementSvgIcon style={{cursor:'pointer', width:'14px', position:'relative', top:'2px'}} onClick={()=> {(console.log("statementID"))}}/></div>}  rowTopClassName={"track-id-copy-value"}/>
           </div>
         ),
         renderHeader: () => (
@@ -516,6 +564,11 @@ export const columns: any = () => {
         defaultSelectedInAdditionalColumn: true,
         hide: false,
         type: FILTER_INPUT_TYPES.AUTOSELECT,
+        renderCell: (params: any) => (
+          <div className="m-legal-name">
+            {params?.row?.LegalName}
+          </div>
+        ),
         renderHeader: () => (
           <CustomHeaderDispaly
           headingTop={i18n.t('TransactionsResult.columnDefs.Merchant')}
@@ -536,6 +589,11 @@ export const columns: any = () => {
         nonSelectableField: true,
         defaultSelectedInAdditionalColumn: true,
         type: FILTER_INPUT_TYPES.TEXT,
+        renderCell: (params: any) => (
+          <div className="m-legal-name">
+            {params?.row?.LegalNameInEnglish}
+          </div>
+        ),
         renderHeader: () => (
           <CustomHeaderDispaly
           headingTop={i18n.t('TransactionDetail.TransactionInfo.fields.LegalNameInEnglish')}

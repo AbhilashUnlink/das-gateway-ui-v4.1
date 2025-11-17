@@ -13,20 +13,18 @@ import Select from '@data-driven-forms/mui-component-mapper/select';
 import {
   transactionDetails,
   TransactionRefID,
-} from '../../../../../store/features/details';
+} from 'store/features/details';
 import TEXTAREA from '@data-driven-forms/mui-component-mapper/textarea';
 import CHECKBOX from '@data-driven-forms/mui-component-mapper/checkbox';
 
-import { getAmount } from '../../../../../utils/helper';
+import { getAmount } from 'utils/helper';
+import { useCalculateCaptureAmount, useCaptureTransaction } from 'pages/transaction/components/hooks/transaction-page-hooks';
+import { DRAWER_TYPE } from 'components/constants/drawer';
+import FieldMapper from 'components/form/field-mapper/FieldMapper';
 
-import {
-  useCalculateCaptureAmount,
-  useCaptureTransaction,
-} from '../../hooks/transaction-page-hooks';
-import { DRAWER_TYPE } from '../../../../../components/constants/drawer';
-import FieldMapper from '../../../../../components/form/field-mapper/FieldMapper';
 
-const CaptureDrawer = ({ drawer, handleDrawerClose, tableApiEndPoint, payload }: any) => {
+
+const CaptureDrawer = ({ drawer, handleDrawerClose, tableApiEndPoint ,payload}: any) => {
   const drawers = useSelector((store: any) => store.drawer.drawer);
   const detailsDrawerAlsoPresent = drawers?.length > 1;
   const { t } = useTranslation();
@@ -34,7 +32,6 @@ const CaptureDrawer = ({ drawer, handleDrawerClose, tableApiEndPoint, payload }:
   const [initialCaptureAmount, setInitialCaptureAmount] = useState(0);
   const TransactionRef = useSelector(TransactionRefID);
   let transactionDetail = useSelector(transactionDetails);
-  console.log(transactionDetail, "drawerxxxx");
   const [initialValues, setInitialValues]: any = useState({
     Amount: '0',
     RemainingAmount: '0',
@@ -91,8 +88,8 @@ const CaptureDrawer = ({ drawer, handleDrawerClose, tableApiEndPoint, payload }:
 
   return (
     <>
+      {drawer.type === DRAWER_TYPE.CAPTURE && (
         <div className="drawer-body capture-drawer">
-        <h4>{t('TransactionCaptureDrawerBody.ISSUE_A_CAPTURE')}</h4>
           <FormRenderer
             schema={capture_transaction_schema(transactionDetail?.CurrencyCode)}
             initialValues={initialValues}
@@ -103,6 +100,7 @@ const CaptureDrawer = ({ drawer, handleDrawerClose, tableApiEndPoint, payload }:
             onCancel={handleDrawerClose}
           />
         </div>
+      )}
     </>
   );
 };

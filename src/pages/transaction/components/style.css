@@ -204,12 +204,20 @@ form.detail-form.info-container.transaction-detail-container .detail-list .inner
   line-height: 10px;
   background: transparent;
   padding: 0 0;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #808080 !important;
+  font-family: var(--font-family) !important;
 }
 
-.drawer-body form.detail-form.refund-form fieldset label span.MuiFormControlLabel-label {
+.drawer-body form.detail-form label span.MuiFormControlLabel-label {
   line-height: 19px;
   text-align: left;
   padding: 0 0px;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #808080 !important;
+  font-family: var(--font-family) !important;
 }
 
 .drawer-body.refund-drawer h3 {
@@ -820,9 +828,10 @@ h2.confirm-heading {
   font-weight: 500;
   font-size: 0.75rem;
   letter-spacing: 0.05rem;
-  color: #fff !important;
+  color: #1a1a1a;
   opacity: 1;
-  border-radius: 44px;
+  border-radius: 16px;
+  width: 48%;
 }
 
 .download-csv {
@@ -942,13 +951,20 @@ button.edit-button svg {
 
 .common-button {
   /* border: 1px solid #e77236 !important; */
-  color: #e77236 !important;
+  color: #1a1a1a !important;
   text-transform: none !important;
   background: #fff !important;
   min-width: 36px !important;
   height: 35px;
   box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
   border-radius: 6px !important;
+}
+.common-button.active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.common-button.active strong {
+  color: var(--color-primary);
 }
 .filterPlusIconContainer div {
   display: flex;
@@ -1520,7 +1536,7 @@ img.not-copy {
 }
 .date-value.uuid-top-label-value {
   position: relative;
-  top: 6px;
+  top: 2px;
 }
 .row-bottom-value span {
   color: #808080;
@@ -1530,11 +1546,24 @@ img.not-copy {
 }
 .transaction-id-copy-value span {
   position: relative;
-  top: -3px;
+  top: 0px;
 }
 svg.row-mark-tag path {
   stroke: #cfcfcf;
 }
 svg.row-mark-tag.active-tagged path {
   fill: var(--color-primary);
+}
+.m-legal-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+}
+.MuiDataGrid-row {
+  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.08);
+  min-height: 76px !important;
+}
+.MuiDataGrid-cell {
+  border: none !important;
 }

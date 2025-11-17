@@ -29,6 +29,7 @@ export const useFetchWrapper = () => {
   function request(method: methodType) {
     return async (url: string, body?: any, header: any = {}) => {
       const signInDataFromLocalStorage = getSignInDataFromLocalStorage();
+      console.log(signInDataFromLocalStorage, "signInDataFromLocalStorage");
       let authHeader: any = {};
 
       if (!AUTH_URL_VALIDATE(url)) {
