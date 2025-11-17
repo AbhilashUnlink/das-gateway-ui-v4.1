@@ -10,6 +10,8 @@
 
 .quick-view-acc-wrap {
     box-shadow: none;
+    position: relative;
+    border-top: 1px solid #e5e5e5;
 }
 
 .quick-view-acc-wrap .MuiPaper-root.MuiAccordion-root.MuiAccordion-rounded, .quick-view-history .MuiPaper-root.MuiAccordion-root.MuiAccordion-rounded {
@@ -36,6 +38,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 13px;
+    padding-bottom: 12px;
 }
 
 .quick-view-acc-wrap .MuiAccordionDetails-root label {
