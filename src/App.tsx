@@ -2,7 +2,6 @@ import { Routes, Route, Outlet } from "react-router";
 import Login from "pages/authentication/login";
 import PublicRoute from "./routes-wrapper/PublicRoute";
 import PrivateRoute from "./routes-wrapper/PrivateRoute";
-import { hasAccess } from "utils/has-access";
 import ProtectedRoutesList from "components/router/protected-routes-list";
 import PageNotFound from "pages/error";
 import MenuAppBar from "components/menu-app-bar";
@@ -12,6 +11,8 @@ import { useState } from "react";
 import { Content, Header } from "antd/es/layout/layout";
 import { Layout } from "antd";
 import "./index.css";
+import Forgot from "pages/authentication/forgot";
+import Reset from "pages/authentication/reset-password";
 
 const App = () => {
 
@@ -34,6 +35,22 @@ const App = () => {
           </PublicRoute>
         }
       />
+      <Route
+        path="/forgot-password"
+        element={
+          <PublicRoute>
+            <Forgot />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/reset-password"
+        element={
+          <PublicRoute>
+            <Reset />
+          </PublicRoute>
+        }
+      />
 
       {/* Protected dynamic routes */}
       <Route
@@ -43,12 +60,12 @@ const App = () => {
           </PrivateRoute>
         }
       >
-        {ProtectedRoutesList.map(({ component: Component, path, accessKey }: any, index: number) => (
+        {ProtectedRoutesList.map(({ component: Component, path }: any, index: number) => (
           <Route
             key={index}
             path={path}
             element={
-              hasAccess(accessKey) ? <Component /> : <PageNotFound />
+              <Component />
             }
           />
         ))}
@@ -80,19 +97,7 @@ const ProtectedLayout = () => {
 
   return (
     <Layout>
-      <Sider
-        // onMouseEnter={() => setCollapsed(false)}
-        // onMouseLeave={() => setCollapsed(true)}
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-        style={{ backgroundColor: '#ffffff' }}
-      >
-        <SideMenu collapsed={collapsed} />
-      </Sider>
-
-      <Layout>
-        <Header
+      <Header
           style={{
             padding: 0,
             background: '#ffffff',
@@ -102,6 +107,19 @@ const ProtectedLayout = () => {
         >
           <MenuAppBar toggleSideBar={toggleSideBar} />
         </Header>
+      
+
+      <Layout>
+      <Sider
+        // onMouseEnter={() => setCollapsed(false)}
+        // onMouseLeave={() => setCollapsed(true)}
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+        style={{ backgroundColor: '#ffffff' }}
+      >
+        <SideMenu />
+      </Sider>
 
         <Content style={{ padding: 24, minHeight: 280 }}>
           <Outlet />

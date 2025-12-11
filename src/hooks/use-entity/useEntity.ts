@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import getEntity from "../../utils/helper";
+import getEntity from "utils/helper";
 
 const useEntity = () => {
     const entity = useSelector((store: any) => store?.auth?.profile?.subsidiaries);

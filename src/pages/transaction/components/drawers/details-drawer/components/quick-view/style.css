@@ -1,0 +1,146 @@
+.status-btns {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 0;
+}
+
+.quick-view-wrapper {
+    position: relative;
+    padding: 15px 15px;
+}
+
+.flex-start-btns button img {
+    display: none;
+}
+
+.flex-start-btns button strong {
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 13px;
+    font-family: var(--font-family) !important;
+    text-transform: uppercase;
+}
+
+.flex-start-btns button {
+    border: 1px solid #fff;
+}
+
+.flex-start-btns button:hover {
+    border: 1px solid var(--color-primary);
+}
+
+.flex-start-btns button:hover strong {
+    color: var(--color-primary);
+}
+
+.flex-start-btns {
+    display: flex;
+    gap: 15px;
+}
+
+.flex-right-btn button {
+    display: flex;
+    gap: 3px;
+    text-transform: uppercase !important;
+    font-size: 13px;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-right-btn button strong {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.flex-right-btn button svg {
+    width: 18px;
+}
+
+.quick-view-form-container .drawer-body {
+    padding: 20px 0;
+}
+
+.risk-statement .MuiGrid-root {
+    width: 100%;
+    gap: 25px;
+}
+
+.detail-form .MuiInputBase-formControl .MuiInputAdornment-root p.MuiTypography-root {
+    font-size: 13px;
+    color: #808080;
+    font-weight: 400;
+    font-family: var(--font-family);
+}
+
+.quick-view-form-container .drawer-body h4 {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0 0 12px 0;
+    color: #1a1a1a;
+}
+
+.quick-view-history .transaction-history-content {
+    position: relative;
+    box-shadow: none;
+    left: 0px;
+    border-radius: 6px;
+    margin-bottom: 12px !important;
+    border: 1px solid #fff;
+    background: #fff;
+}
+
+.quick-view-history .timeline-seprator {
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.quick-view-history .timeline-seprator span {
+    width: 0px;
+    background-color: transparent;
+    border: 1px dashed #e5e5e5;
+}
+
+.quick-view-history .transaction-history-content.is-selected {
+    background: #FFF6E6;
+    border-color: var(--color-primary);
+}
+
+span.transaction-history-side-dot {
+    width: 10px !important;
+    height: 10px;
+    background-color: #ccc !important;
+    position: absolute;
+    display: block;
+    z-index: 999;
+    border-radius: 40px;
+    left: 7px;
+    border: 0 !important;
+    top: 40%;
+}
+
+span.transaction-history-side-dot.is-selected {
+    width: 14px !important;
+    height: 14px;
+    left: 4px;
+    top: 35%;
+    background-color: var(--color-primary) !important;
+}
+
+.quick-view-history .transaction-history-content:hover,
+.quick-view-history button {
+    background: transparent;
+}
+span.transaction-history-amonut {
+    color: #1a1a1a;
+    font-size: 14px;
+    text-decoration: underline;
+}
+.quick-view-history .transaction-history-content.is-selected span.transaction-history-amonut{
+    font-weight: 600;
+}
+p.timeline-date-section {
+    font-size: 13px;
+    color: #1a1a1a;
+}

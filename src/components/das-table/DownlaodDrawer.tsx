@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-// import FilterPopup from '../popper/filter-popup';
+import FilterPopup from '../popper/filter-popup';
 import DownloadListTable from './DownloadListTable';
 import { useEffect, useState } from 'react';
 
@@ -32,7 +32,7 @@ const DownlaodDrawer = ({
   return (
     <>
       <div className="transaction-popper-drawer">
-        <h4>{t("TransactionDetailDrawerBody.TransactionReportDownload.PleaseApply")}</h4>
+        {/* <h4>{t("TransactionDetailDrawerBody.TransactionReportDownload.PleaseApply")}</h4> */}
         {/* <FilterPopup
           columns={columns}
           multiFilter={multiFilter}
@@ -52,7 +52,7 @@ const DownlaodDrawer = ({
           count={count}
           setCount={setCount}
         /> */}
-        <DownloadListTable disableRequestDownloadButton={disableRequestDownloadButton} setDisableRequestDownloadButton={setDisableRequestDownloadButton} />
+        <DownloadListTable disableRequestDownloadButton={disableRequestDownloadButton} setDisableRequestDownloadButton={setDisableRequestDownloadButton} initialFilterData={initialFilterData}  />
       </div>
     </>
   );

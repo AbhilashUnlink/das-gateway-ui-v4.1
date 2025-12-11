@@ -625,7 +625,8 @@ const common = {
       'Action': 'アクション',
       'TransactionRefID': '取引参照ID',
       'Amount': '金額',
-      'status': 'ステータス/タイプ',
+      "Fees": "料金",
+      'status': 'ステータス',
       'Date': '取引日',
       "UpdatedTransactionDate": "更新日",
       'StartDate': 'スタート日付',
@@ -654,7 +655,8 @@ const common = {
       "ResponseCode": "レスポンスコード",
       "TransactionID":"取引ID",
       "LinkName":"リンク名",
-      "MerchantAccountEnglish":"マーチャントアカウント（英語）"
+      "MerchantAccountEnglish":"マーチャントアカウント（英語）",
+      "StatementID": "Statement ID",
     },
     BreadCrumb: {
       Home: 'ホーム',
@@ -1058,8 +1060,10 @@ const common = {
       SearchTransactionDetails: '取引結果の検索',
     },
     TransactionTile:{
+      "Total Transactions":"総取引数",
       "Total Sales":"总销售额",
       "Total Refund":"退款总额",
+      "Total Declined":"合計減少しました",
       "Approval Ratio":"批准比率",
     },
     TransactionInfo: {

@@ -283,20 +283,21 @@
   background-color: #f6921e !important;
   border-radius: 4px !important;
   color: #fff !important;
-  font-family: "poppins", sans-serif !important;
   padding: 7px 12px !important;
   font-size: 0.8rem !important;
   position: relative;
   left: -3px !important;
   z-index: 9999999;
 }
-span.MuiTooltip-arrow.css-kudwh-MuiTooltip-arrow {
+span.MuiTooltip-arrow {
   color:#f6921e !important;
 }
 img.das-logo-big {
-  width: 124px;
+  width: auto;
   position: relative;
-  left: -3px;
+  left: 2px;
+  height: auto;
+  padding: 6px 4px;
 }
 /* ================ */
 header.appbar-header {
@@ -358,7 +359,7 @@ header.appbar-header {
   margin: 0 8px 0 0;
 }
 .side-menu .main-menu .menu-item .menu-icon i.bi-hammer {
-  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-strokeWidth: 1.3px;
   -webkit-text-stroke-color: #fff;
   color: #E56523;
 }
@@ -453,7 +454,7 @@ header.appbar-header {
   color: #f6921e;
   line-height: 16px;
   border: 1px solid;
-  -webkit-text-stroke-width: 0;
+  -webkit-text-strokeWidth: 0;
 }
 
 .ant-layout-sider-collapsed span.ant-menu-title-content{
@@ -467,21 +468,27 @@ span.ant-menu-title-content {
 }
 li.ant-menu-item.ant-menu-item-selected {
   background-color: transparent;
-  color: #F7941D;
+  color: var(--color-primary);
 }
 li.ant-menu-item.ant-menu-item-selected svg path{
-  fill:#F7941D
+  fill:var(--color-primary)
 }
-li.ant-menu-item{    height: 50px !important;
-  line-height: 50px !important;}
-li.ant-menu-item.ant-menu-item-selected{    height: 50px !important;
-  line-height: 50px !important;}
+li.ant-menu-item{    height: 40px !important;
+  line-height: 40px !important;}
+li.ant-menu-item.ant-menu-item-selected{    height: 40px !important;
+  line-height: 40px !important;}
+  li.ant-menu-item svg {
+    width: 15px;
+}
+span.ant-menu-title-content {
+    font-size: 12.5px;
+}
   li.ant-menu-item.ant-menu-item-selected::before {
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
     background: rgba(247, 148, 29, 0.1);
-    left: 19px;
-    top: 4px;
+    left: 17px;
+    top: 5px;
     content: "";
     position: absolute;
     border-radius: 100px;
@@ -501,4 +508,11 @@ li.ant-menu-item.ant-menu-item-active::before {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed li.ant-menu-item.ant-menu-item-selected::before {
+  left: 21px;
+  top: 1px;
+}
+aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed li.ant-menu-item:hover{
+  background: transparent !important;
 }

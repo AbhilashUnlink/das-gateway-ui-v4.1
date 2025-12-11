@@ -43,7 +43,6 @@ export default function SelectTime() {
           setSelectedIndex(i);
           setSelectedTime(k.label);
         }
-        console.log(selected_tz, 'selected_tz');
       });
     } else {
       localStorage.setItem('timeZone', defaultTimeZone);

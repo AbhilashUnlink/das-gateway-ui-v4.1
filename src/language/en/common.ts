@@ -636,7 +636,8 @@ const common = {
       "TransactionRefID": "Transaction Ref ID",
       "V2UUID": "V2 ID",
       "Amount": "Amount",
-      "status": "Status/Type",
+      "Fees": "Fees",
+      "status": "Status",
       "Date": "Transaction Date",
       "UpdatedTransactionDate": "Update Date",
       "StartDate": "StartDate",
@@ -665,7 +666,8 @@ const common = {
       "ResponseCode": "Response Code",
       "TransactionID":"Transaction ID",
       "LinkName":"Link Name",
-      "MerchantAccountEnglish":"Merchant Account (English)"
+      "MerchantAccountEnglish":"Merchant Account (English)",
+      "StatementID": "Statement ID",
     },
     BreadCrumb: {
       Home: 'Home',
@@ -1073,8 +1075,10 @@ const common = {
       SearchTransactionDetails: 'Search Transaction Result',
     },
     TransactionTile:{
+      "Total Transactions":"Total Transactions",
       "Total Sales":"Total Sales",
       "Total Refund":"Total Refund",
+      "Total Declined":"Total Declined",
       "Approval Ratio":"Approval Ratio",
     },
     TransactionInfo: {

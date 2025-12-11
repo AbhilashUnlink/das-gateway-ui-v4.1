@@ -29,7 +29,7 @@ button.dropdown-select-button:hover {
     border-right: 1px solid rgba(229, 229, 229, 1) !important;
     margin: 0 12px 0 0;
     position: relative;
-    top: 7px;
+    top: 0px;
     border-radius: 0 !important;
 }
 
@@ -65,7 +65,7 @@ button.dropdown-select-button:hover {
     align-items: center;
     justify-content: center;
     position: relative;
-    top: 7px;
+    top: 0px;
 }
 
 svg.svg-icon.active rect {

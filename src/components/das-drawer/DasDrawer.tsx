@@ -24,6 +24,9 @@ import AcquirerDetailsDrawer from '../../pages/transaction/components/drawers/de
 import useLegacy from '../../hooks/use-legacy/useLegacy';
 import TransactionDetailsWrapper from '../../pages/transaction/components/drawers/details-drawer';
 import { useNavigate } from 'react-router';
+import { CloseSvgIcon, NewTabSvgIcon, ShareSvgIcon } from 'components/svg-icons/SvgIcons';
+import TransactionQuickView from 'pages/transaction/components/drawers/details-drawer/components/quick-view/TransactionQuickView';
+import DasCopyComponent from 'components/das-copy/DasCopyComponent';
 // import RiskDrawer from '../../pages/risk/components/risk-drawer';
 // import ProductDrawer from '../../pages/merchants/merchant-view/components/drawers/product-details-drawer/ProductDrawer';
 // import NestedTable from '../../pages/merchants/merchant-view/components/drawers/nested-drawer/NestedTable';
@@ -217,6 +220,9 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
       case DRAWER_TYPE.ONFIDO_DOCS_DRAWER:
         setDrawerWidth(DRAWER_WIDTH.SEVENTY_FIVE);
         break;
+      case DRAWER_TYPE.TRANSACTION_QUICK_VIEW:
+        setDrawerWidth(DRAWER_WIDTH.TRANSACTION_QUICK_VIEW);
+        break;
       default:
         setDrawerWidth(DRAWER_WIDTH.DEFAULT);
     }
@@ -403,6 +409,10 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
         dispatch(setDrawer([]));
         dispatch(clearDetails());
         break;
+        case DRAWER_TYPE.TRANSACTION_QUICK_VIEW:
+          dispatch(setDrawer([]));
+          dispatch(clearDetails());
+          break;
       case DRAWER_TYPE.CHILDREN:
         onClose();
         break;
@@ -427,48 +437,43 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
         onClose={() => handleDrawerClose(drawer)}
         anchor="right"
       >
+       {drawer.type === DRAWER_TYPE.TRANSACTION_QUICK_VIEW ?
+        <DrawerHeader className={'drawer-header quick-view-drawer-header'}>
+          {/* close or back Button */}
+          <IconButton onClick={() => handleDrawerClose(drawer)}>
+            <CloseSvgIcon/>
+          </IconButton>
+          {/* Drawer Title */}
+          <span style={{display:'flex', gap:'2px', alignItems:'flex-start', flexDirection:'column'}}>
+            {drawer.icon ? drawer.icon : ''}
+            <h3
+            style={{ margin:'0', padding:'0' }}
+            >
+              {t(drawer?.title)}
+            </h3>
+           <h6 className='drawer-lower-header-title' style={{ margin:'0', padding:'0', display:'flex', gap:'5px' }}>
+            <DasCopyComponent text={drawer?.data?.uuid} truncate={false} />
+            <ShareSvgIcon
+            style={{width:'14px', cursor:'pointer'}}
+            onClick={()=>(
+              console.log("Share")
+            )}/>
+            <NewTabSvgIcon
+            style={{width:'14px', cursor:'pointer'}}
+            onClick={()=>(
+              console.log("New Tab")
+            )}/>
+            </h6>
+          </span>
+        </DrawerHeader>
+        :
         <DrawerHeader className='drawer-header'>
           {/* close or back Button */}
           <IconButton onClick={() => handleDrawerClose(drawer)}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clipPath="url(#clip0_618_188618)">
-                <path
-                  d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
-                  stroke="#1A1A1A"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M9.16992 14.8299L14.8299 9.16992"
-                  stroke="#1A1A1A"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M14.8299 14.8299L9.16992 9.16992"
-                  stroke="#1A1A1A"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_618_188618">
-                  <rect width="24" height="24" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
+            <CloseSvgIcon/>
           </IconButton>
           {/* Drawer Title */}
-          <span>
+          <span style={{display:'flex', gap:'8px', alignItems:'center'}}>
             {drawer.icon ? drawer.icon : ''}
             <h3
             // style={{ color: drawer.titleColor ? drawer.titleColor : 'white' }}
@@ -476,10 +481,8 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
               {t(drawer?.title)}
             </h3>
           </span>
-          {/* <span onClick={()=>handleDrawerClose(drawer)}>
-            X
-          </span> */}
         </DrawerHeader>
+}
         <Divider />
         {drawer.type === DRAWER_TYPE.DETAILS && <TransactionDetailsWrapper />}
         {drawer.type === DRAWER_TYPE.REFUND && (
@@ -499,6 +502,9 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
         {drawer.type === DRAWER_TYPE.ACQUIRER_DETAILS && (
           <AcquirerDetailsDrawer />
         )}
+        {drawer.type === DRAWER_TYPE.TRANSACTION_QUICK_VIEW && (
+          <TransactionQuickView drawer={drawer} handleDrawerClose={() => handleDrawerClose(drawer)} />
+        )}
         {drawer.type === DRAWER_TYPE.CAPTURE && (
           <CaptureDetails
             drawer={drawer}
@@ -507,6 +513,7 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
             payload={payload}
           />
         )}
+        {drawer.type === DRAWER_TYPE.CHILDREN && children}
         {/* {drawer.type === DRAWER_TYPE.RISK && (
           <RiskDrawer
             drawer={drawer}
@@ -680,7 +687,7 @@ export default function DasDrawer({ drawer, children, onClose, tableApiEndPoint,
         {drawer.type === DRAWER_TYPE.MDR_RATES_FORM && (
           <MDRRatesDrawer drawer={drawer} handleDrawerClose={() => handleDrawerClose(drawer)} />
         )}
-        {drawer.type === DRAWER_TYPE.CHILDREN && children}
+        
 
         {drawer.type === DRAWER_TYPE.ONBOARDING_UPLOAD_MISSING_INFO && (
           <UploadMissingInfoDrawer

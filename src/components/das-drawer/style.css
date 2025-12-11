@@ -20,6 +20,8 @@
 .drawer-header button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium {
     position: absolute;
     right: 10px;
+    width: 40px;
+    height: 40px;
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiDrawer-paper {
@@ -33,4 +35,23 @@
     top: 60px;
     height: calc(100vh - 60px);
     background-color: rgb(254 254 254 / 50%);
+}
+
+h6.drawer-lower-header-title {
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+.quick-view-drawer-header h3 {
+    font-size: 13px;
+    font-weight: 400;
+}
+h6.drawer-lower-header-title span.ant-typography {
+    max-width: 100% !important;
+}
+h6.drawer-lower-header-title span.ant-typography svg path {
+    fill: #1a1a1a;
+}
+.MuiDrawer-modal.drawer-wrapper{
+    z-index: 1070;
 }

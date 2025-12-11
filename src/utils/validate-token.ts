@@ -37,6 +37,7 @@ export async function validateTokenExpiryAndGetToken(
     } catch (e) {
       // clearLocalStorage();
       localStorage.clear();
+      window.location.reload();
       return false;
     }
   }

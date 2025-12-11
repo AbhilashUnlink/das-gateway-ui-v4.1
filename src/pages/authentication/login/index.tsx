@@ -1,6 +1,6 @@
 import LoginForm from './components/LoginForm';
 import { useTranslation } from 'react-i18next';
-import { CHOOSE_ACCOUNT_TYPE_PAGE } from '../../../components/constants/route';
+// import { CHOOSE_ACCOUNT_TYPE_PAGE } from '../../../components/constants/route';
 import { useNavigate } from 'react-router';
 import Wrapper from '../../../components/wrapper/Wrapper';
 import { useSelector } from 'react-redux';
@@ -10,7 +10,9 @@ export default function Login() {
   const navigate = useNavigate();
 
   function CreateAccount() {
-    navigate(CHOOSE_ACCOUNT_TYPE_PAGE);
+    // navigate(CHOOSE_ACCOUNT_TYPE_PAGE);
+    // just added for now will change once UI will be created for create account
+    window.open("https://dev.paymentoptions.com/onboarding/choose-account", "_blank");
   }
   function forgotPassword(): void {
     navigate("/forgot-password");

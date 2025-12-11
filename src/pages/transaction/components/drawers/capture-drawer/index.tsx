@@ -34,6 +34,7 @@ const CaptureDrawer = ({ drawer, handleDrawerClose, tableApiEndPoint, payload }:
   const [initialCaptureAmount, setInitialCaptureAmount] = useState(0);
   const TransactionRef = useSelector(TransactionRefID);
   let transactionDetail = useSelector(transactionDetails);
+  console.log(transactionDetail, "drawerxxxx");
   const [initialValues, setInitialValues]: any = useState({
     Amount: '0',
     RemainingAmount: '0',
@@ -90,8 +91,8 @@ const CaptureDrawer = ({ drawer, handleDrawerClose, tableApiEndPoint, payload }:
 
   return (
     <>
-      {drawer.type === DRAWER_TYPE.CAPTURE && (
         <div className="drawer-body capture-drawer">
+        <h4>{t('TransactionCaptureDrawerBody.ISSUE_A_CAPTURE')}</h4>
           <FormRenderer
             schema={capture_transaction_schema(transactionDetail?.CurrencyCode)}
             initialValues={initialValues}
@@ -102,7 +103,6 @@ const CaptureDrawer = ({ drawer, handleDrawerClose, tableApiEndPoint, payload }:
             onCancel={handleDrawerClose}
           />
         </div>
-      )}
     </>
   );
 };

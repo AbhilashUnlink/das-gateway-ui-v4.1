@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import das from '../../assets/logo/PO-Logo.svg';
-import Das from '../../assets/logo/logo.png';
+// import das from '../../assets/logo/PO-Logo.svg';
+// import Das from '../../assets/logo/logo.png';
 import './style.css';
 import { hasAccess } from 'utils/has-access';
 import { FooterMenuItems, MenuItems } from './components/menu-items';
@@ -8,7 +8,7 @@ import { Menu } from 'antd';
 import { MenuSVGIcon } from './components/MenuSvgIcons';
 import { useNavigate } from 'react-router';
 
-const SideMenu = ({ collapsed }: any) => {
+const SideMenu = () => {
   const navigate = useNavigate();
   
   const onSelect = (e: any) => {
@@ -17,7 +17,7 @@ const SideMenu = ({ collapsed }: any) => {
 
   return (
     <div className={'side-menu-new'}>
-      <div className="top-section">
+      {/* <div className="top-section">
         <div className="toggle-menu-btn">
           <img
             src={collapsed ? das : Das}
@@ -25,7 +25,7 @@ const SideMenu = ({ collapsed }: any) => {
             alt="Payment Options"
           />
         </div>
-      </div>
+      </div> */}
       <div className="s-menu-flex">
         <Menu
           theme="light"

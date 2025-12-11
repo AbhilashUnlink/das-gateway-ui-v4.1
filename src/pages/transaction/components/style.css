@@ -204,12 +204,20 @@ form.detail-form.info-container.transaction-detail-container .detail-list .inner
   line-height: 10px;
   background: transparent;
   padding: 0 0;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #808080 !important;
+  font-family: var(--font-family) !important;
 }
 
-.drawer-body form.detail-form.refund-form fieldset label span.MuiFormControlLabel-label {
+.drawer-body form.detail-form label span.MuiFormControlLabel-label {
   line-height: 19px;
   text-align: left;
   padding: 0 0px;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #808080 !important;
+  font-family: var(--font-family) !important;
 }
 
 .drawer-body.refund-drawer h3 {
@@ -483,7 +491,6 @@ form.detail-form.info-container.transaction-detail-container .detail-list .inner
 .drawer-body.transaction-detail-drawer .bg-history-container h5 {
   font-size: 1rem;
   font-weight: 500;
-  font-family: "Poppins", sans-serif;
   margin: 0 0 10px 0;
   padding: 0px 0 0 0;
   color: #333;
@@ -594,20 +601,17 @@ p.transaction-history-type {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.8rem;
-  font-family: "Poppins", sans-serif;
 }
 
 p.transaction-history-refid {
   font-size: 0.72rem;
   color: #555;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
 }
 
 .timeline-section ul li div span {
   font-size: 0.78rem;
   font-weight: 500;
-  font-family: "Poppins", sans-serif;
   color: #232323;
 }
 
@@ -616,7 +620,6 @@ p.transaction-history-refid {
 p.transaction-history-amonut {
   color: #e77236;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
   position: absolute;
   right: 15px;
@@ -628,7 +631,6 @@ p.transaction-history-status {
   font-size: 0.8rem;
   font-weight: 600;
   position: absolute;
-  font-family: "Poppins", sans-serif;
   right: 15px;
   top: 13px;
 }
@@ -782,7 +784,6 @@ h2.confirm-heading {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.02rem;
-  font-family: "Poppins", sans-serif;
   font-size: 1rem;
   background: #f6921e;
   color: #fff;
@@ -827,10 +828,10 @@ h2.confirm-heading {
   font-weight: 500;
   font-size: 0.75rem;
   letter-spacing: 0.05rem;
-  font-family: "Poppins", sans-serif;
-  color: #fff !important;
+  color: #1a1a1a;
   opacity: 1;
-  border-radius: 44px;
+  border-radius: 16px;
+  width: 48%;
 }
 
 .download-csv {
@@ -853,7 +854,6 @@ button.edit-button {
   border-radius: 6px;
   z-index: 9;
   font-size: 12px;
-  font-family: "Poppins", sans-serif !important;
   font-weight: 700;
   line-height: normal;
 }
@@ -950,8 +950,8 @@ button.edit-button svg {
 }
 
 .common-button {
-  border: 1px solid #e77236 !important;
-  color: #e77236 !important;
+  /* border: 1px solid #e77236 !important; */
+  color: #1a1a1a !important;
   text-transform: none !important;
   background: #fff !important;
   min-width: 36px !important;
@@ -959,16 +959,28 @@ button.edit-button svg {
   box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
   border-radius: 6px !important;
 }
+.common-button.active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.common-button.active strong {
+  color: var(--color-primary);
+}
+.filterPlusIconContainer div {
+  display: flex;
+}
 
+.common-button div {
+  display: flex;
+}
 .bg-history-container button.refresh {
   right: 17px !important;
   left: auto !important;
 }
 
-/*  */
-/* .table-icons {
-  margin-bottom: 32px;
-} */
+ .table-icons {
+  margin-bottom: 12px;
+}
 .drawer-body.transaction-detail-drawer .fixed-status-btns .status-btns button img.table-icon-img {
   display: none;
 }
@@ -1020,7 +1032,6 @@ button.edit-button svg {
 .heading {
   font-size: 1rem;
   font-weight: 500;
-  font-family: "Poppins", sans-serif;
   margin: 0 0 0px 4px;
   padding: 0px 0 0;
   color: #333;
@@ -1466,25 +1477,93 @@ img.not-copy {
 .transaction-tiles {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 3px 0px 0;
+  gap: 8px;
+  width: auto;
+  height: 36px;
+  background: #FFF6E6;
+  border: 1px solid #FFFFFF;
+  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .transaction-tiles .tile-left {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  border: 1px solid #e77236 !important;
-  color: #e77236 !important;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
   text-transform: none !important;
-  background: #fff !important;
   min-width: 36px !important;
-  gap: 10px;
-  height: 35px;
-  box-shadow: 0 2px 8px 0 rgba(99, 99, 99, .2);
-  padding: 0 15px;
+  gap: 0px;
+  height: 36px;
+  padding: 1px 15px;
+  text-align: left;
+  position: relative;
 }
-
+.transaction-tiles .tile-left::after {
+  position: absolute;
+  content: "";
+  background: orange;
+  width: 1px;
+  height: 20px;
+  right: -3px;
+  top: 8px;
+}
 .transaction-tiles .tile-left h3 {
-  font-size: .85rem;
+  font-size: 12px;
+  color: #e77236 !important;
+  margin: 0;
+  text-align: left;
+  font-weight: 500;
+}
+.transaction-tiles .tile-left h4{
+  color: #1a1a1a !important;
+  margin: 0;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+}
+.transaction-tiles .tile-left:last-child::after {
+  display: none !important;
+}
+.date-value.uuid-top-label-value {
+  position: relative;
+  top: 2px;
+}
+.row-bottom-value span {
+  color: #808080;
+}
+.date-value.top-label-value {
+  font-weight: 400;
+}
+.transaction-id-copy-value span {
+  position: relative;
+  top: 0px;
+}
+svg.row-mark-tag path {
+  stroke: #cfcfcf;
+}
+svg.row-mark-tag.active-tagged path {
+  fill: var(--color-primary);
+}
+.m-legal-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+}
+.MuiDataGrid-row {
+  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.08);
+  min-height: 76px !important;
+}
+.MuiDataGrid-cell {
+  border: none !important;
 }

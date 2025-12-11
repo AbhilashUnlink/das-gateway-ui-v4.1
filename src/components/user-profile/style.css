@@ -35,12 +35,15 @@ input.h-49 {
   border-radius: 4px;
   color: #808080;
 }
-
+.modal-fotter {
+  display: flex;
+  gap: 15px;
+}
 button.footer-modal-button {
   border: 1px solid;
   cursor: pointer;
   letter-spacing: 0.03rem;
-  width: 200px;
+  width: 48%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -54,8 +57,8 @@ button.footer-modal-button {
 
 button.footer-modal-button.submit {
   color: #fff;
-  border-color: #f7941d !important;
-  background-color: #f7941d !important;
+  border-color: var(--color-primary) !important;
+  background-color: var(--color-primary) !important;
 }
 
 button.footer-modal-button.submit:hover {
@@ -66,8 +69,8 @@ button.footer-modal-button.submit:hover {
 
 button.footer-modal-button.submit:disabled {
   color: #fff;
-  border-color: #f7941d !important;
-  background-color: #f7941d !important;
+  border-color: var(--color-primary) !important;
+  background-color: var(--color-primary) !important;
   cursor: not-allowed;
 }
 
@@ -84,7 +87,7 @@ button.footer-modal-button.cancel {
 
   margin: 0px 0em 0px 0;
 
-  top: 9px;
+  top: 0px;
 }
 
 .profile-button button {

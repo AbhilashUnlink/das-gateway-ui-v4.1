@@ -1,12 +1,11 @@
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import useFieldApi from "@data-driven-forms/react-form-renderer/use-field-api";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { EmailSvgIcon, PasswordSvgIcon } from "components/svg-icons/SvgIcons";
 
 function DasMuiTextField(rawProps: any) {
   const { input, meta } = useFieldApi(rawProps);
@@ -18,20 +17,21 @@ function DasMuiTextField(rawProps: any) {
     fullWidth = true,
     variant = "outlined",
     type = "text",
+    name,
     ...rest
   } = rawProps;
 
   const icon =
-    startIcon === "PersonOutlineIcon" ? (
-      <PersonOutlineIcon className="login-f-icons" />
-    ) : startIcon === "AlternateEmailIcon" ? (
-      <AlternateEmailIcon className="login-f-icons" />
+    name === "username" ? (
+      <EmailSvgIcon className="login-f-icons" />
+    ) : name === "password" || name === "Password" || name === "ConfirmPassword" || name === "newPassword" || name === "currentPassword" || name === "confirmNewPassword"  ? (
+      <PasswordSvgIcon className="login-f-icons" />
     ) : null;
 
   const isPassword = type === "password";
 
   return (
-    <>
+    <><div className="form-group relative">
       <label>{placeholder}</label>
 
       <TextField
@@ -41,8 +41,8 @@ function DasMuiTextField(rawProps: any) {
         variant={variant}
         placeholder={placeholder}
         type={isPassword && !showPassword ? "password" : "text"}
-        error={Boolean(meta.error && meta.touched)}
-        helperText={meta.error && meta.touched ? meta.error : ""}
+   error={false}
+        // helperText={meta.error && meta.touched ? meta.error : ""}
         slotProps={{
           input: {
             startAdornment: icon ? (
@@ -57,7 +57,9 @@ function DasMuiTextField(rawProps: any) {
             ) : undefined,
           },
         }}
-      />
+        />
+        {<span style={{color:'#fe3030', fontSize:'13px', position:'relative', top:'4px'}}>{Boolean(meta.error && meta.touched)? meta.error :""}</span>}
+      </div>
     </>
   );
 }

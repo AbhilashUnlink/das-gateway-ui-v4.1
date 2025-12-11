@@ -1,7 +1,12 @@
 import { loadingTransactionRows, rowsCount } from '../../../../store/features/transaction-table';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DataTable from '../../../../components/das-table/DataTable';
 import { View_Name_Space } from '../../../../components/popper/constants/filter-constants';
+// import type { GridRowParams } from '@mui/x-data-grid';
+// import { getAmount } from 'utils/helper';
+import { setDrawer } from 'store/features/drawer';
+import { DRAWER_TITLE, DRAWER_TYPE } from 'components/constants/drawer';
+import { getDetails } from 'store/features/details';
 
 const TransactionTable = ({
   dasTableClassName,
@@ -12,11 +17,18 @@ const TransactionTable = ({
   setSkip,
   initialRowCount,
   filteredObject,
-  rightActionButtons
+  rightActionButtons,
+  isRowSelectable,
+  onRowClick
 }: any) => {
   let rows = useSelector(
     (store: any) => store?.transactionTable?.transactionTable,
   );
+  const dispatch = useDispatch();
+  const { drawer } = useSelector((store: any) => store.drawer);
+  // const transactionDetail: any = useSelector(
+  //   (store: any) => store.details.details,
+  // );
   let count = useSelector(rowsCount);
   let loading = useSelector(loadingTransactionRows);
 
@@ -47,6 +59,22 @@ const TransactionTable = ({
         setSkip={setSkip}
         take={take}
         setTake={setTake}
+        onRowClick={(params: any) => {
+          dispatch(getDetails({ uuid:params?.row?.uuid, openDrawer: false }));
+          dispatch(
+            setDrawer([
+              ...drawer,
+              {
+                data: {
+                  uuid: params?.row?.uuid,
+                },
+                type: DRAWER_TYPE.TRANSACTION_QUICK_VIEW,
+                title: DRAWER_TITLE.TRANSACTION_QUICK_VIEW,
+                isDrawerOpen: true,
+              },
+            ])
+          );
+                                    }}
         initialRowCount={initialRowCount}
         count={count}
         showFilter={true}

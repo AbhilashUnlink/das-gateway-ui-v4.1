@@ -18,7 +18,7 @@
 }
 
 .ant-carousel {
-    padding: 13em 3em 3em;
+    padding: 7em 3em 3em;
     height: 100%;
 }
 
@@ -69,7 +69,6 @@
 
 .swiper-captions h3 {
     color: #333;
-    font-family: 'Public Sans', sans-serif;
     font-size: 1.35vw;
     font-style: normal;
     font-weight: 800;
@@ -79,11 +78,10 @@
 }
 
 .swiper-captions h2 {
-    font-family: 'Public Sans', sans-serif;
     font-size: 42px;
     font-style: normal;
     font-weight: bold;
-    line-height: 42px;
+    line-height: 50px;
     /* 100% */
     letter-spacing: -2.1px;
     background: linear-gradient(92deg, #ffa218 0%, #e56523 100%);
@@ -95,7 +93,6 @@
 
 .swiper-captions p {
     color: #6a615a;
-    font-family: 'Public Sans', sans-serif;
     font-weight: 400;
     line-height: 30px;
     /* 171.429% */

@@ -15,7 +15,7 @@
 		.s10 { fill: #936760 } 
 		.s11 { fill: #6f4c47 } 
 		.s12 { fill: #57ba1c } 
-		.s13 { fill: none;stroke: #4e585d;stroke-miterlimit:10;stroke-width: .4 } 
+		.s13 { fill: none;stroke: #4e585d;strokeMiterlimit:10;strokeWidth: .4 } 
 		.t14 { font-size: 14px;fill: #68c432;font-weight: 700;font-family: "Poppins-Bold", "Poppins" } 
 	</style>
 	<g id="Background_Complete">

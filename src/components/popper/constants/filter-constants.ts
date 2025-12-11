@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import i18n from "i18n";
+import i18n from '../../../i18n';
 
 export const HTML_ELEMENT = {
-  TEXT_FIELD: "TextField",
-  SELECT: "Select",
-  DATE_RANGE_PICKER: "DateRangePicker",
-  NEW_DATE_RANGE_PICKER: "NewDateRangePicker",
-  SELECT_WITH_SEARCH: "SelectWithSearch",
+  TEXT_FIELD: 'TextField',
+  SELECT: 'Select',
+  DATE_RANGE_PICKER: 'DateRangePicker',
+  NEW_DATE_RANGE_PICKER: 'NewDateRangePicker',
+  SELECT_WITH_SEARCH: 'SelectWithSearch',
 };
 
 export const HEADER_COLUMN = {
@@ -88,28 +87,27 @@ export const HEADER_COLUMN = {
   CATALOG_CATEGORY_STATUS: "CategoryStatus",
   CATALOG_PRODUCT_STATUS: "ProductStatus",
   IP_STATUS: "Status",
-  PRODUCT_FOOD_TYPE: "ProductFoodType",
-  PRODUCT_FOOD_SIZE: "ProductSize",
-  MERCHANT_ID: "MerchantID",
+  assignmentType: "assignmentType",
+  IsActive: "IsActive",
 };
 export const View_Name_Space = {
-  TRANSACTION: "TRANSACTION",
-  MERCHANT: "MERCHANT",
-  ACQUIRERS: "ACQUIRERS",
-  PRODUCTS: "PRODUCTS",
-  CHARGEBACK: "CHARGEBACK",
-  ONBOARDING: "ONBOARDING",
-  STATEMENTS: "STATEMENTS",
-  SALESLEAD: "SALESLEAD",
-  PARTNER: "PARTNER",
-  SUBSCRIPTION: "SUBSCRIPTION",
-  PUBLIC_HOLIDAY: "PUBLIC_HOLIDAY",
-  SUBSCRIPTION_STATUS: "SUBSCRIPTION_STATUS",
-  STATEMENT_TRANSACTION: "STATEMENT_TRANSACTION",
-  HASH_CARD_NUMBER: "HASH_CARD_NUMBER",
-  IP_WHITELISTING: "IP_WHITELISTING",
-  MERCHANT_CATALOG_CATEGORY: "MERCHANT_CATALOG_CATEGORY",
-  MERCHANT_CATALOG_PRODUCT_CATEGORY: "MERCHANT_CATALOG_PRODUCT_CATEGORY",
+  TRANSACTION: 'TRANSACTION',
+  MERCHANT: 'MERCHANT',
+  ACQUIRERS: 'ACQUIRERS',
+  PRODUCTS: 'PRODUCTS',
+  CHARGEBACK: 'CHARGEBACK',
+  ONBOARDING: 'ONBOARDING',
+  STATEMENTS: 'STATEMENTS',
+  SALESLEAD: 'SALESLEAD',
+  PARTNER: 'PARTNER',
+  SUBSCRIPTION: 'SUBSCRIPTION',
+  PUBLIC_HOLIDAY: 'PUBLIC_HOLIDAY',
+  SUBSCRIPTION_STATUS: 'SUBSCRIPTION_STATUS',
+  STATEMENT_TRANSACTION: 'STATEMENT_TRANSACTION',
+  HASH_CARD_NUMBER: 'HASH_CARD_NUMBER',
+  IP_WHITELISTING: 'IP_WHITELISTING',
+  MERCHANT_CATALOG_CATEGORY: 'MERCHANT_CATALOG_CATEGORY',
+  MERCHANT_CATALOG_PRODUCT_CATEGORY: 'MERCHANT_CATALOG_PRODUCT_CATEGORY',
 };
 
 export const STATUS: any = {
@@ -178,27 +176,31 @@ export const STATUS: any = {
     APPROVED: i18n.t("APPROVED"),
     REJECTED: i18n.t("REJECTED"),
   },
+  RULES: {
+    ACTIVE: "true",
+    INACTIVE: "false",
+  },
 };
 
 export const HAS_3DS_TYPE: any = {
-  true: "3DS",
-  false: "Non 3DS",
+  true: '3DS',
+  false: 'Non 3DS',
 };
 
 export const SUBSCRIPTION_STATUS: any = {
-  ACTIVE: i18n.t("SUBSCRIPTION_STATUS.ACTIVE"),
-  COMPLETED: i18n.t("SUBSCRIPTION_STATUS.COMPLETED"),
-  PAUSED: i18n.t("SUBSCRIPTION_STATUS.PAUSED"),
-  INITIATED: i18n.t("SUBSCRIPTION_STATUS.PENDING"),
-  CANCELLED: i18n.t("SUBSCRIPTION_STATUS.CANCELLED"),
-  REJECTED: i18n.t("SUBSCRIPTION_STATUS.REJECTED"),
-  TOKENPAYMENTFAILED: i18n.t("SUBSCRIPTION_STATUS.TOKENPAYMENTFAILED"),
-  TOKENEXPIRED: i18n.t("SUBSCRIPTION_STATUS.TOKENEXPIRED"),
+  ACTIVE: i18n.t('SUBSCRIPTION_STATUS.ACTIVE'),
+  COMPLETED: i18n.t('SUBSCRIPTION_STATUS.COMPLETED'),
+  PAUSED: i18n.t('SUBSCRIPTION_STATUS.PAUSED'),
+  INITIATED: i18n.t('SUBSCRIPTION_STATUS.PENDING'),
+  CANCELLED: i18n.t('SUBSCRIPTION_STATUS.CANCELLED'),
+  REJECTED: i18n.t('SUBSCRIPTION_STATUS.REJECTED'),
+  TOKENPAYMENTFAILED: i18n.t('SUBSCRIPTION_STATUS.TOKENPAYMENTFAILED'),
+  TOKENEXPIRED: i18n.t('SUBSCRIPTION_STATUS.TOKENEXPIRED'),
 };
 export const PBL_STATUS: any = {
-  ACTIVE: i18n.t("Merchant_Detail.User_Management.Status.Active"),
-  INACTIVE: i18n.t("Merchant_Detail.User_Management.Status.Inactive"),
-  EXPIRED: i18n.t("Merchant_Detail.User_Management.Status.Expired"),
+  ACTIVE: i18n.t('Merchant_Detail.User_Management.Status.Active'),
+  INACTIVE: i18n.t('Merchant_Detail.User_Management.Status.Inactive'),
+  EXPIRED: i18n.t('Merchant_Detail.User_Management.Status.Expired'),
 };
 
 export const FILTER_POPOP_OF = {
@@ -207,111 +209,55 @@ export const FILTER_POPOP_OF = {
   RISK_RULE: "RISK_RULE",
 };
 export const SIDE_MENU_TABS = {
-  HOLIDAY: "Holiday",
-  MERCHANT: "Merchant",
-  SUBSCRIPTIONS: "Subscriptions",
-  STATEMENT: "Statement",
-  MERCHANT_VIEW: "Merchant View",
-  TRANSACTION: "Transaction",
-  SALES_LEAD: "Sales Lead",
-  MERCHANT_DETAILS: "Merchant Details",
-  ACQUIRER_DETAILS: "Acquirer Details",
-  PARTNER_DETAILS: "Partner Details",
-  USER_PREFERENCE: "User Settings",
-  MERCHANT_SETTINGS: "Merchant Settings",
+  HOLIDAY: 'Holiday',
+  MERCHANT: 'Merchant',
+  SUBSCRIPTIONS: 'Subscriptions',
+  STATEMENT: 'Statement',
+  MERCHANT_VIEW: 'Merchant View',
+  TRANSACTION: 'Transaction',
+  SALES_LEAD: 'Sales Lead',
+  MERCHANT_DETAILS: 'Merchant Details',
+  ACQUIRER_DETAILS: 'Acquirer Details',
+  PARTNER_DETAILS: 'Partner Details',
+  USER_PREFERENCE: 'User Settings',
+  MERCHANT_SETTINGS: 'Merchant Settings',
 };
 
 export const SALES_LEAD_FILTER_POPOP_OF = {
   SALES_LEAD_MERCHANT: "SALES_LEAD_MERCHANT",
-  SALES_LEAD_PARTNER: "SALES_LEAD_PARTNER",
+  SALES_LEAD_PARTNER: "SALES_LEAD_PARTNER"
 };
 
-export const HOLIDAY_NAME_SPECIAL_CHARACTERS = [
-  "~",
-  "`",
-  "@",
-  "#",
-  "$",
-  "%",
-  "^",
-  "&",
-  "*",
-  "(",
-  ")",
-  "+",
-  "=",
-  "|",
-  '"',
-  "`",
-  ";",
-  ":",
-  ".",
-  ",",
-  "?",
-  "/",
-  "[",
-  "]",
-  "{",
-  "}",
-  "!",
-  "<",
-  ">",
-  "\\",
-];
+export const HOLIDAY_NAME_SPECIAL_CHARACTERS =
+  ["~", "`", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "=", "|", '"', "`", ";", ":", ".", ",", "?", "/", "[", "]", "{", "}", "!", "<", ">", "\\"]
+  ;
 
-export const MERCHANT_STATUS: any = {
-  SUBMITTED: i18n.t("FinanceStatements.StatusTypes.SUBMITTED"),
-  APPROVED: i18n.t("FinanceStatements.StatusTypes.APPROVED"),
-  COMPLETED: i18n.t("FinanceStatements.StatusTypes.COMPLETED"),
-};
+  export const MERCHANT_STATUS: any= {
+    SUBMITTED: i18n.t('FinanceStatements.StatusTypes.SUBMITTED'),
+    APPROVED: i18n.t('FinanceStatements.StatusTypes.APPROVED'),
+    COMPLETED: i18n.t('FinanceStatements.StatusTypes.COMPLETED'),
+  };
 
-export const SUBSCRIPTION_STATUS_LABELS: any = {
-  ACTIVE: i18n.t("SUBSCRIPTION_STATUS.ACTIVE"),
-  COMPLETED: i18n.t("SUBSCRIPTION_STATUS.COMPLETED"),
-  PAUSED: i18n.t("SUBSCRIPTION_STATUS.PAUSED"),
-  INITIATED: i18n.t("SUBSCRIPTION_STATUS.INITIATED"),
-  CANCELLED: i18n.t("SUBSCRIPTION_STATUS.CANCELLED"),
-  REJECTED: i18n.t("SUBSCRIPTION_STATUS.REJECTED"),
-  TOKENPAYMENTFAILED: i18n.t("SUBSCRIPTION_STATUS.TOKENPAYMENTFAILED"),
-  TOKENEXPIRED: i18n.t("SUBSCRIPTION_STATUS.TOKENEXPIRED"),
-  PENDING: i18n.t("SUBSCRIPTION_STATUS.PENDING"),
-};
+  export const SUBSCRIPTION_STATUS_LABELS: any = {
+    ACTIVE: i18n.t('SUBSCRIPTION_STATUS.ACTIVE'),
+    COMPLETED: i18n.t('SUBSCRIPTION_STATUS.COMPLETED'),
+    PAUSED: i18n.t('SUBSCRIPTION_STATUS.PAUSED'),
+    INITIATED: i18n.t('SUBSCRIPTION_STATUS.INITIATED'),
+    CANCELLED: i18n.t('SUBSCRIPTION_STATUS.CANCELLED'),
+    REJECTED: i18n.t('SUBSCRIPTION_STATUS.REJECTED'),
+    TOKENPAYMENTFAILED: i18n.t('SUBSCRIPTION_STATUS.TOKENPAYMENTFAILED'),
+    TOKENEXPIRED: i18n.t('SUBSCRIPTION_STATUS.TOKENEXPIRED'),
+    PENDING: i18n.t('SUBSCRIPTION_STATUS.PENDING'),
+  };
 
-export const FILTER_INPUT_TYPES: any = {
-  TEXT: "text",
-  AUTOSELECT: "autoSelect",
-  DATERANGEPICKER: "dateRangePicker",
-  SELECT: "select",
-  NUMBER: "numeric",
-  MONTHPICKER: "monthPicker",
-  NEWDATERANGEPICKER: "newDateRangePicker",
-  NUMBERSTRING: "numberString",
-  SELECTWITHOUTIN: "selectWithoutIn",
-};
-
-export const FILTER_PO_ENTITY: any = [
-  {
-    headerName: i18n.t("FilterPopup.PoEntityName.PO Singapore"),
-    value: "PO Singapore",
-  },
-  {
-    headerName: i18n.t("FilterPopup.PoEntityName.PO Japan"),
-    value: "PO Japan",
-  },
-  {
-    headerName: i18n.t("FilterPopup.PoEntityName.PO Mauritius"),
-    value: "PO Mauritius",
-  },
-  {
-    headerName: i18n.t("FilterPopup.PoEntityName.PO Europe"),
-    value: "PO Europe",
-  },
-  {
-    headerName: i18n.t("FilterPopup.PoEntityName.PO Hong Kong"),
-    value: "PO Hong Kong",
-  },
-  {
-    headerName: i18n.t("FilterPopup.PoEntityName.PO China"),
-    value: "PO China",
-  },
-];
+  export const FILTER_INPUT_TYPES:any = {
+    TEXT:'text',
+    AUTOSELECT:'autoSelect',
+    DATERANGEPICKER:'dateRangePicker',
+    SELECT:'select',
+    NUMBER:'numeric',
+    MONTHPICKER:'monthPicker',
+    NEWDATERANGEPICKER:'newDateRangePicker',
+    NUMBERSTRING:'numberString',
+    SELECTWITHOUTIN:'selectWithoutIn',
+  };

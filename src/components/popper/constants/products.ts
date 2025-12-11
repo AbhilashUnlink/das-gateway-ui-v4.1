@@ -1,0 +1,9 @@
+const PRODUCT_TYPE:any = {
+    ECOM:"ECOM",
+    MOTO:"MOTO",
+    QR:"QR",
+    PBL:'PBL',
+    SUBSCRIPTION:'SUBSCRIPTION',
+    SCHEDULER:'SCHEDULER'
+};
+export default PRODUCT_TYPE;

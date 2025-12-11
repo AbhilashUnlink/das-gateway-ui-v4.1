@@ -49,6 +49,7 @@ export const DRAWER_TYPE = {
   WEBHOOK_URL_FORM:"WEBHOOK_URL_FORM",
   CATALOG_CATEGORY_FORM:"CATALOG_CATEGORY_FORM",
   CATALOG_CATEGORY_PRODUCT_FORM:"CATALOG_CATEGORY_PRODUCT_FORM",
+  TRANSACTION_QUICK_VIEW:"TRANSACTION_QUICK_VIEW",
 };
 
 export const DRAWER_WIDTH = {
@@ -104,6 +105,7 @@ export const DRAWER_WIDTH = {
   FIFTY: '50%',
   SIXTY: '60%',
   EIGHTY_FIVE: '85%',
+  TRANSACTION_QUICK_VIEW: '35%',
 
 };
 
@@ -177,4 +179,5 @@ export const DRAWER_TITLE = {
   ADD_CATALOG_CATEGORY_PRODUCT_FORM: i18n.t('MerchantList.MerchantCatalogs.MerchantCategoryProducts.Add Product'),
   EDIT_CATALOG_CATEGORY_PRODUCT_FORM: i18n.t('MerchantList.MerchantCatalogs.MerchantCategoryProducts.Edit Product'),
   ADD_NEW_MERCHANT_DRAWER: i18n.t("Create Rule"),
+  TRANSACTION_QUICK_VIEW: i18n.t("Transaction Ref ID"),
 };

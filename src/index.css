@@ -1,11 +1,101 @@
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+:root {
+    --color-primary: #F7941D;
+    --font-family:"Inter", sans-serif !important
 
-body {
-    margin: 0;
-    font-family: 'Public Sans', sans-serif;
 }
+button, a {
+    font-family: var(--font-family) !important;
+}
+body, html {
+    margin: 0;
+    /* font-family: 'Public Sans', sans-serif; */
+    font-family: var(--font-family);
+}
+
 .ant-layout {
     background: #FFFBF1;
     background: linear-gradient(180deg, #FDEBCA 1.82%, #F4EAD8 29.71%, #FFFBF1 115.19%) !important;
     background: -webkit-linear-gradient(180deg, #FDEBCA 1.82%, #F4EAD8 29.71%, #FFFBF1 115.19%) !important;
+    font-family: var(--font-family);
+}
+li.MuiMenuItem-root {
+    font-family: var(--font-family) !important;
+}
+.table-header-top-label.value {
+    color: #2f2f2f;
+}
+
+.MuiDataGrid-virtualScroller {
+    padding-left: var(--pinned-offset, 0px) !important;
+}
+
+.table-header-top-label {
+    font-weight: 600;
+}
+.table-header-lower-label {
+    font-size: 12px;
+}
+.table-header-top-label.value.date-value.track-id-copy-value {
+    font-weight: 400;
+}
+.table-header-divider {
+    width: 1px;
+    height: 14px;
+    background: #1a1a1a;
+    position: relative;
+    top: 1px;
+    border-radius: 50px;
+}
+.small-text {
+    color: #808080;
+    font-size: 12px;
+}
+.ant-tooltip-arrow::before {
+    background-color: #f7941d !important;
+  }
+  .drawer-header button div {
+    display: flex;
+}
+.ant-tooltip .ant-tooltip-inner {
+    background-color: #FF9800;
+}
+.MuiDataGrid-row:hover {
+    background-color: #FFF6E6 !important;
+}
+.ant-typography, .MuiDataGrid-cell, .MuiDataGrid-columnHeader,
+.ant-btn,
+.ant-input,
+.ant-select,
+.ant-table,
+.ant-menu,
+.ant-modal,
+.ant-card,
+.ant-form,
+.ant-notification,
+.ant-message,
+.ant-tooltip,
+.ant-tabs,
+.ant-collapse,
+.ant-dropdown,
+.ant-popover,
+.ant-tag,
+span.MuiTypography-root{
+    font-family: var(--font-family);
+}
+.highlighted.MuiDataGrid-row .table-header-top-label.value.date-value.uuid-top-label-value span {
+    color: #7A7807;
+}
+.highlighted.MuiDataGrid-row::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    content: "";
+    background: #7A7807;
+}
+.highlighted.MuiDataGrid-row {
+    position: relative;
 }

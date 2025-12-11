@@ -103,8 +103,9 @@ const RefundDetails = ({ drawer, handleDrawerClose, tableApiEndPoint, payload }:
   };
   return (
     <Suspense fallback={<></>}>
-      {drawer.type === DRAWER_TYPE.REFUND && (
+      
         <div className="drawer-body refund-drawer">
+          <h4>{t('ISSUE_A_REFUND.label')}</h4>
           <FormRenderer
             schema={refund_transaction_schema(transactionDetail?.CurrencyCode)}
             initialValues={initialValues}
@@ -115,7 +116,6 @@ const RefundDetails = ({ drawer, handleDrawerClose, tableApiEndPoint, payload }:
             onCancel={handleDrawerClose}
           />
         </div>
-      )}
     </Suspense>
   );
 };

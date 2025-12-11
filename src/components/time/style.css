@@ -83,13 +83,6 @@ button.dropdown-select-button {
 button.language-button:hover, button.dropdown-select-button:hover{
     background: transparent;
 }
-.language-wrap {
-    box-shadow: none !important;
-    border: 1px solid #ccc;
-    margin: 0 12px 0 0;
-    position: relative;
-    top: 7px;
-}
 .language-popper {
     z-index: 9;
 }

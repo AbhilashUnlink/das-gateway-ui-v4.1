@@ -7,10 +7,10 @@ import { useState } from "react";
 import editDetailSchema from "./schema";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+// import Drawer from "@mui/material/Drawer";
+// import Divider from "@mui/material/Divider";
+// import IconButton from "@mui/material/IconButton";
+// import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import FormTemplate from "./FormTemplate";
 import TextField from "@data-driven-forms/mui-component-mapper/text-field/text-field";
 import Select from "@data-driven-forms/mui-component-mapper/select";
@@ -24,14 +24,14 @@ import DasSnackbar from "../../../../../components/das-snackbar/DasSnackbar";
 import { useDispatch } from "react-redux";
 import { getDetails } from "../../../../../store/features/details";
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: "flex-start",
-}));
+// const DrawerHeader = styled("div")(({ theme }) => ({
+//   display: "flex",
+//   alignItems: "center",
+//   padding: theme.spacing(0, 1),
+//   // necessary for content to be below app bar
+//   ...theme.mixins.toolbar,
+//   justifyContent: "flex-start",
+// }));
 const TransactionEditDetailsDrawer = ({
   openStatusDrawer,
   uuid,
@@ -88,7 +88,7 @@ const TransactionEditDetailsDrawer = ({
         submit={t("TransactionDetailDrawerBody.ApprovePopup.button.submit")}
       />
       <Box sx={{ display: "flex" }}>
-        <DrawerHeader />
+        {/* <DrawerHeader />
 
         <Drawer
           sx={{
@@ -111,8 +111,9 @@ const TransactionEditDetailsDrawer = ({
               {t("TransactionDetailDrawerBody.Status_Heading")}
             </div>
           </DrawerHeader>
-          <Divider />
+          <Divider /> */}
           <div className="drawer-body pricing-drawer-body edit-status-drawer">
+          <h4>{t("TransactionDetailDrawerBody.Status_Heading")}</h4>
             <FormRenderer
               schema={editDetailSchema}
               FormTemplate={FormTemplate}
@@ -122,7 +123,7 @@ const TransactionEditDetailsDrawer = ({
               onCancel={handleDrawerClose}
             />
           </div>
-        </Drawer>
+        {/* </Drawer> */}
       </Box>
     </>
   );
